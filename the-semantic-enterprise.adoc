@@ -14,18 +14,16 @@ Iman Poernomo
 
 I spent much of my career building data platforms with engineers for users who are disappearing.
 
-She was overworked and hated she was spending the best years of her life cutting and pasting corrections to columns from a PowerBI report. He was a flatuent, stupid, impatient and with a minimal grasp of the area he somehow he found himself Head of Intelligence of. She knew which dashboard was lying. He was good at establishing himself as a product data owner, governance officer, and running group lie-in sessions that were called data councils. She knew sometimes knew what table had not refreshed properly since the migration so he'd rate her a M+ at year end. She knew that "revenue" meant one thing when Finance said it and another when Trading said it, and was indispensible to him because for all his efforts to look like he had some kind of roadmap to improve, ultimately the shit wouuld conintue to hit the fan and she knew who to call when the two numbers refused to agree.
+She was overworked, and hated that the best years of her life were going on cutting and pasting corrections to columns out of a Power BI report. He was flatulent, stupid, impatient, and had a minimal grasp of the area he somehow found himself Head of Intelligence of. She knew which dashboard was lying. He was good at establishing himself as a product data owner, a governance officer, and the chair of group lie-in sessions that were called data councils. She knew which tables had not refreshed properly since the migration, so he rated her an M+ at year end. She knew that "revenue" meant one thing when Finance said it and another when Trading said it; and she was indispensable to him, because for all his efforts to look like he had a roadmap, the shit would eventually hit the fan and she was the one who knew who to call when the two numbers refused to agree.
 
-[insert similar indictment of IAs and engineers who don't understand the business]
+And around her, the professionals. The information architect who could draw you a flawless diagram of a business he had never once asked a question about, who modelled "Customer" for eight months without noticing the firm had four kinds and cared about two. The engineer who could move a billion rows an hour and could not tell you what a single one of them meant, who named a column `flag_2` because `flag` was already taken, shipped it, and filed "what does this actually mean?" under someone else's backlog. The consultancy that delivered a forty-tab governance framework, an invoice, and a leaving date that landed before anyone tried to use the thing. I am not throwing stones from the shore. I hired these people. On a bad year I was these people. We built immaculate plumbing for water nobody had tasted, and put it on a slide called The Platform.
 
-Our platforms were not clean. Actually, forget that. They weren't platforms. The were gilligan's island. 
+Our platforms were not clean. Actually, forget that. They weren't platforms. They were Gilligan's Island.
 
 
 That distinction mattered more than any of us admitted. For thirty years, enterprise data architecture survived because human beings stood in the gaps. Analysts carried the missing semantics in their heads. Engineers remembered the bad column names. Finance directors knew which version of the truth was safe to quote in a meeting. The system worked because the system was not really the system: it was the warehouse, plus the people who knew how to forgive it.
 
 That world is ending, and thank the Great Semantic Manifold.
-
-[Carry on]
 
 
 [#fig-old-vs-new-consumer]

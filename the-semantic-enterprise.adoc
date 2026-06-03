@@ -12,26 +12,29 @@ Iman Poernomo
 
 == Introduction
 
-Your data platform was built for a consumer who no longer exists.
+I spent much of my career building data platforms for a user who is disappearing.
 
-For thirty years, data architecture was optimized for a human analyst with SQL skills, domain knowledge, and the ability to compensate for bad infrastructure by being smart. The databases were designed for her. The dashboards were built for her. The governance processes —- such as they were —- assumed she would be the one squinting at the numbers, calling a colleague when something looked off, and making a judgment about which of the three conflicting revenue figures was probably the right one.
+She was clever, impatient, overworked, and human. She knew which dashboard was lying. She knew which table had not refreshed properly since the migration. She knew that "revenue" meant one thing when Finance said it and another when Trading said it, and she knew who to call when the two numbers refused to agree.
 
-She has not disappeared. But she is ceasing to be the consumer the platform is really built for. The primary consumer of your data platform is becoming a machine —- an AI agent that queries your tables, reads your definitions, and produces answers with the serene confidence of a system that has no concept of doubt. Today most enterprise agents are still pilots rather than production systems; the shift is underway, not complete. But it is underway fast enough that a platform rebuilt over the next two years will serve that consumer as its default, and you are building for the consumer you will have, not the one you have today. Unlike the human analyst, the machine does not compensate for ambiguity. It amplifies it.
+Our platforms were not clean. They were survivable.
 
+That distinction mattered more than any of us admitted. For thirty years, enterprise data architecture survived because human beings stood in the gaps. Analysts carried the missing semantics in their heads. Engineers remembered the bad column names. Finance directors knew which version of the truth was safe to quote in a meeting. The system worked because the system was not really the system: it was the warehouse, plus the people who knew how to forgive it.
+
+That world is ending, and the new consumer is the reason.
 
 [#fig-old-vs-new-consumer]
 .The old consumer compensated for ambiguity; the new one amplifies it. Build for the consumer that cannot squint.
 image::figures/old-vs-new-consumer.png[old vs new consumer,width=600,align="center"]
 
-This changes what your data architecture is for, how you govern it, what skills your team needs, what you should spend money on and what you should stop spending money on. It changes the role of the dashboard, the data catalog, the Chief Data Officer. Architectural patterns that have been industry standard for decades become actively harmful. Patterns that information architects have been arguing for since the 1990s —- patterns nobody listened to because the economics never closed —- become mandatory.
+The new consumer does not forgive. It does not squint. It does not know that the table called `collateral_snapshot_v2_final` is the real one and `collateral_current` a historical accident kept alive by a dependency nobody dares remove. It reads what we wrote. It trusts what we named. It takes the ambiguity we spent a generation teaching people to survive, and executes it, to four decimal places, with no idea it is doing anything wrong.
 
-History rarely delivers the disease and the cure in the same package. AI demands clean semantics, and AI makes building the semantic layer viable for the first time. The correct architecture was always known. The economics now demand it.
+This is the part I think most data leaders have not yet absorbed. AI did not merely add an interface to the warehouse. It exposed the moral condition of the warehouse. Every missing definition, every lazy name, every undocumented convention, every small act of architectural cowardice we used to cover with a phone call and a veteran's memory, is now executable, and runs.
 
-This book draws on thirteen years of running data platforms at investment banks, stock exchanges, pharmaceutical companies, and a cryptocurrency exchange —- the practice that forged its convictions. Three perspectives run through it: the practitioner who lived the failures, the operational architect who turned them into standards, and the theorist who gave the construction its mathematical spine. They converge, from different angles, on the same phase transition.
+I want to resist the easy version of this, because the easy version is a sermon, and the old world deserves better than a sermon. The architecture we built was not stupid. The star schema, the unified model, the governance committee, the catalog: each was fitted to a world whose primary consumer was a person who could compensate. That world had reasons. I believed most of them. I shipped a fair amount of what I am about to take apart. The painful part is not that we were wrong. It is that we were right, for a reader who is leaving.
 
-Ten self-contained essays, readable in any order. Pick the one whose title makes you most skeptical, and start there.
+So this is closer to a reckoning than a manifesto. Thirteen years of it: investment banks, a stock exchange, a pharmaceutical company, a cryptocurrency exchange. Architectural wars won and lost. Governance programmes that died on contact with the people they were meant to govern. Ontology projects of exquisite rigour that no one ever used. I am writing it down now because AI has, in about eighteen months, turned those slow embarrassments into fast, confident, automated ones, and because the same force that exposes the problem is the first thing I have seen that makes the fix affordable. History rarely hands you the disease and the cure in one envelope; this time it has.
 
-Nine convictions run through the book like rebar through concrete: that physical storage and logical meaning must be decoupled; that meaning flows in one direction and upstream always wins; that Silver inherits dimensional discipline and serves as a governed analytical surface in its own right, while Gold’s fast default is flat denormalized publication, and the semantic layer composes across any local ontology as long as it maps into what category theory calls a *colimit* (explored in <<chap-architecture>>); that AI goes through the same semantic layer as every other consumer; that governance must be embedded in the execution pipeline or it does not exist; that semantic infrastructure is a prerequisite, not a feature; that the system should know what it knows and what it does not; that domain vocabularies must compose coherently — that a question spanning finance, trading, and custody must resolve to a consistent answer even though each domain defines its terms differently; and that information density per token — not context window size — is the binding constraint on every system that serves an AI consumer. None of these were deduced from first principles. They were forged in arguments, failures, and near-misses across thirteen years of running data platforms.
+These essays argue with each other a little, and that is deliberate. I argue against positions I have held and against positions you may hold now, and I have tried, each time, to put the opposing case in the voice of someone who believes it, because I have been that someone. Start wherever your scepticism is loudest.
 
 === Intellectual Foundations
 

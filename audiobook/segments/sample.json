@@ -1,0 +1,14 @@
+[
+  {
+    "voice": "narrator",
+    "voice_id": "hU1ratPhBTZNviWitzAh",
+    "speed": 1.0,
+    "text": "Introduction\n\nYour data platform was built for a consumer who no longer exists.\n\nFor thirty years, data architecture was optimized for a human analyst with SQL skills, domain knowledge, and the ability to compensate for bad infrastructure by being smart. The databases were designed for her. The dashboards were built for her. The governance processes, such as they were, assumed she would be the one squinting at the numbers, calling a colleague when something looked off, and making a judgment about which of the three conflicting revenue figures was probably the right one.\n\nShe has not disappeared. But she is ceasing to be the consumer the platform is really built for. The primary consumer of your data platform is becoming a machine, an AI agent that queries your tables, reads your definitions, and produces answers with the serene confidence of a system that has no concept of doubt. Unlike the human analyst, the machine does not compensate for ambiguity. It amplifies it.\n\n[[DIVIDER]]"
+  },
+  {
+    "voice": "maher",
+    "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+    "speed": 1.0,
+    "text": "New rule. Stop telling me A.I. is just another business-intelligence consumer.\n\nThe reasoning goes like this: we already serve dashboards, reports, analysts, and data scientists, so A.I. is just one more consumer. Give it SQL access, point it at the schema, let it figure out the tables the same way a new analyst would. Same data, different interface. The reasoning is elegant. The reasoning is wrong.\n\nDashboards tolerate ambiguity because humans compensate. An A.I. encounters the same ambiguity and does something qualitatively different. It does not call anyone. It picks one of the two numbers based on whatever its training data suggests, and returns it with four decimal places, a grammatically perfect explanation, and no indication that another number exists, or that the choice was completely arbitrary.\n\nEighty-four percent of data teams regularly hit conflicting versions of the same metric. Humans navigate that by building relationships and institutional knowledge. A.I. navigates it by picking one, and being wrong half the time."
+  }
+]

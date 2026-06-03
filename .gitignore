@@ -1,0 +1,26 @@
+# --- build artifacts (regenerable; not source) ---
+the-semantic-enterprise.pdf
+the-semantic-enterprise.html
+enterprise-colimit.pdf
+*.aux
+*.log
+*.out
+
+# --- scratch / drafts / backups (git history is the backup now) ---
+figures-draft/
+backups/
+audiobook/out/
+**/*_chunks/
+**/*_mus/
+
+# --- superseded / third-party / one-off inputs ---
+the-semantic-enterprise*.pre-*
+the-semantic-enterprise (1).tex
+the-semantic-enterprise-PREVIEW*.pdf
+extraction-of-structured-programs*.pdf
+tcs05.pdf
+1780161337292~2.png
+
+# --- python ---
+__pycache__/
+*.pyc

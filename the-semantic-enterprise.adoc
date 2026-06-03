@@ -180,4 +180,180 @@ The shift is not from human to machine. It is from implicit to explicit. From kn
 
 Intelligent machines are interning at your organization. If you want to keep them on as productive long-term employees, get your training material together.
 
-(The rest of the book — Language is the Material, The Architecture, Time, The Death of the Dashboard, Agentic Intelligence, Building with AI, The Sandpit, The Living Colimit, The Playbook, and No Walls — follows with the same technical spine, stripped of the wandering carrier prose and stated with the directness the subject demands.)
+== Language is the Material
+
+Data engineering is applied linguistics. The problems you hit every day were named and studied by linguists decades ago. The industry just refuses to admit it because admitting it would require hiring different people and killing different sacred cows.
+
+=== The Column Name Problem
+
+Fourteen million dollars is a lot of money to lose in a dictionary.
+
+The quarterly P&L reconciliation broke on a Tuesday — not because the numbers were wrong. The numbers were perfect. It broke because "revenue" in the finance chart of accounts included fee rebates netted against gross, while "revenue" in the trading system excluded them. Both definitions were documented. Both had been in production for years. Both were internally consistent. They just described different things.
+
+Three hours of meetings followed. A finance director and a trading desk lead sat across from each other with spreadsheets, each convinced the other was wrong. They were not wrong. They were speaking different languages. The word was identical. The concept was not. Fourteen million dollars lived in the gap.
+
+Every automated check passed. Every pipeline ran green. The conflict was invisible to every tool in the stack because every tool operates on syntax. Semantic. Linguistic. And until that Tuesday, completely undetected.
+
+A few weeks later the same pattern in a different form. An AI agent returned zeros for collateral values. The team assumed missing data. They opened an incident. They started investigating the upstream pipeline. There was no break. The data was there — every row, every column, every timestamp. The problem was that the table was not labeled in any language the agent (or a new analyst) would recognize. What looked like a data gap was a semantic gap. The fix took minutes. Re-ingestion would have taken weeks.
+
+Most organizations still cannot see the distinction between "missing data" and "missing vocabulary." They blame the pipeline. They almost never blame the names. The blindness is expensive.
+
+AI is the forcing function, but the problem is architectural. Data engineering is not about pipelines, transformations, or SQL. Those are implementation details. The material of the craft — the thing you are actually shaping every day — is language.
+
+=== Names Construct the Objects They Refer To
+
+Most data engineers think naming is a style decision. Pick snake_case or camelCase, enforce it, move on. This is the standard position. It is wrong.
+
+When you name a column `revenue`, you are not labeling a pre-existing thing. You are making a commitment: this number, calculated this way, from these sources, with these exclusions, means THIS. Before the name there was raw data. After the name there is a governed concept that downstream consumers can rely on. Naming is construction.
+
+If a definition is a contract — "when you use this term, you are bound to this meaning" — then breaking the contract breaks every downstream consumer. When AI is the downstream consumer, breaking the contract does not produce a confused analyst who calls you on Slack. It produces a confident, silent, wrong answer that gets presented to an executive or acted on by an automated system.
+
+At a major investment bank "position" meant different things to the risk desk, the trading desk, and the back office. Three definitions, all internally consistent, all mutually incompatible. Humans navigated this by knowing which desk they were talking to. The data warehouse did not know which desk it was talking to. So the reporting layer contained three different versions of "position," each correct within its own context, each dangerously wrong when used in someone else’s.
+
+Industry treats this as a data quality problem. It is a language problem — specifically polysemy: a single term carrying multiple meanings depending on context. Linguists have studied polysemy for a century. Data engineers rediscover it every time they build a warehouse.
+
+Consider a chart of accounts at a crypto exchange. Three hundred and thirty-three GL accounts encoding roughly forty business concepts crossed with six dimensions. Instead of separating the concept from its dimensional context, the naming scheme bakes context into the identifier. Account number 41200-003-01 is not a concept — it is a concept wearing a disguise made of dimensions. A human accountant can decode this because they have twenty years of tacit knowledge. An AI agent asked to "show me all revenue accounts" will miss half of them.
+
+Kimball prefixes — `fact_`, `dim_`, `fct_` — are the same kind of mistake, just older. They were governance decisions correct at the time they were made. In row-based databases where joins were expensive, encoding the structural role into the name was useful operational metadata. We do not live in that world anymore. In columnar warehouses, denormalized wide tables outperform star schemas. A semantic layer determines whether a field is a dimension or a measure at the field level. The prefix is redundant — a governance decision that outlived the architecture it was governing.
+
+Naming decisions are among the most consequential decisions a data architect makes. Yet in most organizations naming is delegated to individual developers with at most a style guide. Delegating contract law to the intern: the contracts still get written, they just do not protect anyone.
+
+Sometimes the names are not just unclear — they are actively misleading. A column called `volume` that contains notional value. A `balance` that means delta since last update. A `date` that refers to trade date in one system and settlement date in another. In each case the name was plausible enough that nobody questioned it. The AI certainly did not question it. Missing names produce errors you notice. Misleading names produce errors you trust.
+
+=== The Metadata Graveyard
+
+Every large organization has one. Ten thousand terms in a governance tool that nobody reads. A business glossary delivered to applause and abandoned within a year. The pattern is so consistent it qualifies as a law of organizational physics.
+
+A senior leader decides the organization needs a business glossary. Consultants arrive. Workshops happen. Over six to twelve months a comprehensive glossary is produced. Published in a standalone governance tool. Launch event. Applause. And then, slowly, silently, it dies.
+
+It dies because modeling is a maintenance problem disguised as a design problem. A vocabulary is a living system, not a deliverable. Data platforms change daily. New tables appear. Columns are renamed. Business concepts evolve. A vocabulary that is not updated with every change is a vocabulary that drifts from reality. And a vocabulary that drifts from reality is worse than no vocabulary at all, because it creates the illusion of governance where none exists.
+
+FIBO — the Financial Industry Business Ontology — represents the most ambitious attempt to solve the vocabulary problem in financial services. Over three thousand normative entities. Built by contributors from Bloomberg, Citigroup, Deutsche Bank, Goldman Sachs, Wells Fargo, and State Street. Maintained by the EDM Council. Formally exquisite, built on OWL and RDF, with proper axioms and reasoning capabilities. It represents years of work by people who understood the problem deeply.
+
+Almost nobody uses it. Broader industry adoption remains limited. When researchers tried to run standard OWL reasoners against the full FIBO ontology, one was terminated after four days of processing. Another after two. Formally beautiful. Operationally inert.
+
+Standalone governance tools suffer the same critique with less severity. Collibra is governance-first: policy modeling, enterprise vocabularies, lifecycle management. Implementation timelines run three to nine months. User satisfaction among those who actually use the tool is high. Satisfaction among the other 2,988 people in the organization who have never logged in is irrelevant to the vendor.
+
+Both the heavyweight ontology and the standalone catalog are symptoms of the same disease: governance living outside the execution pipeline. An ontology that does not execute in the data pipeline does not govern the data. It describes the data from the outside, and descriptions from the outside drift.
+
+The controlled-vocabulary tradition was built for cross-reference, schema standardization, and demonstrable compliance. Real goals, well served. But the artefact is wrong. A short, structured definition tells you the datatype of a column and what the column is called. It does not tell you why the column exists, when its values diverge from the obvious interpretation, what edge cases bite practitioners every quarter, what the desk’s slang for it is, or what a new analyst should know on their second day.
+
+Tolerable when documentation consumers were humans who could absorb operational knowledge by sitting next to senior colleagues for six months. No such channel exists for an LLM agent. It has whatever you put in its context and nothing more. If the documentation says "revenue: total trading revenue in USD" and nothing else, that is the entirety of what the agent knows about revenue. Formally correct. Operationally useless.
+
+Metadata graveyards were always failing to close this gap, even for human consumers. AI merely makes the failure impossible to ignore.
+
+=== Documentation as Onboarding
+
+ISO 11179 tells you a column’s type. A senior colleague tells you why the column lies on the last day of the month. Only one of these prevents a production incident.
+
+When a new analyst joins a trading desk, nobody hands them a metadata catalog. They get prose and conversation. Someone tells them the war stories. Someone explains the conventions. Someone walks them through the slang. The onboarding is narrative, contextual, and specific to how this particular team uses these particular data assets.
+
+A capable LLM brings substantial general knowledge to any business domain on day one. What it lacks is exactly this organizational nuance, this desk-specific convention, this tribal craft. Without it delivered explicitly, the agent plateaus at general competence — correct in the abstract, wrong in the particular. The particular is where the work happens.
+
+Documentation that closes this gap looks like onboarding material, not ISO 11179.
+
+What works is the domain essay: six hundred to fifteen hundred words of considered prose covering provenance, conventions, edge cases, slang, history, and craft for a single dataset or a tightly coupled cluster of them. Written by the people who know the data. The essay is anchored on structured metadata that does not disappear: datatypes, primary keys, refresh cadence, lineage references, ownership records. These anchors are the index into the documentation, not the documentation itself.
+
+Domain essays are treated as code: versioned, dated, signed by named authors and reviewers, stored alongside the data assets they describe. They have a decay model: an essay reviewed within the last twelve months is treated differently from one untouched for three years. Stale documentation is, for an agent, strictly worse than absent documentation — the agent reads stale prose with the same confidence as fresh prose and produces confidently wrong answers.
+
+Documentation that lets an agent reason over data is documentation that onboards a new human analyst fastest. The agent, the new analyst, and the auditor converge on the same artefact. Build documentation for agents and it gets better for humans. Build it for cataloguing and it has never been good enough for either.
+
+=== The Three-Tier Vocabulary
+
+Three tiers, connected by a single principle: upstream always wins.
+
+Tier 1 is the glossary. This is the canonical source of business meaning. It contains the organization’s controlled vocabulary: defined terms, with relationships between them — hierarchies, synonyms, associations. The glossary is business-owned, not technology-owned. It does not contain SQL. It speaks in business language about business concepts.
+
+Terms are not strings. They are nodes in a semantic graph. Meaning is partly constituted by relationships between terms. A glossary that treats terms as isolated definitions is missing the point.
+
+Tier 2 is the schema definition file — the model metadata that lives alongside the transformation code. Here is the claim that will generate the most pushback: the schema definition IS the logical data model — not a reflection of it, not a downstream copy, but the thing itself.
+
+In traditional data architecture the logical data model is a separate artifact — an ER diagram, a data dictionary, a design document — created during design and then implemented in code. Two artifacts, one truth, inevitable divergence. When model documentation and model implementation are the same file, they cannot diverge. You cannot change the model without changing the documentation, because they are the same artifact.
+
+Tier 2 inherits from Tier 1. If the glossary says "trading volume" means the total number of units traded in a given period, then the schema description of the `trading_volume` column says the same thing — not a paraphrase, not a reinterpretation, but the same definition. Upstream always wins. If a Tier 2 description contradicts a Tier 1 definition, the Tier 1 definition is correct and the Tier 2 description must be updated. This is not a suggestion. It is a governance rule.
+
+Tier 3 is the semantic layer — the consumption-layer configuration that maps business concepts to data. This is where definitions become queryable. The semantic layer does not create new definitions. It inherits them from Tier 2, which inherited them from Tier 1.
+
+When an AI agent needs to answer a question about revenue, it consults the semantic layer, which tells it which table contains revenue data, how revenue is calculated, what dimensions are available, what caveats apply. Without a semantic layer, the agent guesses. With one, it grounds its reasoning in governed definitions.
+
+A quality standard applies across all three tiers. ISO 11179 provides criteria that every definition should meet: precise, unambiguous, non-circular, stated in natural language, domain-scoped. The three-tier vocabulary uses 11179 criteria the way a newsroom uses a style guide: not as bureaucracy, but as craft discipline. The standard governs the quality. The architecture governs the location.
+
+Domain essays carry the semantic weight. Structured metadata becomes the index into essays, not the documentation itself. Tier 1 names the concepts, Tier 2 binds them to columns, Tier 3 exposes them to consumers. But the explanation of why a column exists, the documentation of edge cases that bite every quarter, the operational craft that separates a competent analyst from a textbook one — that lives in the essay alongside and above the tiers.
+
+"Upstream always wins" extends to documentation. The glossary defines the term. The schema definition binds it. The semantic layer exposes it. But the essay — written by domain experts, versioned like code, decaying visibly when stale — is what the agent reads when it needs to reason, not retrieve.
+
+This architecture works because it solves the maintenance problem that kills every other approach. The glossary changes slowly. The schema definition changes at the pace of development. The semantic layer changes at the pace of consumption. Each tier has its own cadence, its own owners, and its own change management process. But they are connected by a single flow: upstream always wins. This means governance becomes an architectural property, not a separate activity. The system governs itself through its own structure.
+
+Governance outside the execution pipeline is aspiration, not governance. It exists as documentation. It exists as a quarterly meeting where people review proposed changes to the data dictionary and approve or reject them. By the time a change is approved through a committee process, the data has already changed three more times. The committee is governing a system that no longer exists. Governance by committee is governance by nostalgia.
+
+=== Why This Is Linguistics
+
+"Data engineering is applied linguistics" is not a metaphor. The problems data engineers encounter every day are problems that linguists named and studied decades ago.
+
+Synonymy is the most visible: multiple terms for the same concept. Every controlled vocabulary is an attempt to eliminate synonyms within a specific domain.
+
+"Position" at the investment bank is polysemy: one term with multiple meanings depending on context. Polysemy is a feature of natural language that makes communication efficient in context and disastrous out of context. A data platform is, by definition, out of context — it aggregates data from multiple contexts into a single layer. If your vocabulary does not disambiguate polysemous terms, your platform inherits every ambiguity from every source system.
+
+GL taxonomy inflation is a failure of dimensional separation: encoding multiple independent dimensions into a single identifier. Linguists call this agglutination. In a chart of accounts, agglutinating asset class, client type, and risk level into a single account number creates the same problem: the concepts are present but not individually addressable.
+
+Data engineers face linguistic problems and need linguistic tools: controlled vocabularies, taxonomies, thesauri, semantic networks. Twenty years of investment in pipeline tools and comparatively nothing in vocabulary tools. The imbalance reflects a conceptual misunderstanding about what the job actually is.
+
+Consider the job posting for a "Senior Data Engineer" at any major company. SQL, Python, Spark, Airflow, dbt, Terraform, Kubernetes. Maybe a cloud certification. Nowhere: "ability to construct and maintain a controlled vocabulary." Nowhere: "experience with semantic modeling." Nowhere: "skill in extracting precise definitions from domain experts." Yet those are the skills that determine whether the data platform produces clarity or confusion.
+
+Without formal vocabulary infrastructure, business meaning scatters across schema descriptions, semantic layer definitions, tribal knowledge, and Slack threads. Everybody talking, nobody speaking the same language.
+
+At one organization the revenue mapping rules lived in a CSV file that nobody owned. Seven trading symbols were missing from the CSV, which meant trades in those assets were generating no journal entries. Nobody had noticed because the engineers who wrote the code did not understand the domain, and the domain experts had left. Code owned execution. Nobody owned semantics. Revenue was not a governed concept. It was a prayer.
+
+Vocabulary architecture prevents this. When "revenue" has a definition that is canonical, machine-readable, and embedded in the execution pipeline, code and meaning cannot separate. Read the model, read the definition. Change the model, change the definition. Same artifact.
+
+When vocabulary is not formalized, every question routes through a person. "What does this column mean?" Ask Sam. "How is this calculated?" Ask Keith. Knowledge lives in people’s heads, and every query becomes a dependency on a specific individual.
+
+One team lead: "My team literally don’t know the domain. Sam and Keith are the only guys that know. And that’s a problem." It is a problem — and a predictable consequence of an architecture that does not capture vocabulary. When vocabulary exists only in people’s heads, personnel changes are data losses.
+
+Most organizations hit a phase transition — scaling from one office to multiple, or private to public — where tacit knowledge stops working. When everyone sat in the same room, tacit knowledge worked. When teams go global, tacit knowledge breaks. The meaning has to be written down, and if it is written down in a PDF on SharePoint, it will be lost within six months. It has to be written down in the pipeline.
+
+Organizations that navigate this transition successfully recognize what they are really building. Not a data platform — a language. A shared, governed, machine-readable language for talking about their business. The platform is infrastructure. The language is the product.
+
+=== Domain Registers and Code-Switching
+
+When a trader and an accountant both say "position," they are having two different conversations with the same word. The data warehouse, unable to tell which conversation it is in, joins both and calls the result a report.
+
+Sociolinguists use the term "register" to describe a systematic variation in language that correlates with context of use: vocabulary, grammar, and assumptions shift depending on who is speaking, to whom, and about what.
+
+Every business domain operates in its own register. Trading speaks in a register of immediacy and exposure. Finance speaks in a register of periodicity and accountability. Treasury speaks in a register of liquidity and obligation. Custody speaks in a register of safekeeping and proof.
+
+These are not merely different vocabularies layered over a shared reality. They are different ways of constructing that reality. When a trader says "position," the word denotes a live directional exposure. When a finance professional says "position," the word denotes a net accounting exposure. The trader’s position is kinetic. The accountant’s position is archival. Same word. Meaning constituted by register.
+
+Linguistics calls this code-switching: the systematic shift between registers that competent speakers navigate unconsciously but that machines need explicit mappings to handle.
+
+Cross-domain polysemy is not an exception in the three-tier vocabulary — it is a structural feature. Tier 1, the glossary, defines domain-scoped entries. `finance.position` and `trading.position` are different concepts that share a lexeme. No single definition broad enough to cover both. Instead, the glossary maintains separate entries, each precise within its domain, with an explicit relationship between them.
+
+Tier 2 implements each domain-scoped concept as a model in its respective namespace. The schema definitions make explicit what human speakers leave implicit. They are, in effect, the grammar of each register written out in full.
+
+Tier 3, the semantic layer, provides the navigation that resolves which "position" the user means based on conversational context. The semantic layer uses the accumulated context of the conversation to determine which register is active. Machine code-switching: the operational expression of the linguistic theory.
+
+Cross-register problems are harder than within-register problems. The conflicts erupt at the boundaries. A question like "what was the P&L impact of our largest trading positions last quarter?" requires the system to identify positions in the trading register, then compose with the finance register, resolving the temporal mismatch and the aggregation mismatch. This is register composition, and it is where most data platforms fail silently.
+
+Silent failure, because each domain’s numbers are individually correct. The error emerges only in the composition. A human analyst with cross-domain experience catches this because they can code-switch. An analyst without that experience, or an AI agent without explicit register mappings, will join on the shared lexeme and produce a number that looks right and is not.
+
+Domain registers are an architectural requirement, not a theoretical nicety. Each domain is a register. Each register has its own controlled vocabulary. Cross-register mappings are explicit, governed artifacts. When a Gold table combines data from trading and finance, the schema definition must document which register each field belongs to and how the cross-register composition was resolved.
+
+At a crypto exchange, register boundaries are particularly sharp. A single trade generates events that propagate through four registers almost simultaneously. In the trading register it is an execution. In the custody register it is a settlement obligation. In the finance register it is a revenue event. In the treasury register it is a liquidity event. One trade, four registers, four vocabularies. A data platform serving all four domains must be explicitly multilingual.
+
+A single flat vocabulary with one definition of each term is the approach most organizations attempt and most regret. It produces definitions so broad they are useless, or definitions so narrow they apply to only one domain while misleading the others. Register-based vocabulary is harder to build. But it produces a vocabulary that reflects how the business actually operates.
+
+No natural language has a single register. English does not speak the same way in a courtroom, a laboratory, a trading floor, and a kitchen. A competent data platform must navigate the same shifts — not through a large language model that approximates register-awareness from training data, but through explicit vocabulary infrastructure that models registers as first-class architectural concepts.
+
+=== Why Data Engineering Is Applied Linguistics
+
+Type systems and semantic layers are structurally isomorphic. A type system tells you what operations are valid on what objects. You cannot add a string to a number, not because the computer cannot do it, but because the type system says it is meaningless. A semantic layer does the same thing for data: it tells you what queries are valid on what tables, what aggregations make sense for what measures, what hierarchies structure what dimensions.
+
+Data architecture is, at its core, the management of ontological commitments. When you define a Gold table, you are committing to a specific way of carving up the world. "These are our customers. These are our orders. These are our positions." Those categories are not given by nature. They are constructed by your modeling decisions. Every query, every dashboard, every AI agent reasons within the constraints of your ontological commitments. If the commitments are wrong, everything downstream is wrong.
+
+People who understand that meaning is constructed, that definitions are contractual, that the material of the work is language itself — linguists, librarians, logicians, or engineers who think like them — should be shaping these commitments. Pipelines matter. SQL matters. Orchestration matters. But the hardest part of data architecture is not the transformation — it is the vocabulary. It is deciding what "revenue" means, where the boundary between "trading" and "market-making" falls, whether "position" is one concept or three. These are linguistic decisions with engineering consequences, and the industry has systematically underinvested in the people and tools needed to make them well.
+
+Without formal vocabulary infrastructure, business meaning scatters. Vocabulary transforms storage into knowledge.
+
+Your AI agent will be exactly as intelligent as your vocabulary allows it to be. Model quality is upstream of you. Training data is upstream of you. Infrastructure is upstream of you. The one thing entirely within your control is whether you built the vocabulary — the unglamorous, difficult, deeply human work of defining terms.
+
+Every organization that deploys an AI agent without a governed vocabulary has built a confident new employee, handed it a desk and a database login, and forgotten to tell it what any of the words mean.

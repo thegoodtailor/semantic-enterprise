@@ -12,15 +12,21 @@ Iman Poernomo
 
 == Introduction
 
-I spent much of my career building data platforms for a user who is disappearing.
+I spent much of my career building data platforms with engineers for users who are disappearing.
 
-She was clever, impatient, overworked, and human. She knew which dashboard was lying. She knew which table had not refreshed properly since the migration. She knew that "revenue" meant one thing when Finance said it and another when Trading said it, and she knew who to call when the two numbers refused to agree.
+She was overworked and hated she was spending the best years of her life cutting and pasting corrections to columns from a PowerBI report. He was a flatuent, stupid, impatient and with a minimal grasp of the area he somehow he found himself Head of Intelligence of. She knew which dashboard was lying. He was good at establishing himself as a product data owner, governance officer, and running group lie-in sessions that were called data councils. She knew sometimes knew what table had not refreshed properly since the migration so he'd rate her a M+ at year end. She knew that "revenue" meant one thing when Finance said it and another when Trading said it, and was indispensible to him because for all his efforts to look like he had some kind of roadmap to improve, ultimately the shit wouuld conintue to hit the fan and she knew who to call when the two numbers refused to agree.
 
-Our platforms were not clean. They were survivable.
+[insert similar indictment of IAs and engineers who don't understand the business]
+
+Our platforms were not clean. Actually, forget that. They weren't platforms. The were gilligan's island. 
+
 
 That distinction mattered more than any of us admitted. For thirty years, enterprise data architecture survived because human beings stood in the gaps. Analysts carried the missing semantics in their heads. Engineers remembered the bad column names. Finance directors knew which version of the truth was safe to quote in a meeting. The system worked because the system was not really the system: it was the warehouse, plus the people who knew how to forgive it.
 
-That world is ending, and the new consumer is the reason.
+That world is ending, and thank the Great Semantic Manifold.
+
+[Carry on]
+
 
 [#fig-old-vs-new-consumer]
 .The old consumer compensated for ambiguity; the new one amplifies it. Build for the consumer that cannot squint.

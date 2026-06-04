@@ -58,8 +58,8 @@
 \title{\textbf{The Enterprise Model Is a Colimit}\\[0.3em]
 \large Compositional Integration of AI-Readable Domain Ontologies}
 
-\author{Iman H.\ Poernomo}
-\date{\today}
+\author{Iman Poernomo\\[0.25em]\normalsize Bullish\\[0.1em]\normalsize\texttt{iman.poernomo@gmail.com}}
+\date{June 2026}
 
 \begin{document}
 \maketitle
@@ -67,6 +67,13 @@
 \begin{abstract}
 The ``unified enterprise data model'' (EDM), in which one global schema renders every domain a sub-domain of a consistent whole, is the oldest unkept promise in enterprise data. Its failure is usually attributed to a moving target: the enterprise is said to change faster than any model can track. The core business domains of a trading firm change slowly, on the timescale of years, and the EDM still never ships, so the moving-target account is inadequate and the failure is structural. The EDM is a colimit of a diagram of domain theories glued along what they share, and the historical error was to author that colimit as a single complete artifact instead of assembling the diagram incrementally, where each stage is already useful. We model each domain as a finite-limit sketch, a bridge between two domains as a span through a shared sub-theory, two-domain integration as a pushout, and multi-domain integration as a colimit. We prove three results. Consistency of an integration is equivalent to commutativity of its bridge diagram, and a violation localizes to one witnessing concept and one pair of disagreeing bridges, which makes ``is our integration correct?'' a decidable check that returns a counterexample. The model functor sends the theory-level colimit to the corresponding limit of instance categories, so an instance of the integrated model is a compatible tuple of domain instances agreeing on shared sub-theories; a governance rule we state---\emph{if two domains genuinely share a concept their rules agree, otherwise split the concept}---is the side condition under which this holds strictly. And every sub-diagram embeds faithfully into the whole, so partial assemblies stay correct and are never invalidated by later gluing, and global completeness is never required. The mathematics is the specification-gluing of \cite{cpw2000,pwc2005}, here transported from algebraic specifications to AI-readable domain ontologies. The contribution is the transport, the diagnosis of the EDM and the OWL/RDF program, and the observation that LLM-legible prose-anchored sketches make the objects cheap to author where description logic made them prohibitive.
 \end{abstract}
+
+\medskip
+\noindent\textbf{MSC 2020.} 18C30 (sketches and generalizations); 18A30 (limits and colimits); 18C10 (theories, structure, and semantics); 68P15 (database theory).
+
+\noindent\textbf{ACM CCS.} Information systems $\rightarrow$ Data management systems; Theory of computation $\rightarrow$ Logic (categorical semantics).
+
+\noindent\textbf{Keywords.} colimit; pushout; finite-limit sketch; ontology integration; enterprise data model; institutions; semantic layer.
 
 \section{Introduction: the model that never ships}
 
@@ -373,7 +380,7 @@ The continuity with \cite{cpw2000} is worth stating directly, because it locates
 \bibitem{euzenat-shvaiko} J.~Euzenat and P.~Shvaiko. \emph{Ontology Matching}, 2nd ed. Springer, 2013.
 \bibitem{kimball} R.~Kimball and M.~Ross. \emph{The Data Warehouse Toolkit}, 3rd ed. Wiley, 2013.
 \bibitem{dehghani} Z.~Dehghani. \emph{Data Mesh: Delivering Data-Driven Value at Scale}. O'Reilly, 2022.
-\bibitem{semantic-enterprise} I.~H.~Poernomo. \emph{The Semantic Enterprise: Data Architecture for the Agentic Era}. O'Reilly, forthcoming.
+\bibitem{semantic-enterprise} I.~Poernomo. \emph{The Semantic Enterprise: Data Architecture for the Agentic Era}. O'Reilly, forthcoming.
 \bibitem{barr-wells} M.~Barr and C.~Wells. \emph{Toposes, Triples and Theories}. Grundlehren der mathematischen Wissenschaften 278. Springer, 1985.
 \end{thebibliography}
 

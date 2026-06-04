@@ -24,3 +24,6 @@ tcs05.pdf
 # --- python ---
 __pycache__/
 *.pyc
+
+# arXiv submission tarball (regenerable: tar -czf enterprise-colimit-arxiv.tar.gz enterprise-colimit.tex)
+enterprise-colimit-arxiv.tar.gz

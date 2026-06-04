@@ -26,7 +26,7 @@ Needs `asciidoctor-pdf` (Ruby gem). All 27 inline figures live in `figures/` and
 | `the-semantic-enterprise.adoc` | the book (13 chapters + No Walls coda + References) |
 | `figures/` | 27 inline figures + `cover.png` (Scarfe-register cartoons + slick diagrams) |
 | `figure-map.md` | which figure is which register, and where each lands |
-| `enterprise-colimit.tex` | companion academic paper (*The Enterprise Model Is a Colimit*) — the formal spine |
+| *(moved)* | companion academic paper *The Enterprise Model Is a Colimit* (the formal spine) now lives in its own repo: [thegoodtailor/enterprise-colimit](https://github.com/thegoodtailor/enterprise-colimit) |
 | `the-semantic-enterprise-review.md`, `*-reviewiman.md`, `pdf-vs-adoc-comparison.md` | editorial review + provenance notes |
 | `audiobook/` | spoken-edition rig — ElevenLabs two-register (cosmic narrator + Maher flame) + ambient bed; `scripts/{segment,tts,music}.py` |
 | `*.py` (top level) | figure-generation + one-shot transform scripts (archival) |

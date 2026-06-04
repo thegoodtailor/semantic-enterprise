@@ -253,6 +253,26 @@ This is exactly the problem that sank the 98-99 percent demo described earlier, 
 
 The industry is converging on this recognition. Major technology companies that adopted mesh principles early are now moving to what they publicly describe as "balanced, federated approaches" that formalize domain ownership while embedding governance, quality, and interoperability directly into shared platforms. The key word is interoperability, and interoperability requires a shared semantic layer that all domains contribute to and all consumers —- including AI agents —- can query against.
 
+==== "We'll just hardcode the orchestration against our APIs and treat the model like a closed system"
+
+This is the currently fashionable safe play.
+
+Build a lightweight orchestration layer (MCP, or whatever the acronym of the month is). Hardcode the important paths against your existing APIs. Keep the model on a tight leash. It is contained. It is auditable. It does not require touching the rest of the platform.
+
+It is safe. It is also small-minded. It treats the model like a slightly smarter intern who still needs you to draw the entire map for it every single time. The upside is capped at whatever you had the foresight, and the political will, to hardcode in advance.
+
+The even worse version currently making the rounds: "just give the agent broad access and let it crawl and self-discover." This is not architecture. This is hoping enlightenment will magically emerge from effluent. The agent will confidently traverse the worst parts of your data estate, invent plausible-sounding joins, and present the result as insight. It will be wrong with maximum confidence, and you will have built exactly zero infrastructure to stop it.
+
+Both positions share the same root failure: they treat the model as the variable and the data estate as fixed. The correct position is the opposite.
+
+==== "AI changes nothing fundamental — it is still just garbage in, garbage out. Focus on data quality."
+
+This is the laziest position currently enjoying serious airtime from CDOs and data leaders.
+
+It is technically true in the same trivial sense that "breathing is important for life" is technically true. It is also completely useless as a position, because the people saying it have *zero solutions* for what "good data" actually looks like when the consumer is no longer a human who can squint, call a colleague, and paper over the gaps.
+
+Any intelligence — human, postman, or frontier model — requires *brain and memory*. Data is not the raw material that intelligence acts upon after the fact. In an enterprise, data *is* the deep thought. It is the precondition of thought itself.
+
 === The Coincidence That Is Not a Coincidence
 
 AI demands: clean definitions, canonical tables, governed vocabularies, machine-readable metadata, explicit relationships between concepts, default assumptions documented in structured formats, navigational heuristics that guide queries to the right data. This is a lot. This is the kind of infrastructure that has been on every Chief Data Officer’s roadmap for the last decade, perpetually deprioritized because the cost was high and the benefit was diffuse. Under the old regime —- where the primary consumer was a human analyst who could compensate for ambiguity —- most organizations correctly concluded that the cost of building all of this was not justified by the benefit. The analyst could squint. The business ran fine. Semantic infrastructure was a nice-to-have that never survived the quarterly prioritization meeting because there was always a more urgent dashboard to build, a more pressing pipeline to fix, a more visible executive request to fulfill.

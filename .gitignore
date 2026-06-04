@@ -1,5 +1,5 @@
 # --- build artifacts (regenerable; not source) ---
-the-semantic-enterprise.pdf
+# the-semantic-enterprise.pdf IS committed on purpose — Iman wants the rendered book viewable in git
 the-semantic-enterprise.html
 enterprise-colimit.pdf
 *.aux

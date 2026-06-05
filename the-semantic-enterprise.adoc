@@ -312,8 +312,6 @@ So flatten Gold. Denormalize to the question — one wide row, every column defi
 
 And here is the part the dimensional-modelling veterans need to hear, because it is the part everyone gets wrong when they hear “flatten”: dimensional structure is not eliminated. It is relocated. Grain discipline, conformed dimensions, SCD2 — all of it lives on, in Silver, where it belongs. When an analyst genuinely needs to drill and slice across dimensions, the semantic layer exposes Silver’s dimensional structure directly: star-schema-equivalent analytical power, with no physical star schema in Gold for any consumer — human or machine — to trip over. You keep the discipline. You kill the joins. The thing dimensional modelling was for survives; the thing that made it expensive for AI does not. If you are still building physical star schemas at the consumption layer, you are paying a 300x tax to make your AI dumber.
 
-The architecture that serves AI also serves humans better than what you have now. Flat, denormalized tables with explicit definitions are faster to query, easier to understand, and do not produce conflicting numbers because there is one definition, not forty. This is not a compromise that sacrifices human usability for machine readability. The semantic layer makes your data estate navigable and trustworthy for everyone —- human analysts who no longer need to squint, AI agents that no longer need to guess, and new hires who no longer need to spend their first month figuring out which revenue table to use.
-
 === Five Changes to Make This Week
 
 If the shift is real, the question is what to do about it. Here is what works.

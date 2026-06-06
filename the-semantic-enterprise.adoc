@@ -1342,8 +1342,6 @@ _Problem:_ Single-axis temporal models (valid time only, or system time only) co
 
 _Solution:_ Every Silver row carries two temporal axes. Valid time (`valid_from`, `valid_to`) records when the fact was true in the world. System time (`system_from`, `system_to`) records when the warehouse learned about it. Both are first-class columns on every dimension and every fact. As-of queries against Silver take two parameters. This is the default for the whole substrate, not a feature for regulated workloads. The two axes are orthogonal — a fact can be valid in March but entered into the system in April, and the architecture must distinguish these.
 
-_Example:_ A trade executes on March 15 (`valid_from` = March 15). The pipeline ingests it that evening (`system_from` = March 15 18:00). On April 2, the counterparty is reclassified. A new dimension row opens: `valid_from` = March 10 (backdated), `system_from` = April 2. The old row is closed but not deleted. Four distinct queries about this counterparty now return four different correct answers, depending on which axis coordinates the consumer specifies.
-
 _Consequences:_ Storage overhead and query complexity as described in Silver SCD2. Every query must specify two temporal coordinates or accept defaults — adds cognitive load for analysts unfamiliar with bitemporality.
 
 Gold carries table-level temporal coordinates as metadata, not per-row bitemporal columns. Three metadata attributes per published Gold table: `as_of_valid_time` (what valid-time snapshot was used to build it), `as_of_system_time` (what system-time snapshot was used — typically the build time), and `generated_at` (when the table was materialized). Rows in a Gold table are point-in-time materializations under those coordinates. Auditing means re-deriving from Silver using the metadata coordinates the table carries.
@@ -1378,8 +1376,6 @@ _Problem:_ Overwriting the prior value destroys the audit trail. The system can 
 
 _Solution:_ Corrections arrive as supersessions, not overwrites. The old row’s `system_to` is set to the correction timestamp. A new row opens with the corrected value and `system_from` set to the correction arrival. Valid time on the new row may be backdated if the correction applies historically. The old row remains permanently — queryable by any consumer who needs pre-correction state. Nothing is deleted. Nothing is overwritten. The historical trail is the sequence of supersessions.
 
-_Example:_ Counterparty reclassified from "retail" to "institutional" on April 2, backdated to March 10. Old row: `valid_from`=original_date, `valid_to`=original_end, `system_from`=original_load, `system_to`=April 2. New row: `valid_from`=March 10, `system_from`=April 2. Query "as of March 15, current knowledge" returns institutional. Query "as of March 15, as known on March 20" returns retail. Both correct. Both queryable. No data lost.
-
 _Consequences:_ Never-deleted rows mean Silver tables grow monotonically. Archival and partitioning strategies become essential at scale.
 
 In Gold, the P&L tables published in the three weeks since booking remain as published. `gold.pnl_daily_v20260331` is untouched —- built from Silver as Silver stood on March 31, before the correction existed — not wrong, but what was reported.
@@ -1395,8 +1391,6 @@ _Problem:_ If Gold is retroactively rewritten when corrections arrive, the publi
 _Solution:_ Gold carries table-level temporal coordinates as metadata: `as_of_valid_time`, `as_of_system_time`, `generated_at`. Gold is versioned and immutable. Each scheduled rebuild produces a new version. Previous versions are never modified. The historical trail of published outputs is the sequence of versioned tables. A correction produces a new Gold version — it does not edit the old one. Both versions are queryable: the old for "what was reported," the new for "current best understanding."
 
 At scale, named versioned tables produce table proliferation that overwhelms catalog navigation and metadata queries. The principle — nothing overwritten, audit trail maintained — can be preserved without per-day table copies. Use the warehouse’s native time-travel capability (BigQuery’s `FOR SYSTEM_TIME AS OF`, Snowflake’s `AT TIMESTAMP`) for short-term versioning within 7 to 90 days. Archive Gold snapshots to a separate dataset on a retention schedule — daily for 90 days, weekly for a year, monthly thereafter — for long-term audit. The audit trail is maintained. The active catalog stays navigable.
-
-_Example:_ `gold.pnl_daily_v20260331` captures the quarter-end P&L report built from Silver as it stood on March 31. On April 3, after the counterparty reclassification flows through Silver, the next rebuild produces `gold.pnl_daily_v20260403` with updated numbers. Both versions exist. A regulator gets v20260331. A risk manager gets v20260403. Neither requires special handling.
 
 _Consequences:_ Version proliferation. Without a retention policy, Gold versions accumulate indefinitely. Query routing (which version?) adds complexity to the semantic layer. At high table counts and daily refresh cadence, named versioned tables proliferate beyond navigability. Use native time-travel for recent versions and archival snapshots for long-term audit rather than unbounded table creation.
 

@@ -16,7 +16,7 @@ Your data platform was built for a consumer who should no longer exist.
 
 For thirty years, data architecture was optimized for a human analyst with SQL skills, domain knowledge, and the ability to compensate for bad infrastructure by just being smart. The databases were designed for her. The dashboards were built for or "self-served" by her. The business got the data it more or less needed thanks to the tacit understanding that she would be the one squinting at the numbers, calling a colleague when something looked off, and making a judgment about which of the three conflicting revenue figures was probably the right one. Maybe being a bit more forensic about the lineage. At best, the company may have hired a Chief Data Officer to document the names of the data elements she managed in a repository, award her the title of data steward or owner, and give her a bunch of new steercos to attend and chair.
 
-This consumer hasn't disappeared. But, if your org is any good, the primary consumer of your data platform will soon be machine: an AI agent that queries your tables, reads your definitions, and produces answers based on the laws of context windows and attention mechanisms. Today I write in 2026: most enterprise agents are still pilots rather than production systems; the shift is underway, not complete. But it is underway fast, and if you're not thinking about the agentic consumer, you're arguably on the wrong side of the existential threat from your competition. You are building for a machine consumer who lacks tacit human intuition, who is brilliant but cost-effective only when given sufficient background, and who improvises expensively, unpredictably and confidently in the face of ambiguity. A consumer whose existence is the sum of your semantics.
+This consumer hasn't disappeared. But, if your org is any good, the primary consumer of your data platform will soon be machine: an AI agent that queries your tables, reads your definitions, and produces answers based on the laws of context windows and attention mechanisms. Today I write in 2026: most enterprise agents are still pilots rather than production systems; the shift is underway, not complete. But it is underway fast, and if you're not thinking about the agentic consumer, you're arguably on the wrong side of the existential threat from your competition. You are building for a machine consumer who lacks tacit human intuition, who is brilliant but cost-effective only when given sufficient background, and who improvises expensively, unpredictably and confidently in the face of ambiguity. A consumer whose brain is the sum of your semantics.
 
 
 [#fig-old-vs-new-consumer]
@@ -189,22 +189,6 @@ Eighty-four percent of data teams regularly encounter conflicting versions of th
 Vendor testing shows the same pattern. Google’s internal testing found that their semantic modeling layer reduces data errors in AI natural language queries by as much as two-thirds. The gain comes not from a smarter model but from a semantic layer that removes the ambiguity behind the errors.
 
 Treating AI as just another BI consumer means deploying it into an environment that was designed for consumers who compensate for ambiguity. AI does not compensate. AI amplifies. Every ambiguity in your data estate —- every conflicting definition, every undocumented calculation, every column named with a machine-internal identifier —- becomes a potential hallucination when an AI agent encounters it. The dashboard could tolerate the mess because the human using it could not. The AI agent inherits the mess and presents it as truth.
-
-==== "We will fine-tune our way out of bad data"
-
-This is the engineer’s instinct: when the model gets it wrong, train it to get it right. Feed it more examples. Adjust the weights. Iterate until the answers look correct. A deeply ingrained reflex in technical teams.
-
-Fine-tuning is a symptom of missing infrastructure, not a solution to bad data.
-
-Fine-tuning bakes in current errors. If your definition of "revenue" is wrong today —- if it accidentally includes intercompany transfers, or double-counts a particular product line, or uses a stale exchange rate —- training the model on your current data makes it more confidently wrong, not more correct. The model learns the error as fact and applies it with increased precision.
-
-And definitions change. What "active customer" means in January is different from what it means after a product launch in March. A regulatory change redefines risk-weighted assets. A new product line requires a different revenue recognition methodology. A fine-tuned model memorizes the old definitions and applies them to new data, producing answers that were correct last quarter and are wrong now, with no way of knowing the ground shifted.
-
-Stanford and MIT researchers found that 95 percent of generative AI pilot programs fail to produce measurable financial impact —- not because the models were inadequate, but because the data was not ready and nobody wanted to admit it. Data quality issues more than doubled as the top obstacle to AI deployment between 2024 and 2025, jumping from 19 percent to 44 percent.
-
-Meanwhile, architectural approaches that bypass fine-tuning entirely achieve dramatically better results. When a semantic layer defines metrics in structured configuration —- when "revenue" is a governed definition that compiles to guaranteed-correct SQL, not a concept the model learns through examples —- the query engine handles correctness by construction. If the definition changes, you change it in one place, and every downstream consumer immediately uses the new definition. No retraining. A configuration change.
-
-Fine-tuning is what you do when you do not have a semantic layer. It is a workaround for missing infrastructure, and it is an expensive, fragile, non-scalable workaround that produces models which are more confidently wrong rather than less wrong.
 
 ==== "Let us just add a chatbot to our dashboards"
 

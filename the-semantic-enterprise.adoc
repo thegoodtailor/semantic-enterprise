@@ -1615,7 +1615,7 @@ BIRD, which uses enterprise databases with realistic dirty data, shows GPT-4 at 
 
 A deeper problem: the benchmarks themselves are unreliable. A 2026 paper published at VLDB found that BIRD, one of the most widely used enterprise text-to-SQL benchmarks, contains fifty-three percent annotation errors in certain subsets. Correcting those errors changed model performance by negative three to positive thirty-one percentage points. The enterprise accuracy problem is even less well-understood than the headline numbers suggest.
 
-A well-modeled semantic layer changes the equation entirely. Accuracy approaches or hits one hundred percent, because the semantic layer eliminates the failure modes that plague raw text-to-SQL: faulty joins, aggregation mistakes, missing filters, wrong table selection. Flat data means no join reasoning. Mapped concepts mean no column guessing. Encoded business rules mean no inference.
+A well-modeled semantic layer changes the equation entirely. Flat data means no join reasoning. Mapped concepts mean no column guessing. Encoded business rules mean no inference.
 
 The semantic layer converts an unreliable technology (raw text-to-SQL) into a reliable one (governed query generation). "Text-to-SQL is not ready for the enterprise" is correct —- if it means raw text-to-SQL over ungoverned schemas. Through a semantic layer, it is ready. The architecture is what most organizations have not built.
 
@@ -2192,7 +2192,7 @@ Essays are not generated from schemas. The whole point is that the essay carries
 
 Morphisms between domain ontologies are themselves a species of essay. A compliance-to-trading morphism written as a controlled-vocabulary entry would be the field mapping and nothing else. Written as an essay, it is the field mapping plus the explanation of why KYC sub-segments do not survive the map, why proprietary desks have no compliance antecedent, when the map was last challenged by a regulator, and how the morphism is expected to shift if the next regulatory inflection arrives. Morphism-as-essay carries exactly the cross-domain operational knowledge that a controlled-vocabulary entry discards as out of scope — and that discarded knowledge is, more often than not, what determines whether the agent’s answer is right or wrong.
 
-Documentation that lets an agent reason over data turns out to be the same documentation that onboards a new human analyst fastest and serves the regulator’s question best. Agentic consumer, human consumer, regulatory consumer — all converge on the same discipline. The agent is not a special consumer with exotic requirements. It is the consumer that cannot import tribal knowledge silently, and that inability surfaces what was always wrong with documentation built for browsing rather than reasoning.
+Documentation that lets an agent reason over data turns out to be the same documentation that onboards a new human analyst fastest and serves the regulator’s question best.
 
 ==== When AI-Maintained Definitions Go Wrong
 
@@ -2251,7 +2251,7 @@ Industry data supports this, though carefully scoped. GitHub’s research shows 
 
 A cautionary finding may be more interesting. Anthropic’s 2026 study: junior developers using Claude finished tasks slightly faster but scored 50% on post-task knowledge assessments, compared to 67% for the control group. Faster but understanding less.
 
-AI can handle the maintenance — structure knowledge, map lineage, audit definitions, monitor schema changes. What AI cannot do is understand why the definitions are what they are. Domain meaning, business context, architectural judgment — that is human work. AI handles the what. Humans handle the why.
+AI can handle the maintenance — structure knowledge, map lineage, audit definitions, monitor schema changes. What AI cannot do is understand why the definitions are what they are. Domain meaning, business context, architectural judgment — that is human work.
 
 Phase transition is the precise term. Water getting warmer is quantitative change. Water becoming steam is phase transition — the physics changes. What was impossible becomes possible. What was expensive becomes cheap. What was aspirational becomes mandatory.
 
@@ -2259,7 +2259,7 @@ Traditional information architecture was aspirational. You knew you should build
 
 AI makes the correct approach mandatory, because AI is the primary consumer of your semantic infrastructure, and AI will not compromise. AI will not squint at a bad definition and figure out what you probably meant. AI will not call a colleague when it encounters conflicting numbers. AI will take your definitions literally, and if your definitions are wrong, your AI will be wrong —- confidently, silently, and at scale.
 
-But AI also makes the correct approach achievable, because AI handles the maintenance that made it impossible. Forcing function and solution arrive together — the disease and the cure in the same package.
+But AI also makes the correct approach achievable, because AI handles the maintenance that made it impossible.
 
 Industry numbers are stark. Sixty-five percent of data leaders investing in AI. Only forty-four percent in data governance. Only forty-one percent in data quality. Engine without fuel. Gartner predicts that through 2026, organizations will abandon sixty percent of AI projects due to insufficient data quality. Not insufficient models. Not insufficient compute. Insufficient data quality. The bottleneck is semantics.
 
@@ -2361,7 +2361,7 @@ New team: small, technical, AI-augmented.
 
 One or two architects with deep domain understanding and AI fluency, embedded in the engineering pipeline, producing executable definitions rather than static documents. They have conversations with domain experts, make architectural decisions about vocabulary structure, review what AI has produced, and ensure semantic infrastructure reflects what the business means today — not what someone wrote in a glossary two years ago.
 
-Scarce resource: quality of thinking, not labor. You need people who understand both the domain and the technology, and AI handles the translation between them. Architect handles why. AI handles how: generating schema definitions, updating lineage, auditing definitions, flagging inconsistencies. Bottleneck has shifted from execution capacity to architectural judgment. From hands to heads.
+Scarce resource: quality of thinking, not labor. You need people who understand both the domain and the technology, and AI handles the translation between them. Bottleneck has shifted from execution capacity to architectural judgment. From hands to heads.
 
 Implications for leadership too — a pattern visible across large organizations: "losing your teeth." An engineer gets promoted to management. They stop writing code. They stop reading schemas. They stop understanding what the data actually looks like. Over a few years, they lose the technical fluency that made them valuable in the first place. They become managers who manage other managers who manage engineers. Distance between architectural decision and implementation grows until decisions are uninformed and implementations unsupervised.
 

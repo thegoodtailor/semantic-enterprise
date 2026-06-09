@@ -2556,7 +2556,7 @@ This is not architecture-by-vibes dressed in category-theory vocabulary; the con
 
 === Why It Is Worth Building
 
-Reframe what you would own. Not "a data warehouse" — the organisation's memory, verified. Not "metadata" — its vocabulary, kept current by machines. Not "a chatbot" — a reasoning layer that can be trusted across the whole business because the meaning underneath it is continuously checked rather than periodically attested. That is a category of system the industry has named in pieces and built in none. The parts are commodity now: the models, the protocols, the medallion substrate, the semantic layer. What is scarce is the assembly and the will. Whoever assembles it first — inside an enterprise, or as the company that sells it to enterprises — will have agents that reason while their competitors have agents that guess. Build it, or watch someone else build it first. The next chapter is how you start, Monday.
+Reframe what you would own. Not "a data warehouse" — the organisation's memory, verified. Not "metadata" — its vocabulary, kept current by machines. Not "a chatbot" — a reasoning layer that can be trusted across the whole business because the meaning underneath it is continuously checked rather than periodically attested. That is a category of system the industry has named in pieces and built in none. The parts are commodity now: the models, the protocols, the medallion substrate, the semantic layer. What is scarce is the assembly and the will. Build it, or watch someone else build it first. The next chapter is how you start, Monday.
 
 == The Playbook
 

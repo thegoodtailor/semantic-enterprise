@@ -1,8 +1,6 @@
 == The Shift
 
-Actually, data platforms fail all the time.
-// TODO(author): confirm intended meaning of the following sentence ("They don't fail when you've tracking clean metadata.")
-They don't fail when you've tracking clean metadata. This has always been the case. But AI is a forcing function. A crap data platform with patchy semantics can still be usable if you've got humans willing to patch together gaps in understanding, remember where things are, keep a record of the weird tweaks and nuances of where to find data and what it means. A crap data platform with patchy semantics means enterprise agentic intelligence is a non starter. 
+Actually, data platforms fail all the time. AI is a forcing function. A crap data platform with patchy semantics can still be usable if you've got humans willing to patch together gaps in understanding, remember where things are, keep a record of the weird tweaks and nuances of where to find data and what it means. A crap data platform with patchy semantics means enterprise agentic intelligence is a non starter. 
 
 === The 1% Problem
 
@@ -222,18 +220,16 @@ Within two years, the analytical layer is a swamp. Hundreds of tables, nobody kn
 
 Architecture prevents this, not policy and not a governance committee that meets quarterly to review proposed changes. When every analytical table ships with a governed definition — when the infrastructure will not let you publish a table without describing what it contains, what it means, and how it should be used — cataloging becomes mandatory rather than optional. You cannot skip it because the system will not let you skip it. The discipline of building the semantic interface compels the discipline of governing the data. Architecture prevents the failure that process could not.
 
-Every join is a decision the machine can get wrong. Pick the wrong key, assume the wrong cardinality, apply the wrong type — each one a place where a five-table query quietly returns a confident, wrong number. Joins are hallucination vectors. A star schema does not just ask the AI to retrieve your data; it asks the AI to reconstruct your data model on every query, and to be right about it every time. It will not be.
+Every join an agent writes is an inference — a guessed key, a guessed cardinality, a guessed grain. The error taxonomies of text-to-SQL research agree on where the bodies are buried: schema linking plus join construction account for roughly three quarters of all failures (SEA-SQL error analysis, 2024). Handing a model raw schema asks it to reconstruct your data model on every query and be right every time. It will not be. The query executes, the number looks plausible, and the path that produced it was a guess. The failure class is the inference, not the join.
 
-This is not a style preference. It has a price, and the price is measurable. A five-table star schema costs three to five times more input tokens and two to three times more output tokens than a single flat table carrying its own semantic definition — more tokens to describe the schema, more to reason about the join paths, more to generate the multi-table SQL, and a fresh chance to get it wrong at each step. Snowflake’s AI SQL research found naive query plans triggering over 110,000 model calls where optimized, join-free plans achieved a 300x reduction. Three hundred times. That is the gap between an architecture that fights the machine and one that feeds it.
+One law kills the failure class: joins are declared, never inferred. The dimensional craft survives intact — grain discipline, conformed dimensions, slowly changing dimensions — but the join graph is stated once, in the semantic layer, by the people who know the data, and the engine generates the SQL from the declaration. The model never plans a join path, so it cannot hallucinate one.
 
+In practice the law yields two governed surfaces over one vocabulary. Flat, documented Gold marts serve the head of the question distribution — no joins to plan, the cheapest correct answers in the estate. Governed explores over the declared join graph serve the rabbit holes: the agent sits above the layer picking fields, filters, and pivots, and the engine resolves the joins deterministically beneath it. "It cannot produce a wrong join because it never writes a join" (Strategy, 2026). The full argument — the evidence, the machinery that makes aggregation over declared joins correct by construction, the objections it must survive — belongs to the Architecture chapter. The agent picks; the engine joins.
 
-[#fig-tax-300x]
-.The 300× tax: a physical star schema makes the agent reason through joins on every query. Flatten Gold and the tax disappears.
-image::figures/tax-300x.png[tax 300x,width=640,align="center"]
-
-So flatten Gold. Denormalize to the question — one wide row, every column defined once in the semantic layer, no joins for the consumer to fumble. The same architecture that stops the AI hallucinating also stops your analysts squinting and your new hires guessing which of forty revenue tables is the real one. There is one definition, not forty. This is not machine readability bought at the cost of human usability; it is both, at once, for the first time.
-
-And here is the part the dimensional-modelling veterans need to hear, because it is the part everyone gets wrong when they hear “flatten”: dimensional structure is not eliminated. It is relocated. Grain discipline, conformed dimensions, SCD2 — all of it lives on, in Silver, where it belongs. When an analyst genuinely needs to drill and slice across dimensions, the semantic layer exposes Silver’s dimensional structure directly: star-schema-equivalent analytical power, with no physical star schema in Gold for any consumer — human or machine — to trip over. You keep the discipline. You kill the joins. The thing dimensional modelling was for survives; the thing that made it expensive for AI does not. If you are still building physical star schemas at the consumption layer, you are paying a 300x tax to make your AI dumber.
+// TODO: figure asset — "the agent picks; the engine joins": agent above the semantic layer selecting fields; declared join graph below; flat marts (head) and explores (tail) as two governed surfaces
+[#fig-agent-picks-engine-joins]
+.The agent picks; the engine joins — flat marts for the head of the question distribution, governed explores for the tail, no model-planned join on either surface.
+image::figures/agent-picks-engine-joins.png[The agent picks; the engine joins,width=680,align=center]
 
 === Six Changes to Make This Week
 
@@ -247,7 +243,7 @@ With AI-assisted definition extraction, a working vocabulary for a critical doma
 
 Third, stop treating the semantic layer as optional infrastructure. If your AI strategy is "connect the chatbot to the database and let it write SQL," you are building Air Canada’s chatbot. The semantic layer is the governance mechanism that stands between your AI and your data. AI queries the semantic layer, not the database. This is the single most important design principle in any data architecture built after 2024. That layer knows what the terms mean, how the calculations work, and — critically — what the AI should refuse to answer because the data is stale, incomplete, or outside governed scope.
 
-Fourth, address the token economics. If you are still building star schemas for your analytical layer, you are burning money. Flat, denormalized tables with semantic definitions are cheaper to query, faster to process, and dramatically less error-prone. This is not a marginal optimization. The research shows a 300x difference in AI call volume between join-heavy and join-free architectures. Design for flat consumption as the default. Your AI budget will thank you. Your accuracy metrics will thank you more.
+Fourth, address the token economics. Make flat, documented marts the default surface for known questions, governed explores the surface for exploration, and never let the model plan a join on either. The numbers are public: routing context through a semantic layer cut input tokens by roughly half, rising toward 98 percent once the engine writes all the SQL (Strategy, 2026); over declared joins, accuracy on a two-dozen-table schema went from 20 percent against the raw schema to 92.5 percent (AtScale, 2024). The same decision buys both.
 
 Fifth, address the organizational reality with candour and empathy. What is described in this essay threatens some people’s professional identity. Data teams built their careers on star schemas, on dimensional modeling, on dashboard design, on the craft of making data visually comprehensible. Telling them "your primary consumer is now a machine" sounds like telling them their skills are obsolete.
 
@@ -255,12 +251,10 @@ Their skills are not obsolete. The analyst who deeply understands what "revenue"
 
 The shift is not from human to machine. It is from implicit to explicit. From knowledge that lives in people’s heads to knowledge that lives in the infrastructure. The craftsperson who refuses to learn the new medium will find themselves maintaining dashboards that fewer and fewer people use, while the organization’s questions are answered by AI agents that query the semantic layer they did not help build.
 
-Sixth, do not wait for the hype to settle. Even if AI adoption plateaus tomorrow, the architecture that serves AI is also the correct architecture for human consumption. Flat tables with explicit definitions are better for dashboards, analysts, new hires, regulatory compliance, and audit trails.
+Sixth, do not wait for the hype to settle. Even if AI adoption plateaus tomorrow, the architecture that serves AI is also the correct architecture for human consumption. Flat documented marts and declared join graphs are better for dashboards, analysts, new hires, regulatory compliance, and audit trails.
 
 You are not optimizing for a trend. You are optimizing for precision. AI is the forcing function that makes precision non-negotiable. The architecture was always correct. The economics now demand it.
 
 Organizations that understand this will have data platforms that serve any consumer — human or machine — with consistent, governed, trustworthy answers. Their AI agents will answer business questions reliably because the semantic infrastructure exists to ground them. Their analysts will stop squinting at conflicting dashboards because there is one governed definition, not forty. Their new hires will understand the data estate in their first week because the vocabulary is explicit and the definitions are machine-readable, which also means they are human-readable. Everything gets better.
 
 Organizations that do not will continue building dashboards that humans squint at, deploying AI projects that join the 60 percent abandoned because they were unsupported by AI-ready data. They will spend millions on AI initiatives and wonder why the results are disappointing. They will blame the models. The models were never the problem.
-
-Intelligent machines are interning at your organization — if you want to keep them on as productive long-term employees, get your training material together.

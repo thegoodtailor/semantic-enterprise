@@ -1,0 +1,73 @@
+== References
+
+Ehrig, H., Ehrig, K., Prange, U., & Taentzer, G. (2006). _Fundamentals of Algebraic Graph Transformation_. Springer. [Double-pushout rewriting and the gluing conditions.]
+
+Goguen, J. A., & Burstall, R. M. (1992). Institutions: Abstract model theory for specification and programming. _Journal of the ACM_, 39(1), 95–146.
+
+Johnson, M., Rosebrugh, R., & Wood, R. J. (2002). Entity-relationship-attribute designs and sketches. _Theory and Applications of Categories_, 10(3), 94–112. [Schemas as finite-limit sketches; instances as Set-models.]
+
+Crossley, J. N., Poernomo, I. H., & Wirsing, M. (2000). Extraction of structured programs from specification proofs. In D. Bert, C. Choppy, & P. D. Mosses (Eds.), _Recent Trends in Algebraic Development Techniques (WADT'99, Château de Bonas, 15–18 September 1999)_, Lecture Notes in Computer Science, vol. 1827 (pp. 419–437). Springer. [The origin of the construction used in this book: a calculus whose structural rules are renaming, hiding, and the union of specifications — the pushout.]
+
+Poernomo, I. H., & Crossley, J. N. (2001). Protocols between programs and proofs. In K.-K. Lau (Ed.), _Logic Based Program Synthesis and Transformation (LOPSTR 2000)_, Lecture Notes in Computer Science, vol. 2042. Springer, Berlin Heidelberg. DOI 10.1007/3-540-45142-0_2. [Generalization of the protocol across constructive deductive systems and type theories.]
+
+Poernomo, I. H., Wirsing, M., & Crossley, J. N. (2005). _Adapting Proofs-as-Programs: The Curry–Howard Protocol_. Monographs in Computer Science. Springer, New York. Hardcover ISBN 978-0-387-23759-6. DOI 10.1007/0-387-28183-5. [The collected framework; categorical structuring of specifications and the pushout-union construction.]
+
+Snodgrass, R. T. (2000). _Developing Time-Oriented Database Applications in SQL_. Morgan Kaufmann. [Valid time, transaction time; the temporal query taxonomy.]
+
+Spivak, D. I. (2012). Functorial data migration. _Information and Computation_, 217, 31–51.
+
+Spivak, D. I. (2014). _Category Theory for the Sciences_. MIT Press. [Ologs; schemas as categories.]
+
+ISO/IEC. (2011). _SQL:2011_ (ISO/IEC 9075:2011), temporal table features.
+
+Danielsson, N. A., Hughes, J., Jansson, P., & Gibbons, J. (2006). Fast and loose reasoning is morally correct. _POPL ’06_, 206–217. [Licence for reasoning in the idealised setting and transporting conclusions.]
+
+Akidau, T., et al. (2015). The Dataflow Model: A practical approach to balancing correctness, latency, and cost in massive-scale, unbounded, out-of-order data processing. _PVLDB_, 8(12), 1792–1803. [Event time, processing time, watermarks, late data.]
+
+Akidau, T., Chernyak, S., & Lax, R. (2018). _Streaming Systems_. O'Reilly.
+
+Argyris, C. (1977). Double loop learning in organizations. _Harvard Business Review_, 55(5), 115–124. [Single-loop corrects the action; double-loop revises the governing variables.]
+
+Popper, K. R. (1963). _Conjectures and Refutations: The Growth of Scientific Knowledge_. Routledge. [Falsifiability; science as institutionalized error-correction.]
+
+von Foerster, H. (1981). _Observing Systems_. Intersystems Publications. [Second-order cybernetics: the cybernetics of observing systems.]
+
+Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (Eds.) (2016). _Site Reliability Engineering_. O'Reilly. [Blameless postmortem culture, ch. 15.]
+
+Huang, J., et al. (2024). Large language models cannot self-correct reasoning yet. _ICLR 2024_. [Introspective self-correction degrades performance; falsification must be external.]
+
+Panickssery, A., Bowman, S. R., & Feng, S. (2024). LLM evaluators recognize and favor their own generations. _NeurIPS 2024_. [Self-preference bias; judge must not be author.]
+
+Sharma, M., et al. (2023). Towards understanding sycophancy in language models. _ICLR 2024_. [Preference training rewards agreement over accuracy.]
+
+Manheim, D., & Garrabrant, S. (2018). Categorizing variants of Goodhart's law. arXiv:1803.04585. [The adversarial variant: measures captured by what users want them to say.]
+
+Huang, K., Jin, Y., et al. (2025). Automated hypothesis validation with agentic sequential falsifications. _ICML 2025_. [The POPPER system: LLM agents designing falsification experiments.]
+
+Stojanovic, L., et al. (2004). Usage-driven ontology evolution (the KAON framework). [Pre-LLM ontology evolution from usage logs; the tradition the reflexive loop extends.]
+
+Kim, Y., et al. (2025). Towards a science of scaling agent systems. Google Research, Google DeepMind & MIT. [Error amplification by topology: 17.2x uncoordinated vs 4.4x orchestrated.]
+
+Pourreza, M., & Rafiei, D. (2023). DIN-SQL: Decomposed in-context learning of text-to-SQL with self-correction. _NeurIPS 2023_. [The error taxonomy; schema linking as dominant failure class.]
+
+Lei, F., et al. (2024). Spider 2.0: Evaluating language models on real-world enterprise text-to-SQL workflows. _ICLR 2025_.
+
+Li, J., et al. (2023). Can LLM already serve as a database interface? A big bench for large-scale database grounded text-to-SQLs (BIRD). _NeurIPS 2023_.
+
+Liu, N. F., et al. (2024). Lost in the middle: How language models use long contexts. _TACL_, 12. [Positional non-uniformity of attention.]
+
+Hsieh, C.-P., et al. (2024). RULER: What's the real context size of your long-context language models? arXiv:2404.06654. [Claimed vs effective context length.]
+
+Modarressi, A., et al. (2025). NoLiMa: Long-context evaluation beyond literal matching. _ICML 2025_.
+
+Dell'Acqua, F., et al. (2023). Navigating the jagged technological frontier. Harvard Business School Working Paper 24-013. [Consultant productivity inside and outside the AI capability frontier.]
+
+Anthropic (2026). How AI assistance impacts the formation of coding skills. [Comprehension 50% vs 67%; the shallow-review failure mode.]
+
+Regulation (EU) 2016/679 (GDPR), Article 17; Directive (EU) 2015/849 (AMLD4), Article 40; Regulation (EU) 2024/1624 (AMLR), Article 77. [The two clocks: erasure and mandated retention.]
+
+NIST SP 800-88 Rev. 1 (2014). _Guidelines for Media Sanitization_. [Cryptographic erase as a sanitization method.]
+
+ISO/IEC 11179-4. _Metadata registries — Part 4: Formulation of data definitions_. [The definition quality gate.]
+
+_Note: industry figures cited in the text (Gartner data-quality cost estimates, agent-adoption and metadata-maturity percentages, conversational-AI market projections, and vendor benchmark results) are attributed inline to their sources at point of use. Vendor and practitioner sources cited by name and date — Snowflake (Cortex Analyst and AISQL engineering blogs, semantic-view guidance, 2024–2026), Databricks (Genie documentation), Google Cloud (Looker Conversational Analytics documentation and blog, 2025), dbt Labs (semantic-layer benchmark, 2026), AtScale (text-to-SQL benchmark, 2024), Strategy (token cost and accuracy benchmark, 2026), Malloy documentation, Meta (probabilistic flakiness, 2020), Airbnb (Midas and Data Quality Score), the Fivetran star-schema-versus-wide-table benchmark, Reis (2025), Tabb (2023), Verraes (2019), and Vos (bi-temporal backdated adjustments) — are engineering publications subject to revision; confirm each against its current published version before press._

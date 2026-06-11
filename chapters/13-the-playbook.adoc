@@ -2,9 +2,35 @@
 
 Most data strategy documents are written to be approved. This one is written to be executed.
 
+=== The Laws
+
+The rest of this book is the argument; this is the page you tape to the wall.
+
+. *The context window is the budget.* Every architectural decision raises or lowers meaning per token; optimize density, not volume.
+. *No consumer below the semantic layer.* Two named exceptions — substrate debugging and performance operations — and the moment the exceptions go unnamed, the commitment is dead.
+. *Upstream always wins.* Glossary governs schema governs semantic layer; a downstream tier that wants a different meaning takes a different name.
+. *Bronze is testimony.* Producer-owned, immutable, referenced not copied, never queried by intelligence.
+. *Every table declares its grain, and the pipeline enforces the declaration.* An undeclared grain is a fan-out waiting for an audit.
+. *Valid time comes from the business; system time comes from the pipeline.* No load timestamp may impersonate an effective date.
+. *Temporal depth is tiered per entity.* Full bitemporality where a regulator will ask, slowly changing dimensions (SCD2) where transactions ask, current-state where nobody asks — land raw regardless, because promotion is re-materialization, not archaeology.
+. *Gold is published, never edited.* Versioned, immutable, carrying its temporal coordinates on its face.
+. *A Gold table without a business question does not exist; without an explore it does not ship.*
+. *Physical layout serves the engine; the ontology serves the consumer; the semantic layer keeps them from ever meeting.*
+. *Joins are declared, never inferred.* As-of rules, calendars, and timezones live on the relationship, not in the query.
+. *Shared concepts are conformed or bridged — never silently both.* Conform when the rules agree; bridge with documented losses when they differ; the mesh re-checks the choice on every scan.
+. *Bridges carry their losses on their face.* What maps, what is lost, what is partial, when last verified.
+. *The colimit is an eval target, not a deliverable.* Track its health like uptime.
+. *Governance not executed by the pipeline does not exist.*
+. *Documentation decays visibly or it is already dead.* Versioned, dated, decay-flagged.
+. *There is no ungoverned tier, only a provisional one.* Where no human has written semantics, AI writes them — stamped provisional.
+. *Semantics generate pipelines, not the other way around.*
+. *Every gap is signal.* An unanswerable question becomes documentation, ontology, morphism, or measure work — never a bypass.
+. *The system declares what it knows.* Mode, freshness, coverage, provenance — on every answer, by construction.
+. *Humans adjudicate; machines verify.* Human attention scales only in the exception queue.
+
 === The Diagnostic
 
-Before you invest a dollar or hire a single person, answer four questions. You do not need a consultant, a maturity assessment framework, or an eight-week engagement. You need candour.
+Before you invest a dollar or hire a single person, answer five questions. You do not need a consultant, a maturity assessment framework, or an eight-week engagement. You need candour.
 
 *Can a new hire find and understand your data in their first week without asking anyone?*
 
@@ -24,13 +50,17 @@ Every data team has a person — sometimes two or three — who holds the entire
 
 He is right. It is not acceptable. But it is the norm. Your semantic layer is a person, and that person has a resignation letter somewhere in their drafts folder.
 
-These four questions are simple. The industry has over-complicated the diagnostic step to the point where assessing readiness has become a substitute for achieving it. Organizations routinely spend six months on a data maturity assessment and then file the results in a SharePoint folder. The assessment became the deliverable instead of the catalyst.
+*When your platform gave a wrong number to the board, did anything in the architecture change as a result — or just the slide?*
 
-Gartner has a multi-dimension assessment. McKinsey has a maturity model with five levels. Deloitte has a governance roadmap with six areas. Microsoft has an AI readiness checklist. All of them take four to eight weeks to complete and produce a slide deck that says, in eighty pages, what four questions say in ten minutes: your data is not machine-readable, your definitions are scattered, and your knowledge is trapped in people’s heads.
+Most organizations fix the slide; the definition that produced the number stays in production, waiting for the next deck. Every wrong number is an experiment a definition just failed — if nothing recorded which definition, against what evidence, the platform cannot learn. The machinery that captures the failure and turns it into a revised definition is the subject of the Reflexive Loop chapter.
+
+These five questions are simple. The industry has over-complicated the diagnostic step to the point where assessing readiness has become a substitute for achieving it. Organizations routinely spend six months on a data maturity assessment and then file the results in a SharePoint folder. The assessment became the deliverable instead of the catalyst.
+
+Gartner has a multi-dimension assessment. McKinsey has a maturity model with five levels. Deloitte has a governance roadmap with six areas. Microsoft has an AI readiness checklist. All of them take four to eight weeks to complete and produce a slide deck that says, in eighty pages, what five questions say in ten minutes: your data is not machine-readable, your definitions are scattered, your knowledge is trapped in people’s heads, and your platform does not learn from its own wrong answers.
 
 Only 26% of companies have moved beyond proof of concept to generate value from AI (BCG, 2024). Widely cited estimates put the share of enterprise AI projects that fail to reach production at 70 to 85 percent. The gap is not technology. It is readiness — the answer to whether your data can survive contact with a machine that cannot squint.
 
-If your organization has fewer than fifty employees, fewer than ten data sources, and no AI ambitions, this playbook is overkill. Use a spreadsheet. When you outgrow the spreadsheet, come back. For everyone else: the four questions are your starting diagnostic, and the rest of this essay is your response.
+If your organization has fewer than fifty employees, fewer than ten data sources, and no AI ambitions, this playbook is overkill. Use a spreadsheet. When you outgrow the spreadsheet, come back. For everyone else: the five questions are your starting diagnostic, and the rest of this essay is your response.
 
 Most organizations reading this are not starting from a green field. You have forty dashboards, five versions of every table, no glossary, and a warehouse that grew by accretion over years. Resist the temptation to boil the ocean. The triage protocol is simple:
 
@@ -93,15 +123,11 @@ At traditional organizations, dedicated teams of five or more information archit
 
 ==== The Domain Essay
 
-Glossary and quality checks are necessary but not sufficient. Each significant dataset should also carry a domain essay — six hundred to fifteen hundred words, written by the people who run the process the data describes, not by the data team or a technical writer reading Confluence pages.
+Glossary and quality checks are necessary but not sufficient. Each significant dataset also carries a domain essay — the spec lives in Language is the Material — written by the people who run the process the data describes, not by the data team or a technical writer reading Confluence pages.
 
-Domain essays cover provenance, conventions, edge cases, slang, history, and craft. They are anchored on structured metadata — datatype, key, refresh cadence, lineage, ownership — but the semantic weight lives in the prose. A one-line definition tells a consumer what a column means. An essay tells them why the numbers look wrong on Mondays and are actually correct.
+The production economics match the glossary’s. One workshop with a domain expert produces the raw material, often from the same recorded conversation. One editing pass structures it. A thousand words of operational prose do more for agentic performance and onboarding velocity than any amount of structured metadata alone.
 
-An agent consuming a Gold table with a glossary but no domain essay can answer questions about individual fields. Give it the domain essay and it reasons about the dataset as a whole — purpose, grain, relationship to the business process it models, and the tacit conventions that separate a right answer from a merely plausible one.
-
-Domain essays are treated as code: versioned, dated, signed by named authors and reviewers, with explicit references to the data assets they describe. An essay reviewed in the last twelve months is treated differently from one untouched for three years, and that difference is visible to every consumer. Decay is surfaced, not hidden — an unmaintained essay teaches the agent confidently wrong context, which is worse than no essay at all.
-
-One workshop with a domain expert produces the raw material. One editing pass structures it. Six hundred to fifteen hundred words that do more for agentic performance and onboarding velocity than any amount of structured metadata alone.
+Make the decay visible. An essay reviewed in the last twelve months is treated differently from one untouched for three years, and that difference is surfaced to every consumer. An unmaintained essay teaches the agent confidently wrong context, which is worse than no essay at all.
 
 === Investment 2: The Semantic Layer
 
@@ -221,6 +247,8 @@ Agent pre-flight is the critical capability. Before answering any question, the 
 
 Epistemic honesty, built into architecture. A chatbot gives you an answer with the serene confidence of a system that has no concept of doubt. An agent gives you an answer and tells you what it does not know. The difference between confidence and trustworthiness is the difference between a demo and a system.
 
+The loop runs in both directions. Every answer carries provenance — the definitions, measures, and morphisms it staked. When a stakeholder corrects or contests an answer, the correction is captured as a feedback event against those specific definitions. And pre-flight surfaces each definition’s calibration before the agent stakes it again: 412 uses, 2 contests, 0 refutations, last revised in March. The feedback loop is part of the infrastructure investment, not an afterthought bolted on after the first wrong number reaches the board.
+
 ==== The Maturity Ladder
 
 Stage 1 is conversational analytics: a human asks a question, the agent answers from governed Gold through the semantic layer. Most organizations that claim to be "doing AI" have not achieved even this.
@@ -239,11 +267,9 @@ The architectural endpoint is to move beyond RAG and make the warehouse itself t
 
 ==== Token Economics
 
-Token economics makes the case in dollars. Flat Gold tables with a semantic layer minimize token consumption — the data is already denormalized, the semantic layer tells the agent exactly which fields to query. Physical star schemas burn tokens on join reasoning. Every join is a decision the agent must make, and every decision consumes tokens. Five dimension tables means five joins reasoned about before the agent can even begin answering. At scale, that reasoning costs serious money.
+Token economics reduces to a routing rule with two surfaces. The head of the question distribution — the questions asked every day, by the board, the dashboards, the agents — is served flat: materialized Gold marts, cheapest tokens, zero join risk, instant answers. The tail — the rabbit holes — is served by the declared join graph: joins, grains, and aggregation rules declared once in the semantic layer, SQL generated deterministically by the engine. In neither mode does the model plan a join. The agent picks fields, filters, and pivots; the engine joins — the governed-joins doctrine argued in full in the Architecture chapter.
 
-Flat Gold plus semantic layer is the cheapest to query. When richer dimensional navigation is needed, Silver-as-Gold views through the semantic layer offer the same governance without maintaining separate denormalized tables for every question.
-
-Gold operates in two modes. Flat materialized tables — the fast default for question-driven analytics, ideal for agents and dashboards. And Silver-as-Gold views — the semantic layer exposing Silver’s domain model directly, providing dimensional navigation without physical denormalization. Both modes are governed by the same vocabulary, the same ontology, the same morphisms. The choice between them is a materialization decision driven by the consumption pattern, not a theological position. Design direction runs backwards from the ontology: the colimit of domain concepts tells you what relationships exist; the business question tells you which slice to materialize; the Gold surface is the last step, not the first.
+Gold operates in two modes. Flat materialized tables — the head: question-driven materializations, fast to build, fast to query, ideal for agents and dashboards. And Silver-as-Gold views — the tail: the semantic layer exposing Silver’s domain model directly, providing dimensional navigation without physical denormalization. Both modes are governed by the same vocabulary, the same ontology, the same morphisms. The choice between them is a materialization decision driven by the consumption pattern, not a theological position. Design direction runs backwards from the ontology: the colimit of domain concepts tells you what relationships exist; the business question tells you which slice to materialize; the Gold surface is the last step, not the first.
 
 ==== Timeline and Effort
 
@@ -300,6 +326,10 @@ Dashboard proliferation’s most pervasive variant: using visualization tools to
 Calculated fields in Tableau, formulas in Excel, Power BI measures that apply business rules — each is the data pipeline rebuilt in a client-side tool, unversioned, ungoverned, undocumented. When the pipeline changes — a column renamed, a calculation updated, a source deprecated — every client-side fork breaks silently.
 
 Transformation logic belongs in the governed data platform — in the Gold layer or in the semantic layer’s logical definitions — not in client-side visualization tools.
+
+==== Retrospectives That Produce Only Documents
+
+The wrong number reaches the board, the postmortem convenes, the timeline is reconstructed, the lessons-learned document is circulated and filed. A quarter later the same class of error recurs, because the lessons live in a document and the definitions live in production. A postmortem whose output is not an executable assertion is a memo: the meeting survives, the learning does not. The semantic-postmortem discipline — every incident ends in a machine-checked assertion that would have caught it, run on every scan thereafter — is built in the Reflexive Loop chapter. Stop funding retrospectives that end in documents. End them in assertions.
 
 ==== ISO 11179 Catalogue Programmes in Their Current Form
 
@@ -431,7 +461,7 @@ Gartner estimates the annual cost of poor data quality at an average of $12.9 mi
 
 If this playbook becomes a fifty-slide deck for a governance committee, or a multi-year program with a steering committee and quarterly reviews, it has failed. If you are reading this in a committee meeting, you are already doing it wrong.
 
-The four diagnostic questions can be answered in ten minutes. The vocabulary starts this week. The semantic layer starts this month. The agent infrastructure starts this quarter. The things to stop spending on can be stopped today.
+The five diagnostic questions can be answered in ten minutes. The vocabulary starts this week. The semantic layer starts this month. The agent infrastructure starts this quarter. The things to stop spending on can be stopped today.
 
 Your data platform has a new primary consumer, and it is not human. Not yet fully arrived, but arriving — and it cannot squint at bad data and figure it out. It cannot ask the analyst down the hall what a column name means. It needs clean semantics or it fails. The companies that give their AI clean semantics will outcompete the companies that do not. That is not a prediction so much as a description of what is already beginning to happen.
 

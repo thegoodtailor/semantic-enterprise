@@ -1,0 +1,156 @@
+== The Engineer's Appendix
+
+The rest of this book argues; this appendix builds.
+
+=== Anatomy of a Silver Table
+
+Tier 1 entity, full bitemporality — the counterparty table the preceding chapters keep gesturing at, shown whole:
+
+[source,sql]
+----
+-- silver_compliance.counterparty — Tier 1 entity (full bitemporality)
+CREATE TABLE silver_compliance.counterparty (
+  -- Identity
+  counterparty_sk    STRING    NOT NULL,  -- surrogate: hash(legal_entity_id, valid_from, system_from)
+  legal_entity_id    STRING    NOT NULL,  -- business key; registered in the shared-key registry (below)
+
+  -- Attributes
+  legal_name_enc     BYTES,               -- PII: encrypted under a per-subject key; key destroyed
+                                          -- when the retention clock expires (Time chapter)
+  risk_tier          STRING    NOT NULL,  -- glossary: compliance.risk_tier
+  regulatory_class   STRING    NOT NULL,  -- glossary: compliance.regulatory_classification
+                                          -- ('retail' | 'institutional' | ...)
+
+  -- Valid time — from the business: the KYC effective date, never a load timestamp
+  valid_from         TIMESTAMP NOT NULL,
+  valid_to           TIMESTAMP NOT NULL,  -- open = 9999-12-31, never NULL
+
+  -- System time — from the pipeline: when the warehouse learned it
+  system_from        TIMESTAMP NOT NULL,
+  system_to          TIMESTAMP NOT NULL,  -- open = 9999-12-31
+  is_current         BOOLEAN   NOT NULL   -- derived: both axes open
+);
+-- Declared grain: one row per legal_entity_id per (valid_from, system_from).
+-- Enforced: unique test on (legal_entity_id, valid_from, system_from);
+--          no-overlap test on valid windows within each current system slice.
+----
+
+The rules the table carries:
+
+* Surrogate keys are derived — a hash of the business key and the temporal coordinates — never sequences. A sequence assigns identity by arrival order; reprocessing the same source must mint the same keys, or every downstream reference breaks on replay.
+* The business key is never the join target for SCD2 (Slowly Changing Dimension Type 2) history. Joining `legal_entity_id = legal_entity_id` attaches every version of the counterparty to every fact — the textbook fan trap. The as-of predicate is the join target: key equality plus "valid at the fact's event time" (As-Of Join, the Time chapter).
+* Open intervals end at a sentinel date, never NULL. `9999-12-31` sorts, ranges, and answers `BETWEEN`; NULL fails all three and forces a `COALESCE` into every consumer.
+* Column descriptions are glossary definitions, inherited verbatim. The schema repeats the glossary or the schema is wrong; paraphrase is drift with a head start.
+* A backdated correction splits the prior validity interval: close the superseded row's `system_to`, insert one row per affected valid-time segment with the new `system_from`. Nothing is updated in place; the pre-correction state stays queryable forever. The foundations are Snodgrass (2000); the worked backdated-adjustment mechanics follow Roelant Vos's bi-temporal treatment.
+
+=== The Semantic Model, Shown Once
+
+Described throughout the book, shown here once — MetricFlow shape:
+
+[source,yaml]
+----
+semantic_models:
+  - name: executions
+    model: ref('fct_executions')
+    defaults: { agg_time_dimension: executed_at }
+    entities:
+      - { name: execution_id, type: primary }
+      - { name: counterparty, type: foreign, expr: legal_entity_id }
+        # the join, declared once — every consumer inherits it
+    dimensions:
+      - { name: executed_at, type: time, type_params: { time_granularity: day } }
+      - { name: strategy, type: categorical }
+        # portfolio-level tag; order-level tag deprecated — see the domain essay
+    measures:
+      - name: pnl_mtm
+        agg: sum
+        description: "Mark-to-market P&L. Desk default for strategy analysis."
+        # glossary-inherited, verbatim
+
+metrics:
+  - name: desk_pnl
+    type: simple
+    label: "Desk P&L (MtM)"
+    type_params: { measure: pnl_mtm }
+----
+
+Two properties do the governing. Entities imply joins: declaring `counterparty` as a foreign entity is the join declaration — any metric crossing executions and counterparties resolves through the entity graph, planned by the engine, never improvised by a consumer. And the namespace is global: every measure, dimension, and entity name must be unique across all semantic models, so `revenue` can be declared exactly once. A name collision is a build failure — governance by construction at the vocabulary level.
+
+One restatement from the Time chapter, placed where an engineer will trip over it: the temporal-alignment rule is declared on this relationship and implemented in the model SQL beneath the layer — Snowflake's `ASOF JOIN` (generally available 2024) where the engine has it, windowed predicates where it does not — because no current semantic layer executes temporal joins natively.
+
+=== The Context Budget
+
+The Shift makes the argument; these are the operating numbers. Snowflake's semantic-view guidance recommends 50–100 columns per semantic view — beyond that, latency and answer quality degrade — and caps the model file at 2MB. Databricks' Genie documentation says five tables or fewer (thirty as a hard maximum), prefers SQL expressions to prose, and warns that too many instructions reduce effectiveness — prose last, after structure has done the work. Two vendors, independent stacks, the same constraint published as product limits: context per token is not a heuristic awaiting a benchmark — it is a budget both platforms already enforce.
+
+The research says why. Attention over long contexts is positionally non-uniform (Lost in the Middle, 2023); models' effective context is a fraction of their claimed context (RULER, 2024); retrieval collapses when the question shares no lexical overlap with the context (NoLiMa, 2025); and the 2025 context-rot studies measured degradation on even trivial tasks across eighteen frontier models as input length grows.
+
+The corollary for schema design comes from the agent-tool literature (Anthropic's guidance on writing tools for agents, 2025): names must be unambiguous — `legal_entity_id`, never `id` — and human-meaningful fields belong alongside machine keys. A Gold table that exposes only surrogate keys is an anti-pattern for agent consumption; carry the business key and the name, every time. Surrogates are for the pipeline. Agents reason over words.
+
+=== Pattern: Shared-Key Registry
+
+Cross-domain joins are only as honest as the keys they ride on. The colimit runs on shared identity — `legal_entity_id` does the gluing in half this book's examples — so the keys themselves are governed artifacts.
+
+_Context:_ Multiple domains conform, bridge, and join on shared identifiers. Every cross-domain morphism in the ontology is, physically, a join on one of these keys.
+
+_Problem:_ Nobody owns the identifier. Trading assumes `legal_entity_id` is never reissued; Compliance recycles it after offboarding. Two domains join on a key whose uniqueness scope, stability guarantee, and minting process were never stated, and the bridge silently glues together entities that are not the same thing.
+
+_Solution:_ Every identifier used by more than one domain is registered: owning domain, format, uniqueness scope, stability guarantee (never reissued? survives a merger?), and the entity-resolution process that mints it. A bridge may only join on registered keys, and the verification mesh checks the registry entry like any other contract. An unregistered shared key is an unverified morphism wearing a column name.
+
+_Example:_ `legal_entity_id` is registered: owner `compliance`; format is the 20-character Legal Entity Identifier (ISO 17442) where one exists, internal `CPTY-` prefix otherwise; unique across the venue; never reissued; survives M&A via a successor mapping; minted by the onboarding entity-resolution service. The Trading-to-Compliance bridge names it as its join key and inherits all of that.
+
+_Consequences:_ One more governed artifact, and registration adds friction to the first cross-domain use of any key — deliberately. The friction is the verification the join was always pretending to have.
+
+=== The CI Gates
+
+What governance by construction compiles to in continuous integration (CI). A model merges when all of these pass, and not before:
+
+* *Contracts.* Every public model carries an enforced contract — name and type per column — and the build fails before materialization on any mismatch (dbt's model-contracts documentation). The contract is the enforcement point because the warehouse declines the job: `PRIMARY KEY` and `UNIQUE` constraints are metadata-only on the major cloud platforms — accepted, displayed, unenforced — which is why grain lives in tests.
+* *Grain.* Uniqueness and not-null tests on the declared grain key of every model. No grain test, no merge. An undeclared grain is a fan-out waiting for an audit; an untested one is a declared grain waiting to quietly stop being true.
+* *Docs coverage.* Pre-commit hooks block undescribed models and columns at the pull request. A column without a description is a hole in the agent's context, shipped.
+* *Definition quality.* The ISO/IEC 11179 linter on every changed description: a definition states what the thing is, not how it is computed, without circularity, without restating the term as its own meaning — the gate the glossary chapters specify, run as code.
+* *Data diff.* Row-level before/after comparison on every changed model, posted to the pull request. The reviewer sees what the change does to the data, not merely to the SQL.
+* *Versioning.* Breaking changes to contracted models ship as a new version with a deprecation window, the old version maintained in parallel until consumers migrate — the enforcement mechanism behind the Training Data Contract (the Sandpit chapter).
+
+=== The Gold Publication Spec
+
+Every Gold surface ships with this block populated. A reviewer holds the pull request against it; an agent reads it before answering:
+
+[source,yaml]
+----
+gold_publication:
+  table: gold.pnl_daily_desk_strategy_v20260520
+  business_question: >                      # verbatim; no question, no table
+    What was daily P&L by desk and strategy,
+    on the desk's default mark-to-market basis?
+  owner: trading-analytics                  # a team with a pager, not a person's name
+  grain: one row per desk per strategy per trading day
+  as_of_valid_time:  2026-05-19T23:59:59Z
+  as_of_system_time: 2026-05-20T04:10:00Z
+  generated_at:      2026-05-20T04:31:55Z
+  freshness_sla: published by 06:00 UTC, T+1
+  quality_score: 0.97
+  last_reviewed: 2026-04-30
+  glossary_links: all columns               # pnl_mtm -> finance.pnl_mark_to_market, ...
+  explore: pnl_daily_desk_strategy          # no explore, no ship (the Architecture chapter)
+  retention:
+    time_travel: native                     # days, not years: BigQuery 2-7; Snowflake 1-90 by edition
+    archive: versioned snapshots, 7 years   # the audit answer never rests on time travel
+----
+
+Native time travel is an operational recovery feature measured in days — per BigQuery's and Snowflake's own time-travel documentation — so anything a regulator may ask about lives in archived published versions, never in the recovery window.
+
+=== A Field Glossary of Join Machinery
+
+*Fan trap.* A one-to-many join duplicates the one side's measures across the many: sum a fact through it and the total inflates by the fan-out factor. The query succeeds, the number is plausible, the number is wrong — Strategy's 2025 token-cost-and-accuracy benchmark caught a raw-SQL baseline returning a dollar figure inflated eightfold by exactly this, without a single error raised.
+
+*Chasm trap.* Two many-to-one paths converging on a shared dimension, joined together: the two many-sides cross-multiply through the shared parent, and every measure on both is silently scaled by the other's row count. Fan and chasm traps are the two reasons "the query executed" is not evidence.
+
+*Symmetric aggregates.* Looker's fan-out defense, per its symmetric-aggregates documentation: hash the declared primary key, compute the measure with `SUM DISTINCT` arithmetic over hash-plus-value, and aggregates come out exact across any join fan-out. On by default per explore; correct only because primary keys and relationship cardinalities are declared. Correctness of aggregation as a property of the declared model rather than of the query author.
+
+*Aggregate locality.* Malloy's stronger form, per its join documentation: every aggregate computes at the grain of the table it belongs to, regardless of the join pattern around it — fan and chasm traps closed by language semantics instead of by query-author vigilance.
+
+*Entity-graph join resolution.* MetricFlow's approach, per the dbt Semantic Layer documentation: join paths are planned from declared entity types — primary, foreign, unique — refusing fan-out and chasm paths, capped at two hops. Beyond the declared graph it fails closed: an error, never a wrong number.
+
+*Aggregate awareness.* Rollup routing, per Looker's aggregate-awareness documentation: the engine answers each query from the smallest pre-materialized rollup that can serve its grain and falls back to the declared join graph only when granularity demands — the flat head and the explorable tail of the Architecture chapter's two surfaces, implemented as a routing decision.
+
+*Verified queries / trusted assets.* Question-to-SQL pairs reviewed by a human and attached to the semantic model — Snowflake's verified-query repository, Databricks' Genie trusted assets. At runtime they anchor accuracy on the questions the business asks most; in CI they are the regression suite, replayed against every model change with the answers diffed. One artifact, both jobs.

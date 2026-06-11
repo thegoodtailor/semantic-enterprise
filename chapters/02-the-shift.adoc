@@ -1,6 +1,8 @@
 == The Shift
 
-Actually, data platforms fail all the time. They don't fail when you've tracking clean metadata. This has always been the case. But AI is a forcing function. A crap data platform with patchy semantics can still be usable if you've got humans willing to patch together gaps in understanding, remember where things are, keep a record of the weird tweaks and nuances of where to find data and what it means. A crap data platform with patchy semantics means enterprise agentic intelligence is a non starter. 
+Actually, data platforms fail all the time.
+// TODO(author): confirm intended meaning of the following sentence ("They don't fail when you've tracking clean metadata.")
+They don't fail when you've tracking clean metadata. This has always been the case. But AI is a forcing function. A crap data platform with patchy semantics can still be usable if you've got humans willing to patch together gaps in understanding, remember where things are, keep a record of the weird tweaks and nuances of where to find data and what it means. A crap data platform with patchy semantics means enterprise agentic intelligence is a non starter. 
 
 === The 1% Problem
 
@@ -121,7 +123,7 @@ Dashboards tolerate ambiguity because humans compensate. When a dashboard shows 
 
 An AI encounters the same ambiguity and does something qualitatively different. It does not call anyone. It picks one of the two numbers based on whatever heuristic its training data suggests and returns it with four decimal places, a grammatically perfect explanation, and no indication that another number exists or that the choice was arbitrary.
 
-Eighty-four percent of data teams regularly encounter conflicting versions of the same metric. This is the normal state of enterprise data, not a niche problem at a few disorganized companies. Multiple definitions of the same concept, living in different systems, maintained by different teams, diverging over time. Humans navigate this by building relationships and institutional knowledge. AI navigates this by picking one and being wrong half the time.
+Eighty-four percent of data and analytics leaders, according to Salesforce, say their data strategies need a complete overhaul before their AI ambitions can succeed. Conflicting versions of the same metric are the normal state of enterprise data, not a niche problem at a few disorganized companies. Multiple definitions of the same concept, living in different systems, maintained by different teams, diverging over time. Humans navigate this by building relationships and institutional knowledge. AI navigates this by picking one and being wrong half the time.
 
 Vendor testing shows the same pattern. Google’s internal testing found that their semantic modeling layer reduces data errors in AI natural language queries by as much as two-thirds. The gain comes not from a smarter model but from a semantic layer that removes the ambiguity behind the errors.
 
@@ -138,7 +140,7 @@ A chatbot that queries bad data through a bad semantic layer is not conversation
 .A chatbot on ungoverned data is not conversational analytics — it is automated confusion, delivered faster, to more people.
 image::figures/chatbot-confusion.png[chatbot confusion,width=600,align="center"]
 
-Sixty-seven percent of enterprise chatbot deployments failed to meet expectations. Only 6 percent of IT leaders believe their chatbot technology is effective and highly adopted. An airline’s customer service chatbot was held legally liable for giving a passenger incorrect information about bereavement fares — the chatbot invented a refund policy that did not exist, stated it with perfect confidence, and a tribunal ruled the airline was bound by what its agent had promised. An automotive company’s chatbot agreed to sell a vehicle for one dollar after a customer exploited a prompt injection vulnerability. A fintech company replaced 700 human agents with AI, then watched customer satisfaction drop and complaints rise until they had to reverse course and hire humans back.
+Gartner found in 2023 that only 8 percent of customers had used a chatbot in their most recent customer service interaction — and of those, only 25 percent would use one again. An airline’s customer service chatbot was held legally liable for giving a passenger incorrect information about bereavement fares — the chatbot invented a refund policy that did not exist, stated it with perfect confidence, and a tribunal ruled the airline was bound by what its agent had promised. An automotive company’s chatbot agreed to sell a vehicle for one dollar after a customer exploited a prompt injection vulnerability. A fintech company announced in 2024 that its AI assistant was doing the equivalent work of 700 human agents, then watched service quality fall short of what its customers expected until, in 2025, it reversed course into a hybrid model and started hiring humans again.
 
 These are not edge cases or the work of incompetent teams. They are predictable failures that share a common architecture: an AI system deployed without semantic infrastructure, without governed definitions, without a layer that tells the model what is true, what is uncertain, and what it should refuse to answer. The chatbot was confident because no one built the guardrails that would have made it appropriately uncertain. Epistemic honesty — the quality of knowing what you know and what you do not — is a feature of the infrastructure, not of the model. If the infrastructure does not encode uncertainty, the model will not express it.
 
@@ -182,7 +184,7 @@ AI demands: clean definitions, canonical tables, governed vocabularies, machine-
 
 AI changes the economics of this calculation. And it changes them in both directions simultaneously.
 
-On the demand side, AI makes semantic infrastructure mandatory. Without it, your AI projects fail. Sixty percent of them, according to Gartner. The cost of not having semantic infrastructure is no longer "analysts are slightly less efficient." The cost is "your AI strategy does not work." That changes the prioritization calculus dramatically. When semantic infrastructure was competing against "build the finance dashboard," it lost. When semantic infrastructure is competing against "our $10 million AI investment produces wrong answers," it wins.
+On the demand side, AI makes semantic infrastructure mandatory. Without it, your AI projects fail. Gartner puts it precisely: through 2026, organizations will abandon 60 percent of AI projects unsupported by AI-ready data. The cost of not having semantic infrastructure is no longer "analysts are slightly less efficient." The cost is "your AI strategy does not work." That changes the prioritization calculus dramatically. When semantic infrastructure was competing against "build the finance dashboard," it lost. When semantic infrastructure is competing against "our $10 million AI investment produces wrong answers," it wins.
 
 On the supply side, AI makes semantic infrastructure cheap to build.
 
@@ -198,9 +200,9 @@ Maintenance was always the bottleneck. Building a glossary was hard but achievab
 
 Information architects have been arguing for governed vocabularies for decades. They were right. They were also right to be ignored, because the business case never closed. The cost of building and maintaining semantic infrastructure exceeded the cost of letting humans compensate for its absence. That was a rational calculation. It is no longer rational. AI broke it in both directions: the cost of absence went up, and the cost of building went down. The lines have crossed.
 
-The industry is converging on this recognition. In 2025, major data platform vendors joined forces to create the Open Semantic Interchange standard. When competitors collaborate on a standard, the architecture is settling. The debate about whether you need a semantic layer is over. The remaining debates are implementation debates.
+The industry is converging on this recognition. In September 2025, major data platform vendors — Snowflake, Salesforce’s Tableau, dbt Labs, and BlackRock among the founders, with Databricks joining later — created the Open Semantic Interchange standard, and its v1.0 specification shipped on January 27, 2026. When competitors collaborate on a standard and then ship the specification, the architecture is settling. The debate about whether you need a semantic layer is over. The remaining debates are implementation debates.
 
-Gartner projects that by 2027, organizations that prioritize semantics in their AI-ready data strategies will increase model accuracy by up to 80 percent and reduce costs by up to 60 percent. By 2028, 60 percent of agentic analytics projects without a consistent semantic layer will fail. The early adopters who skipped the semantic layer are already dealing with the consequences: hallucinated joins, conflicting metrics, confident wrong answers, and the slow realization that you cannot shortcut the foundation.
+Gartner projects that by 2027, organizations that prioritize semantics in AI-ready data will increase their agentic AI accuracy by up to 80 percent and reduce costs by up to 60 percent. By 2028, 60 percent of agentic analytics projects relying solely on the Model Context Protocol — without a consistent semantic layer — will fail, a qualifier that makes the point this book keeps making: MCP is plumbing, not semantics. The early adopters who skipped the semantic layer are already dealing with the consequences: hallucinated joins, conflicting metrics, confident wrong answers, and the slow realization that you cannot shortcut the foundation.
 
 === The New Primary Consumer
 
@@ -233,7 +235,7 @@ So flatten Gold. Denormalize to the question — one wide row, every column defi
 
 And here is the part the dimensional-modelling veterans need to hear, because it is the part everyone gets wrong when they hear “flatten”: dimensional structure is not eliminated. It is relocated. Grain discipline, conformed dimensions, SCD2 — all of it lives on, in Silver, where it belongs. When an analyst genuinely needs to drill and slice across dimensions, the semantic layer exposes Silver’s dimensional structure directly: star-schema-equivalent analytical power, with no physical star schema in Gold for any consumer — human or machine — to trip over. You keep the discipline. You kill the joins. The thing dimensional modelling was for survives; the thing that made it expensive for AI does not. If you are still building physical star schemas at the consumption layer, you are paying a 300x tax to make your AI dumber.
 
-=== Five Changes to Make This Week
+=== Six Changes to Make This Week
 
 If the shift is real, the question is what to do about it. Here is what works.
 
@@ -259,6 +261,6 @@ You are not optimizing for a trend. You are optimizing for precision. AI is the 
 
 Organizations that understand this will have data platforms that serve any consumer — human or machine — with consistent, governed, trustworthy answers. Their AI agents will answer business questions reliably because the semantic infrastructure exists to ground them. Their analysts will stop squinting at conflicting dashboards because there is one governed definition, not forty. Their new hires will understand the data estate in their first week because the vocabulary is explicit and the definitions are machine-readable, which also means they are human-readable. Everything gets better.
 
-Organizations that do not will continue building dashboards that humans squint at, deploying AI projects that join the 60 percent abandoned due to bad data. They will spend millions on AI initiatives and wonder why the results are disappointing. They will blame the models. The models were never the problem.
+Organizations that do not will continue building dashboards that humans squint at, deploying AI projects that join the 60 percent abandoned because they were unsupported by AI-ready data. They will spend millions on AI initiatives and wonder why the results are disappointing. They will blame the models. The models were never the problem.
 
 Intelligent machines are interning at your organization — if you want to keep them on as productive long-term employees, get your training material together.

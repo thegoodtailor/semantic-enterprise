@@ -28,7 +28,7 @@ These four questions are simple. The industry has over-complicated the diagnosti
 
 Gartner has a multi-dimension assessment. McKinsey has a maturity model with five levels. Deloitte has a governance roadmap with six areas. Microsoft has an AI readiness checklist. All of them take four to eight weeks to complete and produce a slide deck that says, in eighty pages, what four questions say in ten minutes: your data is not machine-readable, your definitions are scattered, and your knowledge is trapped in people’s heads.
 
-Only 16% of software engineering leaders believe their delivery processes are ready for AI. Fewer than 25% of large enterprises have scaled AI beyond pilots. Seventy percent of enterprise AI projects fail to reach production. The gap is not technology. It is readiness — the answer to whether your data can survive contact with a machine that cannot squint.
+Only 26% of companies have moved beyond proof of concept to generate value from AI (BCG, 2024). Widely cited estimates put the share of enterprise AI projects that fail to reach production at 70 to 85 percent. The gap is not technology. It is readiness — the answer to whether your data can survive contact with a machine that cannot squint.
 
 If your organization has fewer than fifty employees, fewer than ten data sources, and no AI ambitions, this playbook is overkill. Use a spreadsheet. When you outgrow the spreadsheet, come back. For everyone else: the four questions are your starting diagnostic, and the rest of this essay is your response.
 
@@ -329,7 +329,7 @@ The CDO role was invented to translate between business language and technical l
 
 A semantic layer automates the translation. When the glossary maps "revenue" to a governed model, and that model maps to a semantic layer definition, and the semantic layer is queryable in natural language — the translation is in the infrastructure, not in a person’s head.
 
-Eighty-four percent of organizations now have a CDO, up from 12% in 2012. Near-universal adoption. And yet 29% of CDOs do not believe in the long-term future of their own role. Over half serve less than three years. Nearly a quarter last less than two. One MIT study compared the trajectory to the Chief Digital Officer — a role once ubiquitous, now faded into other functions.
+Eighty-four percent of organizations now have a CDO, up from 12% in 2012 — though the survey behind those figures (NewVantage/Wavestone) covers Fortune-1000-scale firms. Near-universal adoption at the largest enterprises. And yet, in the 2025 edition of the same survey, just over 29% of CDOs believe the role is transitional and will eventually disappear. Over half serve less than three years. Nearly a quarter last less than two. One MIT study compared the trajectory to the Chief Digital Officer — a role once ubiquitous, now faded into other functions.
 
 CDO-as-translator is being automated away by the very architecture they should be building. What survives is the CDO-as-architect: someone who understands that data is technical, AI is engineering, and both require language and knowledge as their material. Not a bridge between business and technology — the person who designs the bridge so that it translates automatically.
 
@@ -343,7 +343,7 @@ A third of organizations have now appointed a separate Chief AI Officer, fragmen
 
 Traditional data teams were built for a different era. Twenty to thirty people, organized by function — ETL developers, BI analysts, governance specialists, data stewards, report developers, data quality analysts — each with its own tools, processes, and backlog. Coordination overhead was enormous. Output was slow.
 
-AI-augmented teams are smaller, faster, and organized by capability rather than function. Gartner predicts that by 2030, 80% of large engineering teams will be reorganized into smaller, AI-augmented units. Enterprise benchmarks from IBM, Microsoft, and major banks report 200-400% productivity increases from AI-augmented pods. A five-person augmented team in 2026 produces what an eight-to-ten-person team produced in 2020.
+AI-augmented teams are smaller, faster, and organized by capability rather than function. Gartner predicts that AI-native development platforms will lead 80% of organizations to evolve their large engineering teams into smaller, AI-augmented ones (Top Strategic Technology Trends, 2026). In my own observation, a five-person augmented team in 2026 produces what an eight-to-ten-person team produced in 2020.
 
 Resist the "fire everyone" narrative. The scarce resource is not labor but judgment. Five engineers without architectural judgment produce five different interpretations of the same data. One architect with AI augmentation produces one canonical interpretation that serves everyone.
 
@@ -353,7 +353,7 @@ A peer of mine put it sharply: "The solution isn’t hiring a whole team of peop
 
 _Lose your teeth._ Leaders who stop building lose their judgment. The old career path — practitioner to manager to executive — moved you further from the material at each step. In the AI-augmented model, the distance between thinking and building collapses. The leader who writes code, who builds the semantic layer, who reviews definitions, makes better architectural decisions than the one who reads slide decks about architecture.
 
-The talent pipeline warning: 55% of employers who executed AI-driven layoffs now regret the decision. Remove entry-level roles to cut costs and you remove the bottom rung of the career ladder. The people you need in five years are the people you are not training today. Cut headcount recklessly and you cut your own future.
+The talent pipeline warning: in a 2025 Orgvue survey, 39% of business leaders had made AI-driven redundancies — and of those, 55% admit they made the wrong decisions. Remove entry-level roles to cut costs and you remove the bottom rung of the career ladder. The people you need in five years are the people you are not training today. Cut headcount recklessly and you cut your own future.
 
 ==== The Target Shape
 
@@ -417,7 +417,7 @@ One page. Three arguments.
 
 ==== The Regulatory Case
 
-The same infrastructure that enables AI satisfies the regulator. Auditors ask: authoritative data sources? Data storage and ownership? Data dictionary? Vocabulary and semantic layer answer by construction. The EU AI Act, now in force, mandates data lineage and provenance for high-risk AI systems. The three investments are defensive infrastructure, not just an offensive play.
+The same infrastructure that enables AI satisfies the regulator. Auditors ask: authoritative data sources? Data storage and ownership? Data dictionary? Vocabulary and semantic layer answer by construction. The EU AI Act's data-governance provisions require high-risk AI systems to document how their data was collected and where it originated — obligations whose application for Annex III systems the May 2026 Digital Omnibus postponed to December 2, 2027. The three investments are defensive infrastructure, not just an offensive play.
 
 ==== The "Strategy Is Architecture" Position
 
@@ -425,7 +425,7 @@ This playbook is an architecture document with strategic implications, not a dat
 
 Strategy without architecture is a wish list. Architecture without strategy is expensive plumbing. The three investments are architectural decisions that constitute a strategy. No separate strategy document needed.
 
-Gartner estimates the annual cost of poor data quality at $12.9 to $15 million per enterprise. That is the cost of not having the architecture. The three investments are cheaper than the alternative.
+Gartner estimates the annual cost of poor data quality at an average of $12.9 million per enterprise. That is the cost of not having the architecture. The three investments are cheaper than the alternative.
 
 ==== The Risk of This Playbook
 

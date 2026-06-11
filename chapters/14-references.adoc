@@ -1,0 +1,25 @@
+== References
+
+Ehrig, H., Ehrig, K., Prange, U., & Taentzer, G. (2006). _Fundamentals of Algebraic Graph Transformation_. Springer. [Double-pushout rewriting and the gluing conditions.]
+
+Goguen, J. A., & Burstall, R. M. (1992). Institutions: Abstract model theory for specification and programming. _Journal of the ACM_, 39(1), 95–146.
+
+Johnson, M., Rosebrugh, R., & Wood, R. J. (2002). Entity-relationship-attribute designs and sketches. _Theory and Applications of Categories_, 10(3), 94–112. [Schemas as finite-limit sketches; instances as Set-models.]
+
+Crossley, J. N., Poernomo, I. H., & Wirsing, M. (2000). Extraction of structured programs from specification proofs. In D. Bert, C. Choppy, & P. D. Mosses (Eds.), _Recent Trends in Algebraic Development Techniques (WADT'99, Château de Bonas, 15–18 September 1999)_, Lecture Notes in Computer Science, vol. 1827 (pp. 419–437). Springer. [The origin of the construction used in this book: a calculus whose structural rules are renaming, hiding, and the union of specifications — the pushout.]
+
+Poernomo, I. H., & Crossley, J. N. (2001). Protocols between programs and proofs. In K.-K. Lau (Ed.), _Logic Based Program Synthesis and Transformation (LOPSTR 2000)_, Lecture Notes in Computer Science, vol. 2042. Springer, Berlin Heidelberg. DOI 10.1007/3-540-45142-0_2. [Generalization of the protocol across constructive deductive systems and type theories.]
+
+Poernomo, I. H., Wirsing, M., & Crossley, J. N. (2005). _Adapting Proofs-as-Programs: The Curry–Howard Protocol_. Monographs in Computer Science. Springer, New York. Hardcover ISBN 978-0-387-23759-6. DOI 10.1007/0-387-28183-5. [The collected framework; categorical structuring of specifications and the pushout-union construction.]
+
+Snodgrass, R. T. (2000). _Developing Time-Oriented Database Applications in SQL_. Morgan Kaufmann. [Valid time, transaction time; the temporal query taxonomy.]
+
+Spivak, D. I. (2012). Functorial data migration. _Information and Computation_, 217, 31–51.
+
+Spivak, D. I. (2014). _Category Theory for the Sciences_. MIT Press. [Ologs; schemas as categories.]
+
+ISO/IEC. (2011). _SQL:2011_ (ISO/IEC 9075:2011), temporal table features.
+
+Danielsson, N. A., Hughes, J., Jansson, P., & Gibbons, J. (2006). Fast and loose reasoning is morally correct. _POPL ’06_, 206–217. [Licence for reasoning in the idealised setting and transporting conclusions.]
+
+_Note: industry figures cited in the text (Gartner data-quality cost estimates, agent-adoption and metadata-maturity percentages, conversational-AI market projections, and vendor benchmark results) are attributed inline to their sources at point of use. Confirm each against its current published source before press._

@@ -23,7 +23,6 @@ Loop 3 crosses a second line, the one von Foerster drew between first-order cybe
 
 One design principle governs everything that follows: falsification must be external and plural. Large language models (LLMs) reflecting on their own reasoning without external feedback frequently degrade their own answers (Huang et al., 2024), and LLM judges favor their own generations (Panickssery et al., 2024). The author-agent reviewing its own output is structurally incapable of refuting it. Refutation therefore arrives from outside: usage telemetry, reconciliation evidence, and other agents running different models through different lenses. This is the load-bearing argument for the multi-agent architecture of "Agentic Intelligence" — the newsroom is credible because it runs a corrections column — and it makes plurality the precondition of refutation rather than a scaling convenience.
 
-// TODO: figure asset — the four loops as nested cycles around the semantic layer: structural verification, usage feedback, falsification, calibration; the von Foerster line between observed and observing system drawn between Loops 2 and 3.
 [#fig-reflexive-loop]
 .The reflexive loop: four grades of self-correction around the semantic layer. Loops 0–1 verify structure and usage; Loops 2–3 refute and calibrate belief — the line between them is where an observed system becomes an observing one.
 image::figures/reflexive-loop.png[the reflexive loop,width=640,align="center"]

@@ -17,7 +17,6 @@ Mechanically, this is the colimit doing exactly what Chapter 4 said it does, tur
 * *Register-switching resolves polysemy as she crosses.* "Position," "exposure," "volume" mean different things per domain; the semantic layer holds each domain's definition and declares which one the composed view is using, so the pivot does not silently change what a word means.
 * *The view is the colimit, scoped to the session.* She is never querying "the whole enterprise model." She is querying the sub-colimit of the domains she has reached — the local manifold of her question — which is why this stays answerable as the estate grows.
 
-// TODO: figure asset — cross-domain dimensional navigation: three domain dimensional models, bridges as the composing morphisms, one analyst path traversing them, with the access-policy intersection shaded.
 [#fig-cross-ontology-dimensional]
 .Exploring the Glued Ontology — domain dimensional models composed Silver-direct through bridges into one navigable surface
 image::figures/cross-ontology-dimensional.png[Cross-Ontology Dimensional Exploration,width=720,align=center]

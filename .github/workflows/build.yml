@@ -1,0 +1,42 @@
+name: Build book
+
+# Builds a clean PDF + HTML of the book on every push to main (and on demand).
+# Download them from the run's "Artifacts" section in the Actions tab.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'the-semantic-enterprise.adoc'
+      - 'chapters/**'
+      - 'figures/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install Asciidoctor toolchain
+        run: gem install --no-document asciidoctor asciidoctor-pdf rouge
+
+      - name: Build PDF
+        run: asciidoctor-pdf -a source-highlighter=rouge -o the-semantic-enterprise.pdf the-semantic-enterprise.adoc
+
+      - name: Build HTML (self-contained, embedded CSS)
+        run: asciidoctor -a source-highlighter=highlightjs -a data-uri -o the-semantic-enterprise.html the-semantic-enterprise.adoc
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: the-semantic-enterprise
+          path: |
+            the-semantic-enterprise.pdf
+            the-semantic-enterprise.html
+          if-no-files-found: error

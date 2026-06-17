@@ -28,3 +28,6 @@ __pycache__/
 # arXiv submission tarball (regenerable: tar -czf enterprise-colimit-arxiv.tar.gz enterprise-colimit.tex)
 enterprise-colimit-arxiv.tar.gz
 .revision-snapshots/
+
+# local secrets — never commit
+.env

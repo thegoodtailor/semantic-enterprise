@@ -40,12 +40,12 @@ DIAGRAM = (
 
 JOBS = [
  ("agent-picks-engine-joins.png", "16:9", DIAGRAM +
-  "Title idea conveyed visually, not written: 'the agent picks; the engine joins'. A single wide horizontal bar across the middle labelled 'SEMANTIC LAYER'. "
-  "ABOVE the bar: one node labelled 'AGENT' reaching down to the bar and selecting three small chips labelled 'fields', 'filters', 'measure'; a small caption label 'picks'. "
-  "BELOW the bar: a declared join graph — three small entity tiles labelled 'executions', 'counterparty', 'instrument' connected by two thin labelled arrows, one arrow labelled 'as-of join' and one labelled 'declared join'; a small caption label 'joins'. "
-  "The agent above never connects directly to the entity tiles below — every line from the agent stops at the SEMANTIC LAYER bar. "
-  "To the lower right, two governed output surfaces side by side: a wide flat rectangle labelled 'FLAT MARTS' with a small sub-label 'head', and a small four-point star shape labelled 'EXPLORES' with a small sub-label 'tail'. "
-  "Clean, balanced, lots of air."),
+  "Conveys visually (not as written text): 'the agent picks; the engine joins', with the SEMANTIC LAYER as the single hub that everything connects THROUGH. "
+  "A wide horizontal bar across the middle labelled 'SEMANTIC LAYER' is the spine of the whole figure. "
+  "ABOVE the bar: one node labelled 'AGENT' with connector lines running straight DOWN and TERMINATING in small solid dots ON the top edge of the bar — the lines visibly STOP at the bar; the agent connects to nothing below it. Beside the agent, three small chips it selects: 'fields', 'filters', 'measure'; small label 'the agent picks'. "
+  "BELOW the bar: a declared join graph of three entity tiles labelled 'executions', 'counterparty', 'instrument' wired to each other by two labelled arrows, 'as-of join' and 'declared join'. CRITICAL: this join graph is attached to the underside of the SEMANTIC LAYER bar by clear connector lines dropping from the bar down into it, so it visibly hangs off / is driven by the layer — it must NOT float as a separate unconnected box. Small label 'the engine joins'. "
+  "Also attached to the bar by their own connector lines (dropping from the bar), to the lower right, two governed output surfaces the layer exposes: a wide flat rectangle labelled 'FLAT MARTS' (sub-label 'head') and a small four-point star labelled 'EXPLORES' (sub-label 'tail'). "
+  "Every element below the bar connects UP to the SEMANTIC LAYER by a visible line; nothing below floats unconnected. The diagram must read as: the agent picks AT the layer, the layer does the joining and emits both surfaces, nothing below is reached except through the layer. Clean, balanced, lots of air."),
 
  ("reflexive-loop.png", "1:1", DIAGRAM +
   "Four concentric circular loops nested around a central rounded bar labelled 'SEMANTIC LAYER'. Each loop is a labelled circular arrow, from innermost to outermost: "

@@ -220,10 +220,6 @@ One law kills the failure class: joins are declared, never inferred. The dimensi
 
 In practice the law yields two governed surfaces over one vocabulary. Flat, documented Gold marts serve the head of the question distribution — no joins to plan, the cheapest correct answers in the estate. Governed explores over the declared join graph serve the rabbit holes: the agent sits above the layer picking fields, filters, and pivots, and the engine resolves the joins deterministically beneath it. "It cannot produce a wrong join because it never writes a join" (Strategy, 2026). The full argument — the evidence, the machinery that makes aggregation over declared joins correct by construction, the objections it must survive — belongs to the Architecture chapter. The agent picks; the engine joins.
 
-[#fig-agent-picks-engine-joins]
-.The agent picks; the engine joins — flat marts for the head of the question distribution, governed explores for the tail, no model-planned join on either surface.
-image::figures/agent-picks-engine-joins.png[The agent picks; the engine joins,width=680,align=center]
-
 === Six Changes to Make This Week
 
 If the shift is real, the question is what to do about it.

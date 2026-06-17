@@ -254,7 +254,9 @@ So the architecture serves two governed surfaces over one vocabulary. The first 
 
 The agent picks; the engine joins.
 
-// TODO: figure asset — "The agent picks; the engine joins": agent above the semantic layer selecting fields and filters; declared join graph below the layer; two governed surfaces labeled — flat marts (head of the question distribution) and explores (tail).
+[#fig-agent-picks-engine-joins]
+.The agent picks; the engine joins — flat marts for the head of the question distribution, governed explores for the tail, no model-planned join on either surface.
+image::figures/agent-picks-engine-joins.png[The agent picks; the engine joins,width=680,align=center]
 
 Stated as one law, the tension between flat and dimensional dissolves. Flat marts are the degenerate case: zero joins to declare. Explores are the general case: joins declared, with integrity machinery attached. Both forbid the same act — the model writing a join from guesswork — and the law is strictly stronger than "flatten everything," because flattening cannot anticipate the tail. The chapter’s earlier commitments now read as instances of it. Every Gold model ships with an explore: the two surfaces born together, the mart for the head and its declared interface for the tail. Question-Driven Gold is how the head gets chosen. The semantic layer as sole interface is what keeps every consumer above the join on both.
 

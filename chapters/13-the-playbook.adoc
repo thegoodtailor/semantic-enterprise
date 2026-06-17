@@ -371,7 +371,7 @@ A third of organizations have now appointed a separate Chief AI Officer, fragmen
 
 Traditional data teams were built for a different era. Twenty to thirty people, organized by function — ETL developers, BI analysts, governance specialists, data stewards, report developers, data quality analysts — each with its own tools, processes, and backlog. Coordination overhead was enormous. Output was slow.
 
-AI-augmented teams are smaller, faster, and organized by capability rather than function. Gartner predicts that AI-native development platforms will lead 80% of organizations to evolve their large engineering teams into smaller, AI-augmented ones (Top Strategic Technology Trends, 2026). In my own observation, a five-person augmented team in 2026 produces what an eight-to-ten-person team produced in 2020.
+AI-augmented teams are smaller, faster, and organized by capability rather than function. Gartner predicts that AI-native development platforms will lead 80% of organizations to evolve their large engineering teams into smaller, AI-augmented ones (Top Strategic Technology Trends, 2026). In my own observation, a five-person augmented team in 2026 produces what a ten-person team produced in 2020.
 
 Resist the "fire everyone" narrative. The scarce resource is not labor but judgment. Five engineers without architectural judgment produce five different interpretations of the same data. One architect with AI augmentation produces one canonical interpretation that serves everyone.
 

@@ -158,7 +158,6 @@ The case for plurality runs deeper than specialization. A single agent cannot re
 
 The institution has a physics, and it has been measured. Google Research, DeepMind, and MIT evaluated 180 agent-system configurations ("Towards a Science of Scaling Agent Systems," 2025) and found that error amplification — how far one agent’s mistake propagates into the final result — tracks the coordination topology rather than the headcount. In independent topologies, where agents work in parallel and their outputs merge unsupervised, one agent’s error amplified 17.2x through the system. Under centralized orchestration, the same error was contained to 4.4x. The gains run the same way: coordination bought an 81% improvement on parallelizable tasks and lost 39 to 70% on sequential planning, where every coordination message is overhead against work that cannot be split.
 
-// TODO: figure asset — redraw if image shows 'vs single agent'
 [#fig-multiagent-amplify]
 .Topology, not headcount: uncoordinated agents amplify one agent's error 17×; an orchestrator contains it to 4×.
 image::figures/multiagent-amplify.png[multiagent amplify,width=600,align="center"]

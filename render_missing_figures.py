@@ -38,6 +38,21 @@ DIAGRAM = (
     "Use ONLY the labels specified below; invent no extra text and no jargon. "
 )
 
+# --- locked R1 style (verbatim from render_full_set.py): Gerald Scarfe editorial cartoon + mascots ---
+EDITORIAL = (
+    "Savage, biting editorial caricature for a serious business/technology book, in the spirit of GERALD SCARFE and Ralph Steadman: "
+    "dangerous slashing pen-and-ink linework, whiplash strokes, splattered and dripping ink, grotesque expressive exaggeration, satirical venom and menace under the wit. "
+    "Political-caricature ferocity, NOT cute, NOT poised, never juvenile underground-comix crosshatch — it draws blood but stays intelligent and grown-up. "
+    "Black ink with flicked spatter on warm off-white paper, ONE spot-colour accent used like a wound. Confident negative space. "
+    "CRITICAL TEXT RULE: the ONLY text anywhere in the image is the single hand-scrawled PUNCH-WORD named below (plus any short labels explicitly listed). "
+    "Render NO caption, NO sentence, NO paragraph, NO explanatory line, NO gibberish lettering of any kind. Leave the lower portion as clean EMPTY off-white paper — a real human caption is added later. Empty space is correct; do not fill it with text. "
+)
+MASCOT_REF = (
+    "Two recurring robot CHARACTERS, drawn in the same Scarfe ink style. TANGLE-BOT: an anxious boxy vintage robot, single round head-lamp eye that glows red when stressed, "
+    "rectangular torso with a little dial, spindly limbs, perpetually snared in cables — the dumb/overwhelmed AI. CRISP-BOT: the SAME robot design but calm, upright, clean, "
+    "uncluttered, often teal-lit — the coherent AI. Keep their design consistent across the book. Draw ONLY the scene described below. "
+)
+
 JOBS = [
  ("agent-picks-engine-joins.png", "16:9", DIAGRAM +
   "Conveys visually (not as written text): 'the agent picks; the engine joins', with the SEMANTIC LAYER as the single hub that everything connects THROUGH. "
@@ -53,6 +68,13 @@ JOBS = [
   "A single straight horizontal dashed line runs across the whole figure in the gap between Loop 2 and Loop 3, labelled 'observed / observing'. "
   "Everything inside that line (the SEMANTIC LAYER, Loop 1, Loop 2) is the system being observed; everything outside it (Loop 3, Loop 4) is the system observing itself. "
   "Concentric, symmetric, restrained palette, lots of air, textbook-quality."),
+
+ ("multiagent-amplify.png", "16:9", EDITORIAL + MASCOT_REF +
+  "AGENTIC INTELLIGENCE — 'topology, not headcount'. A split editorial cartoon contrasting two multi-agent topologies handling the SAME small error (one small red ink-blot). "
+  "LEFT side, UNCOORDINATED: a chaotic mob of several TANGLE-BOTS with NO ONE in charge, all shouting over each other at once, cables crossed and tangled together; the small red error is flung from bot to bot and BALLOONS bigger at every hand-off until it is a huge dripping red blot engulfing the whole mob — a tiny mistake multiplied by an unsupervised swarm. "
+  "RIGHT side, ORCHESTRATED: the SAME small red error enters a calm, orderly arrangement of TANGLE-BOTS organised around ONE upright central CRISP-BOT conductor, who catches and clamps the error so it stays small and contained. "
+  "The point reads: left is bedlam with no conductor and the error explodes; right has a conductor and the error is contained. The error is the single red spot-colour accent. "
+  "PUNCH-LABELS: the ONLY text anywhere in the image is two short hand-scrawled labels — '17x' over the left uncoordinated mob and '4x' over the right orchestrated group. Absolutely NO other lettering: do NOT write the word 'amplify' or any other word, NO caption, NO gibberish. Leave clean empty off-white paper below for a human caption added later."),
 ]
 
 

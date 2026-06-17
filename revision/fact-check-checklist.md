@@ -2,6 +2,19 @@
 
 Every number/claim the June-11 campaign changed, with the value now in the book and the source to confirm it against. Tick each once you've verified. The campaign used the review's *suggested* replacements (sometimes verbatim), so this is a confirm-don't-trust pass. Full evidence + URLs: `review-2026-06-11-technical-depth-and-style.md` §1.7–1.9. To locate a claim, search its figure/phrase in the rendered book or `grep` the chapters.
 
+---
+## ✅ VERIFICATION COMPLETE — June 2026 (verified against live primary sources)
+
+The campaign's re-sourcing holds. Summary:
+- **8 fabricated stats confirmed REMOVED** (MIT 34%, $67B, 300x, 67% chatbot, 73–88%, 200–400%, 16% eng leaders, RAG 40–71%) — grep-verified gone.
+- **Engine facts re-verified (mid-2026):** time-travel windows (BigQuery 2–7 / Snowflake 1–90 by edition) ✅; native as-of-join (Snowflake GA May 13 2024, DuckDB; not BigQuery/Databricks SQL) ✅.
+- **All third-party stats + Gartner/standards claims confirmed** (Salesforce 84%, Gartner chatbot 8%/25%, Forrester 60–73%, CDO 84%/12%, Looker two-thirds, PwC 79%, Wolters Kluwer 6%/38%, Google >25%/>30%, Anthropic 50%/67%, BCG +12.2%/25.1%/>40%/−19pts, Orgvue 39%/55%, all Gartner predictions, OSI v1.0 Jan 27 2026, MCP→Agentic AI Foundation Dec 2025, A2A→LF Jun 2025, arXiv 2509.04664).
+- **3 fixes applied:** "5 for 10" team-size (#7); dropped unverifiable "ONTO" format (ch07 — TOON stands); trimmed Gartner metadata slogan to verified "No metadata? No AI!" (ch04).
+- **Minor (author discretion, left as-is):** don't cite "6,000" Salesforce respondents (~7,650); BCG is "more than 40%"; OSI founder is "Salesforce" not "Salesforce/Tableau".
+
+**Fact-check pass: DONE.** Nothing outstanding blocks press. (Detailed item list retained below.)
+
+---
 ## 1. Load-bearing claims — confirm the framing, not just the number
 - [ ] **Declared-joins economics** (ch04 The Architecture; replaced the old Snowflake "300×"): Strategy/Mosaic ~50% / 98% token cuts; **AtScale 20% → 92.5%** accuracy over declared joins; dbt Semantic Layer ~100% in-scope. Confirm each vendor number + that "300×" appears nowhere.
 - [ ] **dbt snapshots / Law 6** (ch06 Time): book now says snapshots capture *system* time, not valid time; **"valid time comes from the business; system time comes from the pipeline."** Confirm against dbt docs (Discourse 1067, dbt-core #7018).

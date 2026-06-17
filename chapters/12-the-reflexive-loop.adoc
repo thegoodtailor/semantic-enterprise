@@ -43,7 +43,17 @@ _Solution:_ Every definition ships with falsification conditions: executable cla
 ----
 definitions:
   - name: net_revenue
-    description: "Net recognized income from executed trades…"   # glossary-inherited
+    # glossary-inherited, verbatim
+    description: >
+      Recognized trading revenue for the period — commissions, spreads, and
+      financing earned across executed client and proprietary trades — net of
+      rebates, fee waivers, and soft-dollar arrangements. Recognized on trade
+      date, not settlement. EXCLUDES intercompany transfers (an in-group
+      counterparty is not external revenue), EXCLUDES unrealized mark-to-market
+      (that is pnl_mtm), and EXCLUDES management and performance fees (manager
+      economics, not fund trading revenue). Allocated to the originating
+      strategy, not the booking entity. An intercompany counterparty appearing
+      here is a definitional failure, not a data error.
     assertions:
       - id: net_rev_recon_gl
         claim: "monthly SUM(net_revenue) reconciles to GL revenue class within 0.5%"
@@ -52,6 +62,30 @@ definitions:
       - id: net_rev_no_intercompany
         claim: "no intercompany counterparty contributes to net_revenue"
         check: sql
+
+  - name: carried_interest
+    # glossary-inherited, verbatim
+    description: >
+      The GP's share of fund profit — by default 20% above an 8% preferred
+      return (the hurdle). Undefined until the waterfall is declared: under a
+      EUROPEAN (whole-fund) waterfall, carry is earned only after LPs have
+      received all contributed capital plus the preferred return across the
+      whole fund; under an AMERICAN (deal-by-deal) waterfall, carry accrues per
+      realized deal, subject to clawback if later deals underperform. ACCRUED
+      carry (unrealized, mark-dependent) and REALIZED carry (crystallized cash)
+      are different measures and must never be summed. Net of the GP catch-up
+      and of the clawback reserve held until fund wind-down.
+    assertions:
+      - id: carry_waterfall_declared
+        claim: "every fund declares a waterfall (european|american); none defaults silently"
+        check: sql
+      - id: carry_accrued_realized_never_summed
+        claim: "accrued_carry and realized_carry never aggregate into one measure"
+        check: sql
+      - id: carry_net_of_clawback_reserve
+        claim: "reported carry is net of the clawback reserve until fund wind-down"
+        check: sql
+        born_of: incident/2025-Q3-gp-carry-overstatement
 ----
 
 _Example:_ After an April board deck reported a `net_revenue` that failed to reconcile to the GL, the definition gained the two assertions above: monthly reconciliation to the GL revenue class within 0.5%, and the structural exclusion of intercompany counterparties. The drift that caused the restatement can recur; the silence that let it reach the board cannot.

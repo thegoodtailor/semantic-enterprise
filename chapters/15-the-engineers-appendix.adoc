@@ -19,7 +19,7 @@ CREATE TABLE silver_compliance.counterparty (
                                           -- when the retention clock expires (Time chapter)
   risk_tier          STRING    NOT NULL,  -- glossary: compliance.risk_tier
   regulatory_class   STRING    NOT NULL,  -- glossary: compliance.regulatory_classification
-                                          -- ('retail' | 'institutional' | ...)
+                                          -- MiFID II: 'retail' | 'professional' | 'eligible_counterparty'
 
   -- Valid time — from the business: the KYC effective date, never a load timestamp
   valid_from         TIMESTAMP NOT NULL,
@@ -64,7 +64,16 @@ semantic_models:
     measures:
       - name: pnl_mtm
         agg: sum
-        description: "Mark-to-market P&L. Desk default for strategy analysis."
+        description: >
+          Mark-to-market profit and loss: the change in fair value of open and
+          closed positions over the period, marked at the official close from
+          the primary pricing source (not the last trade), realized and
+          unrealized summed. Gross of fees; EXCLUDES financing cost (booked to
+          pnl_funding) and management/performance fees. Desk default for
+          strategy analysis and the number the desk manages to — the
+          compensation committee uses the realized-only measure. An illiquid or
+          halted instrument carries its prior valid mark forward, flagged stale
+          per the valuation policy.
         # glossary-inherited, verbatim
 
 metrics:
@@ -77,6 +86,8 @@ metrics:
 Two properties do the governing. Entities imply joins: declaring `counterparty` as a foreign entity is the join declaration — any metric crossing executions and counterparties resolves through the entity graph, planned by the engine, never improvised by a consumer. And the namespace is global: every measure, dimension, and entity name must be unique across all semantic models, so `revenue` can be declared exactly once. A name collision is a build failure — governance by construction at the vocabulary level.
 
 One restatement from the Time chapter, placed where an engineer will trip over it: the temporal-alignment rule is declared on this relationship and implemented in the model SQL beneath the layer — Snowflake's `ASOF JOIN` (generally available 2024) where the engine has it, windowed predicates where it does not — because no current semantic layer executes temporal joins natively.
+
+None of these descriptions is hand-typed into the YAML. Each is authored once in the metadata repository — the MDR of your choice — where definitions are tagged, versioned, and correlated to the columns and measures that inherit them. The schema file and the semantic model carry a copy the build checks against the registry; they never paraphrase it. The rich definition lives in one governed place, and everything downstream is a verified reflection of it — the MDR-as-context-engine of The Architecture doing its second job: not only briefing the agent at read time, but sourcing the definitions at build time.
 
 === The Context Budget
 
@@ -130,7 +141,7 @@ gold_publication:
   freshness_sla: published by 06:00 UTC, T+1
   quality_score: 0.97
   last_reviewed: 2026-04-30
-  glossary_links: all columns               # pnl_mtm -> finance.pnl_mark_to_market, ...
+  glossary_links: all columns               # e.g. pnl_mtm -> finance.pnl_mark_to_market; counterparty -> compliance.legal_entity
   explore: pnl_daily_desk_strategy          # no explore, no ship (the Architecture chapter)
   retention:
     time_travel: native                     # days, not years: BigQuery 2-7; Snowflake 1-90 by edition

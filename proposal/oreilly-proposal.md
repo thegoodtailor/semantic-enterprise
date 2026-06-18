@@ -42,9 +42,13 @@ The book resolves into rules and no-no's: the patterns that become mandatory onc
 
 ## 6. Author
 
-Iman Poernomo. [AUTHOR TO FINALIZE — recommended framing, adjust to comfort/employer constraints:] Thirteen-plus years building and running enterprise data platforms in regulated financial-services environments; background spanning data architecture leadership and the formal foundations of software specification (peer-reviewed work in category-theoretic specification composition in the late 1990s–2000s, the same mathematics repurposed in this book). [Add: current/recent role at a level of specificity you're comfortable publishing; any speaking, teaching, or prior publication; relevant academic affiliation.]
+**Iman Poernomo** has spent two decades running enterprise data and AI at institutions where getting meaning wrong is most expensive — currently **Head of AI and Data at Bullish**, and previously **VP and Head of Enterprise Data & Analytics at AstraZeneca**, **Chief Data Officer at Preqin**, and at **JP Morgan** both **Chief Data Officer for Enterprise Data Science** and **Chief Information Architect for the Corporate & Investment Bank**.
 
-*Note: the book's case studies and worked definitions are deliberately illustrative composites — reasonable industry conventions, not any employer's proprietary practice — which keeps the book publishable without disclosure constraints.*
+He is also the rare practitioner who built this book's formal foundations before he had to apply them. On the computer science faculty at **King's College London (2004–2011)**, he worked in formal methods, constructive type theory, and the categorical composition of specifications — the same pushout-and-colimit calculus (developed with Crossley and Wirsing; WADT'99 and a 2005 monograph) that this book repurposes from program specification to the integration of data models. PhD in Computer Science, BSc in Mathematics, and BA in Philosophy, Monash University; earlier a senior research scientist at Australia's DSTC.
+
+That combination is the book's authority claim. Most data-architecture books are written either by practitioners without the formal grounding or by theorists without the operational scars. This one is written by the person who proved the theorems and then ran the platforms — across pharmaceuticals, investment banking, alternative-assets data, and a digital-asset exchange.
+
+*The book's case studies and worked definitions are deliberately illustrative composites — reasonable industry conventions, not any employer's proprietary practice — which keeps it publishable without disclosure constraints.*
 
 ## 7. Competitive and complementary titles
 

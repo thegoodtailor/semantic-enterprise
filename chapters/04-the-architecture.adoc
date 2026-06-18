@@ -330,7 +330,7 @@ The alternative is differently rigorous, not less: a lightweight vocabulary anch
 
 === The Seven Core Positions
 
-Seven convictions, each hardened by failure, refined in arguments with smart people who disagreed.
+Seven positions, each hardened by failure, refined in arguments with smart people who disagreed.
 
 {empty}1. *The Decoupling.* Physical storage and logical meaning are separate concerns. How data is stored on disk has nothing to do with how it is understood by consumers. A flat Gold table is physically a wide row. A Silver-as-Gold explore is physically wide entity-canonical tables under a join graph that exists only as declaration. Both are logically sets of related concepts connected by the ontology. Confusing physical and logical — building logical structure into physical layout, as star schemas do — is the category error that the industry has committed for decades.
 

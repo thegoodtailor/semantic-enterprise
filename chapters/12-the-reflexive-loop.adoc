@@ -86,6 +86,53 @@ definitions:
         claim: "reported carry is net of the clawback reserve until fund wind-down"
         check: sql
         born_of: incident/2025-Q3-gp-carry-overstatement
+
+  - name: nav
+    # glossary-inherited, verbatim
+    description: >
+      Net asset value: the fair value of fund holdings less liabilities, as of
+      the VALUATION date — not the report date. For liquid positions this is a
+      price; for illiquid holdings it is an ESTIMATE marked, per the valuation
+      policy, to the most recent financing round, a comparable-company multiple,
+      or a discounted cash flow — and it is stale between marks. A Q1 NAV
+      restated after the Q3 audit is a different number under the same name,
+      distinguished by system time and never overwritten (see Time). And
+      committed ≠ called ≠ invested ≠ NAV — four capital figures routinely
+      conflated and never interchangeable.
+    assertions:
+      - id: nav_carries_valuation_date
+        claim: "every NAV carries its valuation date; report-date is never assumed equal"
+        check: sql
+      - id: nav_capital_stack_distinct
+        claim: "committed, called, invested, NAV are distinct fields, never summed"
+        check: sql
+      - id: nav_stale_mark_flagged
+        claim: "illiquid holdings past the valuation-policy interval are flagged stale, not silently carried"
+        check: sql
+
+  - name: performance_fee
+    # glossary-inherited, verbatim
+    description: >
+      The manager's incentive fee — by default 20% of net new trading profit —
+      charged only above the investor's HIGH-WATER MARK (the highest prior NAV
+      at which a fee was last paid), so prior losses must be fully recovered
+      before any fee is earned again. Crystallizes on a stated cycle (declare it
+      — quarterly or annually); between crystallizations it accrues into NAV but
+      is not yet earned. Where a hurdle applies, a HARD hurdle charges only the
+      excess return, a SOFT hurdle the whole return once the hurdle is cleared —
+      different numbers from the same headline rate. Under series/equalization
+      accounting, two investors in one fund can owe different fees for the same
+      period, by entry NAV.
+    assertions:
+      - id: perf_fee_above_high_water_mark
+        claim: "no performance fee accrues below the investor's high-water mark"
+        check: sql
+      - id: perf_fee_hurdle_type_declared
+        claim: "every fee schedule declares hurdle type (none|hard|soft); no silent default"
+        check: sql
+      - id: perf_fee_accrued_vs_crystallized
+        claim: "accrued fee (in NAV) and crystallized fee (earned) are distinct, never summed"
+        check: sql
 ----
 
 _Example:_ After an April board deck reported a `net_revenue` that failed to reconcile to the GL, the definition gained the two assertions above: monthly reconciliation to the GL revenue class within 0.5%, and the structural exclusion of intercompany counterparties. The drift that caused the restatement can recur; the silence that let it reach the board cannot.

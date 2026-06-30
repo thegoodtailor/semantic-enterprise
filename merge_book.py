@@ -25,7 +25,21 @@ def flatten(master: Path = MASTER) -> str:
         else:
             out.append(line)
     text = "\n".join(out)
-    return text if text.endswith("\n") else text + "\n"
+    text = text if text.endswith("\n") else text + "\n"
+    return BANNER + text
+
+
+BANNER = (
+    "////\n"
+    "=====================================================================\n"
+    " GENERATED FILE — DO NOT EDIT.\n"
+    " This is a flattened snapshot of the book, rebuilt from chapters/*.adoc\n"
+    " for legacy tooling. Edit the REAL source in chapters/*.adoc, then run:\n"
+    "     python3 merge_book.py\n"
+    " Any edit made directly in this file is LOST on the next regenerate.\n"
+    "=====================================================================\n"
+    "////\n\n"
+)
 
 
 if __name__ == "__main__":

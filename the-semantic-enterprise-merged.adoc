@@ -1686,47 +1686,13 @@ If the semantic layer is the only interface through which consumers reach the da
 * *Fast enough.* If a ten-second direct query takes five minutes through the layer, the layer gets bypassed regardless of governance. No framework survives a five-minute wait when the alternative is ten seconds.
 * *Capable enough for exploration.* The most common reason analysts reach for direct SQL is that they are exploring — composing questions they have not asked, iterating on half-formed ideas, failing and discarding. The layer must support that mode, not only the canned-question mode. Force exploration outside the architecture and the architecture generates its own competitors — exploration is exactly where new metric definitions are born and where fragmentation begins.
 * *Extensible in days, not quarters.* "Add it to the semantic layer" must be an intake that returns in days. If extending the layer is slower than building a workaround, the workarounds accumulate and the layer atrophies. A semantic-layer team without a working intake is a bottleneck dressed up as governance.
-* *Well-instrumented.* Every request the layer cannot serve is signal; every workaround in the wild is signal. The owners must see it in near-real-time, not at a quarterly review — those gaps are the layer’s roadmap. A layer that does not know where it is failing fails in the same places indefinitely.
+* *Well-instrumented.* Every request the layer cannot serve is signal; every workaround in the wild is signal. The owners must see it in near-real-time, not at a quarterly review. Each gap becomes the next piece of work — a definition, a morphism, a measure, an essay — never a bypass, so the architecture improves along the exact contour of what its consumers need rather than degrading under their demands. A layer that does not know where it is failing fails in the same places indefinitely.
 
 The only-interface commitment costs real money and political capital. But the architectural payoff — every other commitment in this architecture delivered to consumers rather than leaked away through bypasses — is what justifies the cost.
 
-*Pattern: Sole Interface*
+The commitment is total, and its few exceptions survive only by being named. A handful of the people who built the architecture may reach beneath the layer — to debug the substrate, chase a performance problem, run early-stage ML exploration — and every such exception is scoped, reviewed, and written down. Named exceptions stay exceptions; the moment one goes unnamed, the commitment is dead, because the next bypass will cite it as precedent.
 
-_Context:_ Multiple consumers — human analysts, AI agents, dashboards, regulatory submissions — need to access the data platform.
-
-_Problem:_ When the semantic layer is bypassable, every commitment delivered through it — temporal contracts, morphisms, documentation, governed definitions — is also bypassable. Direct SQL produces metrics that enter circulation ungoverned, unsigned, unversioned.
-
-_Solution:_ The semantic layer is the only interface between data and consumer. No power users with direct SQL access. No privileged tiers. Every consumer reaches data through one governed surface. Narrow exceptions exist for debugging the substrate, performance investigation, and early-stage ML exploration — all by the people who build the architecture, all scoped and reviewed. Exceptions stay exceptions because they are named. The moment they are unnamed, the commitment is dead.
-
-Governance is universal; quality tiers are not. A dataset with a quality score of two out of five, last reviewed fourteen months ago, with no domain essay, is still governed — documented, catalogued, owned, accessible through the semantic layer. Its quality rating is visible to every consumer. The governance is not ``you may bypass for low-quality data.'' The governance is ``the system tells you what it knows about this data’s quality before you reason over it.'' Penny stock and blue chip both trade on the same exchange. Both are regulated. The disclosure requirements are the same.
-
-_Example:_ A senior analyst needs a number for a meeting in an hour. The semantic layer doesn’t have the slice. In the old model, they write direct SQL — 10 minutes, problem solved, ungoverned metric in circulation. In this architecture, they submit an extension request. The semantic layer team adds the measure within the day. The analyst waits. The metric enters circulation governed. Uncomfortable in the short term. Correct in every term.
-
-_Consequences:_ Analyst productivity drops in the short term. Extension intake capacity must be funded — unfunded sole-interface commitments collapse within a year.
-
-*Pattern: Extension Intake*
-
-_Context:_ The semantic layer has been established as the sole interface.
-
-_Problem:_ If extending the layer takes longer than building a workaround, workarounds accumulate. Each workaround is individually rational. In aggregate, they dissolve the sole-interface commitment.
-
-_Solution:_ "Add it to the semantic layer" returns in days, not quarters. This requires dedicated engineering capacity for the layer — not a side project, not a quarterly review. A working intake process with SLAs. The team that owns the layer monitors gap signals in near-real-time: every request the layer cannot serve, every workaround that emerges in the wild.
-
-_Example:_ A trading desk needs a new metric: "average spread by market-maker by hour." Intake submitted Monday. Semantic layer team reviews the definition, confirms alignment with the glossary, adds the measure to the relevant Gold explore. Available by Wednesday. The desk never writes direct SQL. The metric is governed from birth.
-
-_Consequences:_ Requires dedicated engineering capacity for the semantic layer — a permanent cost, not a project.
-
-*Pattern: Gap-as-Signal*
-
-_Context:_ Agents or analysts encounter questions the semantic layer cannot answer.
-
-_Problem:_ Without systematic capture, gaps are invisible to the layer’s owners. Workarounds proliferate silently. The layer atrophies as consumers route around it.
-
-_Solution:_ Every gap is signal. When an agent cannot answer through the semantic layer, the gap is logged — which question, which domain, what was missing. When an analyst requests a bypass, the request is logged as a gap signal. The layer’s owners see gap signals in near-real-time. Each gap becomes an improvement to the system: documentation, ontology, morphism, or measure work. Never a bypass. The architecture learns from its consumers rather than degrading under their demands.
-
-_Example:_ An agent is asked "What is our counterparty concentration risk?" and cannot answer — no concentration measure exists in the semantic layer. The gap is logged: domain=Risk, concept=concentration, missing=measure. The semantic layer team adds a concentration measure to the Risk Gold explore, linked to the glossary definition. Next time the question is asked, the agent answers correctly. The gap became infrastructure.
-
-_Consequences:_ Gap logging produces noise. Not every unanswered question represents a real gap — some are malformed queries, some are outside scope. Triaging gap signals is work.
+Universal does not mean pristine. Governance is universal; quality tiers are not. A dataset scored two out of five, last reviewed fourteen months ago, with no domain essay, is still governed — documented, catalogued, owned, reachable through the layer, its quality rating visible to everyone who touches it. The rule is never "you may bypass for low-quality data." The rule is that the system tells you what it knows about the data’s quality before you reason over it. Penny stock and blue chip trade on the same exchange; both are regulated; the disclosure requirements are the same.
 
 Public discourse conflates two failure modes. When people say "AI hallucinates," they usually mean a chatbot confidently stated a false fact about the world — unstructured text generation failure. Conversational analytics over governed data fails differently: a wrong query — a wrong join, a wrong filter, a wrong aggregation. The semantic layer eliminates that failure mode by removing the degrees of freedom that produce wrong queries. Conflating the two is a category error that leads organizations to reject conversational analytics for the wrong reasons.
 

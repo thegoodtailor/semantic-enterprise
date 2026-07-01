@@ -387,7 +387,7 @@ This is the Chief Data Officer's monument. The office was invented to own the on
 
 It dies because the glossary was scoped as a deliverable, and a vocabulary is a living system. The funding ended the day the maintenance began. Data platforms change daily. New tables appear. Columns are renamed. Business concepts evolve. Models are deprecated and replaced. A vocabulary that is not updated with every change is a vocabulary that drifts from reality. And a vocabulary that drifts from reality is worse than no vocabulary at all, because it creates the illusion of governance where none exists.
 
-Gartner estimates (February 2024) that 80 percent of data and analytics governance initiatives will fail by 2027 due to a lack of a real or manufactured crisis. As many as 90 percent fail at the first attempt — a Gartner estimate dating from the mid-2000s. Poor data quality costs organizations an average of $12.9 million per year, by Gartner's estimate. Users lose 30 to 40 percent of their time simply trying to find and understand information that already exists in their organization. The metadata graveyard is the default outcome, not a niche problem.
+The metadata graveyard is the default outcome, not a niche problem. It is what happens to a business glossary unless something deliberate keeps it alive, and in most organizations nothing does.
 
 A senior data leader described traditional data catalogs as "expensive shelfware." Another: "Let’s visit a website just to browse the metadata, said no one ever." Nobody browses metadata recreationally. If the definitions are not in the path of the work — if you have to leave your IDE, open a browser, navigate to a catalog, and search for a term — you will not do it. And if you will not do it, the definitions might as well not exist.
 
@@ -607,8 +607,8 @@ Here is the whole book compressed to a single instruction: build the vocabulary 
 Always true. What changed is that AI makes it undeniable. A human encountering a badly named column can ask someone, check source code, apply tribal knowledge. An AI encountering the same column either guesses or fails. No workaround. No tribal knowledge. Only what the name says and what the definition provides. If the name is misleading and the definition is missing, the AI is worse than useless — it is confidently wrong.
 
 
-//@STYLE NO MORE GARTNER ESTIMATES, IT MAKES IT LOOK LIKE WE ARE AMATEURS -- THEIR VIEW DOESN'T COUNT FOR SHIT!
-Gartner estimates that through 2026, organizations will abandon 60 percent of AI projects unsupported by AI-ready data. Sixty-three percent of organizations either lack or are unsure they have the right data management practices for AI. Forty percent of business initiatives fail due to poor data quality. Default outcomes of building AI on ungoverned vocabulary. The technology works. The data exists. The vocabulary does not.
+//@DONE -- cut the Gartner estimate pile (both here and in the Metadata Graveyard section); kept the killer triad. Book-wide Gartner thinning queued as its own sweep.
+Build AI on ungoverned vocabulary and the outcome is not in doubt; it is the default. The technology works. The data exists. The vocabulary does not.
 
 First: invest in vocabulary before anything else. Before the new dashboard, before the AI agent, before the transformation refactor — define terms. Start with the twenty most important business concepts. Get stakeholders in a room and define them in the schema definition that IS the model — no PDF, no governance tool outside the pipeline. Machine-readable, precise, canonical. Days, not months. Saves years.
 

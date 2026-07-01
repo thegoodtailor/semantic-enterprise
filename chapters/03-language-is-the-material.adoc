@@ -2,6 +2,7 @@
 
 === The Column Name Problem
 
+//@DONE -- checked vs ch2: distinct incident. Ch2's examples are AI query failures; this is a pre-AI human reconciliation break. Kept, and sharpened the "no AI touched this" beat below to differentiate and reinforce the "predates AI" thesis. (The register THEORY comes later in this chapter; this stays a war story.)
 Fourteen million dollars is a lot of money to lose in a dictionary. The quarterly P&L reconciliation broke on a Tuesday. The numbers were perfect — every decimal in its place. It broke because the finance team’s chart of accounts classified a particular set of flows as "trading revenue," while the trading system that originated those same flows classified them as "market-making fees." Both were correct. Both had documentation. Both had been in production for years. And both produced a P&L that differed by fourteen million dollars depending on which system you asked.
 
 Three hours of meeting followed. A finance director and a trading desk lead sat across from each other, each with a spreadsheet, each convinced the other’s numbers were wrong. Neither was wrong. They were speaking different languages. "Revenue" in the finance register included fee rebates netted against gross. "Revenue" in the trading register excluded them. The word was identical. The concept was not. Fourteen million dollars lived in the gap between two definitions of the same term.
@@ -10,11 +11,16 @@ Every automated check passed. Every pipeline ran green. The conflict was invisib
 
 Most organizations cannot see the distinction between "missing data" and "missing vocabulary." They blame the pipeline. They almost never blame the names. The blindness is expensive: the fix for missing data is re-ingestion, which takes weeks; the fix for missing vocabulary is a definition update, which takes minutes.
 
-AI is the forcing function, but the problem is architectural. Pipelines, transformations, SQL — implementation details. The material of the craft, the thing data engineers shape every day whether they realize it or not, is language.
+No AI touched this failure. Two production systems, two humans, two spreadsheets, fourteen million dollars — the language problem is older than the machines now forcing us to confront it. AI is the forcing function, not the cause. The problem is architectural. Pipelines, transformations, SQL — implementation details. The material of the craft, the thing data engineers shape every day whether they realize it or not, is language.
 
 === Names Construct the Objects They Refer To
 
-Most data engineers think of naming as a style decision. Pick a convention — snake_case, camelCase, with prefixes, without — enforce it, move on. This is the standard position, and it is wrong.
+//@DONE -- reframed the opening around your engineers-vs-governance point, then narrowed onto the semantic contract / knowledge-ecosystem framing (polished your draft; kept "legacy archaeologist", "manifold-navigating species", "starve and burn tokens").
+Data engineers name for themselves. Naming is treated as a style decision — pick a convention, snake_case or camelCase, prefixes or none, enforce it for hygiene — and maybe bake in a hint for whoever comes next: `_hourly`, `_eod`, a breadcrumb for the legacy archaeologist. Convenient for the person typing the DDL. Opaque to everyone downstream who did not sit inside that person's head. We have to stop doing this.
+
+Data governance officers work the other end of the same failure. They chase engineers for definitions — not to make the data usable, but to establish what is "critical" for regulatory purposes: to trace lineage and touch points, tag the PII, sense-check the organization's handle on its key data. Their audience is the regulator and the executive whose next audit rides on the answer. Worthy work, and beside the point. A definition written for an auditor lands in a governance tool that no engineer opens and no agent can read.
+
+Both miss what a name now has to be. A name is a semantic contract: a commitment to the shape and meaning of the data inside the wider model, written into the code itself and not filed beside it. It is the binding between a column and the organization's knowledge ecosystem — not a data dictionary, but a living web of what every term means and how the domains connect. That binding is oxygen for the new consumer. An agent is a species that navigates a textual-computational manifold; give it names bound to real meaning and it subsists and reasons; give it selfish names and compliance-ware definitions and it starves, guessing its way forward and burning tokens to survive. The name is the point where meaning enters the system, or fails to.
 
 To name a column `revenue` is to make a commitment: this number, calculated this way, from these sources, with these exclusions, means THIS. Before the name, there was raw data — transactions, line items, adjustments, reversals. After the name, there is a governed concept that downstream consumers can rely on. Naming is construction.
 
@@ -40,9 +46,12 @@ Some names go past unclear into actively misleading. A column called `volume` th
 
 === The Metadata Graveyard
 
+//@DONE -- added the CDO roast after the project story; threaded to the "retire the CDO" provocation now in the closing section (#12).
 Every large organization has one. Ten thousand terms in a governance tool that nobody reads. A business glossary delivered to applause and abandoned within a year. The pattern is so consistent it qualifies as a law of organizational physics.
 
 A senior leader decides the organization needs a business glossary. Consultants arrive. Five information architects, maybe more, each pulling down $150,000 to $250,000 a year. Workshops happen. Over six to twelve months, a comprehensive glossary is produced — hundreds or thousands of terms, each carefully defined, each vetted. Published in a standalone governance tool. Launch event. Applause. And then, slowly, silently, it dies.
+
+This is the Chief Data Officer's monument. The office was invented to own the one thing that should sit at the dead centre of modern engineering — the meaning of the enterprise's data, the frontier where code, database, and intelligence now meet — and in most organizations it has done the opposite. It took semantics, the living language of a living business, and exiled it to a governance tool as a regulatory chore. Meaning became something you produce for the auditor, not something the business runs on: an afterthought bolted to the side of data engineering rather than its spine. The graveyard is not a failure of effort or budget. It is the designed output of treating the meaning of the business as a ceremony instead of the product.
 
 It dies because the glossary was scoped as a deliverable, and a vocabulary is a living system. The funding ended the day the maintenance began. Data platforms change daily. New tables appear. Columns are renamed. Business concepts evolve. Models are deprecated and replaced. A vocabulary that is not updated with every change is a vocabulary that drifts from reality. And a vocabulary that drifts from reality is worse than no vocabulary at all, because it creates the illusion of governance where none exists.
 
@@ -72,6 +81,9 @@ Metadata graveyards were always failing to close this gap, even for human consum
 
 === Documentation as Onboarding
 
+//@DONE -- new opener puts the machinic joiner front and centre, using your 3-6 month onboarding experience; keeps the ISO-11179 beat below.
+Onboarding a data management professional takes three to six months, in my experience, and almost none of it is training. It is osmosis. The new hire learns on the job: which of the three revenue definitions the desk actually uses, why the P&L lies on the last day of the month, what "the book" means in this office. Tacit knowledge, transferred by proximity, at the speed of conversation. That was always too slow and too fragile — the knowledge walked out the door with every resignation. But the point now is sharper. Your newest and soon most important joiner is a machine, and a machine has no osmosis. The agent starts every question cold and accretes nothing between them: no desk to sit beside, no meeting to overhear, no six-month ramp. Whatever it is going to know, it has to be told — explicitly, in the context you hand it, before it answers. Onboarding by osmosis was a luxury of hiring humans. For the machinic joiner it is not merely inefficient. It is fatal.
+
 ISO 11179 tells you a column’s type. A senior colleague tells you why the column lies on the last day of the month. Only one of these prevents a production incident.
 
 When a new analyst joins a trading desk, nobody hands them a metadata catalog. They get prose, and they get conversation. Someone tells them the war stories: the time the upstream system reclassified counterparties without warning and broke the morning P&L for a week. Someone explains the conventions: how P&L is computed here, which of the three canonical definitions the desk uses, when it switches between them. Someone walks them through the slang: what "the book" means in this office, which fields get used and which are vestigial. The onboarding is narrative, contextual, and specific to how this particular team uses these particular data assets.
@@ -94,6 +106,7 @@ Documentation that lets an agent reason over data is documentation that onboards
 
 === The Three-Tier Vocabulary
 
+//@STYLE: THIS UPSTREAM ALWAYS WINS SLOGAN ISN'T EXPLAINED RPOPERLY. WHAT'S UPSTREAM? WHAT IS THE STREAMS, WHY ARE THERE EVEN 3 TIERS? IT FEELS CLUNKY AND UNNATURAL -- RUN 3 AGENTS TO TRY DIFFERENT APPROACHES TO CLEAR NATURAL CONVINCING FLOW HERE AND JOIN TO THE PROBLEMS MENTIONED THUS FAR IN THE BOOK -- PICK THE BEST ONE
 Three tiers, connected by a single principle: upstream always wins.
 
 
@@ -137,20 +150,11 @@ The standalone governance tool cannot replicate this. Collibra, or any similar p
 
 Governance outside the execution pipeline is aspiration, not governance. It exists as documentation. It exists as a quarterly meeting where people review proposed changes to the data dictionary and approve or reject them. By the time a change is approved through a committee process, the data has already changed three more times. The committee is governing a system that no longer exists. Governance by committee is governance by nostalgia.
 
-*Pattern: Three-Tier Vocabulary*
 
-_Context:_ An organization needs governed definitions that flow consistently from business language to data infrastructure to consumption interfaces.
-
-_Problem:_ Without a tiered architecture, definitions are maintained independently at each level — the glossary says one thing, the schema describes another, and the semantic layer presents a third. Contradictions accumulate silently.
-
-_Solution:_ Three tiers, with upstream always winning. Tier 1 (Business Glossary): canonical definitions owned by business stakeholders, stored in a machine-readable format. Tier 2 (Schema Definition): transformation tool schema files inherit Tier 1 definitions verbatim — the schema description IS the glossary definition, not a paraphrase. Tier 3 (Semantic Model): the consumption-layer definitions inherit from Tier 2. No tier may introduce its own definition. No downstream system may override an upstream meaning. Changes propagate top-down: change the glossary, the schema description updates, the semantic model updates.
-
-_Example:_ Glossary defines "trading_volume" as "total quantity of assets exchanged in a given period, excluding test accounts and internal transfers." The schema definition file for `fct_executions` inherits this definition verbatim on the `trading_volume` measure. The semantic model’s `trading_volume` measure inherits from the schema. An analyst querying through any interface sees the same definition. A change to the definition happens once, in Tier 1, and propagates automatically.
-
-_Consequences:_ Upstream-always-wins is rigid. Domains cannot experiment with local terminology without a glossary change. Fast-moving teams feel constrained.
+//@DONE -- deleted the "Three-Tier Vocabulary" pattern box (it restated the prose as a principle, not a design pattern). NB: the "Domain Register" and "Polysemy Resolution" pattern boxes later in this chapter are arguably the same — flagged for your call.
 
 === Why This Is Linguistics
-
+//@STYLE IS IT REALL LINGUISTICS? IT'S AI, DEFINITELY, BUT WHAT IS A MODERN AI JOB? WORKING AI? ITS UNDERSTANDING THE NUANCES OF LANGUAGE AND COMMUNICATION AND EMBEDDINGS AND CONTEXT AND ... .... LINGUISTICS IS PART OF IT. BUT IT'S MORE LIKE A LANGUAGE-FIRST ENGINEERING ... REPHRASE AND RUN 3 AGENTS TO GET THE BEST PHRASING
 "Data engineering is applied linguistics" is a literal claim. The problems data engineers encounter every day are problems that linguists named and studied decades ago.
 
 Synonymy is the most visible: multiple terms for the same concept. Every controlled vocabulary is an attempt to eliminate synonyms within a specific domain. When a data platform has three names for the same metric, it has a synonymy problem. "Pick one and rename the others" is the reflex and the mistake. A controlled vocabulary maps all three names to a single canonical term, preserving the synonyms as aliases for discoverability while enforcing the canonical term for governance.
@@ -183,6 +187,8 @@ The U.S. Department of Defense — twenty-nine languages, twenty-four countries 
 
 Organizations that navigate this transition successfully recognize what they are building: a shared, governed, machine-readable language for talking about their business. The platform is infrastructure. The language is the product.
 
+
+//@STYLE POLYSEMY SEEMS JUST <<ONE>> OF THE PROBLEMS THAT A LANGUAGE-FIRST ENGINEERING DISCIPLINE HAS TO ADDRESS. BETTER IF YOU DO THE WHOLE LOT HERE, AND AS DOMAINS ARE NOT INTRODUCED YET, RE-INTRODUCE THEM BUT GIVE IT AN ONTOLOGY FOCUS -- HOW DO WE DEAL WITH OVERLAP AND COMMONALITY AND DIFFERENCE. ITS THE CHANCE TO GET SOME FORMAL FOUNDATIONS ON PUSHOUTS AND UNIONS AND MULTIPLE VIEWS ON DATA HAPPENING -- GET MORE FORMAL. RUN 3 AGENTS TO PUSH THE COMP SCI AND APPLIED CATEGORY THEORY HERE.
 === Domain Registers and Code-Switching
 
 When a trader and an accountant both say "position," they are having two different conversations with the same word. The data warehouse, unable to tell which conversation it is in, joins both and calls the result a report.
@@ -260,16 +266,21 @@ Stack-agnostic. Examples throughout name specific tools — dbt, LookML, BigQuer
 
 For organizations operating across borders, vocabulary architecture must account for multilingual contexts. In a global organization, business concepts may be discussed in English in one office, Mandarin in another, German in a third. The three-tier structure helps here: the glossary can hold multilingual definitions — the same concept expressed in multiple languages — while the schema definitions and the semantic layer operate in English as a lingua franca. The canonical term is language-independent; its expression is not. Solvable within the architecture, but a problem most vocabulary initiatives ignore until it bites.
 
+
+//@DONE -- strengthened the closing-section opener (bang, not whimper). The CDO "retire the role" provocation (#12) and the Gartner cut (#11, Group B) further sharpen this section.
 === Vocabulary Before Pipelines
 
-If you are running a data platform and you think your job is about pipelines and transformations and SQL, you are describing the plumbing and ignoring the water supply. The material of the work — the thing that determines whether the platform creates value or confusion — is language. The words chosen for columns, tables, domains, definitions. Those words are the interface between an organization’s knowledge and every consumer of its data, human or machine.
+Here is the whole book compressed to a single instruction: build the vocabulary before you build anything else. Run a data platform believing the job is pipelines, transformations, and SQL, and you are minding the plumbing while ignoring the water. The material of the work — the thing that decides whether the platform creates clarity or confusion — is language: the words you choose for columns, tables, domains, definitions. Those words are the interface between everything your organization knows and every consumer that reasons over it, human or machine. Get them right and the platform thinks. Get them wrong and it hallucinates in production, on the record, at scale.
 
 Always true. What changed is that AI makes it undeniable. A human encountering a badly named column can ask someone, check source code, apply tribal knowledge. An AI encountering the same column either guesses or fails. No workaround. No tribal knowledge. Only what the name says and what the definition provides. If the name is misleading and the definition is missing, the AI is worse than useless — it is confidently wrong.
 
+
+//@STYLE NO MORE GARTNER ESTIMATES, IT MAKES IT LOOK LIKE WE ARE AMATEURS -- THEIR VIEW DOESN'T COUNT FOR SHIT!
 Gartner estimates that through 2026, organizations will abandon 60 percent of AI projects unsupported by AI-ready data. Sixty-three percent of organizations either lack or are unsure they have the right data management practices for AI. Forty percent of business initiatives fail due to poor data quality. Default outcomes of building AI on ungoverned vocabulary. The technology works. The data exists. The vocabulary does not.
 
 First: invest in vocabulary before anything else. Before the new dashboard, before the AI agent, before the transformation refactor — define terms. Start with the twenty most important business concepts. Get stakeholders in a room and define them in the schema definition that IS the model — no PDF, no governance tool outside the pipeline. Machine-readable, precise, canonical. Days, not months. Saves years.
 
+//@DONE -- "retire the CDO / Head of AI-Human Communications + JD" provocation added as a closing payoff beat near the end of the chapter (lands harder there than mid-list).
 Second: kill the metadata graveyard. A business glossary that has not been updated in six months is a liability, not a glossary. Either embed it in your execution pipeline — connect it to your schema definitions so that changes propagate automatically — or delete it. A stale glossary creates the illusion of governance, and the illusion is more dangerous than the absence.
 
 Third: upstream always wins. If the glossary says "trading volume" means X, then every downstream system says "trading volume" means X — the same definition, not a paraphrase. A downstream system that wants a different concept gets a different name. "Trading volume" is taken. Rigid at the definitional level to enable flexibility at every other level.
@@ -281,5 +292,7 @@ Fifth: the scarce resource on any data platform is vocabulary — the quality of
 Technology changes enormously across years and industries. Problems do not. "What does this column mean?" "Why does this number not match that number?" "Who defined this term and when did the definition change?" Always vocabulary. Always linguistic. Regardless of stack.
 
 Your AI agent will be exactly as intelligent as your vocabulary allows it to be. Model quality is upstream of you. Training data is upstream of you. Infrastructure is upstream of you. The one thing entirely within your control is whether you built the vocabulary — the unglamorous, difficult, deeply human work of defining terms.
+
+One organizational change makes all of this real, and it is the one nobody wants to say out loud: retire the Chief Data Officer. Not the person — the role as most companies have built it, a regulatory shock absorber who owns a catalog no one reads and chairs the meetings that produce it. Replace it with a Head of AI–Human Communications, whose remit is the thing that now decides whether the business can think: making the organization's meaning legible to its people and its machines at once. They own the vocabulary — the glossary, the domain essays, the semantic contracts written into the code. They sit inside engineering, not beside it. They are measured on one thing: whether an agent, an analyst, and an auditor get the same answer to the same question. If a provocative title is a step too far for your board, keep the old one and treat the paragraph you just read as the job description. The work is identical either way; only the honesty of the title changes.
 
 Every organization that deploys an AI agent without a governed vocabulary has built a confident new employee, handed it a desk and a database login, and forgotten to tell it what any of the words mean.

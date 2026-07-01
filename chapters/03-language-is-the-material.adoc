@@ -242,31 +242,8 @@ A single flat vocabulary with one definition of each term is the approach most o
 
 No natural language has a single register. English does not speak the same way in a courtroom, a laboratory, a trading floor, and a kitchen. A competent data platform must navigate the same shifts — not through a large language model that approximates register-awareness from training data, but through explicit vocabulary infrastructure that models registers as first-class architectural concepts.
 
-*Pattern: Domain Register*
-
-_Context:_ Multiple business domains use overlapping vocabulary — the same word means different things in different domains.
-
-_Problem:_ Cross-domain queries silently conflate domain-specific meanings. "Position" in Trading (current holdings) is not "position" in Treasury (cash and liquidity allocation). An agent or analyst using the wrong definition produces wrong answers without warning.
-
-_Solution:_ Each domain operates in a linguistic register — a self-consistent vocabulary with its own conventions, slang, and default assumptions. The register is documented explicitly: which terms are domain-specific, what they mean in this domain, and how they differ from the same term in other domains. When a query crosses domains, register switching is explicit — the system loads the target domain’s register and resolves any polysemous terms through the bridge morphism.
-
-_Example:_ Trading register: "position" = current holdings by instrument. Treasury register: "position" = cash and liquidity allocation by currency. When an agent encounters "position" in a cross-domain query, the register switching protocol identifies which domain’s definition applies. If both are needed, the bridge morphism documents how Trading.position and Treasury.position relate (and where they do not).
-
-_Consequences:_ Maintaining explicit register documentation for every domain is ongoing work. Registers drift if not reviewed.
-
-*Pattern: Polysemy Resolution*
-
-_Context:_ A term appears in multiple domain registers with different meanings.
-
-_Problem:_ Without explicit resolution, the system picks one meaning silently — typically whichever table appears first in the schema or whichever domain the agent was initialized in. The consumer does not know which meaning was used.
-
-_Solution:_ Polysemous terms are flagged in the vocabulary with explicit cross-domain mappings. Each domain’s definition stands within its register. The bridge morphism between domains documents how the definitions relate: whether they are the same concept viewed differently (Trading.Instrument ≈ Finance.FinancialProduct), overlapping but non-identical (Trading.volume ≠ Finance.revenue_volume), or unrelated homonyms (Trading.book ≠ Accounting.book). When an agent or semantic layer encounters a polysemous term in a cross-domain context, the resolution is governed and declared, not inferred.
-
-_Example:_ "Revenue" in Finance = net recognized revenue per GAAP. "Revenue" in Trading = gross execution value. An agent asked "What is our revenue?" in a cross-domain context loads both definitions, identifies the polysemy, and either asks the consumer which definition they mean or defaults to the requesting domain’s register with an explicit declaration: "Using Finance definition of revenue (net recognized, GAAP). Trading uses a different definition (gross execution value)."
-
-_Consequences:_ Cross-domain queries become slower (resolution overhead) and more complex to debug when polysemy maps conflict.
-
-=== Why Data Engineering Is Applied Linguistics
+//@DONE -- killed the Domain Register and Polysemy Resolution pattern boxes (author: these are principles, not design patterns, and the register/pushout prose above already carries them). NB author flagged the whole "Pattern:" device may not be working book-wide — open question for a later call.
+=== Meaning Is Constructed, Not Found
 
 Type systems and semantic layers are structurally isomorphic, and making this explicit reframes what data architecture is. A type system — the kind studied in programming language theory and mathematical logic — tells you what operations are valid on what objects. You cannot add a string to a number, not because the computer cannot do it, but because the type system says it is meaningless. A semantic layer does the same thing for data: it tells you what queries are valid on what tables, what aggregations make sense for what measures, what hierarchies structure what dimensions. A type system and a semantic layer are the same discipline applied at different levels of abstraction. (This is not incidental to the author’s perspective — a background in type theory tends to make this structural parallel impossible to unsee.)
 
@@ -288,7 +265,7 @@ For organizations operating across borders, vocabulary architecture must account
 //@DONE -- strengthened the closing-section opener (bang, not whimper). The CDO "retire the role" provocation (#12) and the Gartner cut (#11, Group B) further sharpen this section.
 === Vocabulary Before Pipelines
 
-Here is the whole book compressed to a single instruction: build the vocabulary before you build anything else. Run a data platform believing the job is pipelines, transformations, and SQL, and you are minding the plumbing while ignoring the water. The material of the work — the thing that decides whether the platform creates clarity or confusion — is language: the words you choose for columns, tables, domains, definitions. Those words are the interface between everything your organization knows and every consumer that reasons over it, human or machine. Get them right and the platform thinks. Get them wrong and it hallucinates in production, on the record, at scale.
+Here is the whole book compressed to a single instruction: build the vocabulary before you build anything else. Run a data platform believing the job is pipelines, transformations, and SQL, and you have named the tools and missed the work. The material of the work — the thing that decides whether the platform creates clarity or confusion — is language: the words you choose for columns, tables, domains, definitions. Those words are the interface between everything your organization knows and every consumer that reasons over it, human or machine. Get them right and the platform thinks. Get them wrong and it hallucinates in production, on the record, at scale.
 
 Always true. What changed is that AI makes it undeniable. A human encountering a badly named column can ask someone, check source code, apply tribal knowledge. An AI encountering the same column either guesses or fails. No workaround. No tribal knowledge. Only what the name says and what the definition provides. If the name is misleading and the definition is missing, the AI is worse than useless — it is confidently wrong.
 

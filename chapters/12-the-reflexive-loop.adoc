@@ -31,13 +31,9 @@ image::figures/reflexive-loop.png[the reflexive loop,width=640,align="center"]
 
 Loop 2 is three patterns, and they share a birth rule: refutation machinery is built from errors you discover rather than errors you imagine (Hamel Husain's rule for evaluations). An assertion invented at a whiteboard tests the author's imagination; an assertion born of an incident tests the world's demonstrated capacity to fool you.
 
-*Pattern: Semantic Assertion*
+A definition — a measure, a morphism, an essay claim — goes into production use by agents and humans, authored or revised at AI speed, and data tests guard the pipeline while nothing guards the meaning. Every `not_null` can pass forever over a revenue measure that silently includes intercompany transfers. A definition with no stated conditions of failure is never judged wrong; it just produces wrong answers until a domain expert happens to notice.
 
-_Context:_ A definition — a measure, a morphism, an essay claim — is in production use by agents and humans, and was authored or revised at AI speed.
-
-_Problem:_ Data tests guard the pipeline and nothing guards the meaning. Every `not_null` can pass forever over a revenue measure that silently includes intercompany transfers. A definition with no stated conditions of failure is never judged wrong; it just produces wrong answers until a domain expert happens to notice.
-
-_Solution:_ Every definition ships with falsification conditions: executable claims — a reconciliation to the general ledger (GL) within tolerance, a structural exclusion — whose failure indicts the definition rather than the data. They run on every scan, like any test, with one difference in verdict: a failed `not_null` indicts the pipeline; a failed assertion indicts the meaning — the definition, the morphism, or the essay behind it. Each assertion records the incident that taught it. The nearest ancestor, the data contract, is a forward-looking promise; an assertion is the residue of a refutation.
+So every definition ships with falsification conditions: executable claims — a reconciliation to the general ledger (GL) within tolerance, a structural exclusion — whose failure indicts the definition rather than the data. They run on every scan, like any test, with one difference in verdict: a failed `not_null` indicts the pipeline; a failed assertion indicts the meaning — the definition, the morphism, or the essay behind it. Each assertion records the incident that taught it. The nearest ancestor, the data contract, is a forward-looking promise; an assertion is the residue of a refutation.
 
 [source,yaml]
 ----
@@ -137,33 +133,25 @@ definitions:
 
 None of these definitions is exotic. Every one is a term a fund uses a hundred times a day — and every one carries a convention that is invisible in the name and lethal in the gap. "Carried interest" is a single concept until you ask whether the waterfall is European or American, and then it is two different numbers that a model will average without noticing. "NAV" is a price for a liquid book and a discounted-cash-flow estimate for an illiquid one, marked as of a valuation date that is not the report date — and an agent that joins NAV to a report-date calendar answers a question nobody asked, confidently. "Performance fee" is one rate that resolves to different dollars per investor once a high-water mark and series accounting are in play. These are not edge cases bolted onto simple concepts; the convention *is* the concept. A human analyst carries it in their head and a new hire absorbs it in a month of corrections. An agent has neither the head nor the month. It reads the name, applies the textbook default, and produces a plausible, articulate, wrong answer — which is precisely why the convention has to live in the definition, in language, where the agent reads before it reasons. The nuance is the reason the documentation exists. Strip the nuance to a tidy one-liner and you have re-created the failure the whole architecture is built to prevent.
 
-_Example:_ After an April board deck reported a `net_revenue` that failed to reconcile to the GL, the definition gained the two assertions above: monthly reconciliation to the GL revenue class within 0.5%, and the structural exclusion of intercompany counterparties. The drift that caused the restatement can recur; the silence that let it reach the board cannot.
+After an April board deck reported a `net_revenue` that failed to reconcile to the GL, the definition gained the two assertions above: monthly reconciliation to the GL revenue class within 0.5%, and the structural exclusion of intercompany counterparties. The drift that caused the restatement can recur; the silence that let it reach the board cannot.
 
-_Consequences:_ Assertions are code to maintain, and a definition carrying none becomes a visible smell — pressure that is intended. Suites grow monotonically with incidents and need pruning discipline (saturation, below).
+Assertions are code to maintain, and a definition carrying none becomes a visible smell — pressure that is intended. Suites grow monotonically with incidents and need pruning discipline (saturation, below).
 
-*Pattern: Semantic Postmortem*
+When a wrong number reaches a decision surface — a board deck, a regulatory submission, an agent answer acted upon — and the root cause is meaning rather than infrastructure, most organizations run postmortems for outages and treat the wrong number as an embarrassment to be corrected quietly. The slide is fixed; the architecture that produced it is not; the same definition fails the same way next quarter.
 
-_Context:_ A wrong number reached a decision surface — a board deck, a regulatory submission, an agent answer acted upon — and the root cause was meaning, not infrastructure.
+A wrong number is an incident, and meaning gets the Site Reliability Engineering (SRE) treatment — blameless, written, reviewed, in the discipline of the Google SRE book's postmortem chapter, whose maxim the doctrine borrows: the cost of failure is education. The postmortem reconstructs which answer was given, which provenance it carried, which conjecture failed, and what revision follows. Its mandatory output is a new semantic assertion that would have caught the failure — the regression test of meaning. A postmortem whose output is a document is a memo. A postmortem whose output is an executable assertion is architecture.
 
-_Problem:_ Organizations run postmortems for outages and treat wrong numbers as embarrassments to be corrected quietly. The slide is fixed; the architecture that produced it is not; the same definition fails the same way next quarter.
+The April restatement traces to `net_revenue` absorbing a new intercompany feed through a drifted morphism. The postmortem revises the morphism, ships `net_rev_recon_gl` and `net_rev_no_intercompany`, and closes. The layer can still be fooled — it can no longer be fooled the same way twice.
 
-_Solution:_ A wrong number is an incident, and meaning gets the Site Reliability Engineering (SRE) treatment — blameless, written, reviewed, in the discipline of the Google SRE book's postmortem chapter, whose maxim the doctrine borrows: the cost of failure is education. The postmortem reconstructs which answer was given, which provenance it carried, which conjecture failed, and what revision follows. Its mandatory output is a new semantic assertion that would have caught the failure — the regression test of meaning. A postmortem whose output is a document is a memo. A postmortem whose output is an executable assertion is architecture.
+Enforcement needs an owner: a postmortem with no assertion among its action items is incomplete by rule. Blamelessness is load-bearing — the moment a postmortem indicts a person instead of a conjecture, incidents stop being reported and the loop starves.
 
-_Example:_ The April restatement traces to `net_revenue` absorbing a new intercompany feed through a drifted morphism. The postmortem revises the morphism, ships `net_rev_recon_gl` and `net_rev_no_intercompany`, and closes. The layer can still be fooled — it can no longer be fooled the same way twice.
+Definitions are drafted and revised at AI speed, so review must hunt falsity at the same speed. Confirmation is cheap and refutation is nobody's job. A review process built on agents blessing their author's work accumulates plausible, unchallenged meaning — the judges favor their own generations.
 
-_Consequences:_ Enforcement needs an owner: a postmortem with no assertion among its action items is incomplete by rule. Blamelessness is load-bearing — the moment a postmortem indicts a person instead of a conjecture, incidents stop being reported and the loop starves.
+The countermeasure is standing adversarial agents whose job is to break definitions: the exclusion lens, the provenance lens, the adversarial-input lens of "Building with AI", promoted to a standing institution under three design rules. Panel ≠ author — different models, or at minimum different contexts, because introspection does not refute. Verdicts are scored against eventual outcomes, so the judges sit inside the calibration loop they enforce. Disagreement routes to a human adjudicator, never to a vote among the agents. The direct ancestor is a Stanford agentic-falsification system named, fittingly, POPPER (2025), whose agents design sequential falsification experiments with controlled error rates for scientific hypotheses; here the hypotheses are the enterprise's vocabulary.
 
-*Pattern: Refutation Panel*
+The panel attacks a revised `customer_lifetime_value`. The exclusion lens finds the first-thirty-day churn carve-out undocumented; the adversarial lens constructs an early-stage-customer cohort where the measure misleads; the provenance lens confirms the formula matches its cited source. Two objections, one pass: the contest routes to the domain owner with evidence attached.
 
-_Context:_ Definitions are drafted and revised at AI speed; review must hunt falsity at the same speed.
-
-_Problem:_ Confirmation is cheap and refutation is nobody's job. A review process built on agents blessing their author's work accumulates plausible, unchallenged meaning — the judges favor their own generations.
-
-_Solution:_ Standing adversarial agents whose job is to break definitions: the exclusion lens, the provenance lens, the adversarial-input lens of "Building with AI", promoted to a standing institution under three design rules. Panel ≠ author — different models, or at minimum different contexts, because introspection does not refute. Verdicts are scored against eventual outcomes, so the judges sit inside the calibration loop they enforce. Disagreement routes to a human adjudicator, never to a vote among the agents. The direct ancestor is a Stanford agentic-falsification system named, fittingly, POPPER (2025), whose agents design sequential falsification experiments with controlled error rates for scientific hypotheses; here the hypotheses are the enterprise's vocabulary.
-
-_Example:_ The panel attacks a revised `customer_lifetime_value`. The exclusion lens finds the first-thirty-day churn carve-out undocumented; the adversarial lens constructs an early-stage-customer cohort where the measure misleads; the provenance lens confirms the formula matches its cited source. Two objections, one pass: the contest routes to the domain owner with evidence attached.
-
-_Consequences:_ Panels cost compute and raise false alarms; scoring verdicts against outcomes retires lenses that cry wolf. The residue is irreducibly human — a panel can prove a definition inconsistent with the evidence, never that it fails to say what the business means.
+Panels cost compute and raise false alarms; scoring verdicts against outcomes retires lenses that cry wolf. The residue is irreducibly human — a panel can prove a definition inconsistent with the evidence, never that it fails to say what the business means.
 
 === The Brain That Knows When It Was Wrong
 
@@ -185,29 +173,21 @@ CREATE TABLE governance.semantic_feedback (
 
 Every row is the outcome of a prediction, on two clocks: when the world disagreed, and when the brain found out. From that history, two patterns.
 
-*Pattern: Calibration Ledger*
+Agents and humans must decide, before relying on a definition, how far to trust it. Certification grades process — built right, reviewed, documented — and says nothing about survival in the field. A certified definition contested weekly and a certified definition unchallenged through four hundred uses carry the same badge.
 
-_Context:_ Agents and humans must decide, before relying on a definition, how far to trust it.
+So the loop fits per-definition reliability scores from the outcome history in `governance.semantic_feedback` — uses, contests, refutations, revisions, live-assertion status — exposed at pre-flight to every consumer, on the template of Meta's probabilistic flakiness scores, which grade each test on its outcome record rather than its code. Certification says *built right*; calibration says *not yet proven wrong, in N attempts*. Airbnb's Midas certification is the strongest version of the former; the ledger is the latter, and a platform wants both.
 
-_Problem:_ Certification grades process — built right, reviewed, documented — and says nothing about survival in the field. A certified definition contested weekly and a certified definition unchallenged through four hundred uses carry the same badge.
+Pre-flight, the agent reads: `net_revenue`: 412 uses, 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
 
-_Solution:_ Per-definition reliability scores fitted from the outcome history in `governance.semantic_feedback` — uses, contests, refutations, revisions, live-assertion status — exposed at pre-flight to every consumer, on the template of Meta's probabilistic flakiness scores, which grade each test on its outcome record rather than its code. Certification says *built right*; calibration says *not yet proven wrong, in N attempts*. Airbnb's Midas certification is the strongest version of the former; the ledger is the latter, and a platform wants both.
+A reliability score is itself a measure and inherits Goodhart exposure (below); the ledger therefore scores adjudicated outcomes only, never raw complaint volume. Sparse histories calibrate weakly — a young definition's score reports its own ignorance, which is the correct behavior.
 
-_Example:_ Pre-flight, the agent reads: `net_revenue`: 412 uses, 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
+Refutations land; definitions are revised; the system must remember what it used to believe and when it learned better. A layer that overwrites definitions in place destroys the evidence of its own learning. Last quarter's answers become unreconstructible, produced under a meaning that no longer exists anywhere.
 
-_Consequences:_ A reliability score is itself a measure and inherits Goodhart exposure (below); the ledger therefore scores adjudicated outcomes only, never raw complaint volume. Sparse histories calibrate weakly — a young definition's score reports its own ignorance, which is the correct behavior.
+The fix is the bitemporal ontology of "Time", recast as the memory of the learning loop. Every revision is an event on two clocks: when the old meaning stopped being right (valid time) and when the system learned it (system time). "What did we mean by Customer in Q3 2024, and when did we discover that meaning was wrong?" becomes as answerable as a P&L query. A brain that cannot remember its previous beliefs has not learned — only changed.
 
-*Pattern: Belief Revision Record*
+The `net_revenue` revision of 2026-03-02 records: prior definition valid until 2026-02-14, when the reconciliation first broke; revision recorded 2026-03-02, when the postmortem closed; refutation evidence linked. An auditor replays any historical answer under the definition in force at the time — and sees when the firm knew better.
 
-_Context:_ Refutations land; definitions are revised; the system must remember what it used to believe and when it learned better.
-
-_Problem:_ A layer that overwrites definitions in place destroys the evidence of its own learning. Last quarter's answers become unreconstructible, produced under a meaning that no longer exists anywhere.
-
-_Solution:_ The bitemporal ontology of "Time", recast as the memory of the learning loop. Every revision is an event on two clocks: when the old meaning stopped being right (valid time) and when the system learned it (system time). "What did we mean by Customer in Q3 2024, and when did we discover that meaning was wrong?" becomes as answerable as a P&L query. A brain that cannot remember its previous beliefs has not learned — only changed.
-
-_Example:_ The `net_revenue` revision of 2026-03-02 records: prior definition valid until 2026-02-14, when the reconciliation first broke; revision recorded 2026-03-02, when the postmortem closed; refutation evidence linked. An auditor replays any historical answer under the definition in force at the time — and sees when the firm knew better.
-
-_Consequences:_ The storage and query cost is the Tier 1 bitemporal discipline of "Time", cheap here because definitions change at human cadence. The expensive discipline is cultural: every revision leaves a record, never a clean slate.
+The storage and query cost is the Tier 1 bitemporal discipline of "Time", cheap here because definitions change at human cadence. The expensive discipline is cultural: every revision leaves a record, never a clean slate.
 
 === How the Loop Corrupts
 

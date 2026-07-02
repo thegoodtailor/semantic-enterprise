@@ -97,19 +97,15 @@ The research says why. Attention over long contexts is positionally non-uniform 
 
 The corollary for schema design comes from the agent-tool literature (Anthropic's guidance on writing tools for agents, 2025): names must be unambiguous — `legal_entity_id`, never `id` — and human-meaningful fields belong alongside machine keys. A Gold table that exposes only surrogate keys is an anti-pattern for agent consumption; carry the business key and the name, every time. Surrogates are for the pipeline. Agents reason over words.
 
-=== Pattern: Shared-Key Registry
+=== The Shared-Key Registry
 
 Cross-domain joins are only as honest as the keys they ride on. The colimit runs on shared identity — `legal_entity_id` does the gluing in half this book's examples — so the keys themselves are governed artifacts.
 
-_Context:_ Multiple domains conform, bridge, and join on shared identifiers. Every cross-domain morphism in the ontology is, physically, a join on one of these keys.
+The failure they guard against is quiet and expensive: nobody owns the identifier. Trading assumes `legal_entity_id` is never reissued; Compliance recycles it after offboarding; the two domains join on a key whose uniqueness scope, stability guarantee, and minting process were never written down, and the bridge silently glues together entities that are not the same thing.
 
-_Problem:_ Nobody owns the identifier. Trading assumes `legal_entity_id` is never reissued; Compliance recycles it after offboarding. Two domains join on a key whose uniqueness scope, stability guarantee, and minting process were never stated, and the bridge silently glues together entities that are not the same thing.
+So every identifier used by more than one domain is registered — owning domain, format, uniqueness scope, stability guarantee (never reissued? survives a merger?), and the entity-resolution process that mints it. A bridge may join only on registered keys, and the verification mesh checks the registry entry like any other contract. An unregistered shared key is an unverified morphism wearing a column name. Concretely, `legal_entity_id` registers as: owner `compliance`; format the twenty-character Legal Entity Identifier (ISO 17442) where one exists, an internal `CPTY-` prefix otherwise; unique across the venue; never reissued; surviving M&A through a successor mapping; minted by the onboarding entity-resolution service. The Trading-to-Compliance bridge names it as its join key and inherits all of it.
 
-_Solution:_ Every identifier used by more than one domain is registered: owning domain, format, uniqueness scope, stability guarantee (never reissued? survives a merger?), and the entity-resolution process that mints it. A bridge may only join on registered keys, and the verification mesh checks the registry entry like any other contract. An unregistered shared key is an unverified morphism wearing a column name.
-
-_Example:_ `legal_entity_id` is registered: owner `compliance`; format is the 20-character Legal Entity Identifier (ISO 17442) where one exists, internal `CPTY-` prefix otherwise; unique across the venue; never reissued; survives M&A via a successor mapping; minted by the onboarding entity-resolution service. The Trading-to-Compliance bridge names it as its join key and inherits all of that.
-
-_Consequences:_ One more governed artifact, and registration adds friction to the first cross-domain use of any key — deliberately. The friction is the verification the join was always pretending to have.
+The cost is one more governed artifact, and registration deliberately adds friction to the first cross-domain use of any key. That friction is the verification the join was always pretending to have.
 
 === The CI Gates
 

@@ -52,18 +52,6 @@ Bronze has its own hygiene requirements. "Faithful witness" does not mean "dump 
 
 Intelligence is never driven from Bronze. You do not build dashboards off Bronze. You do not let agents query Bronze. You do not run analytics on Bronze. You always move through Silver. Bronze is the historical record, not the operational surface. This is not optional. If you let consumers query Bronze directly, you are serving raw chicken. Someone will get sick.
 
-*Pattern: Bronze Ingestion Contract*
-
-_Context:_ Raw data lands from external producers into the platform’s receiving zone.
-
-_Problem:_ Without immutability, the accountability boundary between producer and consumer dissolves. Debugging becomes impossible because the evidence has been modified.
-
-_Solution:_ Bronze is permanent, immutable, in the producer’s format and language. No cleaning, no transformation, no enrichment. Governed namespace with ownership, access controls, retention. Intelligence is never driven from Bronze — consumers always go through Silver. Producers own Bronze; the platform owns interpretation.
-
-_Example:_ A vendor lands market data in a Bronze zone. When prices fail reconciliation, the team points to Bronze and says: "this is what you delivered." Argument resolved. Had the data been cleaned on ingest, the discrepancy would be unfindable.
-
-_Consequences:_ Storage cost of permanent raw data at scale. Retention policy management adds governance overhead.
-
 === What Silver Is
 
 A pretense runs through the lakehouse era that needs naming. Medallion architecture has been marketed as a generational break from the data warehouse tradition. Vendor decks describe the Gold layer as "curated for consumption" without specifying the curation discipline, as if the modelling decisions previous generations agonized over have become matters of taste.
@@ -80,45 +68,21 @@ Open the `marts/` directory of any mature transformation project. Count the `fct
 
 Grain survived the move to columnar engines because it is a property of how aggregations compose and how joins behave — not a property of where the bytes sit. The moment a practitioner builds `fct_orders`, they have committed to a grain, typically one row per order-line per event timestamp, and the rest of the downstream model arranges itself around that commitment. The lakehouse era did not eliminate the grain question. It eliminated the vocabulary for talking about it, with the result that grain mistakes are now made by accident rather than by argument.
 
-*Pattern: Silver Grain Declaration*
-
-_Context:_ Building fact tables in Silver.
-
-_Problem:_ Without explicit grain, aggregations compose incorrectly, joins produce fan-outs, and downstream consumers silently double-count.
-
-_Solution:_ Every fact table declares its grain explicitly in schema metadata: "one row per \{entity} per \{event} per \{time grain}." The grain statement is enforced by uniqueness tests. All downstream joins and aggregations are validated against the declared grain. Grain is a property of analytical computation, not of storage — it survives every technology migration.
-
-_Example:_ `fct_executions` declares grain as one row per execution_id per event_timestamp. A downstream model that joins executions to a many-side dimension without an aggregation step fails the grain test and is blocked from deployment.
-
-_Consequences:_ Grain enforcement blocks deployment of tables that violate it — including legitimate denormalized use cases that don’t fit the one-row-per-entity model.
+So the grain stops being an accident and becomes a declaration. Every fact table states its grain explicitly in schema metadata — one row per entity per event per time grain — and that statement is enforced by uniqueness tests. Every downstream join and aggregation is validated against the declared grain. `fct_executions` declares one row per execution_id per event_timestamp; a downstream model that joins executions to a many-side dimension without an aggregation step fails the grain test and is blocked from deployment. The enforcement has a cost worth naming: it blocks legitimate denormalized use cases that do not fit the one-row-per-entity model, and those cases have to be argued for rather than assumed.
 
 Slowly changing dimensions tell the same story. SCD2 — the pattern in which a dimension row is closed and a new row opened when a tracked attribute changes, with `valid_from`, `valid_to`, and a current-flag — is presented in vendor marketing as having been superseded by table-level time travel on Delta or Iceberg. A category error. Table-level time travel answers the question "what did this table look like on Tuesday?" SCD2 answers a different question: "what was this customer’s segment at the time of this transaction?" Analysts and regulators ask the second question, and the answer must travel on the row of the dimension, not on the table-level history of the warehouse. Every mature lakehouse that touches analytics ends up materializing `valid_from` and `valid_to` columns, maintained by MERGE statements that implement the same row-level historicization pattern the warehouse literature formalized decades ago. The technology changed. The pattern did not.
 
-*Pattern: Silver SCD2*
+The mechanics are worth stating precisely. Every tracked dimension attribute carries `valid_from`, `valid_to`, and a current-flag. When an attribute changes, the old row is closed — `valid_to` set — and a new row opens with a new `valid_from`; the old row is never deleted. A second axis, the system-time columns `system_from` and `system_to`, records when the warehouse learned about each version, which is what makes bitemporal queries possible: valid time answers what was true, system time answers when we knew it. The pattern is materialized through MERGE or snapshot strategies in the transformation tool — dbt, Dataform, or equivalent. When a counterparty’s risk tier changes from retail to institutional, the dimension table now holds two rows, and a query asking what the counterparty’s tier was when a given trade was booked joins on valid time, not current state.
 
-_Context:_ Dimension attributes change over time (customer segment, counterparty classification, instrument status).
-
-_Problem:_ Overwriting dimension attributes destroys the ability to answer "what was true at the time of this transaction?" — the question analysts and regulators actually ask.
-
-_Solution:_ Every tracked dimension attribute carries `valid_from`, `valid_to`, and a current-flag. When an attribute changes, the old row is closed (valid_to set) and a new row opens (new valid_from). The old row is never deleted. System time columns (`system_from`, `system_to`) record when the warehouse learned about each version, enabling bitemporal queries. SCD2 is implemented via MERGE or snapshot strategies in the transformation tool (dbt, Dataform, or equivalent).
-
-_Example:_ A counterparty’s risk tier changes from "retail" to "institutional." The dimension table now has two rows: the old row (valid_to = change date) and the new row (valid_from = change date). A query asking "what was the counterparty’s tier when this trade was booked?" joins on valid time, not current state.
-
-_Consequences:_ Tables grow several times larger than current-state-only, in proportion to attribute change rate. Query complexity increases — two-axis temporal joins are harder to write and slower to execute. Most BI tools cannot issue bitemporal queries natively.
+The cost is real and must be budgeted. Bitemporal tables grow several times larger than current-state-only equivalents, in proportion to the attribute change rate. Query complexity rises — two-axis temporal joins are harder to write and slower to execute — and most BI tools cannot issue bitemporal queries natively.
 
 And the hardest problem — how multiple business processes agree on what a Customer, a Product, an Account is — is more acute under mesh-flavored lakehouses than it ever was under unified enterprise warehouses. Each domain is now structurally empowered to own its own entity definitions. "Data contracts on shared entities" is the current vocabulary — addressing the same coordination problem the conformed dimension pattern solved, but frequently with worse tooling and no memory of why the problem was hard the first time.
 
-*Pattern: Conformed Dimension*
+The instinct — elect one canonical owner and make everyone reference it — recreates the central data team the mesh was built to abolish. Force two domains onto one table and you risk fusing concepts that should stay distinct, a bottleneck that produces silently wrong aggregations when the rules differ; leave them fully separate and cross-domain queries join incompatible definitions. The way out is to recognize that a conformed dimension is not a competing model to the colimit but the special case of a bridge — the construction developed in "Multi-Domain Composition" — where two domains' rules for a concept agree. That gives a decision rule, the sharing rule: if the domains' rules for the concept agree, collapse it into one shared sub-theory both reference, and that shared sub-theory is the conformed dimension, co-owned through the bridge, not handed to one domain. If the rules disagree, do not conform. Keep the concept domain-local on each side and join the sides with a bridge that documents exactly what maps, what is lost, and what is partial. Conforming is the reward for rules that agree, never a coordination tax imposed top-down.
 
-_Context:_ Multiple business processes reference the same entity (Customer, Instrument, Account).
+Compliance's `Customer` and Trading's `Counterparty` agree on legal-entity identity — same `legal_entity_id`, same notion of when two are equal. That shared identity conforms: it becomes the shared sub-theory both domains include, maintained jointly through the bridge. But Compliance's `kyc_sub_segment` and Trading's `desk_assignment` are not shared. They live above the shared sub-theory, in their home domains, and the bridge records that each is lost on the other side. So `legal_entity_id` is conformed; the rest stays local — one concept, split correctly, joined by a documented bridge, not one domain owning the others' view of the customer.
 
-_Problem:_ Two domains use the same word for what may or may not be the same thing. Force them onto one table and you risk fusing concepts that should stay distinct (a bottleneck, and silent wrong aggregations when the rules differ); leave them fully separate and cross-domain queries join incompatible definitions. The instinct — "elect one canonical owner and make everyone reference it" — recreates the central data team the mesh was built to abolish.
-
-_Solution:_ A conformed dimension is not a competing model to the colimit — it is the *special case of a bridge* (see "Multi-Domain Composition") where two domains' rules for a concept agree. The decision rule is the sharing rule: **if the domains' rules for the concept agree, collapse it into one shared sub-theory both reference — that shared sub-theory is the conformed dimension, co-owned through the bridge, not handed to one domain. If the rules disagree, do not conform: keep the concept domain-local on each side and join them with a bridge that documents exactly what maps, what is lost, and what is partial.** Conforming is the reward for rules that agree, never a coordination tax imposed top-down.
-
-_Example:_ Compliance's `Customer` and Trading's `Counterparty` agree on legal-entity identity (`legal_entity_id`) — same key, same notion of when two are equal. That shared identity *conforms*: it becomes the shared sub-theory both domains include, maintained jointly through the bridge. But Compliance's `kyc_sub_segment` and Trading's `desk_assignment` are *not* shared — they live above the shared sub-theory, in their home domains, and the bridge records that each is lost on the other side. So `legal_entity_id` is conformed; the rest stays local. One concept, split correctly, joined by a documented bridge — not one domain owning the others' view of the customer.
-
-_Consequences:_ The sharing rule has teeth and they cut: a team that conforms two concepts whose rules conflict "to be consistent" gets a silently-wrong aggregation, and a team that refuses to conform one whose rules agree gets a join that should have been free. The judgment of *whether* the rules agree is the work — and it is exactly the judgment the continuous verification mesh re-checks every scan (the commutativity check), so a conformance that drifts out of agreement raises a witness rather than rotting in place.
+The sharing rule has teeth and they cut both ways. A team that conforms two concepts whose rules conflict "to be consistent" gets a silently wrong aggregation; a team that refuses to conform one whose rules agree gets a join that should have been free. The judgment of whether the rules agree is the work, and it is exactly the judgment the continuous verification mesh re-checks every scan — the commutativity check — so a conformance that drifts out of agreement raises a witness rather than rotting in place.
 
 Silver is the domain-canonical modelling layer — neither Kimball’s star schema nor Inmon’s enterprise warehouse, but a synthesis built for columnar engines with these structural commitments: grain discipline (one row per entity per event per time grain), SCD2 with full bitemporality extending beyond what either tradition prescribed, conformed dimensions where domains share entities, domain ownership rather than central ownership, and full historicization where nothing is overwritten and everything is traceable. The discipline is logical. Grain, SCD2, conformance, and declared relationships are properties of the model; the physical shape of a Silver table is an engine decision. The default physical form is the wide entity-canonical table — one per logical entity, each owned by exactly one domain — and the join graph over those tables is declared in the semantic layer and exposed as explores. Whether any of that graph is ever materialized as a physical star is a question about storage engines, not about meaning.
 
@@ -169,17 +133,7 @@ image::figures/data-swamp.png[data swamp,width=600,align="center"]
 
 Prevention is simple to state and hard to execute: each Gold table answers a specific set of business questions. Design starts from the question, not from the schema. You do not build a Gold table and then figure out who uses it. You identify the question — "What is our trading volume by product by day?" — and then you build the Gold table that answers it. Every column in the table exists because it contributes to answering that question. Every column has a description. Every table has an owner.
 
-*Pattern: Question-Driven Gold*
-
-_Context:_ Designing a new Gold table for analytical consumption.
-
-_Problem:_ Gold tables designed from schemas rather than questions proliferate without purpose — phantom schemas that add maintenance burden without answering anything.
-
-_Solution:_ Design starts from the business question: "What is our trading volume by product by day?" The Gold table is shaped to answer that question. Every column exists because it contributes to the answer. The table is flat and denormalized — no joins required at consumption time. It carries a documented business question in its schema metadata. If you cannot state the question, the table should not exist.
-
-_Example:_ A stakeholder asks: "What is our daily P&L by desk by strategy?" Gold table `gold_pnl_daily_desk_strategy` is built with one row per desk per strategy per day, columns for mtm_pnl, realized_pnl, notional, trade_count. Every column described. Business question documented in schema metadata: "Daily P&L breakdown for desk-level strategy performance review."
-
-_Consequences:_ Requires the business question to be articulated before building — blocks exploratory table creation that sometimes produces unexpected value.
+The table is flat and denormalized, with no joins required at consumption time, and it carries its business question in its schema metadata as a first-class field. When a stakeholder asks "What is our daily P&L by desk by strategy?", the Gold table `gold_pnl_daily_desk_strategy` is built with one row per desk per strategy per day, columns for mtm_pnl, realized_pnl, notional, and trade_count, every column described, and the documented question recorded alongside them: "Daily P&L breakdown for desk-level strategy performance review." The discipline has a cost — it forces the question to be articulated before building, which blocks the exploratory table creation that occasionally produces unexpected value — and that cost is the point. If you cannot state the question, the table should not exist.
 
 A counterintuitive principle, until you have lived with the alternative: do not be minimal. When you build a Gold table, include original IDs alongside resolved names. Include the foreign keys alongside the denormalized attributes. Include the timestamps that let a consumer trace the data back to Silver and Bronze. Storage is cheap. Traceability is expensive. A Gold table that contains only the minimum columns needed for a specific report is a Gold table that cannot be audited, cannot be debugged, and cannot be extended without rebuilding.
 
@@ -214,17 +168,7 @@ One more governance mechanism: every Gold model ships with an explore. An explor
 
 No exceptions. Every Gold model ships with an explore. Building Gold is not just a technical task — it is a semantic task. You are not just writing a query and materializing a table. You are building a governed, described, navigable piece of business knowledge. Higher bar. Dramatically better result.
 
-*Pattern: Explore Pairing*
-
-_Context:_ A Gold table has been built and materialized.
-
-_Problem:_ A Gold table without a semantic interface is an ungoverned flat file — queryable by anyone who knows it exists, with no definitions, no governed joins, no access controls at the semantic level.
-
-_Solution:_ Every Gold table ships with a governed consumption interface (an "explore" in the generic sense): field definitions linked to the glossary, declared relationships to other entities, access controls, freshness signals, and navigational heuristics. The explore IS the table’s public interface. Building a Gold table without one is shipping code without tests — technically possible, architecturally incomplete.
-
-_Example:_ `gold_pnl_daily_desk_strategy` ships with an explore that exposes: measures (mtm_pnl, realized_pnl as SUM), dimensions (desk_name, strategy_name, trade_date), a declared default time grain (daily), freshness metadata (last refresh timestamp), and access controls (finance + trading roles only).
-
-_Consequences:_ Doubles the work of shipping a Gold table. Teams under delivery pressure will resist.
+What the explore carries is specific: field definitions linked to the glossary, declared relationships to other entities, access controls, freshness signals, and navigational heuristics. It is the table’s public interface, and building a Gold table without one is shipping code without tests — technically possible, architecturally incomplete. `gold_pnl_daily_desk_strategy` ships with an explore that exposes measures (mtm_pnl, realized_pnl as SUM), dimensions (desk_name, strategy_name, trade_date), a declared default time grain of daily, freshness metadata carrying the last refresh timestamp, and access controls scoped to finance and trading roles only. It roughly doubles the work of shipping a Gold table, and teams under delivery pressure will resist — which is why it is a standard rather than a suggestion.
 
 Sequencing matters. Teams routinely try to fix their Gold layer before defining the principles that should govern it. You cannot fix what you have not named. Define principles first, identify gaps, then refactor. Refactoring without standards is rearranging furniture in a room whose purpose nobody has agreed on.
 
@@ -234,17 +178,7 @@ One more category belongs near Gold but is not Gold: the feature store. ML featu
 
 Feature stores therefore inherit Silver’s per-row bitemporal discipline but serve different consumers — training loops, online inference — and carry a different contract. They are not Gold and should not be governed as Gold. They get their own architectural category, their own temporal contract documentation, and their own clearly demarcated surface in the semantic layer. If feature stores are quietly governed as a kind of Gold, Gold’s clean table-level temporal contract is undermined, and the architecture devolves into a bitemporality-everywhere pattern that collapses the distinction between what was reported and what was true. Naming feature stores separately keeps both contracts clean.
 
-*Pattern: Feature Store Contract*
-
-_Context:_ ML models need training features with point-in-time correctness.
-
-_Problem:_ If feature stores are governed as Gold, Gold’s clean table-level temporal contract is undermined. If governed as Silver, the consumption pattern (online inference, batch scoring) is misaligned.
-
-_Solution:_ Feature stores are a sui generis architectural category — not Gold, not Silver. They inherit Silver’s row-level bitemporality but are governed by training-time correctness: features at label-assignment time must be reconstructible exactly, with no future leakage. They get their own surface in the semantic layer and their own contract documentation. They serve training loops and inference, not analytical queries.
-
-_Example:_ `feature_store.counterparty_risk_features` carries row-level valid_from/valid_to and system_from/system_to. A training pipeline requesting features "as of March 15" gets exactly the feature values the system would have computed on March 15 — no corrections that arrived later, no attributes that changed after that date. The feature store’s contract is training-time correctness, distinct from Gold’s reporting-time auditability.
-
-_Consequences:_ A third temporal contract alongside Silver and Gold adds cognitive and engineering overhead. Teams must understand three different bitemporal regimes.
+Concretely, `feature_store.counterparty_risk_features` carries row-level valid_from/valid_to and system_from/system_to. A training pipeline requesting features "as of March 15" gets exactly the feature values the system would have computed on March 15 — no corrections that arrived later, no attributes that changed after that date. That is the feature store’s contract, training-time correctness, distinct from Gold’s reporting-time auditability. The price is a third temporal regime alongside Silver and Gold, and teams must learn to hold all three in their heads — but the alternative, folding feature stores into Gold to save that overhead, is exactly the collapse that destroys Gold’s clean table-level contract.
 
 === Joins Are Declared, Never Inferred
 
@@ -278,17 +212,7 @@ And the raw gap is closing — 32.7 to 64.5 percent in two years, approaching 90
 
 One credible dissent comes from inside the camp: dbt’s own modeling guidance warns that the more you pre-compute and freeze, the less flexible the surface. Correct — about the tail, which is why the explore exists. For the head, freezing is the point: stable, cheap, auditable, named, published. Where the line sits is a question-distribution decision, revisited as the distribution drifts, not a dogma.
 
-*Pattern: Two Governed Surfaces*
-
-_Context:_ One platform must serve both the known questions a business asks every day and the open-ended exploration that lives in the tail of the question distribution.
-
-_Problem:_ Flat marts alone cannot serve the tail — every unanticipated question becomes an engineering request or a bypass. Raw join graphs cannot be trusted to the model — join inference is the dominant text-to-SQL failure class.
-
-_Solution:_ Two surfaces, one vocabulary. Flat, documented Gold marts cover the head of the distribution. Declared-join explores over Silver’s entity-canonical tables cover the tail: joins, grains, and aggregation rules are declared once in the semantic layer, the engine generates SQL deterministically, and the model picks fields, filters, and pivots. The model never plans a join on either surface.
-
-_Example:_ A trading desk’s daily P&L runs off `gold_pnl_daily_desk_strategy` — one flat mart, one row per desk per strategy per day, zero joins at consumption. The same desk’s investigation of a custody break runs as an explore session over the declared Risk → Trading → Custody join graph: the agent picks fields hop by hop, and every join executed was declared, grain-checked, and fan-out-protected before the session began.
-
-_Consequences:_ Explore coverage is bounded by the declared bridges — a question beyond the graph fails closed and surfaces as intake for the next declaration, not as a bypass. Two surfaces to govern instead of one, and the head/tail split must be revisited as the question distribution drifts.
+The split is concrete in a single desk’s day. A trading desk’s daily P&L runs off `gold_pnl_daily_desk_strategy` — one flat mart, one row per desk per strategy per day, zero joins at consumption. The same desk’s investigation of a custody break runs as an explore session over the declared Risk → Trading → Custody join graph: the agent picks fields hop by hop, and every join executed was declared, grain-checked, and fan-out-protected before the session began. Two surfaces to govern instead of one, and the head/tail split has to be revisited as the question distribution drifts — but on neither surface does the model plan a join.
 
 === Where Serious People Disagree
 
@@ -364,17 +288,7 @@ Start with what a domain is. Each business domain, when properly architected, is
 
 This structure has a precise mathematical name: a category — objects, morphisms (arrows between objects), associative composition, identity morphisms. The term sounds intimidating; the idea is not. Every well-designed domain model is already a category, whether the architect knows it or not. Gold tables and Silver-as-Gold explores — the governed consumption surfaces — are the objects. Foreign-key relationships and semantic connections are the morphisms. Chaining relationships — Trade to Instrument to Market — is composition. Naming the structure does not change it. It makes it possible to reason about what happens when structures interact.
 
-*Pattern: Domain Category*
-
-_Context:_ A business domain has been modeled in Silver and Gold.
-
-_Problem:_ Without formal structure, cross-domain integration is ad-hoc — engineers join tables by physical key and hope the semantics align.
-
-_Solution:_ Each domain, when properly modeled, is a category: entities are objects, relationships between entities are morphisms, and chaining relationships is composition. The composition is associative — Trade to Instrument to Market yields the same result regardless of grouping. Naming this structure does not change it; it makes it possible to reason about what happens when domains interact. Every well-designed domain model is already a category, whether the architect knows it or not.
-
-_Example:_ Trading domain: objects are Trade, Instrument, Market, Desk. Morphisms: "Trade executes on Instrument," "Instrument belongs to Market," "Trade is booked to Desk." Composition: Trade to Instrument to Market gives the market for any trade. The domain’s Gold tables are the objects; the joins and foreign keys are the morphisms.
-
-_Consequences:_ Naming the structure is easy. Maintaining the composition laws as the domain evolves is not — morphisms break when entities are renamed or restructured.
+Naming the structure is the easy part. Maintaining the composition laws as the domain evolves is not — the morphisms break the moment entities are renamed or restructured, and keeping Trade to Instrument to Market composing correctly through those changes is ongoing work, not a one-time act of recognition.
 
 Domains do not exist in isolation. Where they share concepts, explicit mappings connect them. A trade in the Trading domain becomes a journal entry trigger in the Finance domain. A custody account balance corresponds to a position in Treasury. A market price in Market Intelligence feeds a mark-to-market valuation in Post-Trade and Risk.
 
@@ -384,17 +298,9 @@ This too has a precise name: a functor. A functor is a structure-preserving mapp
 
 Concretely: Trading has Trade, Instrument, and "Trade executes on Instrument." Finance has Journal Entry, Financial Product, and "Journal Entry references Financial Product." Because the bridge is a functor, it maps Trade to Journal Entry and Instrument to Financial Product, and also maps "executes on" to "references" — structural correspondence, not just row-level mapping.
 
-*Pattern: Bridge Functor*
+The bridge is therefore a governed, versioned artifact, not a one-off SQL join — documented, continuously verified, and maintained as part of the semantic layer. A verification agent re-reads it against the live state of both domains on every scan, so the bridge is known to hold now, not merely to have been approved once. The alternative is what accumulates without it: after ten ad-hoc joins the enterprise has ten incompatible local mappings, none of them structural. When someone asks "revenue by instrument," the Trading-to-Finance bridge guarantees that Trading’s instrument and Finance’s financial product are correctly aligned — not just key-matched but structurally correspondent.
 
-_Context:_ Two domains share concepts that need to be connected (Trading’s Trade and Finance’s Journal Entry).
-
-_Problem:_ Ad-hoc joins between domain tables ignore structural relationships — matching rows by key without preserving the relationships between entities. After ten such joins, the enterprise has ten incompatible local mappings.
-
-_Solution:_ A bridge functor maps objects to objects AND morphisms to morphisms between two domains, preserving composition. If Trade maps to Instrument in Trading, then JournalEntry maps to FinancialProduct in Finance, and the bridge maps both entities AND the relationship between them. The bridge is a governed, versioned artifact — not a one-off SQL join. It is documented, continuously verified, and maintained as part of the semantic layer: a verification agent re-reads it against the live state of both domains on every scan, so the bridge is known to hold now, not merely to have been approved once.
-
-_Example:_ Trading-to-Finance bridge: Trade maps to JournalEntry, Instrument maps to FinancialProduct. The relationship "Trade executes on Instrument" maps to "JournalEntry references FinancialProduct." Structure in, structure out. When someone asks "revenue by instrument," the bridge guarantees that Trading’s instrument and Finance’s financial product are correctly aligned — not just key-matched but structurally correspondent.
-
-_Consequences:_ Bridge maintenance scales combinatorially with domain count. At 20+ domains, bridge maintenance can exceed the capacity of a small central team.
+The cost is combinatorial. Bridge maintenance scales with domain count, and past twenty-odd domains it can exceed the capacity of a small central team — the constraint that the continuous-verification mesh and AI-assisted maintenance exist to absorb.
 
 Why this matters operationally: it determines what happens when someone asks a cross-domain question. When a finance analyst asks "What is the revenue impact of our top-traded instruments?", the system needs to compose two domains: Trading, where instruments and trade volumes live, and Finance, where revenue attribution lives. In a traditional architecture, an engineer would build a custom mart for this question — joining trading tables to finance tables, resolving naming conflicts, hardcoding the logic. In a compositional architecture, the system follows the bridges.
 
@@ -421,17 +327,7 @@ image::figures/colimit-composition.png[Domain Categories, Morphisms, and the Col
 
 But the construction is always local to the moment and local to the question — which domains, which morphisms, which versions of each.
 
-*Pattern: Colimit Query*
-
-_Context:_ A business question spans multiple domains ("What is the revenue impact of our top-traded instruments?").
-
-_Problem:_ Without principled composition, cross-domain queries are bespoke engineering projects — each one a custom mart, each one making ad-hoc join decisions, each one ungoverned.
-
-_Solution:_ The colimit is the universal composition of domain categories connected by bridge functors. It identifies shared entities (Trading’s Instrument and Finance’s FinancialProduct are the same entity, seen from two perspectives), preserves each domain’s internal structure, and produces the smallest consistent cross-domain view. Any cross-domain query factors through the colimit. The colimit is implemented as governed cross-domain mart tables with explicit lineage showing which domains contributed and through which bridges.
-
-_Example:_ "Revenue per top-traded instrument" factors through the Trading-Finance colimit. The colimit unifies Instrument and FinancialProduct (same entity, two perspectives), preserves Trading’s volume metrics and Finance’s revenue attribution, and produces a cross-domain view where trade_count and revenue are correctly joined at the instrument level. The mart’s schema documents: domains involved (Trading, Finance), bridge model (trading_finance_bridge), entities unified (Instrument/FinancialProduct via legal_entity_id).
-
-_Consequences:_ Cross-domain queries through the colimit are slower than ad-hoc joins. The governance overhead is justified only for questions asked repeatedly.
+Composition through the colimit costs more at runtime than an ad-hoc join and carries governance overhead on top, so it earns its keep on questions asked repeatedly rather than one-offs — "revenue per top-traded instrument," which factors through the Trading-Finance colimit by unifying Instrument and FinancialProduct via `legal_entity_id`, not a single-use investigation that a throwaway query answers faster.
 
 Most information architecture still operates in a first-order logic frame. Entities have attributes. Attributes have values. Queries are predicates that filter and aggregate over those values. Joins are predicates that match rows across tables. Entirely predicative — asserting conditions and checking whether data satisfies them.
 
@@ -453,17 +349,7 @@ Then they ask: "How does this relate to our trading volume?" At this point, the 
 
 Domain expansion is categorical in the precise sense. Adding a domain to the user’s view means adding a category to the diagram and recomputing the colimit. The agent does not re-query everything from scratch. It extends the existing view through the relevant bridge functor. Incremental and governed. Each expansion is an explicit architectural decision — which domain, through which bridge, with which access controls — not an ad-hoc join.
 
-*Pattern: Privilege-Based Domain Expansion*
-
-_Context:_ A user or agent is querying data and their question crosses a domain boundary.
-
-_Problem:_ Without access-controlled domain expansion, either the agent silently pulls from domains the user should not see, or domain boundaries become invisible and ungoverned.
-
-_Solution:_ Users start in their home domain. When a question requires a second domain, the system checks access rights before expanding the view. If authorized, the agent loads the bridge functor and composes the two domain perspectives. If not authorized, the system states explicitly what it cannot access and why. Each domain expansion is an explicit architectural decision — which domain, through which bridge, with which access controls. Adding a domain means adding a category to the diagram and extending the colimit incrementally.
-
-_Example:_ A finance analyst asks about revenue (Finance domain — authorized). Then asks: "How does this relate to our trading volume?" System checks Trading domain access. Authorized: loads Trading-Finance bridge, composes perspectives, answers from the cross-domain view. Not authorized: "That question requires Trading domain access, which your role does not include. Contact your domain administrator."
-
-_Consequences:_ Incremental domain loading adds latency. Users accustomed to seeing all data at once experience the access checks as friction.
+Incremental loading is not free: the access checks add latency, and users accustomed to seeing all data at once experience them as friction. That friction is the governance working, not a defect to be optimized away.
 
 Categorical composition resolves the tension that data mesh identified but could not solve. Data mesh correctly argued that domains should own their data. Domain ownership without a composition mechanism produces silos. Categories preserve domain ownership — each domain is a self-contained category with its own governance — while providing a principled, governed mechanism for cross-domain composition. Domains remain autonomous. Composition is explicit. Shared vocabulary emerges from the bridges, co-owned by the domains they connect.
 
@@ -487,17 +373,9 @@ The map loses `Compliance.Customer.kyc_sub_segment`, which has no Trading.Counte
 
 Every morphism looks like this when done honestly. Losses are documented because they are where the architecture is most likely to break under cross-domain queries. An agent traversing from a compliance question to a trading question reads this morphism and knows exactly what survived the map, what was lost, and where the gaps are. No inference required, no hallucination of relationships. Maps are first-class objects, and their honesty is what makes the colimit trustworthy rather than ceremonial.
 
-*Pattern: Morphism Honesty*
+The attestation itself is not a signature ritual. It is performed by each domain’s agent — which can read the map and the data it claims to align — with a human owner escalated only for the exceptions the agent cannot resolve. That is what lets the honesty stay current: when MiFID II recategorised clients and changed the Compliance partition, the Compliance.Customer to Trading.Counterparty morphism was flagged by the scan that ran the morning after the rule took effect, not surfaced at a quarterly review a season later. On that morphism, `regulatory_classification` survives the map alongside the identity keys; `kyc_sub_segment` is lost; proprietary desks remain partial.
 
-_Context:_ A bridge functor connects two domains.
-
-_Problem:_ If losses and partialities in the mapping are undocumented, cross-domain queries silently drop data or conflate concepts. The morphism looks complete but is not.
-
-_Solution:_ Every morphism is explicit, named, versioned, and continuously verified. It documents: what attributes survive the map, what attributes are lost (and why), where the map is partial (entities in one domain with no counterpart in the other), what the last verification scan found, and when that scan ran. Losses and partialities are named explicitly. Nothing is implicit. The attestation is performed by each domain’s agent — which can read the map and the data it claims to align — with a human owner escalated only for the exceptions the agent cannot resolve. The morphism is a contract between two ways of knowing, kept honest by continuous verification rather than by signature.
-
-_Example:_ Compliance.Customer to Trading.Counterparty. Survives: legal_entity_id to cpty_id, regulatory_classification. Lost: kyc_sub_segment (no trading analogue — forcing it through would corrupt the trading model). Partial: proprietary desks have no Compliance.Customer antecedent (internal entities, never KYC-onboarded). Verified: each domain’s agent, on the nightly scan. Last confirmed to hold: last night. The MiFID II recategorisation was caught by the scan that ran the morning after the rule changed the Compliance partition — not surfaced at a quarterly review a season later.
-
-_Consequences:_ Documenting losses requires both domains to participate. One-sided morphisms are common in practice — the target domain sees no benefit in documenting losses.
+The honesty has a social cost that recurs in practice. Documenting losses requires both domains to participate, and one-sided morphisms are common because the target domain often sees no benefit in recording what it drops. The continuous scan is what makes the missing side visible instead of letting it pass as a completed map.
 
 ==== Bitemporal Ontology
 

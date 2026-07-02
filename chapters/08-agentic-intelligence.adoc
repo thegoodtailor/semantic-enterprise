@@ -42,17 +42,9 @@ Think of the protocol layer as microservices architecture for intelligence. You 
 
 Pre-flight checks are critical and often overlooked. Before an agent answers a question or acts on data, it should perform the same checks a careful analyst would: data freshness, last update, known quality issues, access authorization, methodology changes since last quarter. If any check fails, the agent should say so — explicitly, without attempting to compensate by guessing. A system that refuses to answer when it lacks confidence is infinitely more valuable than a system that always answers confidently, whether or not the answer is trustworthy.
 
-*Pattern: Agent Pre-Flight*
+The check has four parts — quality, freshness, access, caveats — and each has a failure mode worth naming, at row and column level where access is concerned. Ask an executive for last month's total trading volume: quality passes, freshness shows the data is six hours old (acceptable for a monthly aggregation), the executive's role carries full trading visibility, and the caveat check flags that test-account trades were excluded per policy. The agent returns the number and the conditions together — data as of six hours ago, test accounts excluded per governance policy — rather than the bare figure.
 
-_Context:_ An AI agent is about to answer a business question from the data platform.
-
-_Problem:_ Without pre-flight checks, the agent answers with whatever it finds — stale data presented as current, restricted data served to unauthorized users, known quality issues unreported.
-
-_Solution:_ Before reasoning over any data, the agent performs pre-flight checks. Quality: has this dataset passed its most recent quality checks? Are there known issues? Freshness: when was this table last updated? Is the staleness acceptable for the question? Access: does the requesting user have permission to see this data, at row and column level? Caveats: are there known limitations, exclusions, or edge cases that affect the answer? If any check fails or surfaces a warning, the agent reports it alongside the answer — or declines to answer with an explanation.
-
-_Example:_ Executive asks: "What was our total trading volume last month?" Pre-flight: quality check passes; freshness check shows data is 6 hours old (acceptable for monthly aggregation); access check confirms executive role has full trading visibility; caveat check flags that test-account trades were excluded per policy. Agent answers with the number AND states: "Data as of 6 hours ago. Test accounts excluded per governance policy."
-
-_Consequences:_ Adds latency to every agent query. Pre-flight checks that are too slow will be bypassed or disabled.
+Pre-flight adds latency to every query, and that cost is itself a governance risk. Checks that are too slow get bypassed or disabled, and a bypassed check is worse than none: it leaves the appearance of diligence with none of the substance.
 
 Information density per token governs everything. An agent reading low-density context — schema dumps, sample rows, column names without semantics — produces plausible-but-wrong answers. It picks the wrong column as the strategy classifier, conflates temporal grains, hallucinates joins that do not exist in the schema. Output looks right. It is not right. And the failure is silent — no error message, no stack trace, no warning. Fluency is not fidelity.
 
@@ -60,17 +52,11 @@ An agent reading high-density context — declared measures, named dimensions, d
 
 Context windows expand with every model generation, but attention does not scale linearly with window size. Every token of noise dilutes every token of signal. "Can the agent fit the schema in its context?" is the wrong question. "Does each token carry enough meaning to reason correctly?" is the right one. A flat Gold table with declared measures and explicit temporal contracts is high-density context. A raw schema with hundreds of columns, cryptic names, and no documentation is low-density context. The agent will process both without complaint. Only one produces answers you can trust.
 
-*Pattern: Domain Context Assembly*
+High-density context does not assemble itself; the semantic layer builds it before the agent touches data, out of three components. A domain essay — six hundred to fifteen hundred words of operational prose covering provenance, conventions, edge cases, and slang. The semantic layer declarations — measures, dimensions, joins, temporal contracts. And per-table metadata — freshness, quality signals, caveats. Together this runs to fifteen hundred to twenty-five hundred tokens, less than a raw schema dump and dramatically higher in information density per token.
 
-_Context:_ An agent needs to reason about data in a specific business domain.
+Ask about equity trading P&L and the layer loads the trading essay — P&L is mark-to-market by default, strategy means a portfolio-level tag rather than an order-level one, quarters are calendar unless a fiscal quarter is named — alongside the P&L Gold table's declared measures, joins, and grain, and its temporal metadata of last refresh and bitemporal contract. The agent reads roughly eighteen hundred tokens of high-density context and answers correctly, or flags the specific gap if it cannot.
 
-_Problem:_ Without domain context, the agent has column names and datatypes — schema-level information insufficient for correct reasoning. The agent picks wrong classifiers, conflates temporal grains, hallucinates joins.
-
-_Solution:_ Before the agent touches data, the semantic layer assembles domain context into its reasoning window. Three components: the domain essay (600-1500 words of operational prose — provenance, conventions, edge cases, slang), the semantic layer declarations (measures, dimensions, joins, temporal contracts), and per-table metadata (freshness, quality signals, caveats). Total context: typically 1500-2500 tokens — less than a schema dump and dramatically higher in information density per token.
-
-_Example:_ Agent receives a question about equity trading P&L. Domain context assembly loads: the trading domain essay (explains that P&L is mark-to-market by default, strategy means portfolio-level tag not order-level, calendar quarters unless specified fiscal), the semantic declarations for the P&L Gold table (declared measures, joins, grain), and temporal metadata (last refresh, bitemporal contract). The agent reads 1800 tokens of high-density context and answers correctly — or flags the specific gap if it cannot.
-
-_Consequences:_ Context assembly consumes tokens. For simple queries, the overhead may exceed the query itself. Over-contextualization degrades performance.
+Assembly is not free. It consumes tokens, and for a simple query the context can cost more than the query itself. Over-contextualization degrades performance as surely as starvation does; the target is enough meaning to reason, not more.
 
 ==== Domain Navigation and Register Switching
 
@@ -106,17 +92,7 @@ A risk analyst at a trading venue opens a conversation and asks: "What is our cu
 
 Agentic cross-domain intelligence is architecture, not magic. Rich, precise, well-bridged domain configurations yield fluent boundary navigation. Thin, ambiguous, disconnected configurations yield answers that are precisely wrong with maximum confidence.
 
-*Pattern: Register Switching*
-
-_Context:_ An agent is answering a question that crosses domain boundaries mid-query.
-
-_Problem:_ Without governed register switching, the agent either silently pulls from unauthorized domains or conflates domain-specific meanings of shared terms ("position" means different things in Trading vs Treasury).
-
-_Solution:_ When a query crosses a domain boundary, the agent performs a register switch: loads the bridge functor between the two domains, checks access privileges for the target domain, loads the target domain’s context (essay + semantic declarations), and applies polysemy resolution for any terms that have different meanings across domains. The switch is explicit — the agent declares which domains it is composing and through which bridge.
-
-_Example:_ Finance analyst asks about revenue (Finance domain). Follow-up: "How does this correlate with trading volume?" Agent detects domain crossing: Finance→Trading. Checks Trading access (authorized). Loads Trading-Finance bridge functor. Loads Trading domain context. Resolves "volume" — Finance means revenue volume, Trading means executed quantity. Agent composes the cross-domain view through the bridge and answers from the colimit, declaring both domains and the bridge used.
-
-_Consequences:_ Cross-domain queries take longer than single-domain queries. Users may perceive the system as slow when composing across domains.
+Name these bridges precisely: each is a functor between domain vocabularies, and the composed cross-domain answer is their colimit — the object that glues both domains along the concepts they share. When a query crosses a boundary the agent loads the bridge functor, checks access to the target domain, loads that domain's context, resolves the polysemous terms, and answers from the colimit, declaring which domains it composed and through which bridge. Composition of this kind takes longer than a single-domain query, and users may read the pause as slowness; it is the price of getting the meaning right across a boundary rather than guessing it.
 
 When an agent surfaces a gap — a question it cannot answer through the semantic layer — the response is architectural, not permissive. Remediation means documentation, ontology, morphism, or measure work. Never direct SQL. Never a bypass.
 
@@ -124,29 +100,11 @@ Granting an agent direct SQL access moves the problem rather than solving it: th
 
 Structural commitment: every gap an agent surfaces is a gap in the semantic layer, not a case for direct access. When the agent cannot find the concept, the team extends the layer — adds the measure, writes the morphism, documents the edge case. The gap becomes an improvement to the system, not a workaround that will be forgotten by next quarter. This discipline is what makes the architecture learn from its consumers rather than degrade under their demands. An organization that responds to agent gaps by granting bypasses will accumulate bypasses until the semantic layer is vestigial — technically present, practically irrelevant, unable to govern anything because the real work routes around it. An organization that responds to agent gaps by extending the layer will find, over time, that the layer grows to cover the full surface area of institutional knowledge. The agent becomes the best quality-assurance mechanism the semantic layer has ever had.
 
-*Pattern: Confidence Signaling*
+When the agent does answer, every response carries its own provenance. It states what data it used — table names, temporal coordinates, query mode — what it assumed, including which defaults it selected and which ambiguities it resolved, what it could not answer, from coverage gaps to missing domains to restricted data, and the freshness and quality status of the sources underneath. Epistemic honesty is architectural here, not a matter of the agent's judgment: the pre-flight metadata surfaces automatically, so the signals appear whether or not the model thinks to volunteer them. Stale data, partial coverage, and a high-quality governed answer are no longer indistinguishable to the consumer.
 
-_Context:_ An agent has produced an answer to a business question.
+Told that EUR/USD executed volume in Q1 was 142 billion notional, the consumer also sees the scaffolding of the claim — source `gold.trading_volume_daily` in as-of-now mode, data two hours fresh, notional denominated in the base currency, strategy classified at portfolio level by default, test accounts and internal transfers excluded per policy, and a note that Q1 here is the calendar quarter and would differ from a fiscal Q1 by three trading days. The risk is verbosity: this much metadata can bury a non-technical reader, and calibrating the level of detail to the audience is a UX problem nobody has fully solved.
 
-_Problem:_ Without confidence signals, the agent presents every answer with the same authority — stale data, partial coverage, and high-quality governed answers are indistinguishable to the consumer.
-
-_Solution:_ Every agent response includes explicit signals: what data it used (table names, temporal coordinates, query mode), what it assumed (defaults selected, ambiguities resolved), what it could not answer (gaps in coverage, missing domains, restricted data), and freshness/quality status of the underlying data. Epistemic honesty is architectural — the pre-flight metadata surfaces automatically, not through the agent’s judgment.
-
-_Example:_ Agent answers: "EUR/USD executed volume in Q1 was 142 billion notional." Confidence signals: "Source: gold.trading_volume_daily, as-of-now mode. Data freshness: 2 hours. Notional denominated in base currency (EUR). Strategy classification: portfolio-level (default). Excludes test accounts and internal transfers per policy. Note: Q1 uses calendar quarter; fiscal Q1 would differ by 3 trading days."
-
-_Consequences:_ Verbose confidence metadata can overwhelm non-technical consumers. Finding the right level of detail for different audiences is a UX problem.
-
-*Pattern: Gap Escalation*
-
-_Context:_ An agent encounters a question it cannot answer through the semantic layer.
-
-_Problem:_ The default response to an agent gap is to grant the agent more access — direct SQL, additional tables, broader context. This solves the immediate problem and degrades the architecture.
-
-_Solution:_ Every agent gap is escalated as semantic layer work, never as a bypass. The gap is logged with context: which question, which domain, what was missing (measure, dimension, morphism, documentation). The semantic layer team triages and extends. The gap becomes an improvement — the next agent that encounters the same question finds the answer. The architecture learns from its gaps. Granting direct access solves nothing — the agent reads low-density context and produces plausible-but-wrong answers with more confidence.
-
-_Example:_ Agent asked: "What is our net exposure across all custodians?" Cannot answer — no cross-custodian aggregation exists. Gap logged: domain=Custody, concept=net_exposure_aggregate, missing=cross-custodian Gold table + measure. Escalated. Semantic layer team builds `gold_custody_net_exposure` with proper aggregation logic, adds explore with measures. Available in 3 days. Agent now answers the question correctly, governed, versioned.
-
-_Consequences:_ If escalation response time is slow, agents accumulate gaps faster than the team resolves them. The gap backlog becomes its own governance problem.
+The mechanics of escalation are worth making concrete. Ask an agent for net exposure across all custodians and it cannot answer, because no cross-custodian aggregation exists. The gap is logged with its full context — domain Custody, concept `net_exposure_aggregate`, missing a cross-custodian Gold table and the measure to populate it — and escalated. The semantic layer team builds `gold_custody_net_exposure` with the proper aggregation logic and an explore that exposes the measures; three days later the agent answers the question correctly, governed and versioned. The one hazard is throughput: if escalation is slow, agents surface gaps faster than the team resolves them, and the backlog becomes a governance problem of its own.
 
 === Multi-Agent Architectures
 

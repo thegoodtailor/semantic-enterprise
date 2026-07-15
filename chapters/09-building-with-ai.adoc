@@ -168,7 +168,7 @@ AI makes the correct approach mandatory, because AI is the primary consumer of y
 
 But AI also makes the correct approach achievable, because AI handles the maintenance that made it impossible.
 
-Industry numbers are stark. Sixty-five percent of data leaders investing in AI. Only forty-four percent in data governance. Only forty-one percent in data quality. Engine without fuel. Gartner predicts that through 2026, organizations will abandon sixty percent of AI projects unsupported by AI-ready data — abandoned not for want of models or compute. The bottleneck is semantics.
+Industry numbers are stark. Sixty-five percent of data leaders investing in AI. Only forty-four percent in data governance. Only forty-one percent in data quality. Engine without fuel. The abandonment projection from The Shift follows directly: AI projects die not for want of models or compute. The bottleneck is semantics.
 
 Only eleven percent of organizations have high metadata management maturity. Four percent have high maturity in both data governance and AI governance. The broader metadata management tools market: nearly thirteen billion dollars in 2026. Organizations know they have a metadata problem and are spending enormous sums trying to solve it with products rather than architecture. Thirteen billion dollars, and the data quality crisis persists — because metadata management was designed as a human-scale activity, and the data environment has outgrown human scale.
 
@@ -198,7 +198,7 @@ Business glossary governs the schema definition. The schema definition governs t
 
 Every Gold model ships with an explore. As infrastructure. A Gold table without an explore is incomplete, the way a function without a return type is incomplete. The explore catalogs the Gold model, makes it discoverable, prevents the data swamp. If you build Gold without cataloging it, you are building a warehouse without an inventory system.
 
-Well-documented pattern: organizations denormalize into Gold, do not catalog, keep throwing in more facts, replicate without governance. Gold is where curated knowledge belongs — but uncataloged Gold degrades into chaos. Without a semantic layer, you will spend more time finding things than using them.
+Uncataloged Gold degrades into the swamp The Architecture chapter walked through; without a semantic layer, you spend more time finding things than using them.
 
 Confidence in architecture comes from setting a standard, writing it down, and holding the team accountable — the operating system the team runs on. You cannot deploy a Gold model without a corresponding explore. You cannot add a column without a definition. You cannot create a new term without checking the glossary. These are not policies someone might forget but checks the pipeline runs automatically, monitored continuously by AI.
 
@@ -256,7 +256,7 @@ AI collapses that distance. A leader who uses AI to move directly from thinking 
 
 Right team is defined by capability, not headcount. One person with AI augmentation and architectural judgment outproduces five without — not by working harder but by working differently: designing a system in which the dictionary maintains itself rather than maintaining it by hand.
 
-Hire for capability. Hire people who understand that data engineering is applied linguistics — that a definition is a contract and a namespace is a governance boundary. Give them AI, and get out of their way.
+Hire for capability. Hire people who understand that the job is language-first engineering — that a definition is a contract and a namespace is a governance boundary. Give them AI, and get out of their way.
 
 These are not traditional data engineers, though data engineering skills are necessary — a hybrid: part linguist, part engineer, part domain analyst. When you name a column "revenue," you are not labeling a pre-existing thing — you are constructing a commitment. Break the commitment, break every downstream consumer.
 

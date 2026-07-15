@@ -85,9 +85,7 @@ This is Tier 1 of a three-tier vocabulary. A glossary (Tier 1) governs schema de
 
 Conventional glossary projects are six-month waterfall exercises: working groups, circulated spreadsheets, definitions filled in reluctantly between people’s actual jobs. Six months later, a document that was out of date three months ago.
 
-Record a conversation instead — an actual one, not a structured interview with a template. Ask them: "Walk me through what you look at every morning. What does this number mean? Where does it come from? What do you check when it looks wrong?" Let them talk. Record it. Then use AI to extract and structure the definitions from the recording.
-
-I have done this multiple times. One session produced better results than six months of traditional documentation, because domain experts carry enormous tacit knowledge they would never think to write down in a spreadsheet. They know the edge cases, the historical context, the unwritten rules. In a conversation, that knowledge surfaces naturally. In a spreadsheet, it stays locked in their heads.
+Record a conversation instead — the conversational-extraction discipline from Building with AI, run as the playbook's first move. Ask the expert: "Walk me through what you look at every morning. What does this number mean? What do you check when it looks wrong?" Let them talk. Record it. AI extracts and structures the definitions; the expert validates. One session beats six months of circulated spreadsheets, because tacit knowledge surfaces in conversation and stays locked in heads when you send a template.
 
 As one stakeholder told me: "We need his subject matter expertise — definitions against these terms, really long detailed things that are tutorial for us. Then the AI will understand the data." He was right about the mechanism and right about the purpose. Definitions are not documentation. They are AI infrastructure.
 
@@ -161,7 +159,7 @@ That mapping separates a semantic layer from a renaming exercise: a translation 
 
 Even if you never build a single AI agent, the semantic layer matters. Without one, Gold becomes a swamp.
 
-Wall Street demonstrates this with depressing regularity. People denormalize into Gold, skip the catalog, keep adding tables, replicate without governance. Three years later, Gold is an unnavigable mess of overlapping, contradictory tables that nobody trusts. The builders have left. The documentation is out of date. The "Gold layer" is just a bronze layer with better table names.
+Wall Street demonstrates this with depressing regularity — the failed-data-lake autopsy from The Architecture chapter. Three years of uncataloged denormalization later, the "Gold layer" is just a bronze layer with better table names.
 
 A semantic layer prevents this by construction. When every Gold table must ship with its semantic definition — fields described, relationships mapped, freshness signals configured — building one without is incomplete work. Shipping code without tests. You can do it, but the architecture should make it feel wrong.
 
@@ -371,7 +369,7 @@ A third of organizations have now appointed a separate Chief AI Officer, fragmen
 
 Traditional data teams were built for a different era. Twenty to thirty people, organized by function — ETL developers, BI analysts, governance specialists, data stewards, report developers, data quality analysts — each with its own tools, processes, and backlog. Coordination overhead was enormous. Output was slow.
 
-AI-augmented teams are smaller, faster, and organized by capability rather than function. Gartner predicts that AI-native development platforms will lead 80% of organizations to evolve their large engineering teams into smaller, AI-augmented ones (Top Strategic Technology Trends, 2026). In my own observation, a five-person augmented team in 2026 produces what a ten-person team produced in 2020.
+AI-augmented teams are smaller, faster, and organized by capability rather than function. In my own observation, a five-person augmented team in 2026 produces what a ten-person team produced in 2020.
 
 Resist the "fire everyone" narrative. The scarce resource is not labor but judgment. Five engineers without architectural judgment produce five different interpretations of the same data. One architect with AI augmentation produces one canonical interpretation that serves everyone.
 
@@ -453,7 +451,7 @@ This playbook is an architecture document with strategic implications, not a dat
 
 Strategy without architecture is a wish list. Architecture without strategy is expensive plumbing. The three investments are architectural decisions that constitute a strategy. No separate strategy document needed.
 
-Gartner estimates the annual cost of poor data quality at an average of $12.9 million per enterprise. That is the cost of not having the architecture. The three investments are cheaper than the alternative.
+Poor data quality already costs any large enterprise millions a year in reconciliation, rework, and decisions made on wrong numbers — every data leader carries their own tally. That is the cost of not having the architecture. The three investments are cheaper than the alternative.
 
 ==== The Risk of This Playbook
 

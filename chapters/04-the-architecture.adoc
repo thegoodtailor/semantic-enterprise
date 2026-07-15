@@ -418,9 +418,7 @@ image::figures/sole-interface.png[The Semantic Layer as Sole Interface,width=680
 
 A consumer who queries direct SQL has access to column names and not much else. They are reasoning over the worst possible representation of the data — the representation the entire documentation discipline was written to argue against. Morphism narrative, edge-case warnings, temporal caveats: none of it is available below the semantic layer. The underlying database has no essay.
 
-Not separable. Delivered together through one surface or through none. The semantic layer is the interface — not one among several — and nothing reaches the consumer except through it. Every gap an agent or analyst surfaces is a gap in the semantic layer, not a case for direct access. Remediation is documentation, ontology, morphism, or measure work — never a bypass.
-
-Unpopular in the short term, correct in every term, because the alternative is slow fragmentation of every architectural commitment described above.
+Not separable. Delivered together through one surface or through none. What the layer must provide to earn that status — and the named exceptions that keep the commitment honest — is the subject of The Death of the Dashboard.
 
 ==== Rapid Onboarding: From Island to Archipelago
 

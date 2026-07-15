@@ -58,7 +58,7 @@ These five questions are simple. The industry has over-complicated the diagnosti
 
 Gartner has a multi-dimension assessment. McKinsey has a maturity model with five levels. Deloitte has a governance roadmap with six areas. Microsoft has an AI readiness checklist. All of them take four to eight weeks to complete and produce a slide deck that says, in eighty pages, what five questions say in ten minutes: your data is not machine-readable, your definitions are scattered, your knowledge is trapped in people’s heads, and your platform does not learn from its own wrong answers.
 
-Only 26% of companies have moved beyond proof of concept to generate value from AI (BCG, 2024). Widely cited estimates put the share of enterprise AI projects that fail to reach production at 70 to 85 percent. The gap is readiness, not technology: whether your data can survive contact with a machine that cannot squint.
+Only 26% of companies have moved beyond proof of concept to generate value from AI (BCG, 2024), and the large majority of enterprise AI projects never reach production at all. The gap is readiness, not technology: whether your data can survive contact with a machine that cannot squint.
 
 If your organization has fewer than fifty employees, fewer than ten data sources, and no AI ambitions, this playbook is overkill. Use a spreadsheet. When you outgrow the spreadsheet, come back. For everyone else: the five questions are your starting diagnostic, and the rest of this essay is your response.
 
@@ -283,7 +283,7 @@ Half the playbook is what to start. The other half is what to stop. Most data or
 
 Governance that lives outside the engineering workflow drifts into irrelevance. A metadata catalog outside your CI/CD process is a metadata graveyard on a delayed schedule.
 
-A $4.6 billion market in 2026, growing at 16% annually. Most of it is spent on tools that solve a process problem with a product purchase. The pattern is consistent: buy a governance tool — Collibra, Alation, Informatica, pick one. Six months configuring it. Populate it with definitions. Deliver to applause. Within a year, the definitions are out of date, the tool is underused, and the governance team is begging people to update their entries.
+A multi-billion-dollar tools market, and most of it is spent on tools that solve a process problem with a product purchase. The pattern is consistent: buy a governance tool — Collibra, Alation, Informatica, pick one. Six months configuring it. Populate it with definitions. Deliver to applause. Within a year, the definitions are out of date, the tool is underused, and the governance team is begging people to update their entries.
 
 One industry assessment described the leading tool as "complex, heavy to manage, and expensive" and concluded that without strong data owners and governance processes already in place, it "quickly becomes an expensive, underused shell."
 
@@ -414,7 +414,7 @@ Several questions remain open.
 
 *The optimal granularity of domain essays is an empirical question.* Six hundred to fifteen hundred words is a working range, not yet measured against agentic performance benchmarks (those benchmarks do not yet exist in standardized form). Complex datasets with historical conventions may need fifteen hundred words; clean reference tables may need fewer. The discipline — every significant dataset carries a domain essay from operational experts — matters more than the specific word count. Measure and adjust.
 
-*Semantic layer tooling in the agentic era is in flux.* LookML is mature but tightly coupled to Looker. dbt’s semantic layer is promising but young. Cube offers cross-platform flexibility at the cost of another abstraction layer. Malloy rethinks the query language itself but has limited ecosystem adoption. No tool covers everything the architecture demands. Teams will need to assemble, extend, or build — and should expect the landscape to shift significantly in the next two to three years.
+*Semantic layer tooling in the agentic era is in flux.* As of this writing: LookML is mature but tightly coupled to Looker; dbt’s semantic layer is promising but young; Cube offers cross-platform flexibility at the cost of another abstraction layer; Malloy rethinks the query language itself but has limited ecosystem adoption. No tool covers everything the architecture demands. Teams will need to assemble, extend, or build — and should expect the landscape to shift significantly in the next two to three years.
 
 *Formal measurement of information density per token remains an open problem.* Flat Gold with a semantic layer is higher density than a raw schema dump. Domain essays are higher density than auto-generated column descriptions. These claims are defensible by practice but not yet by a standardized metric. The metric will come. It is not here yet.
 

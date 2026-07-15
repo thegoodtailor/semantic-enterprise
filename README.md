@@ -2,34 +2,27 @@
 
 *Data Architecture for the Agentic Era* — book source (AsciiDoc).
 
-**Canonical source:** [`the-semantic-enterprise.adoc`](the-semantic-enterprise.adoc). Edit that file; everything else is figures, build scripts, and a companion paper.
+**Canonical source:** the chapter files in [`chapters/`](chapters/) (`01-introduction.adoc` … `16-references.adoc`). The master file [`the-semantic-enterprise.adoc`](the-semantic-enterprise.adoc) only assembles them via `include::` — edit the chapters, never the master, and never edit `the-semantic-enterprise-merged.adoc` (a generated artifact with a DO-NOT-EDIT banner; regenerate with `python3 merge_book.py`).
 
 ## Editing
 
-Edit `the-semantic-enterprise.adoc` directly — via GitHub's web editor, or a local clone in any editor (VS Code's AsciiDoc extension gives live preview). Commit your changes; the PDF is rebuilt from this source (not committed — it's a build artifact).
+Edit the files in `chapters/` — via GitHub's web editor, or a local clone (VS Code's AsciiDoc extension gives live preview; open the master file's preview to see all 16 chapters assembled). Commit and push; the GitHub Action rebuilds the PDF and self-contained HTML on every push to `main` (download from the Actions tab — build artifacts are not committed).
 
 > AsciiDoc, not LaTeX — this is the format O'Reilly's authoring platform uses. Overleaf won't render it; edit on GitHub or locally.
-
-## Building the PDF
-
-```bash
-asciidoctor-pdf -a front-cover-image=figures/cover.png \
-  -o the-semantic-enterprise.pdf "the-semantic-enterprise.adoc"
-```
-
-Needs `asciidoctor-pdf` (Ruby gem). All 27 inline figures live in `figures/` and are referenced as `image::figures/*.png`; the cover is `figures/cover.png`, applied via the `front-cover-image` attribute. An HTML build: `asciidoctor -a data-uri -a allow-uri-read the-semantic-enterprise.adoc`.
 
 ## Layout
 
 | Path | What |
 |---|---|
-| `the-semantic-enterprise.adoc` | the book (13 chapters + No Walls coda + References) |
-| `figures/` | 27 inline figures + `cover.png` (Scarfe-register cartoons + slick diagrams) |
+| `chapters/` | the book: 14 chapters + No Walls coda + Engineer's Appendix + References |
+| `figures/` | 28 inline figures + `cover.png` (Scarfe-register cartoons + clean diagrams) |
 | `figure-map.md` | which figure is which register, and where each lands |
-| *(moved)* | companion academic paper *The Enterprise Model Is a Colimit* (the formal spine) now lives in its own repo: [thegoodtailor/enterprise-colimit](https://github.com/thegoodtailor/enterprise-colimit) |
-| `the-semantic-enterprise-review.md`, `*-reviewiman.md`, `pdf-vs-adoc-comparison.md` | editorial review + provenance notes |
-| `audiobook/` | spoken-edition rig — ElevenLabs two-register (cosmic narrator + Maher flame) + ambient bed; `scripts/{segment,tts,music}.py` |
-| `*.py` (top level) | figure-generation + one-shot transform scripts (archival) |
+| `revision/` | editorial conventions (`//@ TAG:` markup), perishability policy, AI-tells scanner, fact-check record |
+| `proposal/` | the O'Reilly book proposal |
+| `audiobook/` | spoken-edition rig — ElevenLabs two-register + ambient bed |
+| `*.py` (top level) | figure-generation + build scripts |
+
+The formal treatment of the colimit results (consistency ≡ commutativity, soundness of gluing, finishability) is developed **in the book itself** — "The Living Colimit," § The Formal Spine. The earlier standalone draft paper ([thegoodtailor/enterprise-colimit](https://github.com/thegoodtailor/enterprise-colimit)) has been subsumed by that section and is retained only as an archive. A companion experiments repo (TradeBench) is in preparation and will be linked here.
 
 ## Outstanding
 

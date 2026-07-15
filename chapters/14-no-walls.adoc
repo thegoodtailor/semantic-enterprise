@@ -6,7 +6,7 @@ Ask one question, get the right answer. That is the use case that drove all of t
 ."No walls": fencing the chatbot while every other consumer walks straight in is theatre. The estate is open by design — every pathway reachable, every hop still governed by one shared vocabulary, not a gate.
 image::figures/gate-no-walls.png[no walls,width=600,align="center"]
 
-This used to be hard. Data walled off in segregated zones. The interesting trial sets undocumented on someone's laptop. Plumbing the analyst had to lay again every single time. It is why Databricks gets bought. And it almost works — until the explorer is an agentic data scientist in a box: no laptop, no colleague to ask, only what the platform makes explicit. Friction that merely slowed a human stops an agent dead.
+This used to be hard. Data walled off in segregated zones. The interesting trial sets undocumented on someone's laptop. Plumbing the analyst had to lay again every single time. It is why the unified-platform vendors sell so well. And it almost works — until the explorer is an agentic data scientist in a box: no laptop, no colleague to ask, only what the platform makes explicit. Friction that merely slowed a human stops an agent dead.
 
 It should never have been a problem. Not for your advanced analytics team. Not for your curious head of sales, chasing a hunch through five domains before lunch. No segregated zones. No laptops. No redundant plumbing. Every pathway open, every dataset described, every hop carried by one vocabulary.
 

@@ -1,6 +1,6 @@
 == The Engineer's Appendix
 
-The rest of this book argues; this appendix builds.
+The rest of this book argues; this appendix builds. One dating note before the numbers: every vendor limit, engine capability, and product figure below is the state of the tooling as of mid-2026, recorded because engineers need operating numbers, not because the numbers will hold. The disciplines they illustrate are not dated.
 
 === Anatomy of a Silver Table
 
@@ -85,7 +85,7 @@ metrics:
 
 Two properties do the governing. Entities imply joins: declaring `counterparty` as a foreign entity is the join declaration — any metric crossing executions and counterparties resolves through the entity graph, planned by the engine, never improvised by a consumer. And the namespace is global: every measure, dimension, and entity name must be unique across all semantic models, so `revenue` can be declared exactly once. A name collision is a build failure — governance by construction at the vocabulary level.
 
-One restatement from the Time chapter, placed where an engineer will trip over it: the temporal-alignment rule is declared on this relationship and implemented in the model SQL beneath the layer — Snowflake's `ASOF JOIN` (generally available 2024) where the engine has it, windowed predicates where it does not — because no current semantic layer executes temporal joins natively.
+One restatement from the Time chapter, placed where an engineer will trip over it: the temporal-alignment rule is declared on this relationship and implemented in the model SQL beneath the layer — Snowflake's `ASOF JOIN` (generally available 2024) where the engine has it, windowed predicates where it does not — because, as of this writing, no major semantic layer executes temporal joins natively.
 
 None of these descriptions is hand-typed into the YAML. Each is authored once in the metadata repository — the MDR of your choice — where definitions are tagged, versioned, and correlated to the columns and measures that inherit them. The schema file and the semantic model carry a copy the build checks against the registry; they never paraphrase it. The rich definition lives in one governed place, and everything downstream is a verified reflection of it — the MDR-as-context-engine of The Architecture doing its second job: not only briefing the agent at read time, but sourcing the definitions at build time.
 

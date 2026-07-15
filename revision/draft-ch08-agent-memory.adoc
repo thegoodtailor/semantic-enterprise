@@ -1,0 +1,45 @@
+// DRAFT for ch08 integration (Phase D) — the agent-memory worked artifact.
+// Fills the chapter's biggest gap: "memory infrastructure" is promised but never
+// specified, and the chapter admits most implementations are key-value/vector
+// stores. The book's answer is its own thesis: the warehouse is the memory —
+// so show agent memory as a Tier 1 bitemporal Silver table, in ch15 style.
+
+==== Memory, Shown Whole
+
+The chapter has been saying "the warehouse is the memory" as an architectural slogan. Here is the slogan as DDL. An agent's conclusions are facts about the world with the same epistemic structure as any other fact the warehouse holds: they were believed from some moment, about some window of the world, on some evidence — and they get superseded. That is a Tier 1 bitemporal entity, and the machinery is the Time chapter's, unchanged:
+
+[source,sql]
+----
+-- silver_agents.agent_belief — Tier 1 entity (full bitemporality)
+CREATE TABLE silver_agents.agent_belief (
+  -- Identity
+  belief_sk         STRING    NOT NULL,  -- surrogate: hash(agent_id, subject, valid_from, system_from)
+  agent_id          STRING    NOT NULL,  -- which agent concluded it
+  subject           STRING    NOT NULL,  -- governed concept the belief is about;
+                                         -- glossary-linked: e.g. risk.settlement_risk/CPTY-4711
+  -- The belief itself
+  conclusion        STRING    NOT NULL,  -- the claim, in prose an agent (or auditor) can read
+  confidence        DOUBLE    NOT NULL,  -- calibrated, not vibes: see the Reflexive Loop's ledger
+  evidence_ref      STRING    NOT NULL,  -- provenance: query hashes, Gold versions, morphism ids
+                                         -- the belief staked (the Reflexive Loop's provenance)
+  method            STRING    NOT NULL,  -- how it was reached: rule id, model id + prompt hash
+
+  -- Valid time — what window of the WORLD the belief is about
+  valid_from        TIMESTAMP NOT NULL,
+  valid_to          TIMESTAMP NOT NULL,  -- open = 9999-12-31
+
+  -- System time — when the AGENT held it
+  system_from       TIMESTAMP NOT NULL,  -- when concluded
+  system_to         TIMESTAMP NOT NULL,  -- open until superseded or refuted
+  supersede_reason  STRING               -- 'refuted' | 'revised' | 'stale' | NULL while open
+);
+-- Declared grain: one row per (agent_id, subject, valid_from, system_from).
+-- Nothing is updated in place: a revision closes system_to and inserts the
+-- successor row, exactly as a KYC correction does in the Time chapter.
+----
+
+Every question the Time chapter taught you to ask of a counterparty now works on the agent's own mind. "What does the agent currently believe about settlement risk on counterparty 4711?" is an as-of-now query. "What did it believe on March 10, before the reconciliation break?" is a system-time query — the belief row whose `system_from` and `system_to` bracket March 10, retrieved with the same predicate you would use on any Tier 1 dimension. "When did it learn it was wrong, and why?" is the `system_to` and `supersede_reason` on the superseded row, with `evidence_ref` naming the refutation. The agent that flagged elevated settlement risk on March 3, was contradicted by the March 12 reconciliation, and revised — that whole arc is three rows, queryable forever, by any consumer, through the same semantic layer as everything else.
+
+Three consequences fall out of building memory this way rather than bolting a vector store onto the side. The agent's knowledge is *governed*: `subject` links to the glossary, so beliefs attach to defined concepts rather than free text, and the sole-interface commitment covers the agent's mind as well as its inputs. The agent's knowledge is *auditable*: "why did the system say that in April?" is a query, not a forensic reconstruction — the regulator's what-did-you-know-and-when question now has an answer for the machine's beliefs too, which is exactly what a know-your-agent examination will ask for. And the agent's knowledge *composes*: beliefs join to the facts they are about, through declared joins, so "show me every current conclusion staked on the Gold version we just corrected" is one query over `evidence_ref` — the query that turns a data correction into a targeted re-evaluation of downstream conclusions instead of a shrug.
+
+Retrieval-augmented lookups still have a place — as an index into this substrate, not a replacement for it. A vector store can find candidate beliefs by similarity; only the bitemporal record can tell you whether the belief is current, what it staked, and what happened to it since. The stores most implementations use today remember answers. This remembers *epistemic state* — and the difference is the difference between a cache and a mind. The calibration of `confidence` — how the system learns how much to trust each agent's conclusions per subject — is the Reflexive Loop's calibration ledger, built in that chapter on exactly this table.

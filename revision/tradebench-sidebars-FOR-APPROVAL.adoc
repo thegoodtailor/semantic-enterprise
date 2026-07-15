@@ -83,6 +83,24 @@ conventions, not the tokens. Method and harness:
 github.com/thegoodtailor/semantic-enterprise-experiments.
 ****
 
-// ── SIDEBAR 4 → ch08 multi-agent section (E4 topology) — PENDING E4 COMPLETION.
-//    Claim shape: poisoned specialist contaminates naive-merge >= Nx more often
-//    than adjudicated topology; adjudicator ~= clean baseline.
+// ── SIDEBAR 4 → ch08 multi-agent section, after the 17.2x/4.4x literature passage.
+
+.Topology, poisoned — our trials, July 2026
+****
+We ran the newsroom failure mode deliberately: three specialist agents each
+holding one slice of the desk's semantic context, with exactly one slice
+poisoned by a plausible wrong convention (the deprecated strategy tag declared
+canonical; the notional column declared to be shares; the fiscal calendar
+declared equal to calendar quarters). Composed naively — "combine the
+specialists' guidance as given" — the frontier model's final answers matched
+the poison's signature on 58 percent of affected questions and were correct on
+none. Composed through an adjudicator holding the governed semantic layer and
+instructed to verify every specialist claim against the declarations, the same
+poisoned guidance yielded zero contamination and 100 percent correct — the
+clean-baseline result, with a saboteur in the room. Two honest details: the
+fiscal poison mostly failed to land in any topology (the schema itself
+advertised the fiscal calendar, and models used it), and a mid-tier adjudicator
+contained the poison only partially — the editor's quality matters. Small-scale
+ordering evidence, not a replication of the published 17x/4x amplification
+study; method at github.com/thegoodtailor/semantic-enterprise-experiments.
+****

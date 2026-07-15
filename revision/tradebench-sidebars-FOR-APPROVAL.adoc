@@ -1,0 +1,68 @@
+// TRADEBENCH SIDEBAR DRAFTS — HELD FOR AUTHOR SIGN-OFF.
+// Nothing here is placed in a chapter until Iman approves the numbers.
+// Repo: github.com/thegoodtailor/semantic-enterprise-experiments (to be pushed public).
+// Method: 44 pre-registered questions (10 head control / 24 trap / 10 multi-hop tail),
+// deterministic synthetic trading-desk DB (seed 42) instantiating ch02's Scenario A/B
+// traps; execution-accuracy vs handwritten gold SQL; foil-matched error classes;
+// GPT-5.6-terra, Claude Sonnet 5, Gemini 2.5 Flash; temp 0; 3 runs/cell, modal verdict.
+
+// ── SIDEBAR 1 → ch02, after the Scenario A/B walk-through (answers ch02's own
+//    self-issued falsification challenge at "None of these exists as a standardized benchmark").
+//    NOTE FOR AUTHOR: ch02's challenge line should be updated to say "so we ran it" →
+//    pointing at this sidebar.
+
+.In our trials, July 2026
+****
+We instantiated this chapter's two scenarios as a reproducible experiment: a
+synthetic trading-desk warehouse seeded with exactly the ambiguities described
+here — the deprecated order-level strategy tag, order-time versus fill-time
+grain, notional versus mark-to-market versus realized P&L, a 30-September
+fiscal year, bitemporal counterparty tiers with backdated corrections, and a
+`volume` column holding notional — plus 44 pre-registered questions with
+handwritten gold SQL, scored by execution accuracy. Three models (GPT-5.6-terra,
+Claude Sonnet 5, Gemini 2.5 Flash; temperature 0, three runs each, modal verdict).
+
+On the 24 trap questions, the two frontier models under Scenario A's context
+(schema plus sample rows) scored 71 percent — and under Scenario B's (declared
+semantics plus the domain essay, at roughly the same token count) went to
+**100 percent** [Wilson 95%: 86–100]. The mid-tier model went from 63 to 71
+percent, and — a result this chapter predicted — *lost* accuracy when the essay
+was added to its context, over-contextualization degrading it as surely as
+starvation. Control questions with no seeded trap passed at 90–100 percent in
+every arm: the schema was answerable; the semantics were the difference.
+Harness, data generator, and every prompt and completion:
+github.com/thegoodtailor/semantic-enterprise-experiments. One hostile schema,
+one date, three named models — a demonstration of the mechanism, not an
+industry benchmark.
+****
+
+// ── SIDEBAR 2 → ch08, replacing/beside the published-numbers paragraph in
+//    "The Intelligence Stack" (the old unsourced 94-99/10-31 spot).
+
+.Grounding, measured — our trials, July 2026
+****
+Published evaluations put semantic-layer accuracy at or near the ceiling (dbt
+Labs 2026: 98–100 percent; AtScale: 92.5 versus 20 percent raw; Snowflake
+Cortex Analyst: ~90 versus a 16 percent raw baseline) and raw text-to-SQL
+against enterprise-grade schemas near the floor (Spider 2.0 at release: 21.3
+percent). In our own pre-registered trials (44 questions, six seeded
+ambiguities, three models — full method and harness at
+github.com/thegoodtailor/semantic-enterprise-experiments), frontier models
+scored 67–71 percent on trap questions from the raw schema and **100 percent**
+through the governed semantic context; with structure alone (declared joins but
+definitions stripped), they fell to 75–83 percent — the meaning, not the
+structure, carries the accuracy. Where the raw arms failed, the modal
+foil-matched error was strategy-tag selection — the deprecated column — exactly
+the failure class the declared-joins doctrine predicts. Numbers are dated;
+the mechanism is the claim.
+****
+
+// ── SIDEBAR 3 → ch03, in the domain-essay section (E3: conventions vs tokens).
+//    PENDING FINAL E3 FRAMING — key finding to draft around: with conventions
+//    stated in column descriptions, frontier traps already ceiling (100%);
+//    structure-only drops to 75-83%; token-matched padding does NOT reproduce
+//    the essay's gain on multi-hop tail questions (80% vs 90-100%).
+
+// ── SIDEBAR 4 → ch08 multi-agent section (E4 topology) — PENDING E4 COMPLETION.
+//    Claim shape: poisoned specialist contaminates naive-merge >= Nx more often
+//    than adjudicated topology; adjudicator ~= clean baseline.

@@ -78,7 +78,7 @@ Queries against Gold receive published-as-of semantics by default: what was publ
 
 === Correction Events
 
-Architectures are not tested by the data that arrives on time. They are tested by the correction that arrives three weeks late and rewrites the meaning of everything published in between.
+Architectures are tested by the correction that arrives three weeks late and rewrites the meaning of everything published in between.
 
 Everything above is scaffolding until a correction flows through the system. The scaffolding earns its cost the first time a correction arrives and the architecture handles it without losing history, without retroactively rewriting published outputs, and without leaving any consumer confused about which version of truth they are looking at.
 

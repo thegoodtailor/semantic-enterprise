@@ -148,7 +148,7 @@ At comparable institutions — JP Morgan, London Stock Exchange, AstraZeneca —
 
 Scale matters. A Tier 1 investment bank has more data domains, more regulatory complexity, and more organizational politics than a mid-size trading venue. Different scope. One person plus AI cannot replicate a bank’s entire semantic infrastructure in five months.
 
-But the work is sustainable. Those 586 terms are not a deliverable that will decay. They are embedded in the engineering pipeline — in schema definition files, in the semantic layer, in machine-readable standards that AI reads as pre-flight briefing before querying the data. When a new table is created, the AI checks it against the glossary. When a definition drifts, the AI flags it. Maintenance is built in. The ontology does not rot because the curator never sleeps.
+But the work is sustainable. Those 586 terms are embedded in the engineering pipeline — in schema definition files, in the semantic layer, in machine-readable standards that AI reads as pre-flight briefing before querying the data. When a new table is created, the AI checks it against the glossary. When a definition drifts, the AI flags it. Maintenance is built in. The ontology does not rot because the curator never sleeps.
 
 Velocity is not the real argument — sustainability is. Old model: build at great expense, watch it decay. New model: build at moderate expense, maintain continuously. A fundamentally different kind of cost — a system that improves over time instead of depreciating.
 
@@ -266,7 +266,7 @@ Sophisticated objection: if AI handles maintenance and structuring, does the hum
 
 Division of labor answers. AI handles the what: generating YAML, auditing definitions, mapping lineage, monitoring schema changes. Humans handle the why: what the definitions should be, how concepts relate, what the business context demands. You do not need to type the YAML. You need to understand what it means and why it is structured that way. The bar is different, not lower — architectural judgment rather than execution speed.
 
-Team shape for the semantic enterprise: small, technical, AI-augmented, embedded in engineering, producing executable infrastructure. Led by practitioners who have not lost their teeth. Using AI not just as a consumer of the architecture they build, but as a co-builder that makes the architecture possible.
+Team shape for the semantic enterprise: small, technical, AI-augmented, embedded in engineering, producing executable infrastructure. Led by practitioners who have not lost their teeth. Using AI as co-builder of the architecture it will consume.
 
 Forcing function and solution: same technology. AI demands semantic infrastructure because it cannot tolerate ambiguity. AI enables semantic infrastructure because it handles the maintenance that made it unsustainable. AI reshapes the team because one thoughtful human plus an AI that never sleeps replaces five expensive humans doing tedious maintenance.
 

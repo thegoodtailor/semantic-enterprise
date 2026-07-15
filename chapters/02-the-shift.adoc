@@ -138,7 +138,7 @@ A chatbot that queries bad data through a bad semantic layer is automated confus
 
 
 [#fig-chatbot-confusion]
-.A chatbot on ungoverned data is not conversational analytics — it is automated confusion, delivered faster, to more people.
+.A chatbot on ungoverned data is automated confusion, delivered faster, to more people.
 image::figures/chatbot-confusion.png[chatbot confusion,width=600,align="center"]
 
 Gartner found in 2023 that only 8 percent of customers had used a chatbot in their most recent customer service interaction — and of those, only 25 percent would use one again. An airline’s customer service chatbot was held legally liable for giving a passenger incorrect information about bereavement fares — the chatbot invented a refund policy that did not exist, stated it with perfect confidence, and a tribunal ruled the airline was bound by what its agent had promised. An automotive company’s chatbot agreed to sell a vehicle for one dollar after a customer exploited a prompt injection vulnerability. A fintech company announced in 2024 that its AI assistant was doing the equivalent work of 700 human agents, then watched service quality fall short of what its customers expected until, in 2025, it reversed course into a hybrid model and started hiring humans again.
@@ -165,7 +165,7 @@ Build a lightweight orchestration layer (MCP, or whatever the acronym of the mon
 
 It is safe. It is also small-minded. It treats the model like a slightly smarter intern who still needs you to draw the entire map for it every single time. The upside is capped at whatever you had the foresight, and the political will, to hardcode in advance.
 
-The even worse version currently making the rounds: "just give the agent broad access and let it crawl and self-discover." This is not architecture. This is hoping enlightenment will magically emerge from effluent. The agent will confidently traverse the worst parts of your data estate, invent plausible-sounding joins, and present the result as insight. It will be wrong with maximum confidence, and you will have built exactly zero infrastructure to stop it.
+The even worse version currently making the rounds: "just give the agent broad access and let it crawl and self-discover." This is hoping enlightenment will magically emerge from effluent. The agent will confidently traverse the worst parts of your data estate, invent plausible-sounding joins, and present the result as insight. It will be wrong with maximum confidence, and you will have built exactly zero infrastructure to stop it.
 
 Both positions share the same root failure: they treat the model as the variable and the data estate as fixed. The correct position is the opposite.
 

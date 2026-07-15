@@ -140,7 +140,7 @@ Without one, every query is an act of archaeology. Which table to hit, which col
 A semantic layer is a complete interpretive overlay on your data — field descriptions are the smallest part of it:
 
 * *Field definitions*: What each field means, linked to the Tier 1 glossary — not a separate definition, but the same one, inherited from the vocabulary.
-* *Relationships between concepts*: Revenue by product, volume by trading pair, users by region. The semantic layer must encode not just what individual fields mean, but how they relate to each other — what dimensions a metric can be sliced by, what hierarchies exist, what navigational paths are valid.
+* *Relationships between concepts*: Revenue by product, volume by trading pair, users by region. The semantic layer must encode how fields relate to each other — what dimensions a metric can be sliced by, what hierarchies exist, what navigational paths are valid.
 * *Default assumptions*: When someone asks for "revenue," do they mean gross or net? When they say "this quarter," do they mean calendar quarter or fiscal quarter? The semantic layer should encode the defaults so that AI does not have to guess.
 * *Freshness signals*: When was this data last updated? Is it current? Is it stale? If the data is three days old, the agent should know that before it answers a question, not after.
 * *Navigational heuristics*: If someone asks a question that touches multiple tables, which path should the query take? The semantic layer should encode the preferred navigation so that AI does not burn tokens reasoning about join strategies.

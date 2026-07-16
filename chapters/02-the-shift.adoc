@@ -106,7 +106,41 @@ Accuracy per token: for a fixed set of business questions, measure accuracy and 
 
 Compression ratio: take N tokens of raw schema and determine how many tokens of semantic context produce equivalent answer quality. The ratio is the density multiplier — 1,800 tokens of semantic context matching the accuracy of 25,000 tokens of raw DDL is roughly 14x. The most intuitive of the three and the easiest to compute empirically; the least theoretically grounded, because "equivalent answer quality" requires its own operationalization.
 
-None of these exists as a standardized benchmark. No suite measures information density per token across data platforms; no leaderboard ranks context strategies by semantic efficiency. The evidence today is repeated observation: Scenario A versus Scenario B, every time, across every domain we have tested. The experiment that would settle it: one hundred business questions across ten domains, each prepared with two contexts, a schema dump and a semantic-layer-plus-essay, scored on accuracy, token count, and latency. If schema dumps match semantic contexts on accuracy at token parity, the thesis dies. Run it.
+None of these exists as a standardized benchmark. No suite measures information density per token across data platforms; no leaderboard ranks context strategies by semantic efficiency. The evidence today is repeated observation: Scenario A versus Scenario B, every time, across every domain we have tested. The experiment that would settle it: one hundred business questions across ten domains, each prepared with two contexts, a schema dump and a semantic-layer-plus-essay, scored on accuracy, token count, and latency. If schema dumps match semantic contexts on accuracy at token parity, the thesis dies. So we ran it.
+
+.In our trials, July 2026
+****
+We instantiated this chapter's two scenarios as a reproducible experiment: a
+synthetic trading-desk warehouse seeded with exactly the ambiguities described
+here — the deprecated order-level strategy tag, order-time versus fill-time
+grain, notional versus mark-to-market versus realized P&L, a 30-September
+fiscal year, bitemporal counterparty tiers with backdated corrections, and a
+`volume` column holding notional — plus 44 pre-registered questions with
+handwritten gold SQL, scored by execution accuracy. Three models (GPT-5.6-terra,
+Claude Sonnet 5, Gemini 2.5 Flash; temperature 0, three runs each, modal verdict).
+
+On the 24 trap questions, the two frontier models under Scenario A's context
+(schema plus sample rows) scored 71 percent — and under Scenario B's (declared
+semantics plus the domain essay, at roughly the same token count) went to
+100 percent [Wilson 95%: 86–100]. The mid-tier model went from 63 to 71
+percent, and — a result this chapter predicted — *lost* accuracy when the essay
+was added to its context, over-contextualization degrading it as surely as
+starvation. Control questions with no seeded trap passed at 90–100 percent in
+every arm: the schema was answerable; the semantics were the difference.
+
+The density claim held at token parity and beyond it. With the raw context
+truncated to exactly the semantic context's token count, frontier trap accuracy
+was 67–71 percent against the semantic arm's 100. Giving the raw arm half
+again as many tokens (the full dump, ten sample rows per table) did not close
+the gap — it scored marginally *worse*. And a compressed semantic context at
+half the tokens still held the ceiling. More context is not better context.
+Denser context is better context — measured.
+
+Harness, data generator, and every prompt and completion:
+https://github.com/thegoodtailor/semantic-enterprise-experiments. One hostile
+schema, one date, three named models — a demonstration of the mechanism, not
+an industry benchmark.
+****
 
 The vendors, in their own way, already have: the two largest lakehouse platforms ship hard published limits on how much semantic model a conversational interface may carry, because answer quality degrades past them — the operating numbers, as of this writing, are in The Engineer's Appendix. Hard product limits are what a constraint looks like when nobody has named it yet, and two vendors on independent stacks publishing the same class of limit is the constraint announcing itself.
 

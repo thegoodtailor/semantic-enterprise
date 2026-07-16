@@ -100,6 +100,22 @@ Structured metadata — the ISO 11179 anchors of datatype, key, classification �
 
 The domain essay is the operational note a senior practitioner writes for a new colleague: dense, deliberate, evidence-based, free of padding. Prose, because the consumer changed; the standard did not.
 
+.What carries the meaning — our trials, July 2026
+****
+We ablated the semantic context to find where the accuracy lives. Strip the
+definitions and keep only the structure — tables, declared joins, no prose —
+and frontier trap accuracy falls from 100 percent to 75–83. State the
+conventions (the deprecated tag, the notional column, the fiscal year) in
+governed column descriptions, and the traps return to the ceiling; the domain
+essay's additional gain appears on the multi-hop tail questions, where
+composed reasoning needs the operational narrative (frontier tails 80 percent
+with descriptions alone, 90–100 with the essay). The control that makes this
+publishable: padding the context with an equal number of tokens of *true but
+irrelevant* desk prose reproduced none of the tail gain. It is the
+conventions, not the tokens. Method and harness:
+https://github.com/thegoodtailor/semantic-enterprise-experiments.
+****
+
 Essay-based documentation works because it follows the discipline of code. Versioned. Dated revisions. Named authors and reviewers. Stored alongside the data assets it describes. And a decay model: an essay reviewed within the last twelve months is treated differently from one untouched for three years. Stale documentation is, for an agent, strictly worse than absent documentation — the agent reads stale prose with the same confidence as fresh prose and produces confidently wrong answers. A documentation system that does not manage decay produces worse outcomes the longer it operates.
 
 Documentation that lets an agent reason over data is documentation that onboards a new human analyst fastest. The agent, the new analyst, and the auditor converge on the same artefact. Build documentation for agents and it gets better for humans. Build it for cataloging and it has never been good enough for either.

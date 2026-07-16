@@ -214,6 +214,36 @@ One credible dissent comes from inside the camp: dbt’s own modeling guidance w
 
 The split is concrete in a single desk’s day. A trading desk’s daily P&L runs off `gold_pnl_daily_desk_strategy` — one flat mart, one row per desk per strategy per day, zero joins at consumption. The same desk’s investigation of a custody break runs as an explore session over the declared Risk → Trading → Custody join graph: the agent picks fields hop by hop, and every join executed was declared, grain-checked, and fan-out-protected before the session began. Two surfaces to govern instead of one, and the head/tail split has to be revisited as the question distribution drifts — but on neither surface does the model plan a join.
 
+==== The Creole
+
+Declarations need a language to be declared in, and until now this book has borrowed whatever notation the nearest tool suggested — a LookML-flavored sketch here, a dbt-flavored fragment there. Borrowed notations carry borrowed limits. From here the book declares meaning in a notation of its own, and the name tells you what it is: a *creole*. Linguistics reserves that word for something specific — not a pidgin, the improvised contact jargon two trading parties cobble together, but the full language that forms when two communities must genuinely live together: a real grammar, native speakers, a future. Our ad-hoc mock-YAML was a pidgin. What the architecture needs is a creole — algebra's grammar, English's vocabulary — born because two kinds of reader now share every text: the engineer who must check it and the agent who must reason from it.
+
+[source,creole]
+----
+domain Trading {
+
+  entity Order        grain (order_id)         temporal current
+  entity Counterparty grain (cpty_cd, vf, sf)  temporal bitemporal   // Tier 1
+
+  // operations are the declared joins; the temporal rule lives ON the arrow
+  op order_of : Fill  -> Order
+  op cpty_of  : Fill  -> Counterparty  asof (exec_ts)
+  op strategy : Order -> Strategy      asof (ord_ts) via pf_strat_hist
+
+  // rules are what the verification mesh re-checks, every scan
+  rule volume_is_notional : Fill.volume = Fill.qty * Fill.px   // NOT share volume
+
+  // definitions are Tier 1, inherited verbatim — the notation has no way to paraphrase
+  measure pnl_mtm on Position  agg sum
+    def "Daily mark-to-market P&L. Desk default: 'P&L' unqualified means this."
+
+  deprecated Order.strat_cd  since 2025-06-30  use dimension strategy
+    why "Frozen at pre-migration values for ~40% of accounts. Never analyze on it."
+}
+----
+
+Read it top to bottom and you have read the domain's theory: what exists and at what grain, how things connect and under which temporal rule, what must hold, what the words mean, and what has died. The `asof` on the arrow is the joins-declared law made syntax. And the notation is not merely *like* the formal machinery of this book — it *is* that machinery, textualized: a `domain` block is the finite-limit sketch of "The Living Colimit," an `op` is one of its arrows, a `rule` one of its cones, and a bridge (shown later in this chapter) is the span the commutativity check verifies. One notation, three readers: the practitioner reviews it in a pull request, the mesh checks it on every scan, and the agent loads it as context — the same tokens serving all three, which is information density per token achieved by construction. The full grammar fits on one card in the Engineer's Appendix, along with the mechanical mapping from creole to whatever transformation tool and semantic layer your organization actually runs. The creole carries more meaning than any of the tools can hold; compiling down loses nothing you had not already decided to live without.
+
 === Where Serious People Disagree
 
 Real positions, held by serious people, that this architecture disagrees with for specific reasons.
@@ -372,6 +402,31 @@ Take the morphism from Compliance.Customer to Trading.Counterparty. The map is w
 The map loses `Compliance.Customer.kyc_sub_segment`, which has no Trading.Counterparty counterpart — forcing KYC sub-segmentation through would corrupt the trading model with attributes that have no operational meaning on that side. The map is partial: certain trading counterparties — proprietary desks, market-making subsidiaries — have no Compliance.Customer antecedent because they are internal entities that were never onboarded through KYC. Verified continuously rather than attested periodically: a verification agent re-checks the map against the current state of both domains on every scan — that the mapped keys still join, that no new attribute has appeared on either side that the map fails to account for, that the documented losses are still the actual losses. The map carries the date it was last confirmed to hold, which is last night, not the date a regulator last forced someone to look.
 
 Every morphism looks like this when done honestly. Losses are documented because they are where the architecture is most likely to break under cross-domain queries. An agent traversing from a compliance question to a trading question reads this morphism and knows exactly what survived the map, what was lost, and where the gaps are. No inference required, no hallucination of relationships. Maps are first-class objects, and their honesty is what makes the colimit trustworthy rather than ceremonial.
+
+In the creole, the whole morphism is fourteen lines, and every one of them is checkable:
+
+[source,creole]
+----
+bridge ComplianceTrading = Compliance <- Shared -> Trading {
+
+  shared {
+    entity LegalEntity  key legal_entity_id     // ISO 17442 LEI where one exists
+      rule never_reissued
+      rule survives_mna via successor_map
+  }
+
+  map Compliance.Customer ~ Trading.Counterparty  on legal_entity_id  (1..*)
+  map Compliance.regulatory_classification        survives
+
+  lost    Compliance.kyc_sub_segment       // no Trading counterpart; forcing it through
+                                           // would corrupt counterparty aggregations
+  partial Trading.Counterparty             // prop desks, MM subsidiaries: never KYC'd
+
+  verified 2026-07-15 by mesh              // continuous, not attested: last night's scan
+}
+----
+
+What the domains genuinely agree on sits in `shared` and nowhere else — the sharing rule as syntax. What is lost and what is partial is declared, not discovered at the audit. And the `verified` stamp belongs to the mesh, renewed every scan. A bridge missing its `lost` block is not a bridge; it is a hope with syntax.
 
 The attestation is performed by each domain’s agent — which can read the map and the data it claims to align — with a human owner escalated only for the exceptions the agent cannot resolve. That is what lets the honesty stay current: when MiFID II recategorised clients and changed the Compliance partition, the Compliance.Customer to Trading.Counterparty morphism was flagged by the scan that ran the morning after the rule took effect, not surfaced at a quarterly review a season later. On that morphism, `regulatory_classification` survives the map alongside the identity keys; `kyc_sub_segment` is lost; proprietary desks remain partial.
 

@@ -35,100 +35,74 @@ A definition — a measure, a morphism, an essay claim — goes into production 
 
 So every definition ships with falsification conditions: executable claims — a reconciliation to the general ledger (GL) within tolerance, a structural exclusion — whose failure indicts the definition rather than the data. They run on every scan, like any test, with one difference in verdict: a failed `not_null` indicts the pipeline; a failed assertion indicts the meaning — the definition, the morphism, or the essay behind it. Each assertion records the incident that taught it. The nearest ancestor, the data contract, is a forward-looking promise; an assertion is the residue of a refutation.
 
-[source,yaml]
+[source,creole]
 ----
-definitions:
-  - name: net_revenue
-    # glossary-inherited, verbatim
-    description: >
-      Recognized trading revenue for the period — commissions, spreads, and
-      financing earned across executed client and proprietary trades — net of
-      rebates, fee waivers, and soft-dollar arrangements. Recognized on trade
-      date, not settlement. EXCLUDES intercompany transfers (an in-group
-      counterparty is not external revenue), EXCLUDES unrealized mark-to-market
-      (that is pnl_mtm), and EXCLUDES management and performance fees (manager
-      economics, not fund trading revenue). Allocated to the originating
-      strategy, not the booking entity. An intercompany counterparty appearing
-      here is a definitional failure, not a data error.
-    assertions:
-      - id: net_rev_recon_gl
-        claim: "monthly SUM(net_revenue) reconciles to GL revenue class within 0.5%"
-        check: sql                          # runs on every scan, like any test
-        born_of: incident/2026-04-17-board-deck-restatement
-      - id: net_rev_no_intercompany
-        claim: "no intercompany counterparty contributes to net_revenue"
-        check: sql
+definition net_revenue {
+  def "Recognized trading revenue for the period — commissions, spreads, and
+       financing earned across executed client and proprietary trades — net of
+       rebates, fee waivers, and soft-dollar arrangements. Recognized on trade
+       date, not settlement. EXCLUDES intercompany transfers (an in-group
+       counterparty is not external revenue), EXCLUDES unrealized mark-to-m
+       arket (that is pnl_mtm), and EXCLUDES management and performance fees
+       (manager economics, not fund trading revenue). Allocated to the
+       originating strategy, not the booking entity. An intercompany
+       counterparty appearing here is a definitional failure, not a data error."
 
-  - name: carried_interest
-    # glossary-inherited, verbatim
-    description: >
-      The GP's share of fund profit — by default 20% above an 8% preferred
-      return (the hurdle). Undefined until the waterfall is declared: under a
-      EUROPEAN (whole-fund) waterfall, carry is earned only after LPs have
-      received all contributed capital plus the preferred return across the
-      whole fund; under an AMERICAN (deal-by-deal) waterfall, carry accrues per
-      realized deal, subject to clawback if later deals underperform. ACCRUED
-      carry (unrealized, mark-dependent) and REALIZED carry (crystallized cash)
-      are different measures and must never be summed. Net of the GP catch-up
-      and of the clawback reserve held until fund wind-down.
-    assertions:
-      - id: carry_waterfall_declared
-        claim: "every fund declares a waterfall (european|american); none defaults silently"
-        check: sql
-      - id: carry_accrued_realized_never_summed
-        claim: "accrued_carry and realized_carry never aggregate into one measure"
-        check: sql
-      - id: carry_net_of_clawback_reserve
-        claim: "reported carry is net of the clawback reserve until fund wind-down"
-        check: sql
-        born_of: incident/2025-Q3-gp-carry-overstatement
+  assert net_rev_recon_gl : "monthly SUM(net_revenue) reconciles to GL revenue class within 0.5%"
+    born_of incident/2026-04-17-board-deck-restatement
+  assert net_rev_no_intercompany : "no intercompany counterparty contributes to net_revenue"
+}
 
-  - name: nav
-    # glossary-inherited, verbatim
-    description: >
-      Net asset value: the fair value of fund holdings less liabilities, as of
-      the VALUATION date — not the report date. For liquid positions this is a
-      price; for illiquid holdings it is an ESTIMATE marked, per the valuation
-      policy, to the most recent financing round, a comparable-company multiple,
-      or a discounted cash flow — and it is stale between marks. A Q1 NAV
-      restated after the Q3 audit is a different number under the same name,
-      distinguished by system time and never overwritten (see Time). And
-      committed ≠ called ≠ invested ≠ NAV — four capital figures routinely
-      conflated and never interchangeable.
-    assertions:
-      - id: nav_carries_valuation_date
-        claim: "every NAV carries its valuation date; report-date is never assumed equal"
-        check: sql
-      - id: nav_capital_stack_distinct
-        claim: "committed, called, invested, NAV are distinct fields, never summed"
-        check: sql
-      - id: nav_stale_mark_flagged
-        claim: "illiquid holdings past the valuation-policy interval are flagged stale, not silently carried"
-        check: sql
+definition carried_interest {
+  def "The GP's share of fund profit — by default 20% above an 8% preferred
+       return (the hurdle). Undefined until the waterfall is declared: under a
+       EUROPEAN (whole-fund) waterfall, carry is earned only after LPs have
+       received all contributed capital plus the preferred return across the
+       whole fund; under an AMERICAN (deal-by-deal) waterfall, carry accrues
+       per realized deal, subject to clawback if later deals underperform.
+       ACCRUED carry (unrealized, mark-dependent) and REALIZED carry
+       (crystallized cash) are different measures and must never be summed. Net
+       of the GP catch-up and of the clawback reserve held until fund wind-d
+       own."
 
-  - name: performance_fee
-    # glossary-inherited, verbatim
-    description: >
-      The manager's incentive fee — by default 20% of net new trading profit —
-      charged only above the investor's HIGH-WATER MARK (the highest prior NAV
-      at which a fee was last paid), so prior losses must be fully recovered
-      before any fee is earned again. Crystallizes on a stated cycle (declare it
-      — quarterly or annually); between crystallizations it accrues into NAV but
-      is not yet earned. Where a hurdle applies, a HARD hurdle charges only the
-      excess return, a SOFT hurdle the whole return once the hurdle is cleared —
-      different numbers from the same headline rate. Under series/equalization
-      accounting, two investors in one fund can owe different fees for the same
-      period, by entry NAV.
-    assertions:
-      - id: perf_fee_above_high_water_mark
-        claim: "no performance fee accrues below the investor's high-water mark"
-        check: sql
-      - id: perf_fee_hurdle_type_declared
-        claim: "every fee schedule declares hurdle type (none|hard|soft); no silent default"
-        check: sql
-      - id: perf_fee_accrued_vs_crystallized
-        claim: "accrued fee (in NAV) and crystallized fee (earned) are distinct, never summed"
-        check: sql
+  assert carry_waterfall_declared : "every fund declares a waterfall (european|american); none defaults silently"
+  assert carry_accrued_realized_never_summed : "accrued_carry and realized_carry never aggregate into one measure"
+  assert carry_net_of_clawback_reserve : "reported carry is net of the clawback reserve until fund wind-down"
+    born_of incident/2025-Q3-gp-carry-overstatement
+}
+
+definition nav {
+  def "Net asset value: the fair value of fund holdings less liabilities, as of
+       the VALUATION date — not the report date. For liquid positions this is a
+       price; for illiquid holdings it is an ESTIMATE marked, per the valuation
+       policy, to the most recent financing round, a comparable-company
+       multiple, or a discounted cash flow — and it is stale between marks. A
+       Q1 NAV restated after the Q3 audit is a different number under the same
+       name, distinguished by system time and never overwritten (see Time). And
+       committed ≠ called ≠ invested ≠ NAV — four capital figures routinely
+       conflated and never interchangeable."
+
+  assert nav_carries_valuation_date : "every NAV carries its valuation date; report-date is never assumed equal"
+  assert nav_capital_stack_distinct : "committed, called, invested, NAV are distinct fields, never summed"
+  assert nav_stale_mark_flagged : "illiquid holdings past the valuation-policy interval are flagged stale, not silently carried"
+}
+
+definition performance_fee {
+  def "The manager's incentive fee — by default 20% of net new trading profit —
+       charged only above the investor's HIGH-WATER MARK (the highest prior NAV
+       at which a fee was last paid), so prior losses must be fully recovered
+       before any fee is earned again. Crystallizes on a stated cycle (declare
+       it — quarterly or annually); between crystallizations it accrues into
+       NAV but is not yet earned. Where a hurdle applies, a HARD hurdle charges
+       only the excess return, a SOFT hurdle the whole return once the hurdle
+       is cleared — different numbers from the same headline rate. Under
+       series/equalization accounting, two investors in one fund can owe
+       different fees for the same period, by entry NAV."
+
+  assert perf_fee_above_high_water_mark : "no performance fee accrues below the investor's high-water mark"
+  assert perf_fee_hurdle_type_declared : "every fee schedule declares hurdle type (none|hard|soft); no silent default"
+  assert perf_fee_accrued_vs_crystallized : "accrued fee (in NAV) and crystallized fee (earned) are distinct, never summed"
+}
 ----
 
 None of these definitions is exotic. Every one is a term a fund uses a hundred times a day — and every one carries a convention that is invisible in the name and lethal in the gap. "Carried interest" is a single concept until you ask whether the waterfall is European or American, and then it is two different numbers that a model will average without noticing. "NAV" is a price for a liquid book and a discounted-cash-flow estimate for an illiquid one, marked as of a valuation date that is not the report date — and an agent that joins NAV to a report-date calendar answers a question nobody asked, confidently. "Performance fee" is one rate that resolves to different dollars per investor once a high-water mark and series accounting are in play. These are not edge cases bolted onto simple concepts; the convention *is* the concept. A human analyst carries it in their head and a new hire absorbs it in a month of corrections. An agent has neither the head nor the month. It reads the name, applies the textbook default, and produces a plausible, articulate, wrong answer — which is precisely why the convention has to live in the definition, in language, where the agent reads before it reasons. The nuance is the reason the documentation exists. Strip the nuance to a tidy one-liner and you have re-created the failure the whole architecture is built to prevent.

@@ -89,6 +89,33 @@ One restatement from the Time chapter, placed where an engineer will trip over i
 
 None of these descriptions is hand-typed into the YAML. Each is authored once in the metadata repository — the MDR of your choice — where definitions are tagged, versioned, and correlated to the columns and measures that inherit them. The schema file and the semantic model carry a copy the build checks against the registry; they never paraphrase it. The rich definition lives in one governed place, and everything downstream is a verified reflection of it — the MDR-as-context-engine of The Architecture doing its second job: not only briefing the agent at read time, but sourcing the definitions at build time.
 
+=== The Creole Reference Card
+
+The notation the book declares meaning in, complete. Everything below is an object the verification mesh can check and an agent can read as context; the two files above are what it compiles down to.
+
+[source,creole]
+----
+domain NAME { ... }                       // a theory: what exists, connects, holds, means
+  entity E  grain (cols)  temporal bitemporal|scd2|current
+  op f : A -> B  [asof (ts)] [via TABLE] [partial]    // a declared join; never inferred
+  rule NAME : <statement>                 // held true; re-checked by the mesh every scan
+  measure m on E  agg sum|avg|count [over col]   def "..."   // Tier 1, verbatim
+  dimension d on E [via ...]                     def "..."
+  definition NAME { def "..."  assert NAME : "claim" [born_of INCIDENT] }
+                                          // falsification conditions ship with meaning
+  deprecated X  since DATE  use Y   why "..."
+
+bridge B = D1 <- Shared -> D2 {           // a span, honesty on its face
+  shared  { entity ... key ... rule ... } // ONLY what the domains genuinely agree on
+  map     D1.x ~ D2.y  on key (card.) | D1.attr survives
+  lost    D1.attr                         // does not survive the map — say so
+  partial D2.entity                       // no antecedent on the other side — say so
+  verified DATE by mesh                   // continuous, never attested
+}
+----
+
+The compile-down is mechanical because the creole carries more meaning than any target can hold. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that, with `asof` implemented in the model SQL beneath — the Time chapter's rule); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies. Nothing in the mapping is clever. That is the point: the thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
+
 === The Context Budget
 
 The Shift makes the argument; these are the operating numbers. Snowflake's semantic-view guidance recommends 50–100 columns per semantic view — beyond that, latency and answer quality degrade — and caps the model file at 2MB. Databricks' Genie documentation says five tables or fewer (thirty as a hard maximum), prefers SQL expressions to prose, and warns that too many instructions reduce effectiveness — prose last, after structure has done the work. Two vendors, independent stacks, the same constraint published as product limits: context per token is not a heuristic awaiting a benchmark — it is a budget both platforms already enforce.

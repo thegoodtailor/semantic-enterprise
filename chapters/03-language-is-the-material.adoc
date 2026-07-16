@@ -104,7 +104,7 @@ The domain essay is the operational note a senior practitioner writes for a new 
 ****
 We ablated the semantic context to find where the accuracy lives. Strip the
 definitions and keep only the structure — tables, declared joins, no prose —
-and frontier trap accuracy falls from 100 percent to 75–83. State the
+and frontier trap accuracy falls from 100 percent to 75–83 (GPT-5.6-terra and Claude Sonnet 5 respectively). State the
 conventions (the deprecated tag, the notional column, the fiscal year) in
 governed column descriptions, and the traps return to the ceiling; the domain
 essay's additional gain appears on the multi-hop tail questions, where

@@ -168,14 +168,14 @@ holding one slice of the desk's semantic context, with exactly one slice
 poisoned by a plausible wrong convention (the deprecated strategy tag declared
 canonical; the notional column declared to be shares; the fiscal calendar
 declared equal to calendar quarters). Composed naively — "combine the
-specialists' guidance as given" — the frontier model's final answers matched
+specialists' guidance as given" — the frontier model's (GPT-5.6-terra) final answers matched
 the poison's signature on 58 percent of affected questions and were correct on
 none. Composed through an adjudicator holding the governed semantic layer and
 instructed to verify every specialist claim against the declarations, the same
 poisoned guidance yielded zero contamination and 100 percent correct — the
 clean-baseline result, with a saboteur in the room. Two honest details: the
 fiscal poison mostly failed to land in any topology (the schema itself
-advertised the fiscal calendar, and models used it), and a mid-tier adjudicator
+advertised the fiscal calendar, and models used it), and a mid-tier adjudicator (Gemini 2.5 Flash)
 contained the poison only partially — the editor's quality matters. Small-scale
 ordering evidence, not a replication of the published 17x/4x amplification
 study; method at https://github.com/thegoodtailor/semantic-enterprise-experiments.
@@ -214,11 +214,12 @@ The published numbers, read carefully, all point one way. Grounded in a semantic
 ****
 In our own pre-registered trials (44 questions, six seeded ambiguities, three
 models — full method and harness at
-https://github.com/thegoodtailor/semantic-enterprise-experiments), frontier
-models scored 67–71 percent on trap questions from the raw schema and
-100 percent through the governed semantic context; with structure alone
-(declared joins but definitions stripped), they fell to 75–83 percent — the
-meaning, not the structure, carries the accuracy. Where the raw arms failed,
+https://github.com/thegoodtailor/semantic-enterprise-experiments), the frontier
+models (GPT-5.6-terra and Claude Sonnet 5) scored 67–71 percent on trap
+questions from the raw schema and 100 percent through the governed semantic
+context; with structure alone — declared joins, definitions stripped — they
+fell to 75 and 83 percent respectively. The meaning, not the structure,
+carries the accuracy. Where the raw arms failed,
 the modal foil-matched error was strategy-tag selection — the deprecated
 column — exactly the failure class the declared-joins doctrine predicts.
 Numbers are dated; the mechanism is the claim.

@@ -119,13 +119,14 @@ fiscal year, bitemporal counterparty tiers with backdated corrections, and a
 handwritten gold SQL, scored by execution accuracy. Three models (GPT-5.6-terra,
 Claude Sonnet 5, Gemini 2.5 Flash; temperature 0, three runs each, modal verdict).
 
-On the 24 trap questions, the two frontier models under Scenario A's context
-(schema plus sample rows) scored 71 percent — and under Scenario B's (declared
-semantics plus the domain essay, at roughly the same token count) went to
-100 percent [Wilson 95%: 86–100]. The mid-tier model went from 63 to 71
-percent, and — a result this chapter predicted — *lost* accuracy when the essay
-was added to its context, over-contextualization degrading it as surely as
-starvation. Control questions with no seeded trap passed at 90–100 percent in
+On the 24 trap questions, the two frontier models — GPT-5.6-terra and Claude
+Sonnet 5 — each scored 71 percent under Scenario A's context (schema plus
+sample rows), and under Scenario B's (declared semantics plus the domain
+essay, at roughly the same token count) both went to 100 percent
+[Wilson 95%: 86–100]. The mid-tier Gemini 2.5 Flash went from 63 to 79 percent
+on the declared semantics alone, and — a result this chapter predicted —
+*lost* accuracy when the essay was added on top (back to 71 percent),
+over-contextualization degrading it as surely as starvation. Control questions with no seeded trap passed at 90–100 percent in
 every arm: the schema was answerable; the semantics were the difference.
 
 The density claim held at token parity and beyond it. With the raw context

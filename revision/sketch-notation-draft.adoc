@@ -1,0 +1,122 @@
+// DRAFT — the sketch notation (the book's textual IA language). For author review.
+// Placement plan on approval: compact introduction in ch04 (at "Joins Are Declared,
+// Never Inferred"); full reference card in the Engineer's Appendix; then convert the
+// book's conceptual mock-YAML/LookML examples chapter by chapter (real tool YAML in
+// ch15 stays real; SQL stays SQL for engine-level artifacts).
+
+=== The Sketch Notation
+
+The book has been declaring entities, joins, measures, and bridges in whatever
+notation the nearest tool suggested. From here it uses one of its own. The
+notation below is not another tool's configuration language; it is the
+finite-limit sketch of "The Living Colimit," written as text — which means
+everything declared in it is an object the commutativity check can verify. It
+is deliberately close to the algebraic specification languages of the CASL
+tradition, because that is what a domain declaration is: a small theory,
+stated. A practitioner can read it cold. So can an agent — which is the point:
+this is the textual information architecture an LLM consumes as context.
+
+Three constructs carry everything: *domains* declare what exists, *bridges*
+declare how domains relate, and nothing else is permitted to introduce meaning.
+
+==== A domain, declared
+
+[source,sketch]
+----
+domain Trading {
+
+  entity Order        grain (order_id)         temporal current
+  entity Fill         grain (fill_id)          temporal current
+  entity Instrument   grain (instr_cd)         temporal current
+  entity Counterparty grain (cpty_cd, vf, sf)  temporal bitemporal   // Tier 1
+
+  // operations: the declared joins — an op is an arrow, total unless marked
+  op order_of : Fill -> Order
+  op instr_of : Order -> Instrument
+  op cpty_of  : Fill -> Counterparty   asof (exec_ts)     // temporal rule ON the arrow
+  op strategy : Order -> Strategy      asof (ord_ts) via pf_strat_hist
+
+  // rules: what the domain holds true (the sketch's cones, in words)
+  rule fills_belong      : every Fill has exactly one Order
+  rule fill_lag          : Fill.exec_ts >= Order.ord_ts            // fills never precede orders
+  rule volume_is_notional: Fill.volume = Fill.qty * Fill.px        // NOT share volume
+
+  // measures and dimensions: the consumption face, definitions glossary-inherited verbatim
+  measure pnl_mtm  on Position  agg sum
+    def "Daily mark-to-market P&L. Desk default: 'P&L' unqualified means this."
+  measure shares   on Fill      agg sum over qty
+    def "Share volume. The volume column is notional; shares live on qty."
+  dimension strategy on Order
+    def "Canonical portfolio-level assignment as of order time; see deprecation."
+
+  deprecated Order.strat_cd  since 2025-06-30  use dimension strategy
+    why "Frozen at pre-migration values for ~40% of accounts. Never analyze on it."
+}
+----
+
+Read it top to bottom and you have read the domain's theory: what exists and at
+what grain, how things connect and under which temporal rule, what must hold,
+what the words mean, and what has died. The `asof` on the arrow is Law 11 made
+syntax — the temporal alignment lives on the relationship, not in any query.
+The `rule` lines are what the verification mesh re-checks every scan. The
+`def` strings are the Tier 1 glossary, inherited verbatim, never paraphrased.
+
+==== A bridge, declared
+
+A bridge is a span: a shared sub-theory and two embeddings, with its honesty
+data on its face. This is ch04's Compliance-to-Trading morphism — three
+paragraphs of prose there — as fourteen lines:
+
+[source,sketch]
+----
+bridge ComplianceTrading = Compliance <- Shared -> Trading {
+
+  shared {
+    entity LegalEntity  key legal_entity_id     // ISO 17442 LEI where one exists
+      rule never_reissued
+      rule survives_mna via successor_map
+  }
+
+  map Compliance.Customer ~ Trading.Counterparty  on legal_entity_id  (1..*)
+  map Compliance.regulatory_classification        survives
+
+  lost    Compliance.kyc_sub_segment       // no Trading counterpart; forcing it through
+                                           // would corrupt counterparty aggregations
+  partial Trading.Counterparty             // prop desks, MM subsidiaries: never KYC'd
+
+  verified 2026-07-15 by mesh              // continuous, not attested; the date is last night's scan
+}
+----
+
+Everything the sharing rule demands is now checkable text: what the domains
+genuinely agree on sits in `shared` and nowhere else; what is lost and what is
+partial is declared, not discovered; and the `verified` stamp is the mesh's,
+renewed every scan. A bridge missing its `lost` block is not a bridge; it is a
+hope with syntax.
+
+==== What the notation is for — and what it is not
+
+The notation is the book's *conceptual* voice. When a chapter reasons about
+architecture, it speaks sketch. When a chapter shows the physical engine, it
+speaks SQL, because that is what engines eat. When the Engineer's Appendix
+shows an actual dbt or MetricFlow file, it shows the real file, because that
+is what your repository will hold — and the appendix shows once how a sketch
+domain compiles down to those artifacts. Three languages, one rule: sketch for
+meaning, SQL for physics, tool-YAML only when naming a tool. The mapping from
+sketch to any given tool is mechanical precisely because the sketch carries
+more meaning than any of the tools can — which is the book's argument, now in
+its own syntax.
+
+// ---------------------------------------------------------------------------
+// REFERENCE CARD (for the Engineer's Appendix)
+//
+//   domain NAME { ... }            a theory: what exists, connects, holds, means
+//   entity E grain(...) temporal bitemporal|scd2|current
+//   op f : A -> B [asof(ts)] [via TABLE] [partial]     declared join; arrow = Law 11
+//   rule NAME : <statement>                            checked by the mesh, every scan
+//   measure m on E agg sum|avg|count [over col]  def "..."   glossary-inherited verbatim
+//   dimension d on E [via ...]                   def "..."
+//   deprecated X since DATE use Y  why "..."
+//   bridge B = D1 <- Shared -> D2 { shared{...} map ... lost ... partial ... verified DATE by mesh }
+//   Compiles to: dbt schema.yml + semantic-layer YAML + CI checks (appendix shows the mapping once).
+// ---------------------------------------------------------------------------

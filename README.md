@@ -26,4 +26,4 @@ The formal treatment of the colimit results (consistency ≡ commutativity, soun
 
 ## Outstanding
 
-- A few interior cartoons still carry an AI-added "SCARFE" signature — to be stripped (drop cleaned PNGs into `figures/`, same filenames, then rebuild).
+- (none — the AI-added "SCARFE" signatures were stripped from all six affected cartoons in July 2026; pre-cleanup originals are archived locally outside the repo.)

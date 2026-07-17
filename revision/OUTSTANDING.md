@@ -34,9 +34,8 @@ Full build verified with asciidoctor after the pass.
      failure, before the "Gluing schemas glues instances" theorem);
    - optional: bridge anatomy.
    Generate via `render_missing_figures.py` pattern.
-2. **Spelling normalization** — the British/American split is pervasive (most chapters mix;
-   e.g. "organisation" and "organizations" in the same file). One decision + one mechanical
-   pass; O'Reilly house style is American. Decide and I'll sweep it.
+2. ~~Spelling normalization~~ — **DONE 17 Jul**: normalized to American (73 conversions,
+   curated word map, render verified).
 3. **Small flags from the fact-check pass:**
    - ch16 Anthropic (2026) annotation says "Comprehension 50% vs 67%" while coverage describes a
      17% mastery drop — verify the gloss against the paper on the before-press pass.

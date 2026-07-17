@@ -4,7 +4,7 @@ Data platforms fail all the time. AI is a forcing function. A crap data platform
 
 === The 1% Problem
 
-A team was showing off an AI-to-database solution that allows a user to query and analyse data on their lake. Not a vendor demo with canned data — real production data, real queries, real business questions asked by real executives who had not been prepped on what to ask. The kind of demo where the CEO asks something nobody anticipated. The system was running at 98 to 99 percent accuracy on ad hoc queries. Ninety-eight to ninety-nine percent. On arbitrary natural language questions against a production data warehouse. Pretty good: that is a number that makes people lean forward in their art-of-the-possible chairs. The Exco demo went well, and the go decision followed: roll out to the organization.
+A team was showing off an AI-to-database solution that allows a user to query and analyze data on their lake. Not a vendor demo with canned data — real production data, real queries, real business questions asked by real executives who had not been prepped on what to ask. The kind of demo where the CEO asks something nobody anticipated. The system was running at 98 to 99 percent accuracy on ad hoc queries. Ninety-eight to ninety-nine percent. On arbitrary natural language questions against a production data warehouse. Pretty good: that is a number that makes people lean forward in their art-of-the-possible chairs. The Exco demo went well, and the go decision followed: roll out to the organization.
 
 But what mattered, beyond winning hearts and minds, was the 1 to 2 percent failure rate — not its size, but its cause. Every failure traced to the same root: context. The model was smart enough. The failing terms were not obscure; nobody had written a definition and put it where the AI could read it.
 
@@ -180,7 +180,7 @@ Gartner found in 2023 that only 8 percent of customers had used a chatbot in the
 
 No edge cases here, and no incompetent teams. Predictable failures, all sharing a common architecture: an AI system deployed without semantic infrastructure, without governed definitions, without a layer that tells the model what is true, what is uncertain, and what it should refuse to answer. Epistemic honesty — the quality of knowing what you know and what you do not — is a feature of the infrastructure, not of the model.
 
-The fix was never a chatbot: promote derived calculations to governed tables with explicit definitions, catalogue them in the semantic layer, expose them to humans and machines alike. The knowledge has to live in the infrastructure, not in one person’s head. This is a knowledge management problem that AI makes impossible to ignore.
+The fix was never a chatbot: promote derived calculations to governed tables with explicit definitions, catalog them in the semantic layer, expose them to humans and machines alike. The knowledge has to live in the infrastructure, not in one person’s head. This is a knowledge management problem that AI makes impossible to ignore.
 
 ==== "Data mesh will solve the governance problem"
 
@@ -276,7 +276,7 @@ Third, stop treating the semantic layer as optional infrastructure. If your AI s
 
 Fourth, address the token economics. Make flat, documented marts the default surface for known questions, governed explores the surface for exploration, and never let the model plan a join on either. The numbers are public: routing context through a semantic layer cut input tokens by roughly half, rising toward 98 percent once the engine writes all the SQL (Strategy, 2026); over declared joins, accuracy on a two-dozen-table schema went from 20 percent against the raw schema to 92.5 percent (AtScale, 2024). The same decision buys both.
 
-Fifth, address the organizational reality with candour and empathy. What is described in this essay threatens some people’s professional identity. Data teams built their careers on star schemas, on dimensional modeling, on dashboard design, on the craft of making data visually comprehensible. Telling them "your primary consumer is now a machine" sounds like telling them their skills are obsolete.
+Fifth, address the organizational reality with candor and empathy. What is described in this essay threatens some people’s professional identity. Data teams built their careers on star schemas, on dimensional modeling, on dashboard design, on the craft of making data visually comprehensible. Telling them "your primary consumer is now a machine" sounds like telling them their skills are obsolete.
 
 Their skills are not obsolete. The analyst who deeply understands what "revenue" means is more important than ever — she is just expressing that understanding through a governed definition rather than a calculated field in a visualization tool that only she can maintain. The engineer who names columns meaningfully is more valuable than ever, because column names are the primary interface between data and AI agents.
 

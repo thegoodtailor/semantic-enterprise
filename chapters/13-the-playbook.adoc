@@ -30,7 +30,7 @@ The rest of this book is the argument; this is the page you tape to the wall.
 
 === The Diagnostic
 
-Before you invest a dollar or hire a single person, answer five questions. You do not need a consultant, a maturity assessment framework, or an eight-week engagement. You need candour.
+Before you invest a dollar or hire a single person, answer five questions. You do not need a consultant, a maturity assessment framework, or an eight-week engagement. You need candor.
 
 *Can a new hire find and understand your data in their first week without asking anyone?*
 
@@ -195,7 +195,7 @@ Most semantic layer implementations today expose only the first mode. Some expos
 
 Direct SQL access to Silver or Gold is the core anti-pattern. No power users with bypass privileges. No privileged tier of senior analysts trusted enough to query the database directly. The semantic layer is the only interface between data and consumer — the hardest commitment in this playbook, and the one that makes every other commitment enforceable.
 
-Every bypass fragments the architecture. A senior analyst writing direct SQL against Silver makes choices — joins, filters, temporal assumptions — that the semantic layer makes explicit and governed. The analyst makes them silently. Six months later, a junior colleague trying to reproduce the number cannot, because the analyst has left and the notebook lived on a laptop. This is the dominant failure mode of every data programme that grants power-user SQL access for productivity reasons.
+Every bypass fragments the architecture. A senior analyst writing direct SQL against Silver makes choices — joins, filters, temporal assumptions — that the semantic layer makes explicit and governed. The analyst makes them silently. Six months later, a junior colleague trying to reproduce the number cannot, because the analyst has left and the notebook lived on a laptop. This is the dominant failure mode of every data program that grants power-user SQL access for productivity reasons.
 
 Exactly two exceptions — and note what is *not* on the list:
 
@@ -323,13 +323,13 @@ Transformation logic belongs in the governed data platform — in the Gold layer
 
 The wrong number reaches the board, the postmortem convenes, the timeline is reconstructed, the lessons-learned document is circulated and filed. A quarter later the same class of error recurs, because the lessons live in a document and the definitions live in production. A postmortem whose output is not an executable assertion is a memo: the meeting survives, the learning does not. The semantic-postmortem discipline — every incident ends in a machine-checked assertion that would have caught it, run on every scan thereafter — is built in the Reflexive Loop chapter. Stop funding retrospectives that end in documents. End them in assertions.
 
-==== ISO 11179 Catalogue Programmes in Their Current Form
+==== ISO 11179 Catalog Programs in Their Current Form
 
-ISO 11179’s quality criteria — precise, unambiguous, non-circular, domain-scoped — remain the right criteria. What ends is the standalone catalogue project as previously scoped: structured CV-entry definitions as the deliverable, maintained by a dedicated team of information architects, presented as the primary artefact of the data governance function.
+ISO 11179’s quality criteria — precise, unambiguous, non-circular, domain-scoped — remain the right criteria. What ends is the standalone catalog project as previously scoped: structured CV-entry definitions as the deliverable, maintained by a dedicated team of information architects, presented as the primary artefact of the data governance function.
 
-Catalogues remain as the index into domain essays — structured metadata is the anchor. The standalone project that took two years and five information architects and produced a spreadsheet of ten thousand definitions nobody reads — that ends. The artefact was right for cataloguing. It is wrong for reasoning. An agent does not need ten thousand one-line definitions. It needs six hundred words of operational context per dataset, written by the people who hold the knowledge.
+Catalogs remain as the index into domain essays — structured metadata is the anchor. The standalone project that took two years and five information architects and produced a spreadsheet of ten thousand definitions nobody reads — that ends. The artefact was right for cataloguing. It is wrong for reasoning. An agent does not need ten thousand one-line definitions. It needs six hundred words of operational context per dataset, written by the people who hold the knowledge.
 
-Teams who built their careers on catalogue work face reskilling or repositioning. Some will move into domain essay authorship — the skill of eliciting and structuring operational knowledge is transferable. Some will move into semantic-layer governance. Some will not find a natural home. Name the human cost plainly. Do not pretend that "everyone will be reskilled" when some roles are being eliminated.
+Teams who built their careers on catalog work face reskilling or repositioning. Some will move into domain essay authorship — the skill of eliciting and structuring operational knowledge is transferable. Some will move into semantic-layer governance. Some will not find a natural home. Name the human cost plainly. Do not pretend that "everyone will be reskilled" when some roles are being eliminated.
 
 ==== The Unified Enterprise Data Model
 
@@ -398,7 +398,7 @@ Every commitment costs something. A team that adopts commitments without naming 
 
 *The political comfort of optional governance.* Power users will resent the only-interface commitment. Senior analysts who have had direct SQL access for years will push back. Some will escalate. Some will leave. Hold the line anyway. Every bypass is a fork. Every fork is an ungoverned, undocumented, unversioned definition that enters circulation and cannot be recalled.
 
-*The ISO 11179 catalogue programme in its current form.* The quality criteria survive; the standalone project does not — and the human cost of that transition must be named and supported, not pretended painless.
+*The ISO 11179 catalog program in its current form.* The quality criteria survive; the standalone project does not — and the human cost of that transition must be named and supported, not pretended painless.
 
 *The risk of AI-maintained semantic infrastructure.* Stale or subtly wrong AI-maintained definitions are harder to detect than absent definitions, because they produce confident wrong answers rather than visible gaps. A missing definition generates an error. A wrong definition generates a number. Continuous surveillance catches drift — a definition that was correct last quarter and is no longer correct this quarter. The harder case is the plausible-but-wrong definition that passed the quality gate on day one. The mitigation is built in "When AI-Maintained Definitions Go Wrong": continuous in-usage feedback plus adversarial agentic review, with humans adjudicating only the surfaced exceptions. The alternative — trusting a single AI draft with no in-usage feedback and no adversarial review — is cheaper right up until it produces a wrong answer in a board presentation or a regulatory filing.
 

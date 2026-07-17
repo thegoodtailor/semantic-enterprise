@@ -33,7 +33,7 @@ Forty workbooks are the BI version of metric fragmentation. Direct SQL is the an
 
 Six months later the analyst has moved on, the notebook is gone, and a junior colleague trying to reproduce the number cannot. No reconciliation path exists, because no record of the original choices exists. The junior colleague builds their own query, makes their own silent choices, and now there are three definitions. Fragmentation is the predictable consequence of an architecture that permits bypasses.
 
-Every data programme that grants "power user" SQL access for productivity reasons knows this failure mode. The justification is always the same: the analyst is experienced, they know the data, they need to move fast. Always locally correct and globally destructive.
+Every data program that grants "power user" SQL access for productivity reasons knows this failure mode. The justification is always the same: the analyst is experienced, they know the data, they need to move fast. Always locally correct and globally destructive.
 
 Both diagnoses point to the architecture this essay argues for. Forty workbooks are not the problem. Forty definitions of the same concept are. Move the definitions out of the workbooks and into a semantic layer — a shared, governed vocabulary that maps business concepts to data — and the workbooks become interchangeable presentation surfaces. Better yet, make the presentation surface a conversational interface, and you do not need the workbooks at all.
 

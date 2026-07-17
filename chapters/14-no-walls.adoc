@@ -1,9 +1,9 @@
 == No Walls
 
-Ask one question, get the right answer. That is the use case that drove all of this. Solve it, and the real question arrives: what is more interesting than one answer? A thousand. Exploration — every pathway of interconnected data, the models, the sandpits, all the knowledge at once. One answer is the floor. A mind turned loose on the whole estate is the ceiling.
+Ask one question, get the right answer. That is the use case that drove all of this. Solve it, and the real question arrives: what is more interesting than one answer? A thousand — every pathway of interconnected data, the models, the sandpits, all the knowledge at once. One answer is the floor; a mind turned loose on the whole estate is the ceiling.
 
 [#fig-gate-no-walls]
-."No walls": fencing the chatbot while every other consumer walks straight in is theatre. The estate is open by design — every pathway reachable, every hop still governed by one shared vocabulary, not a gate.
+."No walls": fencing the chatbot while every other consumer walks straight in is theatre. The estate is open by design.
 image::figures/gate-no-walls.png[no walls,width=600,align="center"]
 
 This used to be hard. Data walled off in segregated zones. The interesting trial sets undocumented on someone's laptop. Plumbing the analyst had to lay again every single time. It is why the unified-platform vendors sell so well. And it almost works — until the explorer is an agentic data scientist in a box: no laptop, no colleague to ask, only what the platform makes explicit. Friction that merely slowed a human stops an agent dead.

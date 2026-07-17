@@ -6,13 +6,15 @@ Goguen, J. A., & Burstall, R. M. (1992). Institutions: Abstract model theory for
 
 Johnson, M., Rosebrugh, R., & Wood, R. J. (2002). Entity-relationship-attribute designs and sketches. _Theory and Applications of Categories_, 10(3), 94–112. [Schemas as finite-limit sketches; instances as Set-models.]
 
-Crossley, J. N., Poernomo, I. H., & Wirsing, M. (2000). Extraction of structured programs from specification proofs. In D. Bert, C. Choppy, & P. D. Mosses (Eds.), _Recent Trends in Algebraic Development Techniques (WADT'99, Château de Bonas, 15–18 September 1999)_, Lecture Notes in Computer Science, vol. 1827 (pp. 419–437). Springer. [The origin of the construction used in this book: a calculus whose structural rules are renaming, hiding, and the union of specifications — the pushout.]
+Crossley, J. N., Poernomo, I. H., & Wirsing, M. (2000). Extraction of structured programs from specification proofs. In D. Bert, C. Choppy, & P. D. Mosses (Eds.), _Recent Trends in Algebraic Development Techniques (WADT'99, Château de Bonas, 15–18 September 1999)_, Lecture Notes in Computer Science, vol. 1827 (pp. 419–437). Springer.
 
-Poernomo, I. H., & Crossley, J. N. (2001). Protocols between programs and proofs. In K.-K. Lau (Ed.), _Logic Based Program Synthesis and Transformation (LOPSTR 2000)_, Lecture Notes in Computer Science, vol. 2042. Springer, Berlin Heidelberg. DOI 10.1007/3-540-45142-0_2. [Generalization of the protocol across constructive deductive systems and type theories.]
+Poernomo, I. H., & Crossley, J. N. (2001). Protocols between programs and proofs. In K.-K. Lau (Ed.), _Logic Based Program Synthesis and Transformation (LOPSTR 2000)_, Lecture Notes in Computer Science, vol. 2042. Springer, Berlin Heidelberg. DOI 10.1007/3-540-45142-0_2.
 
-Poernomo, I. H., Wirsing, M., & Crossley, J. N. (2005). _Adapting Proofs-as-Programs: The Curry–Howard Protocol_. Monographs in Computer Science. Springer, New York. Hardcover ISBN 978-0-387-23759-6. DOI 10.1007/0-387-28183-5. [The collected framework; categorical structuring of specifications and the pushout-union construction.]
+Poernomo, I. H., Wirsing, M., & Crossley, J. N. (2005). _Adapting Proofs-as-Programs: The Curry–Howard Protocol_. Monographs in Computer Science. Springer, New York. Hardcover ISBN 978-0-387-23759-6. DOI 10.1007/0-387-28183-5.
 
 Snodgrass, R. T. (2000). _Developing Time-Oriented Database Applications in SQL_. Morgan Kaufmann. [Valid time, transaction time; the temporal query taxonomy.]
+
+Vos, R. (2020). Arriving late: bi-temporal backdated adjustments. roelantvos.com, with the accompanying technical paper _Data Warehouse Patterns: Bitemporal Backdated Adjustments_. [The worked mechanics of splitting validity intervals when corrections arrive late.]
 
 Spivak, D. I. (2012). Functorial data migration. _Information and Computation_, 217, 31–51.
 
@@ -44,7 +46,7 @@ Manheim, D., & Garrabrant, S. (2018). Categorizing variants of Goodhart's law. a
 
 Huang, K., Jin, Y., et al. (2025). Automated hypothesis validation with agentic sequential falsifications. _ICML 2025_. [The POPPER system: LLM agents designing falsification experiments.]
 
-Stojanovic, L., et al. (2004). Usage-driven ontology evolution (the KAON framework). [Pre-LLM ontology evolution from usage logs; the tradition the reflexive loop extends.]
+Stojanovic, L. (2004). _Methods and Tools for Ontology Evolution_. PhD thesis, Universität Karlsruhe (TH). [Usage-driven ontology evolution in the KAON framework; pre-LLM ontology evolution from usage logs — the tradition the reflexive loop extends.]
 
 Kim, Y., et al. (2025). Towards a science of scaling agent systems. Google Research, Google DeepMind & MIT. [Error amplification by topology: 17.2x uncoordinated vs 4.4x orchestrated.]
 
@@ -62,7 +64,7 @@ Modarressi, A., et al. (2025). NoLiMa: Long-context evaluation beyond literal ma
 
 Dell'Acqua, F., et al. (2023). Navigating the jagged technological frontier. Harvard Business School Working Paper 24-013. [Consultant productivity inside and outside the AI capability frontier.]
 
-Anthropic (2026). How AI assistance impacts the formation of coding skills. [Comprehension 50% vs 67%; the shallow-review failure mode.]
+Anthropic (2026). How AI assistance impacts the formation of coding skills. https://www.anthropic.com/research/AI-assistance-coding-skills. [Comprehension 50% vs 67%; the shallow-review failure mode.]
 
 Regulation (EU) 2016/679 (GDPR), Article 17; Directive (EU) 2015/849 (AMLD4), Article 40; Regulation (EU) 2024/1624 (AMLR), Article 77. [The two clocks: erasure and mandated retention.]
 
@@ -70,4 +72,5 @@ NIST SP 800-88 Rev. 1 (2014). _Guidelines for Media Sanitization_. [Cryptographi
 
 ISO/IEC 11179-4. _Metadata registries — Part 4: Formulation of data definitions_. [The definition quality gate.]
 
-_Note: industry figures cited in the text (Gartner data-quality cost estimates, agent-adoption and metadata-maturity percentages, conversational-AI market projections, and vendor benchmark results) are attributed inline to their sources at point of use. Vendor and practitioner sources cited by name and date — Snowflake (Cortex Analyst and AISQL engineering blogs, semantic-view guidance, 2024–2026), Databricks (Genie documentation), Google Cloud (Looker Conversational Analytics documentation and blog, 2025), dbt Labs (semantic-layer benchmark, 2026), AtScale (text-to-SQL benchmark, 2024), Strategy (token cost and accuracy benchmark, 2026), Malloy documentation, Meta (probabilistic flakiness, 2020), Airbnb (Midas and Data Quality Score), the Fivetran star-schema-versus-wide-table benchmark, Reis (2025), Tabb (2023), Verraes (2019), and Vos (bi-temporal backdated adjustments) — are engineering publications subject to revision; confirm each against its current published version before press._
+// TODO before press: confirm every entry against its current published version
+_Note: industry figures cited in the text (Gartner data-quality cost estimates, agent-adoption and metadata-maturity percentages, conversational-AI market projections, and vendor benchmark results) are attributed inline to their sources at point of use. Vendor and practitioner sources cited by name and date — Snowflake (Cortex Analyst and AISQL engineering blogs, semantic-view guidance, 2024–2026), Databricks (Genie documentation), Google Cloud (Looker Conversational Analytics documentation and blog, 2025), dbt Labs (semantic-layer benchmark, 2026), AtScale (text-to-SQL benchmark, 2024), Strategy (token cost and accuracy benchmark, 2026), Malloy documentation, Meta (probabilistic flakiness, 2020), Airbnb (Midas and Data Quality Score), the Fivetran star-schema-versus-wide-table benchmark, Reis (2025), Tabb (2023), Verraes (2019), and Vos (bi-temporal backdated adjustments) — are engineering publications subject to revision._

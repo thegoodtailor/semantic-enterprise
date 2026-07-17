@@ -1,6 +1,6 @@
 == The Living Colimit
 
-Everything to this point is architecture you can build with today's tools and today's discipline. Assemble those parts into one system, let it run, and what they become is the most ambitious claim in this book. The colimit is a verb. Run it continuously and it stops being a diagram you draw and becomes an organism you operate: a semantic model of the whole enterprise that verifies itself, repairs itself locally, reports its own health, stays correct as the business moves under it — and, in the next chapter, doubts itself, productively. A *living* colimit. The organisation that has one has agents that reason over its entire institutional memory and can be trusted to. The organisation that does not has agents that guess. That gap is a category difference, not a feature difference — and it is open to be built now, with the tools already on the shelf.
+Everything to this point is architecture you can build with today's tools and today's discipline. Assemble those parts into one system, let it run, and what they become is the most ambitious claim in this book. The colimit is a verb. Run it continuously and it stops being a diagram you draw and becomes an organism you operate: a semantic model of the whole enterprise that verifies itself, repairs itself locally, reports its own health, stays correct as the business moves under it — and, in the next chapter, doubts itself, productively. A *living* colimit. The organisation that has one has agents that reason over its entire institutional memory and can be trusted to. The organisation that does not has agents that guess. That gap is a category difference, not a feature difference.
 
 === What the Living Colimit Is
 
@@ -17,7 +17,7 @@ Run those together and the system has a property no hand-maintained model ever h
 
 === The Architecture, As a Thing You Build
 
-The mesh is real infrastructure. A standing multi-agent verification system is itself a large, failure-prone thing that needs its own operations — so treat it as exactly that: load-bearing infrastructure with its own observability, not magic. Designed, not waved at:
+The mesh is load-bearing infrastructure — large, failure-prone, and needing its own operations and observability. Designed, not waved at:
 
 * **Per-domain verification agents.** Each owns the bridges incident to its domain and runs the five within-reach checks every scan and on every schema/ontology change (CI-for-meaning, triggered like CI-for-code): mapped fields still exist, keys still join at the documented cardinality, distributions have not shifted in a way that implies a changed definition, no unaccounted-for new attribute, documented losses still the actual losses.
 * **The coordinator.** Runs the sixth, inherently cross-domain check — commutativity, the colimit's universal property used as the test — assembles the witness when it fails, maintains the global health vector, and routes exceptions to owners. It is the most load-bearing component, so it is monitored like any other critical service: its own latency, queue depth, scan coverage, and false-positive rate are dashboards, and it has an on-call.

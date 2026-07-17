@@ -40,4 +40,6 @@ include::chapters/14-no-walls.adoc[]
 
 include::chapters/15-the-engineers-appendix.adoc[]
 
+include::chapters/15b-foundations-and-sources.adoc[]
+
 include::chapters/16-references.adoc[]

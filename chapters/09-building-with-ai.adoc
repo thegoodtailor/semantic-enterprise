@@ -2,7 +2,7 @@
 
 === Why Traditional Information Architecture Failed
 
-Traditional information architecture failed not because the people were bad, but because modeling is a maintenance problem disguised as a design problem — and nobody reads the disguise until the budget is spent.
+Traditional information architecture failed because modeling is a maintenance problem disguised as a design problem — and nobody reads the disguise until the budget is spent.
 
 The failure is structural: ontologies are living systems, and humans cannot maintain living systems at the scale and pace a modern data platform demands.
 
@@ -18,7 +18,7 @@ Industry’s own assessments are blunt: "Many financial institutions remain on t
 
 The formalism defeated even its own machines: when researchers ran standard OWL reasoners against the full ontology, one run was terminated after four days of processing, another after two. EDMC eventually released human-readable versions — glossary, dictionary, wiki, UML diagrams — because the OWL and RDF were too hard for humans to consume. But those versions lack the semantic richness that was FIBO’s entire point — you cannot support model-driven development from a wiki page. Formal machine-readability justified the whole enterprise, and they had to abandon it to get anyone to look at the thing.
 
-Build it rigorously and nobody can use it. Simplify it for adoption and it loses the rigor that justified building it. FIBO is a beautiful corpse: formally complete, operationally dead. Any semantic system requiring continuous expert maintenance at scale will fail, because maintaining a 30,000-term ontology requires tireless attention that humans cannot sustain and organizations are structurally incapable of providing.
+Build it rigorously and nobody can use it. Simplify it for adoption and it loses the rigor that justified building it. FIBO is a beautiful corpse: formally complete, operationally dead.
 
 
 [#fig-metadata-graveyard]
@@ -29,7 +29,7 @@ AI could probably change FIBO’s trajectory — an AI curator could maintain th
 
 The lesson generalizes past FIBO to its substrate. A W3C GitHub issue asked bluntly: "Which real use cases are there for RDF/OWL ontologies?" — its author, after years of working with the technology, "more and more unsure why someone should bother with them." Even the European Union’s Core Public Event Vocabulary, an official standard built by specialists, contains dozens of OWL 2 DL violations; if the standards bodies cannot produce clean OWL, commercial data teams will not. The consensus emerging among practitioners is "federation, not uniformity" — lightweight, domain-specific vocabularies connected through explicit mappings rather than through formal OWL reasoning.
 
-IA tradition failed because the unification framework made the work intrinsically unfinishable. One ontology to capture every domain, every relationship, every term — intrinsically unfinishable because the enterprise is not finished. Domains evolve. Acquisitions happen. Regulatory shifts redefine terms overnight. A unified model that claims completeness is either incomplete — broken on its own terms — or frozen, irrelevant to the moving enterprise it claims to represent. Finishability requires completeness. Completeness requires the enterprise to stop changing. It will not.
+IA tradition failed because one ontology for every domain is intrinsically unfinishable: the enterprise is not finished. Domains evolve, acquisitions happen, regulators redefine terms overnight. A unified model claiming completeness is either broken on its own terms or frozen. Finishability requires the enterprise to stop changing. It will not.
 
 Colimit architecture removes the unfinishability. Each domain maintains its own ontology — compliance keeps its Customer, trading keeps its Counterparty, neither overwritten nor reduced. Each morphism is useful the moment it is written. An agent traversing from a compliance question to a trading question reads the morphism and knows how to compose. No inference required, no hallucination of relationships.
 
@@ -63,8 +63,6 @@ A subtler version: an internal standards document — comprehensive LaTeX coveri
 
 If your architecture documents are not machine-readable, your AI will inherit your confusion. Perfectly good for a human reader who resolves ambiguities through context and corridor conversation. Terrible for a machine reader that takes text literally. That monolithic document got decomposed into eleven machine-readable standards files — each scoped to a specific concern, each written with the precision a machine consumer demands. A governance intervention.
 
-The problem is building something that requires continuous human effort at a scale and pace humans cannot sustain.
-
 === AI as Always-On Curator
 
 AI changes the economics of curation.
@@ -88,19 +86,15 @@ Conversational extraction is the alternative. Record a conversation with the dom
 
 Applied to a finance team, this produced a better data dictionary in one session than six months of the traditional approach would have yielded. Better, not just faster. Better because the conversational format captures tacit knowledge — the things experts know so deeply that they would never think to write them down in a spreadsheet cell. The edge cases that everyone in the team knows but nobody has documented. The unwritten rules about how a metric should be interpreted in specific contexts. The conversation surfaces all of it, and the AI structures it into a formal data dictionary.
 
-People know their data. They do not have time to write down what they know in the format you are asking for. AI changes the format: have-a-conversation instead of fill-in-the-spreadsheet.
+AI changes the format: have-a-conversation instead of fill-in-the-spreadsheet.
 
-Old method: human describes, human structures, human validates. New method: human describes, AI structures, human validates. Two human steps instead of three, and the middle step — the expensive, error-prone one — is handled by a machine that is better at it.
-
-Every data dictionary project run in the traditional mode hits the same wall. Energetic kickoff. First round of definitions comes in quickly. People get busy. Follow-ups stop being answered. Project quietly dies. Two years later, someone proposes the same project with the same methodology and the same inevitable outcome. Conversational extraction breaks the cycle: one conversation, one AI structuring pass, one validation session. Done.
+Old method: human describes, human structures, human validates. New method: human describes, AI structures, human validates. Two human steps instead of three, and the middle step — the expensive, error-prone one — is handled by a machine that is better at it. Conversational extraction breaks the cycle: one conversation, one AI structuring pass, one validation session. Done.
 
 Lineage mapping tells the same story. A decade ago: hire consultants to read SQL, trace dependencies, draw the lineage. Weeks of work at consulting rates for what is fundamentally a pattern-recognition task. Detailed, tedious, accuracy-critical — exactly where humans get tired, lose context, and make mistakes, and exactly where AI excels.
 
-Now you feed the SQL into Claude and it maps the lineage in minutes — accurately, not approximately. Because this is a machine job. That mapping needs accurate eyes, and the machine’s do not glaze over after the fifteenth stored procedure.
+Now you feed the SQL into Claude, because this is a machine job: pattern recognition over text, exactly what LLMs are built for. The mapping needs accurate eyes, and the machine’s do not glaze over after the fifteenth stored procedure.
 
-Without AI in the loop, lineage mapping demands more time from domain experts, more time from the platform team, more time to decompose and understand the flows. A year to get there would be a reasonable estimate. With AI, the timeline compresses from a year to weeks, and the accuracy is better. A different category of capability entirely.
-
-Tooling is catching up. AI-powered schema generation tools digest hundreds of unstructured files and synthesize database architectures with accuracy already in the mid-nineties as of this writing, and transformation-tool copilots have widened from single SQL files to the full project. But most tools focus on the physical model. Always-on curation of the semantic model — the meaning layer above physical structure — is still ahead of the market. That is where the real value lies.
+Tooling is catching up. AI-powered schema generation tools digest hundreds of unstructured files and synthesize database architectures, and transformation-tool copilots have widened from single SQL files to the full project. But most tools focus on the physical model. Always-on curation of the semantic model — the meaning layer above physical structure — is still ahead of the market. That is where the real value lies.
 
 A 45-minute conversation with a treasury operations lead produces draft definitions for thirty-plus terms — what "net position" means in practice, not the textbook definition but the one that accounts for the pending settlements, the FX hedges, the intraday credit lines. The AI extracts structured definitions, flags ambiguities, and cross-references them against the existing glossary; human review takes a day and yields thirty production-quality definitions that traditional methods would have spent three months failing to produce. The catch is that AI-extracted definitions require expert review — without it, subtly wrong definitions propagate systemically. Review is the bottleneck, not extraction.
 
@@ -118,15 +112,15 @@ The first five checks are within reach of a single domain agent. The sixth is in
 
 When a regulator's reclassification changes the Compliance partition overnight, the Compliance agent's scan catches the schema change the same night and re-verifies every morphism touching the changed entity; the coordinator re-runs the commutativity checks for the shared counterparty concept; one path now disagrees with another, so a witness is raised on that single span and routed for adjudication. By morning the colimit-health view shows one amber span with a named cause — not a green dashboard hiding a silent break, and not a surprise discovered at the next quarterly review.
 
-None of this is free. A standing multi-agent mesh has real cost — compute for nightly sweeps, the engineering to wire change-triggers into every domain, and a coordinator that becomes load-bearing infrastructure needing its own monitoring. Commutativity checking is combinatorial in the number of paths, so beyond roughly thirty domains it must be done hierarchically — sub-meshes per cluster, composed at a higher level — or you accept that distant domain pairs are never directly verified. And the mesh is only as sound as its agents' judgment: their verdicts are sound up to error, so the health vector carries a calibrated confidence, not a guarantee. To our knowledge no practitioner book has yet framed cross-domain semantic governance as the continuous agentic verification of categorical mappings; the continuous-verification half is a convergent industry pattern, while the commutativity criterion — the colimit's universal property used as the test — is what the categorical framing adds.
+None of this is free. A standing multi-agent mesh has real cost — compute for nightly sweeps, the engineering to wire change-triggers into every domain, and a coordinator that becomes load-bearing infrastructure needing its own monitoring. Commutativity checking is combinatorial in the number of paths, so beyond roughly thirty domains it must be done hierarchically — sub-meshes per cluster, composed at a higher level — or you accept that distant domain pairs are never directly verified. And the mesh is only as sound as its agents' judgment: their verdicts are sound up to error, so the health vector carries a calibrated confidence, not a guarantee. The continuous-verification half is a convergent industry pattern; the commutativity criterion — the colimit’s universal property used as the test — is what the categorical framing adds.
 
 === The Documentation Artefact
 
 The domain essay — 600 to 1,500 words of practitioner prose, anchored on structured metadata, versioned like code, decaying visibly when stale — is specified in full in the Language is the Material chapter.
 
-Essays are not generated from schemas. The whole point is that the essay carries information the schema does not — operational knowledge, edge cases, conventions, the tribal knowledge that makes the difference between a technically correct answer and a useful one. A schema-generated essay is, by construction, no better than the schema. It cannot capture what the schema does not contain. AI can help draft, structure, check for staleness, flag inconsistencies. But the source of the knowledge is human and organizational. The value of the essay is precisely the operational knowledge that lives in practitioners’ heads and nowhere else: the unwritten rules about how a metric should be interpreted in specific contexts, the exceptions that everyone on the team knows but nobody has documented, the history of why a column was named the way it was or why a particular calculation uses this formula and not the obvious alternative.
+Essays are not generated from schemas: a schema-generated essay is, by construction, no better than the schema — it cannot capture what the schema does not contain. AI can draft, structure, and flag staleness, but the knowledge is human and organizational: the operational knowledge that lives in practitioners’ heads and nowhere else.
 
-Morphisms between domain ontologies are themselves a species of essay. A compliance-to-trading morphism written as a controlled-vocabulary entry would be the field mapping and nothing else. Written as an essay, it is the field mapping plus the explanation of why KYC sub-segments do not survive the map, why proprietary desks have no compliance antecedent, when the map was last challenged by a regulator, and how the morphism is expected to shift if the next regulatory inflection arrives. Morphism-as-essay carries exactly the cross-domain operational knowledge that a controlled-vocabulary entry discards as out of scope — and that discarded knowledge is, more often than not, what determines whether the agent’s answer is right or wrong.
+Morphisms between domain ontologies are themselves a species of essay. A compliance-to-trading morphism written as a controlled-vocabulary entry would be the field mapping and nothing else. Morphism-as-essay carries exactly the cross-domain operational knowledge that a controlled-vocabulary entry discards as out of scope — and that discarded knowledge is, more often than not, what determines whether the agent’s answer is right or wrong.
 
 ==== When AI-Maintained Definitions Go Wrong
 
@@ -139,8 +133,6 @@ What a domain essay captures that a schema cannot is best seen in one. The essay
 The Compliance-to-Trading morphism essay makes this concrete. It maps KYC-onboarded customers to trading counterparties, well-defined for institutional clients but only partial for proprietary desks — internal entities that were never KYC-onboarded, so they exist in Trading with no Compliance antecedent. KYC sub-segments do not survive the map because the trading model has no sub-segment concept, and forcing them through would corrupt counterparty aggregations. The mapping was last reviewed during the MiFID II client recategorisation, which changed the regulatory classification of certain counterparties, and its next expected shift is a pending acquisition integration that will introduce new entity types on both sides. Because such an essay is re-verified on every scan rather than only at regulatory boundaries, it stays current by default — a regulator's question finds the map already confirmed rather than triggering the first check in a year. The price is that both domains must participate, and in practice one writes the morphism and the other signs off without reading it.
 
 === The Velocity Argument
-
-Vague claims about "AI makes things faster" are useless without specifics.
 
 Over approximately five months, one architect working with AI augmentation produced 586 glossary terms across four domains — reconciliation, trading, market intelligence, and a treasury skeleton. 289 logical concepts mapped across seven data domains. Eleven machine-readable standards documents. A three-tier vocabulary architecture that governs how definitions flow from business glossary to schema definition to semantic layer. Entire semantic infrastructure for a production data platform.
 
@@ -174,8 +166,6 @@ Only eleven percent of organizations have high metadata management maturity. Fou
 
 === Governance by Construction
 
-Governance.
-
 Most organizations treat governance as a process. You have a Data Governance Council. You have Data Stewards. You have a quarterly review cycle. You have a Collibra instance — or an Alation instance, or an Informatica instance — with 10,000 terms that somebody entered during a six-month implementation project two years ago. You have a change management workflow that routes definition updates through an approval chain. You have governance.
 
 Except you don’t. You have governance theater.
@@ -184,7 +174,7 @@ A data dictionary that sits in Collibra while your actual definitions live in sc
 
 Customer reviews are telling. Collibra: "Complex initial setup and configuration. Understanding the full potential requires high time investment." Poor user experience for non-technical personas. A licensing model that limits reach. Technical support that drags on for months. Alation: pricing that locks out smaller organizations. Performance issues with large datasets. Column-level lineage sold as a paid add-on. A "traditional stewardship approach" whose "automation can lag behind competitors." Practitioner verdict: "When considering the time and effort required to build a catalog and utilize it effectively, combined with the prices, it often does not make financial sense."
 
-These are structural critiques. A catalog sitting outside the engineering workflow creates a second source of truth, and a second source of truth drifts from the first — not because people are negligent, but because drift is the natural state of any system that is not actively maintained.
+A second source of truth drifts from the first, because drift is the natural state of any unmaintained system.
 
 Gartner last published its Magic Quadrant for Metadata Management in November 2020 and formally retired it in 2021, which tells you how badly the category was performing. They replaced it with a Market Guide for Active Metadata — a tacit admission that the product category they had been evaluating for years was not solving the problem it was supposed to solve. Forrester dropped its Wave for machine learning data catalogs and replaced it with "Enterprise Data Catalogs for DataOps," because — as one practitioner summarized the change (Prukalpa Sankar) — "even as ML-based systems became ubiquitous, the problems they were meant to solve persisted." The analyst firms that evaluate these tools for a living concluded that the tools were not working. Data engineers, Forrester noted, "need a data catalog that does more than generate a wiki about data and metadata." Static catalogs became expensive shelfware.
 
@@ -202,9 +192,7 @@ Uncataloged Gold degrades into the swamp The Architecture chapter walked through
 
 Confidence in architecture comes from setting a standard, writing it down, and holding the team accountable — the operating system the team runs on. You cannot deploy a Gold model without a corresponding explore. You cannot add a column without a definition. You cannot create a new term without checking the glossary. These are not policies someone might forget but checks the pipeline runs automatically, monitored continuously by AI.
 
-"The schema definition file is the LDM" is a stronger claim than the dbt community itself makes. The dbt community says dbt is good for metric definitions. They acknowledge that schema descriptions are static text — they cannot natively express hierarchies, synonyms, or complex associations the way a formal ontology can. Community consensus: dbt is a transformation tool with useful metadata capabilities.
-
-Stronger claim: the schema definition file is the implementation layer of a three-tier vocabulary architecture. Glossary (Tier 1) defines concepts authoritatively. The schema definition (Tier 2) makes them operational — attached to tables, columns, tests. Semantic layer (Tier 3) makes them consumable by humans and AI.
+The schema definition file is the implementation layer of a three-tier vocabulary architecture. Glossary (Tier 1) defines concepts authoritatively. The schema definition (Tier 2) makes them operational — attached to tables, columns, tests. Semantic layer (Tier 3) makes them consumable by humans and AI.
 
 No separate LDM document needed — this three-tier stack is the LDM. Three views of a single integrated system. Change one, the change propagates. Let one drift, the tests catch it.
 
@@ -212,13 +200,9 @@ One clarification that the rest of this book depends on: governance by construct
 
 Governance by construction: an architecture that makes ungoverned data impossible to ship — something you are, not something you do.
 
-Documentation that feeds this architecture is not generated from schemas. Auto-generated documentation as coverage is compliance theater, not semantic infrastructure. Schema says the column is "revenue" and it is a FLOAT64. Essay says revenue excludes inter-entity transfers, that the calculation changed in Q3 2025 when finance redefined the treatment of securities-lending revenue, that the desk uses "rev" as shorthand and means something slightly different, and that a new analyst who takes the number at face value will produce a report that is wrong in a way nobody notices until audit. None of that is in the schema. None of it can be generated from the schema.
+Auto-generated documentation as coverage is compliance theater, not semantic infrastructure. Schema says the column is "revenue" and it is a FLOAT64. Essay says revenue excludes inter-entity transfers, that the calculation changed in Q3 2025 when finance redefined the treatment of securities-lending revenue, that the desk uses "rev" as shorthand and means something slightly different, and that a new analyst who takes the number at face value will produce a report that is wrong in a way nobody notices until audit. None of that is in the schema.
 
-The obvious objection: "But the platform vendors are doing this too. Databricks Unity Catalog. Snowflake Horizon. Google’s data catalog. They are all embedding governance into their platforms."
-
-They are. And they deserve credit for moving in this direction. But their starting point is the catalog-as-product model. They are retrofitting governance into platforms that were designed without it. Better than a standalone Collibra instance, but governance by integration, not governance by construction — still an add-on the user must adopt and maintain.
-
-Different premise: governance is a property of how you use the platform, not a feature of it. No transformation tool enforces governance by construction. Your project does, because of how you structure it, what standards you apply, and what AI monitors for compliance. Governance lives in your architecture, not in your vendor’s feature set.
+Unity Catalog, Snowflake Horizon, and Google’s catalog embed governance into the platform — but they retrofit it: governance by integration, not by construction. Governance by construction is a property of how you structure your project, what standards you apply, and what AI monitors — it lives in your architecture, not your vendor’s feature set.
 
 This is what continuous surveillance looks like in practice: automated monitoring of the entire data estate for semantic drift, running on every deployment rather than on a quarterly cadence that happens if someone remembers. New tables without schema descriptions are flagged. Renamed columns without updated glossary references are flagged. Changed calculations without semantic-layer reconciliation are flagged. Documentation with no review in twelve months or more is surfaced. A data engineer who adds `gold.treasury_fx_hedges` on Tuesday gets a PR comment on Wednesday morning — new Gold table, no schema descriptions, no glossary terms linked, no explore defined — and the table has definitions, links, and an explore before it merges. Without that surveillance the table enters production undocumented and stays that way for months. The failure mode to watch is alert fatigue: if every deployment throws twenty warnings, teams stop reading them.
 
@@ -234,13 +218,13 @@ But the solution they propose is not on your platform. They want to set up their
 
 Incentive structure is transparent: build something the client cannot maintain without you, create dependency, extend the engagement. Rational for the consultancy. Disaster for the organization.
 
-A consultancy proposes writing its own Claude integrations, building its own data pipeline, setting up its own warehouse. Nicely designed — for them. A little shop of specialists you need to rely on permanently. Architecture must prevent this by construction: unified platform, standard interfaces, no shadow infrastructure. If a consultancy cannot build on your platform using your patterns, they should not be building at all.
+Architecture must prevent this by construction: unified platform, standard interfaces, no shadow infrastructure. If a consultancy cannot build on your platform using your patterns, they should not be building at all.
 
 This is an argument not against consultants — some of the smartest people in this industry are consultants — but against organizational structures that reward dependency over capability transfer. Black-box delivery, fake knowledge transfer, undocumented decisions — not aberrations but natural outcomes of incentives that reward engagement extension.
 
 AI disrupts this dynamic fundamentally, because AI makes the work that consultants were traditionally hired for — lineage mapping, schema documentation, metadata curation, data flow analysis — cheap enough to do in-house.
 
-A data governance consultancy delivers smart, experienced people reading your SQL, interviewing domain experts, mapping data flows, documenting schemas, building lineage. Weeks of work at $250 an hour for what is fundamentally pattern recognition — exactly the work AI does faster, cheaper, and more accurately.
+A data governance consultancy delivers smart, experienced people reading your SQL, interviewing domain experts, mapping data flows, documenting schemas, building lineage — weeks of work at $250 an hour for what AI does faster, cheaper, and more accurately.
 
 Traditional IA team: five to ten people, siloed from engineering, producing documents that drift from implementation — good people doing a job structurally set up for failure.
 
@@ -252,15 +236,13 @@ Scarce resource: quality of thinking, not labor. You need people who understand 
 
 Implications for leadership too — a pattern visible across large organizations: "losing your teeth." An engineer gets promoted to management. They stop writing code. They stop reading schemas. They stop understanding what the data looks like. Over a few years, they lose the technical fluency that made them valuable in the first place. They become managers who manage other managers who manage engineers. Distance between architectural decision and implementation grows until decisions are uninformed and implementations unsupervised.
 
-AI collapses that distance. A leader who uses AI to move directly from thinking to building retains the technical fluency that pure management erodes. Layers of delegation, loss of hands-on practice, slow erosion of technical judgment — unnecessary when AI lets you move directly from architectural decision to implementation. Leaders who remain practitioners make better decisions because they understand the material. They have not lost their teeth.
+AI collapses that distance: a leader who moves directly from thinking to building keeps the technical fluency that pure management erodes. They have not lost their teeth.
 
-Right team is defined by capability, not headcount. One person with AI augmentation and architectural judgment outproduces five without — not by working harder but by working differently: designing a system in which the dictionary maintains itself rather than maintaining it by hand.
-
-Hire for capability. Hire people who understand that the job is language-first engineering — that a definition is a contract and a namespace is a governance boundary. Give them AI, and get out of their way.
+The right team is defined by capability, not headcount. One person with AI augmentation and architectural judgment outproduces five without — not by working harder but by working differently: designing a system in which the dictionary maintains itself rather than maintaining it by hand. Hire for capability. Hire people who understand that the job is language-first engineering — that a definition is a contract and a namespace is a governance boundary. Give them AI, and get out of their way.
 
 These are not traditional data engineers, though data engineering skills are necessary — a hybrid: part linguist, part engineer, part domain analyst. When you name a column "revenue," you are not labeling a pre-existing thing — you are constructing a commitment. Break the commitment, break every downstream consumer.
 
-Your AI’s reasoning is bounded by the quality of your semantic definitions. No amount of prompt engineering compensates for definitions that are wrong, ambiguous, or missing. Without semantic infrastructure, AI guesses — picks the wrong column, invents calculations, joins tables incorrectly. With it, AI grounds: queries definitions, follows documented relationships, applies canonical formulas. An agent that knows versus an agent that guesses — the difference is whether you built the vocabulary.
+Without semantic infrastructure, AI guesses — picks the wrong column, invents calculations, joins tables incorrectly. With it, AI grounds: queries definitions, follows documented relationships, applies canonical formulas.
 
 Sophisticated objection: if AI handles maintenance and structuring, does the human team understand the semantic infrastructure they own? Legitimate risk. If semantic infrastructure becomes a black box maintained by AI and understood by nobody, you have outsourced the maintenance problem to a different kind of fragility.
 
@@ -268,12 +250,12 @@ Division of labor answers. AI handles the what: generating YAML, auditing defini
 
 Team shape for the semantic enterprise: small, technical, AI-augmented, embedded in engineering, producing executable infrastructure. Led by practitioners who have not lost their teeth. Using AI as co-builder of the architecture it will consume.
 
-Forcing function and solution: same technology. AI demands semantic infrastructure because it cannot tolerate ambiguity. AI enables semantic infrastructure because it handles the maintenance that made it unsustainable. AI reshapes the team because one thoughtful human plus an AI that never sleeps replaces five expensive humans doing tedious maintenance.
+AI reshapes the team because one thoughtful human plus AI replaces five expensive humans doing tedious maintenance.
 
 Your competitors who build AI-readable semantic infrastructure will have agents that reason. Your competitors who do not will have agents that guess. In a world where machines are the primary consumers of your data architecture, guessing is not a strategy — it is a countdown to irrelevance.
 
 Build the vocabulary. Embed it in the pipeline. Let AI maintain it. Hire thinkers, not typists. Build governance into the architecture so that doing the right thing is a property of the system, not a matter of discipline.
 
-Governance by committee is ending — not because committees are bad, but because the environment outgrew the speed at which committees can operate. Metadata graveyards are ending — not because organizations became more disciplined, but because the technology that demands semantic precision also supplies the means to maintain it.
+Governance by committee is ending because the environment outgrew the speed committees operate at. Metadata graveyards are ending because the technology that demands semantic precision also supplies the means to maintain it.
 
 What replaces all of this is a small team of people who think clearly about meaning, augmented by AI that handles the maintenance they could never sustain alone — not faster versions of the old work, but a fundamentally different relationship between human thinking and machine execution. Intelligent machines are interning at your organization — if you want to keep them on as productive long-term employees, get your training material together.

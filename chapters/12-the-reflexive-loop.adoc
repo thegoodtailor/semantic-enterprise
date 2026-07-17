@@ -19,7 +19,7 @@ Self-correction comes in grades, and the book has already built the first two.
 
 Argyris drew the line that separates the first pair from the second (Argyris, Harvard Business Review, 1977). A thermostat holding the room at 68°F is a single-loop learner: it corrects the action. A system that asks *why 68°F* is a double-loop learner: it revises the governing variables. An agent that retries a failed query is a thermostat. A system that revises the definition the query relied on is a learner. Nearly every "self-improving" agent shipping today is a thermostat with a press release.
 
-Loop 3 crosses a second line, the one von Foerster drew between first-order cybernetics — the cybernetics of observed systems — and second-order cybernetics, the cybernetics of observing systems. Through Loop 2 the platform is observed: checked, attacked, refuted from outside. At Loop 3 it becomes an observing system: it holds beliefs about its own beliefs, and you can query them. "Which of your definitions are least trustworthy right now?" returns a computable answer. That is self-awareness operationalized with zero mysticism — a queryable, calibrated, bitemporal model of the system's own semantic reliability. A reliability you can audit beats an intelligence you must trust.
+Loop 3 crosses a second line, the one von Foerster drew between first-order cybernetics — the cybernetics of observed systems — and second-order cybernetics, the cybernetics of observing systems. Through Loop 2 the platform is observed: checked, attacked, refuted from outside. At Loop 3 it becomes an observing system: it holds beliefs about its own beliefs, and you can query them. "Which of your definitions are least trustworthy right now?" returns a computable answer. That is self-awareness operationalized with zero mysticism — a measured model of the system's own semantic reliability, held on two clocks. A reliability you can audit beats an intelligence you must trust.
 
 One design principle governs everything that follows: falsification must be external and plural. Large language models (LLMs) reflecting on their own reasoning without external feedback frequently degrade their own answers (Huang et al., 2024), and LLM judges favor their own generations (Panickssery et al., 2024). The author-agent reviewing its own output is structurally incapable of refuting it. Refutation therefore arrives from outside: usage telemetry, reconciliation evidence, and other agents running different models through different lenses. This is the load-bearing argument for the multi-agent architecture of "Agentic Intelligence" — the newsroom is credible because it runs a corrections column — and it makes plurality the precondition of refutation rather than a scaling convenience.
 
@@ -31,9 +31,9 @@ image::figures/reflexive-loop.png[the reflexive loop,width=640,align="center"]
 
 Loop 2 is three patterns, and they share a birth rule: refutation machinery is built from errors you discover rather than errors you imagine (Hamel Husain's rule for evaluations). An assertion invented at a whiteboard tests the author's imagination; an assertion born of an incident tests the world's demonstrated capacity to fool you.
 
-A definition — a measure, a morphism, an essay claim — goes into production use by agents and humans, authored or revised at AI speed, and data tests guard the pipeline while nothing guards the meaning. Every `not_null` can pass forever over a revenue measure that silently includes intercompany transfers. A definition with no stated conditions of failure is never judged wrong; it just produces wrong answers until a domain expert happens to notice.
+Data tests guard the pipeline while nothing guards the meaning. Every `not_null` can pass forever over a revenue measure that silently includes intercompany transfers. A definition with no stated conditions of failure is never judged wrong; it just produces wrong answers until a domain expert happens to notice.
 
-So every definition ships with falsification conditions: executable claims — a reconciliation to the general ledger (GL) within tolerance, a structural exclusion — whose failure indicts the definition rather than the data. They run on every scan, like any test, with one difference in verdict: a failed `not_null` indicts the pipeline; a failed assertion indicts the meaning — the definition, the morphism, or the essay behind it. Each assertion records the incident that taught it. The nearest ancestor, the data contract, is a forward-looking promise; an assertion is the residue of a refutation.
+So every definition ships with falsification conditions: executable claims — a reconciliation to the general ledger (GL) within tolerance, a structural exclusion — that run on every scan, like any test, with one difference in verdict: a failed `not_null` indicts the pipeline; a failed assertion indicts the meaning — the definition, the morphism, or the essay behind it. Each assertion records the incident that taught it. The nearest ancestor, the data contract, is a forward-looking promise; an assertion is the residue of a refutation.
 
 [source,creole]
 ----
@@ -42,11 +42,12 @@ definition net_revenue {
        financing earned across executed client and proprietary trades — net of
        rebates, fee waivers, and soft-dollar arrangements. Recognized on trade
        date, not settlement. EXCLUDES intercompany transfers (an in-group
-       counterparty is not external revenue), EXCLUDES unrealized mark-to-m
-       arket (that is pnl_mtm), and EXCLUDES management and performance fees
-       (manager economics, not fund trading revenue). Allocated to the
-       originating strategy, not the booking entity. An intercompany
-       counterparty appearing here is a definitional failure, not a data error."
+       counterparty is not external revenue), EXCLUDES unrealized
+       mark-to-market (that is pnl_mtm), and EXCLUDES management and
+       performance fees (manager economics, not fund trading revenue).
+       Allocated to the originating strategy, not the booking entity. An
+       intercompany counterparty appearing here is a definitional failure,
+       not a data error."
 
   assert net_rev_recon_gl : "monthly SUM(net_revenue) reconciles to GL revenue class within 0.5%"
     born_of incident/2026-04-17-board-deck-restatement
@@ -61,9 +62,9 @@ definition carried_interest {
        whole fund; under an AMERICAN (deal-by-deal) waterfall, carry accrues
        per realized deal, subject to clawback if later deals underperform.
        ACCRUED carry (unrealized, mark-dependent) and REALIZED carry
-       (crystallized cash) are different measures and must never be summed. Net
-       of the GP catch-up and of the clawback reserve held until fund wind-d
-       own."
+       (crystallized cash) are different measures and must never be summed.
+       Net of the GP catch-up and of the clawback reserve held until fund
+       wind-down."
 
   assert carry_waterfall_declared : "every fund declares a waterfall (european|american); none defaults silently"
   assert carry_accrued_realized_never_summed : "accrued_carry and realized_carry never aggregate into one measure"
@@ -105,9 +106,9 @@ definition performance_fee {
 }
 ----
 
-None of these definitions is exotic. Every one is a term a fund uses a hundred times a day — and every one carries a convention that is invisible in the name and lethal in the gap. "Carried interest" is a single concept until you ask whether the waterfall is European or American, and then it is two different numbers that a model will average without noticing. "NAV" is a price for a liquid book and a discounted-cash-flow estimate for an illiquid one, marked as of a valuation date that is not the report date — and an agent that joins NAV to a report-date calendar answers a question nobody asked, confidently. "Performance fee" is one rate that resolves to different dollars per investor once a high-water mark and series accounting are in play. These are not edge cases bolted onto simple concepts; the convention *is* the concept. A human analyst carries it in their head and a new hire absorbs it in a month of corrections. An agent has neither the head nor the month. It reads the name, applies the textbook default, and produces a plausible, articulate, wrong answer — which is precisely why the convention has to live in the definition, in language, where the agent reads before it reasons. The nuance is the reason the documentation exists. Strip the nuance to a tidy one-liner and you have re-created the failure the whole architecture is built to prevent.
+None of these definitions is exotic. Every one is a term a fund uses a hundred times a day — and every one carries a convention that is invisible in the name and lethal in the gap. "Carried interest" is a single concept until you ask whether the waterfall is European or American, and then it is two different numbers that a model will average without noticing. "NAV" is a price for a liquid book and a discounted-cash-flow estimate for an illiquid one, marked as of a valuation date that is not the report date — and an agent that joins NAV to a report-date calendar answers a question nobody asked, confidently. "Performance fee" is one rate that resolves to different dollars per investor once a high-water mark and series accounting are in play. These are not edge cases bolted onto simple concepts; the convention *is* the concept. A human analyst carries it in their head and a new hire absorbs it in a month of corrections. An agent has neither the head nor the month. It reads the name, applies the textbook default, and produces a plausible, articulate, wrong answer — which is precisely why the convention has to live in the definition, in language, where the agent reads before it reasons. Strip the nuance to a tidy one-liner and you have re-created the failure the whole architecture is built to prevent.
 
-After an April board deck reported a `net_revenue` that failed to reconcile to the GL, the definition gained the two assertions above: monthly reconciliation to the GL revenue class within 0.5%, and the structural exclusion of intercompany counterparties. The drift that caused the restatement can recur; the silence that let it reach the board cannot.
+The two `born_of` assertions on `net_revenue` above are the residue of a real week — the April board-deck restatement, replayed end to end in "One Incident, End to End" at this chapter's close. The drift that caused it can recur; the silence that let it reach the board cannot.
 
 Assertions are code to maintain, and a definition carrying none becomes a visible smell — pressure that is intended. Suites grow monotonically with incidents and need pruning discipline (saturation, below).
 
@@ -115,13 +116,13 @@ When a wrong number reaches a decision surface — a board deck, a regulatory su
 
 A wrong number is an incident, and meaning gets the Site Reliability Engineering (SRE) treatment — blameless, written, reviewed, in the discipline of the Google SRE book's postmortem chapter, whose maxim the doctrine borrows: the cost of failure is education. The postmortem reconstructs which answer was given, which provenance it carried, which conjecture failed, and what revision follows. Its mandatory output is a new semantic assertion that would have caught the failure — the regression test of meaning. A postmortem whose output is a document is a memo. A postmortem whose output is an executable assertion is architecture.
 
-The April restatement traces to `net_revenue` absorbing a new intercompany feed through a drifted morphism. The postmortem revises the morphism, ships `net_rev_recon_gl` and `net_rev_no_intercompany`, and closes. The layer can still be fooled — it can no longer be fooled the same way twice.
+The April restatement gets exactly this treatment — replayed end to end at the chapter's close — and the moral survives compression: the layer can still be fooled; it can no longer be fooled the same way twice.
 
 Enforcement needs an owner: a postmortem with no assertion among its action items is incomplete by rule. Blamelessness is load-bearing — the moment a postmortem indicts a person instead of a conjecture, incidents stop being reported and the loop starves.
 
-Definitions are drafted and revised at AI speed, so review must hunt falsity at the same speed. Confirmation is cheap and refutation is nobody's job. A review process built on agents blessing their author's work accumulates plausible, unchallenged meaning — the judges favor their own generations.
+Definitions are drafted and revised at AI speed, so review must hunt falsity at the same speed. Confirmation is cheap and refutation is nobody's job — and a review process built on agents blessing their author's work accumulates plausible, unchallenged meaning.
 
-The countermeasure is standing adversarial agents whose job is to break definitions: the exclusion lens, the provenance lens, the adversarial-input lens of "Building with AI", promoted to a standing institution under three design rules. Panel ≠ author — different models, or at minimum different contexts, because introspection does not refute. Verdicts are scored against eventual outcomes, so the judges sit inside the calibration loop they enforce. Disagreement routes to a human adjudicator, never to a vote among the agents. The direct ancestor is a Stanford agentic-falsification system named, fittingly, POPPER (2025), whose agents design sequential falsification experiments with controlled error rates for scientific hypotheses; here the hypotheses are the enterprise's vocabulary.
+The countermeasure is standing adversarial agents whose job is to break definitions: the exclusion lens, the provenance lens, the adversarial-input lens of "Building with AI", promoted to a standing institution under three design rules. Panel ≠ author — different models, or at minimum different contexts: falsification stays external and plural. Verdicts are scored against eventual outcomes, so the judges sit inside the calibration loop they enforce. Disagreement routes to a human adjudicator, never to a vote among the agents. The direct ancestor is a Stanford agentic-falsification system named, fittingly, POPPER (2025), whose agents design sequential falsification experiments with controlled error rates for scientific hypotheses; here the hypotheses are the enterprise's vocabulary.
 
 The panel attacks a revised `customer_lifetime_value`. The exclusion lens finds the first-thirty-day churn carve-out undocumented; the adversarial lens constructs an early-stage-customer cohort where the measure misleads; the provenance lens confirms the formula matches its cited source. Two objections, one pass: the contest routes to the domain owner with evidence attached.
 
@@ -147,7 +148,7 @@ CREATE TABLE governance.semantic_feedback (
 
 Every row is the outcome of a prediction, on two clocks: when the world disagreed, and when the brain found out. From that history, two patterns.
 
-Agents and humans must decide, before relying on a definition, how far to trust it. Certification grades process — built right, reviewed, documented — and says nothing about survival in the field. A certified definition contested weekly and a certified definition unchallenged through four hundred uses carry the same badge.
+Agents and humans must decide, before relying on a definition, how far to trust it. A certified definition contested weekly and a certified definition unchallenged through four hundred uses carry the same badge.
 
 So the loop fits per-definition reliability scores from the outcome history in `governance.semantic_feedback` — uses, contests, refutations, revisions, live-assertion status — exposed at pre-flight to every consumer, on the template of Meta's probabilistic flakiness scores, which grade each test on its outcome record rather than its code. Certification says *built right*; calibration says *not yet proven wrong, in N attempts*. Airbnb's Midas certification is the strongest version of the former; the ledger is the latter, and a platform wants both.
 
@@ -155,7 +156,7 @@ Pre-flight, the agent reads: `net_revenue`: 412 uses, 2 contests (both resolved 
 
 A reliability score is itself a measure and inherits Goodhart exposure (below); the ledger therefore scores adjudicated outcomes only, never raw complaint volume. Sparse histories calibrate weakly — a young definition's score reports its own ignorance, which is the correct behavior.
 
-Refutations land; definitions are revised; the system must remember what it used to believe and when it learned better. A layer that overwrites definitions in place destroys the evidence of its own learning. Last quarter's answers become unreconstructible, produced under a meaning that no longer exists anywhere.
+Refutations land; definitions are revised; overwrite them in place and the system destroys the evidence of its own learning. Last quarter's answers become unreconstructible, produced under a meaning that no longer exists anywhere.
 
 The fix is the bitemporal ontology of "Time", recast as the memory of the learning loop. Every revision is an event on two clocks: when the old meaning stopped being right (valid time) and when the system learned it (system time). "What did we mean by Customer in Q3 2024, and when did we discover that meaning was wrong?" becomes as answerable as a P&L query. A brain that cannot remember its previous beliefs has not learned — only changed.
 
@@ -175,9 +176,23 @@ A learning loop is a steering surface, and four failure modes will find it.
 
 **Churn without adjudication.** Refutation without a named owner oscillates — revised Tuesday, counter-revised Thursday, each revision refuting the last. The damper is already in the book's constitution: machines verify, humans adjudicate. Every refutation lands in the exception queue with one owner, and meaning changes at human cadence even when evidence arrives at machine cadence.
 
+=== One Incident, End to End
+
+Monday morning, the April board deck reports net revenue up four percent on the quarter. By noon the CFO's own reconciliation disagrees with the general ledger by three percent, and the number is already in the minutes.
+
+The answer carries provenance, so nobody convenes an archaeology project. The wrong number names its stakes: the `net_revenue` definition, the Trading→Finance morphism that feeds it, and the FX rate set it consumed — three conjectures, one of which has just failed. The mesh raised no witness, and that is the point of everything above Loop 0: every key joined, every path commuted, the shape was fine while the meaning was wrong.
+
+Tuesday, the refutation panel takes all three. The provenance lens clears the FX set — the rates match their source. The adversarial lens clears the definition text — the intercompany exclusion is stated plainly, and no cohort it constructs can make the words mislead. The exclusion lens kills the morphism: a new intercompany feed, onboarded in March with its counterparties typed as external, has been carried into `net_revenue` as client revenue ever since. The definition said the right thing; the map betrayed it. The verdict routes to the domain owner, who confirms, and the postmortem opens blameless — the conjecture is indicted, not the engineer who onboarded the feed.
+
+Wednesday's postmortem reconstructs the failure on two clocks — the feed landed March 30, when the number went wrong; the break surfaced April 13, when the brain found out — and closes with the mandatory output: the morphism repaired, and two executable assertions that would have caught the failure, `net_rev_recon_gl` and `net_rev_no_intercompany`, each stamped `born_of incident/2026-04-17-board-deck-restatement`.
+
+Thursday, the same query runs again. Nobody re-briefs the agent and nothing is patched by hand. Pre-flight, it reads the ledger: one refutation this week, two new assertions green as of this morning, a reliability score that dipped and says so. The answer comes back restated, cites the repaired morphism, and attaches the restatement note for the minutes — and the ledger records the confirmation as one more row on two clocks.
+
+One week, all four loops. Structure verified and found innocent; usage feedback landing on named conjectures; refutation by a standing panel; calibration adjusting what the system believes about its own vocabulary. The restatement cost a bad Monday. The architecture kept it from costing a bad Monday every quarter.
+
 === Prior Art, Honestly
 
-The novelty claim gets the same treatment the book demands of a morphism: state what maps, what is partial, what is lost. Single-loop semantic repair is in production as of this writing — Snowflake's agentic semantic-model improvement runs orchestrated editor agents under an LLM judge and reports +20% answer accuracy on its own benchmark; Databricks Genie routes user corrections into curator review queues. Confirmation-oriented, human-gated, single-loop: thermostats, and good ones. Usage-driven ontology evolution is twenty years old — the KAON tradition (Stojanovic et al., 2004) evolved ontologies from usage signal before LLMs existed, with no falsification and no calibration, and deserves its citation. Falsification agents exist for science (POPPER, 2025), not yet for enterprise semantics. Per-artifact reliability scoring exists for tests (Meta's flakiness scores), and process-based trust exists for metrics (Airbnb's Midas certification). Two pieces have no published precedent: the postmortem-to-assertion pipeline, and outcome-derived calibration of meaning. Every component has an ancestor. The loop does not. The synthesis is the claim.
+The novelty claim gets the same treatment the book demands of a morphism: state what maps, what is partial, what is lost. Single-loop semantic repair is in production as of this writing — Snowflake's agentic semantic-model improvement runs orchestrated editor agents under an LLM judge and reports +20% answer accuracy on its own benchmark; Databricks Genie routes user corrections into curator review queues. Confirmation-oriented, human-gated, single-loop: thermostats, and good ones. Usage-driven ontology evolution is twenty years old — the KAON tradition (Stojanovic, 2004) evolved ontologies from usage signal before LLMs existed, with no falsification and no calibration, and deserves its citation. Falsification agents exist for science (POPPER, 2025), not yet for enterprise semantics. Per-artifact reliability scoring exists for tests (Meta's flakiness scores), and process-based trust exists for metrics (Airbnb's Midas certification). Two pieces have no published precedent: the postmortem-to-assertion pipeline, and outcome-derived calibration of meaning. Every component has an ancestor. The loop does not. The synthesis is the claim.
 
 === Doubt, Installed
 

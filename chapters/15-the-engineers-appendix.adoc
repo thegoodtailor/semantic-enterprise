@@ -1,6 +1,6 @@
 == The Engineer's Appendix
 
-The rest of this book argues; this appendix builds. One dating note before the numbers: every vendor limit, engine capability, and product figure below is the state of the tooling as of mid-2026, recorded because engineers need operating numbers, not because the numbers will hold. The disciplines they illustrate are not dated.
+The rest of this book argues; this appendix builds. One dating note before the numbers: every vendor limit, engine capability, and product figure below is the state of the tooling as of mid-2026. The disciplines they illustrate are not dated.
 
 === Anatomy of a Silver Table
 
@@ -87,7 +87,7 @@ Two properties do the governing. Entities imply joins: declaring `counterparty` 
 
 One restatement from the Time chapter, placed where an engineer will trip over it: the temporal-alignment rule is declared on this relationship and implemented in the model SQL beneath the layer — Snowflake's `ASOF JOIN` (generally available 2024) where the engine has it, windowed predicates where it does not — because, as of this writing, no major semantic layer executes temporal joins natively.
 
-None of these descriptions is hand-typed into the YAML. Each is authored once in the metadata repository — the MDR of your choice — where definitions are tagged, versioned, and correlated to the columns and measures that inherit them. The schema file and the semantic model carry a copy the build checks against the registry; they never paraphrase it. The rich definition lives in one governed place, and everything downstream is a verified reflection of it — the MDR-as-context-engine of The Architecture doing its second job: not only briefing the agent at read time, but sourcing the definitions at build time.
+None of these descriptions is hand-typed into the YAML. Each is authored once in the metadata repository — the MDR of your choice — where definitions are tagged, versioned, and correlated to the columns and measures that inherit them; the schema file and the semantic model carry copies the build verifies against the registry, never paraphrases. That is the MDR-as-context-engine of The Architecture doing its second job: sourcing the definitions at build time, not only briefing the agent at read time.
 
 === The Creole Reference Card
 
@@ -114,11 +114,11 @@ bridge B = D1 <- Shared -> D2 {           // a span, honesty on its face
 }
 ----
 
-The compile-down is mechanical because the creole carries more meaning than any target can hold. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that, with `asof` implemented in the model SQL beneath — the Time chapter's rule); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies. Nothing in the mapping is clever. That is the point: the thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
+The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies. The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
 
 === The Context Budget
 
-The Shift makes the argument; these are the operating numbers. Snowflake's semantic-view guidance recommends 50–100 columns per semantic view — beyond that, latency and answer quality degrade — and caps the model file at 2MB. Databricks' Genie documentation says five tables or fewer (thirty as a hard maximum), prefers SQL expressions to prose, and warns that too many instructions reduce effectiveness — prose last, after structure has done the work. Two vendors, independent stacks, the same constraint published as product limits: context per token is not a heuristic awaiting a benchmark — it is a budget both platforms already enforce.
+The Shift makes the argument; these are the operating numbers. Snowflake's semantic-view guidance recommends 50–100 columns per semantic view — beyond that, latency and answer quality degrade — and caps the model file at 2MB. Databricks' Genie documentation says five tables or fewer (thirty as a hard maximum), prefers SQL expressions to prose, and warns that too many instructions reduce effectiveness — prose last, after structure has done the work. Two vendors, independent stacks, the same constraint published as product limits: context per token is a budget both platforms already enforce.
 
 The research says why. Attention over long contexts is positionally non-uniform (Lost in the Middle, 2023); models' effective context is a fraction of their claimed context (RULER, 2024); retrieval collapses when the question shares no lexical overlap with the context (NoLiMa, 2025); and the 2025 context-rot studies measured degradation on even trivial tasks across eighteen frontier models as input length grows.
 
@@ -175,7 +175,7 @@ Native time travel is an operational recovery feature measured in days — per B
 
 === A Field Glossary of Join Machinery
 
-*Fan trap.* A one-to-many join duplicates the one side's measures across the many: sum a fact through it and the total inflates by the fan-out factor. The query succeeds, the number is plausible, the number is wrong — Strategy's 2025 token-cost-and-accuracy benchmark caught a raw-SQL baseline returning a dollar figure inflated eightfold by exactly this, without a single error raised.
+*Fan trap.* A one-to-many join duplicates the one side's measures across the many: sum a fact through it and the total inflates by the fan-out factor. The query succeeds, the number is plausible, the number is wrong — Strategy's 2026 token-cost-and-accuracy benchmark caught a raw-SQL baseline returning a dollar figure inflated eightfold by exactly this, without a single error raised.
 
 *Chasm trap.* Two many-to-one paths converging on a shared dimension, joined together: the two many-sides cross-multiply through the shared parent, and every measure on both is silently scaled by the other's row count. Fan and chasm traps are the two reasons "the query executed" is not evidence.
 

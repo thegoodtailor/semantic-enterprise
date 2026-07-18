@@ -60,8 +60,10 @@ Full build verified with asciidoctor after the pass.
 8. **Creole conversions, remaining:** ch04/ch12/ch15 done; scan other chapters for stray
    conceptual notation on the next pass. Optional: add a `.creole` twin of TradeBench's
    `semantic_layer.yaml` to the public repo.
-9. **Audiobook rig** (`audiobook/`) — needs re-recording against the current text (now more than
-   ever, post-waffle-pass).
+9. **Audiobook** — full cheap review render DONE 18 Jul (16 chapters incl. the new essay,
+   ~10.6 h, `eleven_turbo_v2_5`, ~165k credits; MP3s in `audiobook/out/review/` + Desktop copy).
+   Re-render after edits is incremental (chunk cache): `audiobook/scripts/render_review.sh`.
+   The *production* audiobook (eleven_v3, two-voice cast, music beds) remains future work.
 10. **Repo housekeeping:** old review docs (`the-semantic-enterprise-review*.md`,
     `pdf-vs-adoc-comparison.md`) could move into `revision/`; `figure-map.md` is slightly stale.
 11. **PDF weight:** 32 MB (figure PNGs). A compressed sharing copy (~8–10 MB) is a 5-minute job

@@ -25,9 +25,21 @@ according to plan, fix according to plan").
 5. Laws 22–25 wording certification (ch13).
 6. 10b figure (marker at top) — blocked on OpenRouter top-up like the other pictures.
 
-**Still to run: the book-wide energy pass** — chapter-by-chapter close read with Iman
-(no agent fleets; Rawiya + Iman directly), injecting his renewed conviction. Not started;
-10b sets the register.
+**Energy pass STARTED (12 Aug, ch07 done — commit cea53f8).** Method proven on ch07 at
+Iman's order ("run an agent as me, questions, propose a revolutionary but perfect fix"):
+one agent simulates Iman interrogating the chapter cold; Rawiya stakes her read first
+(independence check), then synthesizes the fix. Ch07 result: **new doctrine "The Answer
+Is an Asset"** — every served answer published-never-edited with identity/definition
+versions/temporal coordinates/diffs; the dashboard reframed as *a standing question with
+a stale answer, rendered*; standing questions as governed objects (monitoring =
+subscription); answer ledger makes the question distribution observed → demand-driven
+Gold menu. Anchored on Law 8 + ch12's existing `answer_id`. Plus 10 wound repairs
+(98–99% denominator, monotone claim bounded, "any question" tax, stat-pile thinned,
+Flexport dedup, $80B cut, ending now opens the next front: "the conversation is
+transport; the answer is the asset"). **New gates for Iman in ch07:** the doctrine
+itself + law candidate ("An answer is published, never edited") — both `//@ Q:`.
+Remaining chapters for the pass: ch01–06, 08–15b, same method, one per session or as
+stamina allows.
 
 ---
 

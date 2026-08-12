@@ -17,13 +17,21 @@ according to plan, fix according to plan").
   (89k words, 17 chapters, 25 Laws, new TOC entry, TradeBench/creole differentiator #6).
 - Renders clean: 18 sect1, 0 warnings. AI-tells scan: in-family (17/1k dashes).
 
-**Awaiting Iman's gates — all marked `//@ Q:` in the text:**
-1. Title ruling (10b top) — "By Any Means Necessary" vs alternates.
-2. Ops-flavored worked example (10b, after creole block) — confirm or re-dress.
-3. One deliberate antithesis kept at "Not a Refinery. A Brain." — confirm per his rule.
-4. hocolim question (ch11 Formal Spine) — riff or thesis; nothing written.
-5. Laws 22–25 wording certification (ch13).
-6. 10b figure (marker at top) — blocked on OpenRouter top-up like the other pictures.
+**ALL GATES RESOLVED (13 Aug, Iman: "ok fix these") — every `//@ Q:` flipped to `//@DONE`:**
+1. Title stands: "By Any Means Necessary"; echo owned. 2. Ops example confirmed.
+3. Brain antithesis keep confirmed (chapter's one licensed instance). 4. hocolim: one
+honest conjecture paragraph written into ch11's Formal Spine (hypothesis register;
+the attested estate as a homotopy colimit whose strict quotient is the deterministic
+core) — the mathematics remains Iman's to certify or strike. 5. Laws 22–25 certified
+as written; **Law 26 added**: "An answer is published, never edited." 6. ch01 years
+aligned to the verified bio ("two decades of running enterprise data and AI").
+
+**FIGURES SHIPPED (13 Aug): 31 total.** OpenRouter had ~$7 left — enough. Generated
+via the locked-style pipeline (urllib port; system python lacks httpx): 10b's kitchen
+cartoon (R1; model re-signed "Gerald Scarfe", stripped by clone-patch, signed original
+archived in ~/Books/figure-backups-signed/), pushout org-charts (ch03), commutativity
+witness (ch11). All three visually inspected; diagrams exactly to spec. Proposal
+updated to 31 figures. Optional bridge-anatomy picture remains unmade (was "optional").
 
 **ENERGY PASS COMPLETE — ALL 16 CHAPTERS (overnight 12→13 Aug).** Every chapter
 interrogated by an Iman-simulating agent (method below), every verified wound repaired,

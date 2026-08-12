@@ -25,7 +25,48 @@ according to plan, fix according to plan").
 5. Laws 22–25 wording certification (ch13).
 6. 10b figure (marker at top) — blocked on OpenRouter top-up like the other pictures.
 
-**Energy pass STARTED (12 Aug, ch07 done — commit cea53f8).** Method proven on ch07 at
+**ENERGY PASS COMPLETE — ALL 16 CHAPTERS (overnight 12→13 Aug).** Every chapter
+interrogated by an Iman-simulating agent (method below), every verified wound repaired,
+committed per chapter, renders 18 sect1 / 0 warnings throughout. Word count now ~94k.
+
+Highlights beyond ch07's answer-ledger doctrine:
+- **ch01**: builder half enters the foyer; TEN axioms + creed/positions/laws crosswalk.
+- **ch02**: guillotine opening; SIXTH foil ("models are good enough — skip the layer");
+  60% Gartner de-expired; write-path in the canonical semantic-layer definition.
+- **ch03**: vocabulary artifacts get trust grades + provisional/certified lifecycle;
+  CDO verdicts reconciled with ch13; the vocabulary tax priced.
+- **ch05**: existence-disclosure honesty; published hops; latency budget under ch07's bars.
+- **ch06**: Law 6 amended in its own house (system time from the run when the writer is
+  an agent); fractal-ontology claim moved to honest-hypothesis register; SRB trimmed.
+- **ch08**: `agent_belief` named as the estate's FIRST agentic write (10b's precedent);
+  Stage/Layer crosswalk; E4's theorem stated once, in the owning chapter.
+- **ch09**: real thesis staked — "curation with a ledger" (copilots draft; none keep
+  score); commutativity-as-test promoted to headline claim; stat shrapnel cut.
+- **ch10**: promotion clocks reconciled; provisional-vs-grade vocabulary unified;
+  land-vs-attest boundary drawn (reuse rule); THREE-way "Tier 1" polysemy fixed.
+- **ch11**: organism gains its metabolism (populators) + record (answer ledger); divided
+  labor on attested surfaces (mesh vs calibration); grade coverage joins colimit-health.
+- **ch12**: ledger enum opened to populators; FIFTH corruption mode (confirmation by
+  cache); derivations-vs-servings distinction; two net_revenue incidents named as two.
+- **ch13**: **Investment 4 "The Builder's Estate"** (the workstream behind Laws 22–25);
+  SIXTH diagnostic question (builder economics); Stage 3 rung; board pitch rebuilt
+  around the new money story; closing sells the whole thesis.
+- **ch14**: coda now ends "a place that thinks with you."
+- **ch15**: **answer-ledger DDL**; `trust:` in the Gold Publication Spec; populator CI
+  gate; `standing` question in the creole card; belief-table/evidence-bundle cross-ref.
+- Cross-chapter: duplicated closing line ("Build it, or watch...") ceded to ch11;
+  Flexport double, teeth quote, three-tier double all de-duplicated.
+
+**Gates for Iman (all `//@ Q:` in the text):** ch10b's five (title, example flavor,
+antithesis keep, hocolim, Laws 22–25) + ch07's law candidate ("An answer is published,
+never edited" — now with its DDL in ch15) + ch01's thirteen-years-vs-two-decades check.
+Also decide: Law 26 numbering if certified.
+
+**Method (proven, reuse):** Rawiya stakes her read first; one agent simulates Iman
+interrogating the chapter cold (independence check); synthesis = new doctrine only where
+a structural gap is real, wound-repair everywhere; deletion-first; commit per chapter.
+
+**(superseded) Energy pass started (12 Aug, ch07 done — commit cea53f8).** Method proven on ch07 at
 Iman's order ("run an agent as me, questions, propose a revolutionary but perfect fix"):
 one agent simulates Iman interrogating the chapter cold; Rawiya stakes her read first
 (independence check), then synthesizes the fix. Ch07 result: **new doctrine "The Answer

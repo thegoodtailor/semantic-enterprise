@@ -2,15 +2,32 @@
 
 ## ⚡ ACTIVE CAMPAIGN — "By Any Means Necessary" (new ch10b) + book-wide energy pass
 
-Opened 12 Aug 2026. The book gains a new chapter after The Sandpit: AI as *builder and
-populator* of the estate, not only its reader — contract precedes population method;
-agentic population of silver/gold with evidence bundles as the witness; trust grades in
-the schema; refinery metaphor retired (grades, not stages). Full brief with decisions
-awaiting Iman's gate (title, medallion ruling, hocolim question, law candidates):
-**`revision/brief-ch10b-by-any-means-necessary.md`**. Consistency threading touches
-ch02/04/09/10/(11)/12/13/15 + the proposal TOC. **O'Reilly submission now waits for
-this chapter.** Working mode per Iman: no agent fleets — Rawiya's close attention,
-chapter by chapter, with him, energy pass riding along.
+Opened 12 Aug 2026; **DRAFTED AND THREADED same night** (Iman delegated: "write
+according to plan, fix according to plan").
+
+**Done:**
+- `chapters/10b-by-any-means-necessary.adoc` (~2,900 words, 7 sections): top-5-clients
+  opening; contract-precedes-machinery + creole `trust`/`populated by` extensions;
+  population spectrum + audition line; witness-by-evidence; trust grades as propagated
+  taint; grafting onto governed Gold; "Not a Refinery. A Brain."; objection + E4 citation.
+- Threading: ch02 (builder paragraph), ch04 (Bronze witness-transfer para), ch09 (scope
+  sentence), ch10 (handoff ending), ch13 (Laws 22–25, "Full Ingest for Low-Stakes
+  Insight" stop-spending entry, team-agents paragraph), ch15 (creole card `trust`/
+  `populated by` + new "The Evidence Bundle" section w/ DDL), master include, proposal
+  (89k words, 17 chapters, 25 Laws, new TOC entry, TradeBench/creole differentiator #6).
+- Renders clean: 18 sect1, 0 warnings. AI-tells scan: in-family (17/1k dashes).
+
+**Awaiting Iman's gates — all marked `//@ Q:` in the text:**
+1. Title ruling (10b top) — "By Any Means Necessary" vs alternates.
+2. Ops-flavored worked example (10b, after creole block) — confirm or re-dress.
+3. One deliberate antithesis kept at "Not a Refinery. A Brain." — confirm per his rule.
+4. hocolim question (ch11 Formal Spine) — riff or thesis; nothing written.
+5. Laws 22–25 wording certification (ch13).
+6. 10b figure (marker at top) — blocked on OpenRouter top-up like the other pictures.
+
+**Still to run: the book-wide energy pass** — chapter-by-chapter close read with Iman
+(no agent fleets; Rawiya + Iman directly), injecting his renewed conviction. Not started;
+10b sets the register.
 
 ---
 

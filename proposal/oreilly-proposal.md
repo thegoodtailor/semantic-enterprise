@@ -2,7 +2,7 @@
 
 **Author:** Iman Poernomo
 **Submission to:** proposals@oreilly.com
-**Status:** Complete first draft (~83,000 words, 16 chapters incl. appendix), written in AsciiDoc/Atlas-ready format, with 28 original figures. Manuscript and CI build available on request.
+**Status:** Complete first draft (~89,000 words, 17 chapters incl. appendix), written in AsciiDoc/Atlas-ready format, with 28 original figures. Manuscript and CI build available on request.
 
 ---
 
@@ -35,10 +35,11 @@ The book resolves into rules and no-no's: the patterns that become mandatory onc
 ## 5. What makes it different (key selling points)
 
 1. **A real thesis, not a survey.** "Information density per token is the binding constraint" reframes the whole problem and yields non-obvious, falsifiable architectural calls.
-2. **Buildable, not aspirational.** The 21 Laws, the diagnostic, the three investments, the engineer's appendix (Silver DDL, semantic-model YAML, CI gates, Gold-publication spec) — a reader can act this week.
+2. **Buildable, not aspirational.** The 25 Laws, the diagnostic, the three investments, the engineer's appendix (Silver DDL, semantic-model YAML, CI gates, Gold-publication spec) — a reader can act this week.
 3. **A formal spine, made practitioner-accessible.** Category-theoretic composition (colimits, morphisms with honest losses) and bitemporality (Snodgrass, SQL:2011) translated into operations, never math for its own sake.
 4. **Manifesto voice.** Dense, blunt, and argued against named foils — not a hedged seminar. It is a book with positions.
 5. **Fact-checked to press standard.** Every external statistic verified against primary sources; benchmarks dated with trajectories; nothing from SEO content farms.
+6. **Empirical claims ship with a public, reproducible harness.** The book's key results (semantic density, governed-topology contamination) were measured on TradeBench — a pre-registered, open experiment suite (github.com/thegoodtailor/semantic-enterprise-experiments) — and reported in dated sidebars. And the book's declarations are written in its own vendor-neutral notation, the creole, which compiles mechanically onto whatever stack the reader runs.
 
 ## 6. Author
 
@@ -62,8 +63,8 @@ That combination is the book's authority claim. Most data-architecture books are
 
 ## 8. Specs
 
-- **Length:** ~83,000 words (complete draft).
-- **Chapters:** 16 (14 chapters + No Walls coda + Engineer's Appendix), plus References.
+- **Length:** ~89,000 words (complete draft).
+- **Chapters:** 17 (15 chapters + No Walls coda + Engineer's Appendix + a Foundations and Sources essay), plus References.
 - **Figures:** 28 original (editorial cartoons + architecture diagrams), already produced.
 - **Format:** AsciiDoc, include-based master — directly compatible with O'Reilly Atlas. Automated PDF/HTML build (CI) already in place.
 - **Schedule:** **Complete first draft exists now.** Realistic path: developmental edit + technical review over ~3 months from contract; revisions ~2 months; production-ready ~6 months from contract. (The usual write-the-book risk is already retired.)
@@ -80,12 +81,13 @@ That combination is the book's authority claim. Most data-architecture books are
 8. **Agentic Intelligence** — What agents actually need; multi-agent topology (why coordination, not headcount, governs error); the intelligence stack; building for the consumer that cannot assume.
 9. **Building with AI** — Why traditional information architecture failed; AI as always-on curator; continuous morphism verification; governance by construction; the team shape.
 10. **The Sandpit** — ML feature engineering and training pipelines under the same ontology; there is no ungoverned tier, only a provisional one.
-11. **The Living Colimit** — The whole assembled into one self-verifying system; shipping it this year; the formal spine.
-12. **The Reflexive Loop** — Four loops of self-correction; falsification by design; the brain that knows when it was wrong.
-13. **The Playbook** — **The 21 Laws** (the tape-to-the-wall page); the diagnostic; three investments; what to stop spending on; the board presentation.
-14. **No Walls** — Coda: the platform as a place you think.
-15. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
-16. **References.**
+11. **By Any Means Necessary** — Population is a policy: AI as builder and populator of the estate, not only its reader. Declared contracts populated agentically; witness by evidence, not by copy; trust grades in the schema; grafting curated knowledge onto governed Gold; the estate as an organism rather than a refinery.
+12. **The Living Colimit** — The whole assembled into one self-verifying system; shipping it this year; the formal spine.
+13. **The Reflexive Loop** — Four loops of self-correction; falsification by design; the brain that knows when it was wrong.
+14. **The Playbook** — **The 25 Laws** (the tape-to-the-wall page); the diagnostic; three investments; what to stop spending on; the board presentation.
+15. **No Walls** — Coda: the platform as a place you think.
+16. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the creole reference card; the evidence bundle; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
+17. **Foundations and Sources** — the intellectual lineage as an essay, followed by **References**.
 
 ## 10. Sample chapter
 

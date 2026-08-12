@@ -97,6 +97,9 @@ The notation the book declares meaning in, complete. Everything below is an obje
 ----
 domain NAME { ... }                       // a theory: what exists, connects, holds, means
   entity E  grain (cols)  temporal bitemporal|scd2|current
+    [trust deterministic|agent-attested|human-attested]   // grade of reliance, on the surface
+    [populated by pipeline|agent NAME|human ROLE
+       cadence ...  reads (...)  evidence retained ...]   // population is a declared policy
   op f : A -> B  [asof (ts)] [via TABLE] [partial]    // a declared join; never inferred
   rule NAME : <statement>                 // held true; re-checked by the mesh every scan
   measure m on E  agg sum|avg|count [over col]   def "..."   // Tier 1, verbatim
@@ -114,7 +117,31 @@ bridge B = D1 <- Shared -> D2 {           // a span, honesty on its face
 }
 ----
 
-The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies. The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
+The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies; `trust` and `populated by` land as surface metadata the semantic layer serves pre-flight and propagates through derivation ("By Any Means Necessary"). The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
+
+=== The Evidence Bundle
+
+The witness record for agentically populated models — the container that carries Bronze's testimony obligation where no Bronze copy exists. One row per populator run; every attested row references the run that wrote it.
+
+[source,sql]
+----
+CREATE TABLE governance.evidence_bundle (
+  run_id          STRING,      -- referenced by every row the run produced
+  populator       STRING,      -- the declared agent, from `populated by`
+  contract_ref    STRING,      -- creole domain/entity + definition versions in force
+  sources         ARRAY<STRUCT<
+    system        STRING,      -- e.g. tickets.queues
+    artifact_id   STRING,      -- the specific record read
+    retrieved_at  TIMESTAMP    -- when it was read
+  >>,
+  conclusion      STRING,      -- what the agent extracted, as written
+  model_id        STRING,      -- which model, which version, reproducibility floor
+  occurred_at     TIMESTAMP,   -- valid time: the business period the rows describe
+  recorded_at     TIMESTAMP    -- system time: when the run wrote
+);
+----
+
+Immutable, retained on the schedule Bronze would have carried, and queryable in the trace: row, to run, to evidence, to source-of-record. A re-run writes a new bundle on a new system time — nothing is overwritten, so the ledger holds what the populator read on every date it read it. The bundle supports the conclusions drawn, and only those; a question the extraction never asked is intake for the next contract revision, never answerable by archaeology over the bundle.
 
 === The Context Budget
 

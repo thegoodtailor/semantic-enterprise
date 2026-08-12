@@ -65,7 +65,7 @@ If your architecture documents are not machine-readable, your AI will inherit yo
 
 === AI as Always-On Curator
 
-AI changes the economics of curation.
+AI changes the economics of curation. This chapter's territory is the semantics — AI drafting, checking, and maintaining the meaning layer. AI populating the data itself, writing attested rows into declared contracts, has its own doctrine and its own chapter, "By Any Means Necessary"; here the machine curates what things mean.
 
 Documentation describes what exists today and stops there. Curation keeps going: monitor changes, evaluate consistency with the existing model, update or flag. Traditional governance failed because it treated a process as a series of snapshots — quarterly reviews, annual audits, periodic refresh cycles — each out of date by the time it happened.
 

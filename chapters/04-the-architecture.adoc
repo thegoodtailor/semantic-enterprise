@@ -52,6 +52,8 @@ Bronze has its own hygiene requirements. "Faithful witness" does not mean "dump 
 
 Intelligence is never driven from Bronze. You do not build dashboards off Bronze. You do not let agents query Bronze. You do not run analytics on Bronze. You always move through Silver. Bronze is the historical record, not the operational surface. If you let consumers query Bronze directly, you are serving raw chicken. Someone will get sick.
 
+One class of model never lands a Bronze copy at all: knowledge extracted by agents from systems you decline to own — the machinery of "By Any Means Necessary." The witness obligation does not lapse for those models; it changes container, from a copied firehose to an archived evidence bundle, and the testimony law holds in both: what we were told is preserved, immutable, at the moment we were told it.
+
 === What Silver Is
 
 A pretense runs through the lakehouse era that needs naming. Medallion architecture has been marketed as a generational break from the data warehouse tradition. Vendor decks describe the Gold layer as "curated for consumption" without specifying the curation discipline, as if the modeling decisions previous generations agonized over have become matters of taste.

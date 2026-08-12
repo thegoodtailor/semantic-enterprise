@@ -30,6 +30,8 @@ include::chapters/09-building-with-ai.adoc[]
 
 include::chapters/10-the-sandpit.adoc[]
 
+include::chapters/10b-by-any-means-necessary.adoc[]
+
 include::chapters/11-the-living-colimit.adoc[]
 
 include::chapters/12-the-reflexive-loop.adoc[]

@@ -16,11 +16,11 @@ For thirty years data architecture was optimized for a smart human who compensat
 
 *The Semantic Enterprise* is the practitioner's architecture for that shift. It is opinionated, argued, and immediately buildable: it tells a data leader what to build Monday, what to stop funding, and why. Its spine is a claim most "AI + data" books miss — that the binding constraint on an agentic data platform is not context-window size but **information density per token**, and that everything else (how you model tables, document domains, expose data, govern meaning) is downstream of optimizing that one quantity.
 
-The book resolves into rules and no-no's: the patterns that become mandatory once your reader is a machine, and the decades-old industry-standard patterns that turn actively harmful in its hands. The rules consolidate into **21 numbered Laws** a reader can tape to the wall, resting on a formal spine — domain vocabularies composed as a **colimit** from category theory, treated not as the static "unified enterprise model" that has failed for thirty years, but as a living, gap-aware, agent-maintained eval target. It closes with a worked engineer's appendix: a bitemporal Silver table shown whole, a semantic model shown once, and the CI gates that make "governance by construction" literal rather than aspirational.
+The book resolves into rules and no-no's: the patterns that become mandatory once your reader is a machine, and the decades-old industry-standard patterns that turn actively harmful in its hands. The rules consolidate into **numbered Laws** a reader can tape to the wall, resting on a formal spine — domain vocabularies composed as a **colimit** from category theory, treated not as the static "unified enterprise model" that has failed for thirty years, but as a living, gap-aware, agent-maintained eval target. It closes with a worked engineer's appendix: a bitemporal Silver table shown whole, a semantic model shown once, and the CI gates that make "governance by construction" literal rather than aspirational.
 
 ## 3. Why now, why this book
 
-- **The shift is live and unevenly understood.** In 2026 most enterprise agents are still pilots; all are headed for production. Leaders know they need "AI-ready data" and have almost no concrete architecture for it. Gartner projects organizations will abandon 60% of AI projects unsupported by AI-ready data.
+- **The shift is live and unevenly understood.** In 2026 most enterprise agents are still pilots; all are headed for production. Leaders know they need "AI-ready data" and have almost no concrete architecture for it. Gartner's 2024 projection — 60% of AI projects abandoned through 2026 for want of AI-ready data — is expiring on schedule.
 - **The market is consolidating around the thesis.** The semantic layer went from niche to table stakes; the Open Semantic Interchange standard shipped v1.0 in January 2026; MCP moved to the Linux Foundation's Agentic AI Foundation. The debate is over *how*, not *whether* — which is exactly where this book lives.
 - **It engages the orthodoxy instead of dodging it.** It names its disagreements (Kimball star schemas in Gold, Collibra-as-overlay, data mesh without a semantic core, "just add a chatbot") and dismantles them on the record — and credits what it inherits from each.
 
@@ -35,7 +35,7 @@ The book resolves into rules and no-no's: the patterns that become mandatory onc
 ## 5. What makes it different (key selling points)
 
 1. **A real thesis, not a survey.** "Information density per token is the binding constraint" reframes the whole problem and yields non-obvious, falsifiable architectural calls.
-2. **Buildable, not aspirational.** The 25 Laws, the diagnostic, the three investments, the engineer's appendix (Silver DDL, semantic-model YAML, CI gates, Gold-publication spec) — a reader can act this week.
+2. **Buildable, not aspirational.** The Laws, the diagnostic, the four investments, the engineer's appendix (Silver DDL, semantic-model YAML, CI gates, Gold-publication spec) — a reader can act this week.
 3. **A formal spine, made practitioner-accessible.** Category-theoretic composition (colimits, morphisms with honest losses) and bitemporality (Snodgrass, SQL:2011) translated into operations, never math for its own sake.
 4. **Manifesto voice.** Dense, blunt, and argued against named foils — not a hedged seminar. It is a book with positions.
 5. **Fact-checked to press standard.** Every external statistic verified against primary sources; benchmarks dated with trajectories; nothing from SEO content farms.
@@ -84,7 +84,7 @@ That combination is the book's authority claim. Most data-architecture books are
 11. **By Any Means Necessary** — Population is a policy: AI as builder and populator of the estate, not only its reader. Declared contracts populated agentically; witness by evidence, not by copy; trust grades in the schema; grafting curated knowledge onto governed Gold; the estate as an organism rather than a refinery.
 12. **The Living Colimit** — The whole assembled into one self-verifying system; shipping it this year; the formal spine.
 13. **The Reflexive Loop** — Four loops of self-correction; falsification by design; the brain that knows when it was wrong.
-14. **The Playbook** — **The 25 Laws** (the tape-to-the-wall page); the diagnostic; three investments; what to stop spending on; the board presentation.
+14. **The Playbook** — **The Laws** (the tape-to-the-wall page); the diagnostic; four investments (vocabulary, semantic layer, agent infrastructure, the builder's estate); what to stop spending on; the board presentation.
 15. **No Walls** — Coda: the platform as a place you think.
 16. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the creole reference card; the evidence bundle; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
 17. **Foundations and Sources** — the intellectual lineage as an essay, followed by **References**.

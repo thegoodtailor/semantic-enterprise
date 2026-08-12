@@ -57,6 +57,16 @@ Highlights beyond ch07's answer-ledger doctrine:
 - Cross-chapter: duplicated closing line ("Build it, or watch...") ceded to ch11;
   Flexport double, teeth quote, three-tier double all de-duplicated.
 
+**SLOP PASS COMPLETE (13 Aug, commit follows energy pass).** Ten sentence-level audits
+covered every chapter; ~130 verified fixes applied: antithesis scaffolds to Y-only
+(ch08's seven "not just" hits all cleared), chapter self-narration and meta-framing
+killed book-wide, twin flywheel chains compressed, duplicate epigrams assigned single
+owners (OWL line -> 15b, badge coinage -> 10b, standing-question alert -> ch07 §Standing
+Question), stale "three investments" fixed, slop lexicon purged. Remaining regex
+antithesis hits are examined deliberate keeps (ch02's central correction and kin).
+Voice-protection held: war stories, earned epigrams, and the coda's closing turn kept
+on the record as deliberate.
+
 **Gates for Iman (all `//@ Q:` in the text):** ch10b's five (title, example flavor,
 antithesis keep, hocolim, Laws 22–25) + ch07's law candidate ("An answer is published,
 never edited" — now with its DDL in ch15) + ch01's thirteen-years-vs-two-decades check.

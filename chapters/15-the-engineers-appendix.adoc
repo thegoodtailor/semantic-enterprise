@@ -91,7 +91,7 @@ None of these descriptions is hand-typed into the YAML. Each is authored once in
 
 === The Creole Reference Card
 
-The notation the book declares meaning in, complete. Everything below is an object the verification mesh can check and an agent can read as context; the two files above are what it compiles down to.
+The notation the book declares meaning in, complete. Everything below is an object the verification mesh can check and an agent can read as context; it compiles down to the two files above plus the trust metadata, evidence bundles, and answer artifacts this appendix specifies.
 
 [source,creole]
 ----
@@ -108,6 +108,9 @@ domain NAME { ... }                       // a theory: what exists, connects, ho
                                           // falsification conditions ship with meaning
   deprecated X  since DATE  use Y   why "..."
 
+standing NAME  ask "..."  cadence daily  subscribers (roles)
+                                          // a standing question: its answer stream publishes to the ledger
+
 bridge B = D1 <- Shared -> D2 {           // a span, honesty on its face
   shared  { entity ... key ... rule ... } // ONLY what the domains genuinely agree on
   map     D1.x ~ D2.y  on key (card.) | D1.attr survives
@@ -117,7 +120,7 @@ bridge B = D1 <- Shared -> D2 {           // a span, honesty on its face
 }
 ----
 
-The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies; `trust` and `populated by` land as surface metadata the semantic layer serves pre-flight and propagates through derivation ("By Any Means Necessary"). The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
+The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies; `trust` and `populated by` land as surface metadata the semantic layer serves pre-flight and propagates through derivation ("By Any Means Necessary"); `standing` blocks become scheduled queries whose results publish to the answer ledger below. The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
 
 === The Evidence Bundle
 
@@ -141,7 +144,32 @@ CREATE TABLE governance.evidence_bundle (
 );
 ----
 
-Immutable, retained on the schedule Bronze would have carried, and queryable in the trace: row, to run, to evidence, to source-of-record. A re-run writes a new bundle on a new system time — nothing is overwritten, so the ledger holds what the populator read on every date it read it. The bundle supports the conclusions drawn, and only those; a question the extraction never asked is intake for the next contract revision, never answerable by archaeology over the bundle.
+Immutable, retained on the schedule Bronze would have carried, and queryable in the trace: row, to run, to evidence, to source-of-record. Cousin table, not a duplicate: `silver_agents.agent_belief` ("Agentic Intelligence") holds what agents concluded; this bundle holds what populators read and wrote. Beliefs are Tier 1 facts about the world; population runs are events in the estate's own history; a complete audit walks both. A re-run writes a new bundle on a new system time — nothing is overwritten, so the ledger holds what the populator read on every date it read it. The bundle supports the conclusions drawn, and only those; a question the extraction never asked is intake for the next contract revision, never answerable by archaeology over the bundle.
+
+=== The Answer Ledger
+
+The flagship artifact of "The Death of the Dashboard": every answer the layer serves, published, never edited. The address a board minute cites and an auditor replays.
+
+[source,sql]
+----
+CREATE TABLE governance.answer_ledger (
+  answer_id           STRING,     -- the address
+  question_asked      STRING,     -- as the consumer phrased it
+  resolved_question   STRING,     -- compiled selection: measures, dimensions,
+                                  -- filters, grain — equality is mechanical here
+  definition_versions STRING,     -- vocabulary in force, pinned
+  trust_grade         STRING,     -- weakest grade consumed, propagated
+  sources             STRING,     -- surfaces used + their temporal coordinates
+  result_ref          STRING,     -- the published result artifact
+  standing_ref        STRING,     -- the standing question, if this answer is a beat in its stream
+  supersedes          STRING,     -- prior answer to the same resolved question; the diff is first-class
+  data_as_of          TIMESTAMP,  -- valid time of the data state
+  definitions_as_of   TIMESTAMP,  -- system time of the vocabulary
+  served_at           TIMESTAMP   -- when published
+);
+----
+
+Equal resolved questions over the same coordinates are served from the ledger, not re-derived — one number in circulation. A standing question is a declared row-generator over this table: question, cadence, subscribers, each answer diffed against `supersedes`. And the Reflexive Loop's calibration counts *derivations* against the world, never servings from this cache — the fifth corruption mode, closed by schema.
 
 === The Context Budget
 
@@ -171,6 +199,7 @@ What governance by construction compiles to in continuous integration (CI). A mo
 * *Definition quality.* The ISO/IEC 11179 linter on every changed description: a definition states what the thing is, not how it is computed, without circularity, without restating the term as its own meaning — the gate the glossary chapters specify, run as code.
 * *Data diff.* Row-level before/after comparison on every changed model, posted to the pull request. The reviewer sees what the change does to the data, not merely to the SQL.
 * *Versioning.* Breaking changes to contracted models ship as a new version with a deprecation window, the old version maintained in parallel until consumers migrate — the enforcement mechanism behind the Training Data Contract (the Sandpit chapter).
+* *Population.* Entities declared `populated by agent` merge only with live assertions, a wired evidence-bundle reference, and a declared trust grade; derived surfaces re-verify grade propagation on every change — a blended surface cannot merge wearing the deterministic badge.
 
 === The Gold Publication Spec
 
@@ -190,6 +219,7 @@ gold_publication:
   generated_at:      2026-05-20T04:31:55Z
   freshness_sla: published by 06:00 UTC, T+1
   quality_score: 0.97
+  trust: deterministic                      # or agent-attested / mixed: the weakest grade any column carries
   last_reviewed: 2026-04-30
   glossary_links: all columns               # e.g. pnl_mtm -> finance.pnl_mark_to_market; counterparty -> compliance.legal_entity
   explore: pnl_daily_desk_strategy          # no explore, no ship (the Architecture chapter)

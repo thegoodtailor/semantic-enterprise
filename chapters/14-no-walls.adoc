@@ -8,8 +8,8 @@ image::figures/gate-no-walls.png[no walls,width=600,align="center"]
 
 This used to be hard. Data walled off in segregated zones. The interesting trial sets undocumented on someone's laptop. Plumbing the analyst had to lay again every single time. It is why the unified-platform vendors sell so well. And it almost works — until the explorer is an agentic data scientist in a box: no laptop, no colleague to ask, only what the platform makes explicit. Friction that merely slowed a human stops an agent dead.
 
-It should never have been a problem. Not for your advanced analytics team. Not for your curious head of sales, chasing a hunch through five domains before lunch. No segregated zones. No laptops. No redundant plumbing. Every pathway open, every dataset described, every hop carried by one vocabulary.
+It should never have been a problem. Not for your advanced analytics team. Not for your curious head of sales, chasing a hunch through five domains before lunch. No segregated zones. No laptops. No redundant plumbing. Every pathway open, every dataset described — many now by the estate itself — every hop carried by one vocabulary.
 
-Build the vocabulary, and the walls come down on their own — between the question and the answer, between the analyst and the agent, between a company and everything it already knows. The platform stops being a place you query. It becomes a place you think.
+Build the vocabulary, and the walls come down on their own — between the question and the answer, between reading the estate and growing it, between the analyst and the agent, between a company and everything it already knows. The platform stops being a place you query. It becomes a place that thinks with you.
 
 No walls.

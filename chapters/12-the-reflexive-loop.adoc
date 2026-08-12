@@ -1,6 +1,6 @@
 == The Reflexive Loop
 
-Every definition is a conjecture. Every answer is a prediction. Every correction is an experiment the conjecture just failed. The semantic layer — glossary, ontologies, morphisms, essays, the whole vocabulary this book has spent eleven chapters building — is the enterprise's theory of itself, and it earns the word *theory* only by being exposed to refutation. A definition that cannot be wrong is not governance; it is decoration.
+Every definition is a conjecture. Every answer is a prediction. Every correction is an experiment the conjecture just failed. The semantic layer — glossary, ontologies, morphisms, essays, the whole vocabulary the preceding chapters built — is the enterprise's theory of itself, and it earns the word *theory* only by being exposed to refutation. A definition that cannot be wrong is not governance; it is decoration.
 
 Popper set the standard: "Science is one of the very few human activities — perhaps the only one — in which errors are systematically criticized and fairly often, in time, corrected" (Popper, Conjectures and Refutations, 1963). Science, on that reading, is an institution for correcting errors — and so is a data platform, once you build the correction in. Popper's deeper point carries this chapter's architecture: objectivity belongs to the social process of mutual criticism rather than to any single mind. Institutionalize the criticism and you extract objectivity from fallible parts — fallible humans, fallible agents, fallible definitions.
 
@@ -130,14 +130,14 @@ Panels cost compute and raise false alarms; scoring verdicts against outcomes re
 
 === The Brain That Knows When It Was Wrong
 
-Loops 0 through 2 generate verdicts. Loop 3 turns the verdicts into self-knowledge, and the substrate is one table:
+Loops 0 through 2 generate verdicts. Loop 3 turns the verdicts into self-knowledge — the doubting faculty of the same organism "By Any Means Necessary" calls a brain — and the substrate is one table:
 
 [source,sql]
 ----
 CREATE TABLE governance.semantic_feedback (
   event_id      STRING,
-  answer_id     STRING,      -- provenance: which prediction
-  artifact_type STRING,      -- definition | measure | morphism | essay | assertion
+  answer_id     STRING,      -- which prediction: the published answer's identity in the answer ledger
+  artifact_type STRING,      -- definition | measure | morphism | essay | assertion | populator | bridge
   artifact_id   STRING,
   outcome       STRING,      -- confirmed | corrected | contested | abandoned | restated
   evidence      STRING,      -- recon break, restatement link, user note
@@ -152,7 +152,7 @@ Agents and humans must decide, before relying on a definition, how far to trust 
 
 So the loop fits per-definition reliability scores from the outcome history in `governance.semantic_feedback` — uses, contests, refutations, revisions, live-assertion status — exposed at pre-flight to every consumer, on the template of Meta's probabilistic flakiness scores, which grade each test on its outcome record rather than its code. Certification says *built right*; calibration says *not yet proven wrong, in N attempts*. Airbnb's Midas certification is the strongest version of the former; the ledger is the latter, and a platform wants both.
 
-Pre-flight, the agent reads: `net_revenue`: 412 uses, 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
+Pre-flight, the agent reads: `net_revenue`: 412 fresh derivations (cached servings counted separately), 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
 
 A reliability score is itself a measure and inherits Goodhart exposure (below); the ledger therefore scores adjudicated outcomes only, never raw complaint volume. Sparse histories calibrate weakly — a young definition's score reports its own ignorance, which is the correct behavior.
 
@@ -160,7 +160,7 @@ Refutations land; definitions are revised; overwrite them in place and the syste
 
 The fix is the bitemporal ontology of "Time", recast as the memory of the learning loop. Every revision is an event on two clocks: when the old meaning stopped being right (valid time) and when the system learned it (system time). "What did we mean by Customer in Q3 2024, and when did we discover that meaning was wrong?" becomes as answerable as a P&L query. A brain that cannot remember its previous beliefs has not learned — only changed.
 
-The `net_revenue` revision of 2026-03-02 records: prior definition valid until 2026-02-14, when the reconciliation first broke; revision recorded 2026-03-02, when the postmortem closed; refutation evidence linked. An auditor replays any historical answer under the definition in force at the time — and sees when the firm knew better.
+The `net_revenue` revision of 2026-03-02 records: prior definition valid until 2026-02-14, when the reconciliation first broke; revision recorded 2026-03-02, when the postmortem closed; refutation evidence linked. An auditor replays any historical answer under the definition in force at the time — and sees when the firm knew better. (A different incident from the April restatement that closes this chapter: net_revenue failed twice that spring, in two different conjectures — February indicted the definition, April the morphism. The ledger holds both, which is the point.)
 
 The storage and query cost is the Tier 1 bitemporal discipline of "Time", cheap here because definitions change at human cadence. The expensive discipline is cultural: every revision leaves a record, never a clean slate.
 
@@ -173,6 +173,8 @@ A learning loop is a steering surface, and four failure modes will find it.
 **Sycophancy.** Preference-trained agents agree with the user's framing (Sharma et al., 2023), so left alone the feedback ledger fills with agreement. The schema must distinguish "user corrected the answer" — an outcome with evidence: a reconciliation break, a restatement, a source — from "user disliked the answer," which is at most a contest awaiting evidence. Conflate them and calibration measures the popularity of definitions, and the layer learns to flatter the loudest desk.
 
 **Assertion saturation.** A definition tested only against its own accumulated incident suite ossifies: it becomes excellent at surviving yesterday's attacks. Rotate the adversarial lenses; retire assertions that have not discriminated in a year, because an assertion that never fails anything has stopped carrying information; keep the panel hunting new failure modes instead of re-running old victories.
+
+**Confirmation by cache.** Equal resolved questions are served the same publication ("The Death of the Dashboard"), so four hundred servings of one answer are one derivation and three hundred ninety-nine reads. A ledger that counts servings as evidence flatters every popular definition. Calibration counts derivations — fresh computations against the world — and records reuse separately, as popularity: routing information, nothing more.
 
 **Churn without adjudication.** Refutation without a named owner oscillates — revised Tuesday, counter-revised Thursday, each revision refuting the last. The damper is already in the book's constitution: machines verify, humans adjudicate. Every refutation lands in the exception queue with one owner, and meaning changes at human cadence even when evidence arrives at machine cadence.
 
@@ -192,7 +194,7 @@ One week, all four loops. Structure verified and found innocent; usage feedback 
 
 === Prior Art, Honestly
 
-The novelty claim gets the same treatment the book demands of a morphism: state what maps, what is partial, what is lost. Single-loop semantic repair is in production as of this writing — Snowflake's agentic semantic-model improvement runs orchestrated editor agents under an LLM judge and reports +20% answer accuracy on its own benchmark; Databricks Genie routes user corrections into curator review queues. Confirmation-oriented, human-gated, single-loop: thermostats, and good ones. Usage-driven ontology evolution is twenty years old — the KAON tradition (Stojanovic, 2004) evolved ontologies from usage signal before LLMs existed, with no falsification and no calibration, and deserves its citation. Falsification agents exist for science (POPPER, 2025), not yet for enterprise semantics. Per-artifact reliability scoring exists for tests (Meta's flakiness scores), and process-based trust exists for metrics (Airbnb's Midas certification). Two pieces have no published precedent: the postmortem-to-assertion pipeline, and outcome-derived calibration of meaning. Every component has an ancestor. The loop does not. The synthesis is the claim.
+The novelty claim gets the same treatment the book demands of a morphism: state what maps, what is partial, what is lost. Single-loop semantic repair is in production as of this writing — Snowflake's agentic semantic-model improvement runs orchestrated editor agents under an LLM judge and reports +20% answer accuracy on its own benchmark; Databricks Genie routes user corrections into curator review queues. Confirmation-oriented, human-gated, single-loop: thermostats, and good ones. Usage-driven ontology evolution is twenty years old — the KAON tradition (Stojanovic, 2004) evolved ontologies from usage signal before LLMs existed, with no falsification and no calibration, and deserves its citation. Falsification agents exist for science (POPPER, 2025), not yet for enterprise semantics. Per-artifact reliability scoring exists for tests (Meta's flakiness scores), and process-based trust exists for metrics (Airbnb's Midas certification). Two pieces have no published precedent in the semantics domain: the postmortem-to-assertion pipeline — SRE has run postmortem-to-regression-test for code for a decade; nobody runs it for meaning — and outcome-derived calibration of meaning. Every component has an ancestor. The loop does not. The synthesis is the claim.
 
 === Doubt, Installed
 

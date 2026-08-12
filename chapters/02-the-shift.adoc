@@ -1,6 +1,6 @@
 == The Shift
 
-Data platforms fail all the time. AI is a forcing function. A crap data platform with patchy semantics can still be usable if you've got humans willing to patch together gaps in understanding, remember where things are, keep a record of the weird tweaks and nuances of where to find data and what it means. A crap data platform with patchy semantics means enterprise agentic intelligence is a non-starter. 
+Data platforms have been failing quietly for decades, and getting away with it. A crap platform with patchy semantics stays usable as long as humans are willing to patch the gaps in understanding, remember where things are, keep a private record of the weird tweaks and nuances of where data lives and what it means. AI ends the amnesty. A crap data platform with patchy semantics means enterprise agentic intelligence is a non-starter. 
 
 === The 1% Problem
 
@@ -15,7 +15,7 @@ Another query returned zeros for collateral values — every row present and cor
 
 In every case, the fix was the same: write the definition down where the AI could read it.
 
-That place a definition lives has a name, and it is the subject of this book: the semantic layer. Its ancestor is the one every data team already knows — the data catalog, the business glossary, the metadata repository: a spreadsheet of definitions in a governance tool that a diligent analyst consulted and most people ignored. Documentation about the data, written for humans, parked to one side of the systems that actually ran. The agent changes what that artifact has to be. A definition the AI cannot read does not exist as far as the AI is concerned. So the semantic layer is not a catalog anyone browses; it is a machine-readable map — every business term, its meaning, and the physical table that holds it — sitting in the path the query takes and read by the agent before it answers. The old instinct was right: write the meaning down. What changes is where it has to live. Off the shelf, into the pipeline.
+That place a definition lives has a name, and it is the subject of this book: the semantic layer. Its ancestor is the one every data team already knows — the data catalog, the business glossary, the metadata repository: a spreadsheet of definitions in a governance tool that a diligent analyst consulted and most people ignored. Documentation about the data, written for humans, parked to one side of the systems that actually ran. The agent changes what that artifact has to be. A definition the AI cannot read does not exist as far as the AI is concerned. So the semantic layer is not a catalog anyone browses; it is a machine-readable map — every business term, its meaning, and the physical table that holds it — sitting in the path the query takes and read by the agent before it answers. The old instinct was right: write the meaning down. What changes is where it has to live. Off the shelf, into the pipeline. And the map runs two ways, though this chapter needs only one: later in the book the same governed surface becomes the contract agents write into, not merely the map they read.
 
 This pattern repeated so consistently that the team developed a rule of thumb: when the AI gets it wrong, check the semantic layer first. Nine times out of ten, the definition is missing or the name does not match the concept. The tenth time, the definition exists but is ambiguous enough that the AI misinterpreted it — which is the same problem at a different level of granularity.
 
@@ -147,7 +147,7 @@ The vendors, in their own way, already have: the two largest lakehouse platforms
 
 === The Strategies That Fail
 
-Four positions. At least one is probably your current strategy. Each of them is wrong.
+Six positions. At least one of them is in your strategy deck right now. Each of them is wrong.
 
 ==== "AI is just another BI consumer"
 
@@ -159,9 +159,9 @@ Dashboards tolerate ambiguity because humans compensate. When a dashboard shows 
 
 An AI encounters the same ambiguity and does something qualitatively different. It does not call anyone. It picks one of the two numbers based on whatever heuristic its training data suggests and returns it with four decimal places, a grammatically perfect explanation, and no indication that another number exists or that the choice was arbitrary.
 
-Eighty-four percent of data and analytics leaders, according to Salesforce, say their data strategies need a complete overhaul before their AI ambitions can succeed. Conflicting versions of the same metric are the normal state of enterprise data, not a niche problem at a few disorganized companies. Multiple definitions of the same concept, living in different systems, maintained by different teams, diverging over time.
+Eighty-four percent of data and analytics leaders, in Salesforce's 2023 research, say their data strategies need a complete overhaul before their AI ambitions can succeed. Conflicting versions of the same metric are the normal state of enterprise data, not a niche problem at a few disorganized companies. Multiple definitions of the same concept, living in different systems, maintained by different teams, diverging over time.
 
-Vendor testing shows the same pattern. Google’s internal testing found that their semantic modeling layer reduces data errors in AI natural language queries by as much as two-thirds. The gain comes not from a smarter model but from a semantic layer that removes the ambiguity behind the errors.
+Vendor testing shows the same pattern. Google’s internal testing (2024) found that their semantic modeling layer reduces data errors in AI natural language queries by up to two-thirds. The gain comes not from a smarter model but from a semantic layer that removes the ambiguity behind the errors.
 
 Every ambiguity in your data estate — every conflicting definition, every undocumented calculation, every column named with a machine-internal identifier — becomes a potential hallucination when an AI agent encounters it. The AI agent inherits the mess and presents it as truth.
 
@@ -176,7 +176,7 @@ A chatbot that queries bad data through a bad semantic layer is automated confus
 .A chatbot on ungoverned data is automated confusion, delivered faster, to more people.
 image::figures/chatbot-confusion.png[chatbot confusion,width=600,align="center"]
 
-Gartner found in 2023 that only 8 percent of customers had used a chatbot in their most recent customer service interaction; of those, only 25 percent would use one again. An airline’s customer service chatbot was held legally liable for giving a passenger incorrect information about bereavement fares — the chatbot invented a refund policy that did not exist, stated it with perfect confidence, and a tribunal ruled the airline was bound by what its agent had promised. An automotive company’s chatbot agreed to sell a vehicle for one dollar after a customer exploited a prompt injection vulnerability. A fintech company announced in 2024 that its AI assistant was doing the equivalent work of 700 human agents, then watched service quality fall short of what its customers expected until, in 2025, it reversed course into a hybrid model and started hiring humans again.
+Gartner found in 2023 that only 8 percent of customers had used a chatbot in their most recent customer service interaction; of those, only 25 percent would use one again. An airline’s customer service chatbot was held legally liable for giving a passenger incorrect information about bereavement fares — the chatbot invented a refund policy that did not exist, stated it with perfect confidence, and a tribunal ruled the airline was bound by what its agent had promised. That ruling is the one to memorize: your agent's confident inventions are, legally, your promises.
 
 No edge cases here, and no incompetent teams. Predictable failures, all sharing a common architecture: an AI system deployed without semantic infrastructure, without governed definitions, without a layer that tells the model what is true, what is uncertain, and what it should refuse to answer. Epistemic honesty — the quality of knowing what you know and what you do not — is a feature of the infrastructure, not of the model.
 
@@ -212,13 +212,19 @@ It is technically true in the same trivial sense that "breathing is important fo
 
 Any intelligence — human or frontier model — needs memory. In an enterprise, data is that memory: the precondition of thought, not raw material thought acts on afterward.
 
+==== "The models are good enough now — we can skip the layer"
+
+The newest position, and the only one whose supporting evidence improves every quarter. Raw text-to-SQL really is climbing — the trajectory is in the benchmark sidebar two chapters ahead — so the argument runs: wait a release cycle or two and the semantic layer becomes scaffolding you never needed to build.
+
+The number that matters is not the benchmark score but the variance. An answer right ninety percent of the time, varying with prompt, temperature, and model release, cannot carry an audit, a restatement, or a board minute; an answer correct by construction within declared scope can, and no model release ships that property, because determinism is a property of architecture. And the position concedes itself in its own fine print: the scores it cites climb fastest "on well-modeled data" — and the well-modeling *is* the semantic work, performed under another name and then credited to the model. The layer was never a crutch for weak models. It is where the meaning lives for strong ones.
+
 === The Coincidence That Is Not a Coincidence
 
 AI demands: clean definitions, canonical tables, governed vocabularies, machine-readable metadata, explicit relationships between concepts, default assumptions documented in structured formats, navigational heuristics that guide queries to the right data. This is a lot. This is the kind of infrastructure that has been on every Chief Data Officer’s roadmap for a decade — and it kept losing the quarterly prioritization meeting for a rational reason: while the primary consumer was a human who could squint, the cost was not justified by the benefit.
 
 AI changes the economics of this calculation. And it changes them in both directions simultaneously.
 
-On the demand side, AI makes semantic infrastructure mandatory. Without it, your AI projects fail. Gartner puts it precisely: through 2026, organizations will abandon 60 percent of AI projects unsupported by AI-ready data. The cost of not having semantic infrastructure is no longer "analysts are slightly less efficient." The cost is "your AI strategy does not work." When semantic infrastructure was competing against "build the finance dashboard," it lost. When semantic infrastructure is competing against "our $10 million AI investment produces wrong answers," it wins.
+On the demand side, AI makes semantic infrastructure mandatory. Without it, your AI projects fail. Gartner's 2024 projection put it precisely: through 2026, organizations will abandon 60 percent of AI projects unsupported by AI-ready data. The cost of not having semantic infrastructure is no longer "analysts are slightly less efficient." The cost is "your AI strategy does not work." When semantic infrastructure was competing against "build the finance dashboard," it lost. When semantic infrastructure is competing against "our $10 million AI investment produces wrong answers," it wins.
 
 On the supply side, AI makes semantic infrastructure cheap to build.
 
@@ -268,13 +274,13 @@ In practice the law yields two governed surfaces over one vocabulary. Flat, docu
 
 If the shift is real, the question is what to do about it.
 
-First, change who you design for. The next time your team builds a Gold table or an analytical model, the design review should include a question that nobody is currently asking: "Can an AI agent query this table and get the correct answer on the first try, without any additional context beyond what is in the semantic layer?" If the answer is no — if the column names are opaque, if the definitions are missing, if the business logic is documented only in someone’s head or embedded in a visualization tool’s calculated field — the model is not finished. It does not matter how well it performs in a dashboard. This is a quality standard, not a feature request.
+First, change who you design for. The next time your team builds a Gold table or an analytical model, the design review should include a question that nobody is currently asking: "Can an AI agent query this table and get the correct answer on the first try, without any additional context beyond what is in the semantic layer?" If the answer is no — if the column names are opaque, if the definitions are missing, if the business logic is documented only in someone’s head or embedded in a visualization tool’s calculated field — the model is not finished. And the second question follows within a year: could an agent extend or populate this model under its declared contract? If the contract cannot say, the model is not finished either. It does not matter how well it performs in a dashboard. This is a quality standard, not a feature request.
 
 Second, audit your vocabulary. How many definitions of "revenue" exist in your organization? If you do not know the answer, that is the answer. Start with your top twenty business concepts. Define them in a structured, versioned, machine-readable artifact that lives in your deployment pipeline — not in a PDF or a Confluence page that will be out of date in six months. Get business stakeholders to sign off, because if the business does not own the vocabulary, nobody trusts the vocabulary.
 
 With AI-assisted definition extraction, a working vocabulary for a critical domain takes days, not months.
 
-Third, stop treating the semantic layer as optional infrastructure. If your AI strategy is "connect the chatbot to the database and let it write SQL," you are building Air Canada’s chatbot. The semantic layer is the governance mechanism that stands between your AI and your data. AI queries the semantic layer, not the database. This is the single most important design principle in any data architecture built after 2024. That layer knows what the terms mean, how the calculations work, and what the AI should refuse to answer because the data is stale, incomplete, or outside governed scope.
+Third, stop treating the semantic layer as optional infrastructure. If your AI strategy is "connect the chatbot to the database and let it write SQL," you are building Air Canada’s chatbot. The semantic layer is the governance mechanism that stands between your AI and your data. AI queries the semantic layer, not the database. This is the single most important design principle in modern data architecture. That layer knows what the terms mean, how the calculations work, and what the AI should refuse to answer because the data is stale, incomplete, or outside governed scope.
 
 Fourth, address the token economics. Make flat, documented marts the default surface for known questions, governed explores the surface for exploration, and never let the model plan a join on either. The numbers are public: routing context through a semantic layer cut input tokens by roughly half, rising toward 98 percent once the engine writes all the SQL (Strategy, 2026); over declared joins, accuracy on a two-dozen-table schema went from 20 percent against the raw schema to 92.5 percent (AtScale, 2024). The same decision buys both.
 
@@ -290,4 +296,4 @@ You are optimizing for precision, not for a trend. AI is the forcing function th
 
 Organizations that understand this will have data platforms that serve any consumer — human or machine — with consistent, governed, trustworthy answers. Their AI agents will answer business questions reliably because the semantic infrastructure exists to ground them. Their analysts will stop squinting at conflicting dashboards because there is one governed definition, not forty. Their new hires will understand the data estate in their first week because the vocabulary is explicit and the definitions are machine-readable, which also means they are human-readable. Everything gets better.
 
-Organizations that do not will continue building dashboards that humans squint at, deploying AI projects that join the 60 percent abandoned because they were unsupported by AI-ready data. They will spend millions on AI initiatives and wonder why the results are disappointing. They will blame the models. The models were never the problem.
+Organizations that do not will continue building dashboards that humans squint at, deploying AI projects that fail for want of AI-ready data. They will spend millions on AI initiatives and wonder why the results are disappointing. They will blame the models. The models were never the problem.

@@ -1,6 +1,22 @@
-# Outstanding — as of 17 July 2026
+# Outstanding — as of 12 August 2026
 
-The book is submission-ready. On 17 July a full-manuscript readability/waffle pass ran
+## ⚡ ACTIVE CAMPAIGN — "By Any Means Necessary" (new ch10b) + book-wide energy pass
+
+Opened 12 Aug 2026. The book gains a new chapter after The Sandpit: AI as *builder and
+populator* of the estate, not only its reader — contract precedes population method;
+agentic population of silver/gold with evidence bundles as the witness; trust grades in
+the schema; refinery metaphor retired (grades, not stages). Full brief with decisions
+awaiting Iman's gate (title, medallion ruling, hocolim question, law candidates):
+**`revision/brief-ch10b-by-any-means-necessary.md`**. Consistency threading touches
+ch02/04/09/10/(11)/12/13/15 + the proposal TOC. **O'Reilly submission now waits for
+this chapter.** Working mode per Iman: no agent fleets — Rawiya's close attention,
+chapter by chapter, with him, energy pass riding along.
+
+---
+
+# Previously outstanding — as of 17 July 2026
+
+The book was submission-ready as of this date. On 17 July a full-manuscript readability/waffle pass ran
 (11 parallel close-reads → `revision/readability-report.md` → all findings applied): −5,673 words
 (92,092 → 86,419) with no arguments lost, the creole intro re-cut to two confident sentences
 (platform neutrality + not dating the book), seven other over-justified passages compressed,

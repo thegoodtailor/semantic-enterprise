@@ -2,7 +2,7 @@
 
 **Author:** Iman Poernomo
 **Submission to:** proposals@oreilly.com
-**Status:** Complete first draft (~89,000 words, 17 chapters incl. appendix), written in AsciiDoc/Atlas-ready format, with 28 original figures. Manuscript and CI build available on request.
+**Status:** Complete first draft (~89,000 words, 17 chapters incl. appendix), written in AsciiDoc/Atlas-ready format, with 31 original figures. Manuscript and CI build available on request.
 
 ---
 
@@ -65,7 +65,7 @@ That combination is the book's authority claim. Most data-architecture books are
 
 - **Length:** ~89,000 words (complete draft).
 - **Chapters:** 17 (15 chapters + No Walls coda + Engineer's Appendix + a Foundations and Sources essay), plus References.
-- **Figures:** 28 original (editorial cartoons + architecture diagrams), already produced.
+- **Figures:** 31 original (editorial cartoons + architecture diagrams), already produced.
 - **Format:** AsciiDoc, include-based master — directly compatible with O'Reilly Atlas. Automated PDF/HTML build (CI) already in place.
 - **Schedule:** **Complete first draft exists now.** Realistic path: developmental edit + technical review over ~3 months from contract; revisions ~2 months; production-ready ~6 months from contract. (The usual write-the-book risk is already retired.)
 

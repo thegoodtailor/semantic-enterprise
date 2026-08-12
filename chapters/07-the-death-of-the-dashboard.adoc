@@ -148,7 +148,7 @@ Public discourse conflates two failure modes. When people say "AI hallucinates,"
 
 === The Answer Is an Asset
 
-//@ Q: NEW DOCTRINE (energy pass, 12 Aug) — answers as governed published artifacts + the standing question. Law candidate at section end needs your certification. Interrogation that produced it: your simulated grilling found ch07 defending a won war and never pointing its own method at its successor.
+//@DONE — doctrine certified 13 Aug; the law candidate below is now Law 26 in The Playbook.
 
 Now point this chapter's method at its own conclusion, because the successor paradigm carries a structural failure of exactly the shape it was built to kill, and the vendors shipping it have not noticed. Dashboards fragmented in the open — forty workbooks you could at least count, audit, and mock. Conversations fragment invisibly. An organization that adopts conversational analytics serves thousands of answers a quarter, and each one is a self-contained interpretation — question, routing, data state, definitions in force — with a lifespan of one scroll. Two directors quote different numbers for the same metric in the same board pack, both from the assistant, both conversations gone. Reconstruct the divergence: you cannot. Different day, different phrasing, a data refresh between the asks — no record of the original choices exists. That is this chapter's indictment of the analyst's laptop notebook, word for word. The ephemeral answer is that notebook, industrialized.
 
@@ -166,7 +166,7 @@ The standing question also closes a loop this architecture opened two chapters a
 
 The costs are modest and the discipline is not. Ledger storage is a rounding error next to the estate. The identity machinery is the semantic layer's existing compilation. The real discipline is tiering: the exploratory mumble is not the board citation, so answers are born provisional and promoted on reuse and citation — Dev Gold's move, applied to answers — and a freshness contract decides serve-versus-recompute so the ledger never hardens into a staleness engine. Fragments of this exist in the market as conveniences — pinned answers, saved insights — none minting identity with definition versions and temporal coordinates, none diffing, none feeding the question distribution back into the architecture. The components have ancestors. The doctrine does not.
 
-//@ Q: law candidate for the wall, your certification: "*An answer is published, never edited.* Identity, definition versions, and temporal coordinates on every served answer; equal resolved questions get the same publication."
+//@DONE — certified 13 Aug and placed as Law 26 in The Playbook.
 
 === The Positions Worth Fighting
 

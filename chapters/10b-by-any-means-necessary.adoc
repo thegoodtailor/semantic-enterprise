@@ -1,8 +1,8 @@
 [#chap-by-any-means]
 == By Any Means Necessary
 
-//@ Q: title ruling — alternates per revision/brief-ch10b-by-any-means-necessary.md: "Whatever Means Necessary", "Not a Refinery, a Brain", "The Organic Estate". The Malcolm X echo is deliberate and should be owned knowingly.
-//@ Q: this chapter needs its figure (suggest R1 cartoon: an agent line cook plating a governed dish straight from a delivery bag while the health inspector reads the evidence receipt) — blocked on OpenRouter top-up.
+//@DONE — ruled 13 Aug: the title stands as "By Any Means Necessary"; the echo is owned knowingly.
+//@DONE — figure generated 13 Aug (R1 register, signature stripped per standing practice), placed below.
 
 The most honest account of our relationship with our five largest clients was never in the CRM. It was written all over our infrastructure. The incidents that page at three in the morning say which client integrations are fragile and how often we make a client feel it. The ticket queues say who waits, for what, and how long — and whose priorities quietly outrank the roadmap. The release notes say who gets features first. The support threads say who is escalating politely, which is what leaving looks like in its first quarter. Put those signals together at the grain of client and week and you have a client-relationship model more truthful than anything relationship managers type into a pipeline review.
 
@@ -11,6 +11,10 @@ Price that insight under the rules this book has argued so far, and under everyb
 The rules are wrong, and the way they are wrong is instructive. Every chapter to this point has assumed that data enters the estate at the bottom and earns its way up: land it faithfully, interpret it canonically, curate it into answers. That assumption smuggles in another one — that the pipeline is the only honest way to fill a table, and that a model you cannot afford to pipeline is a model you cannot have. AI breaks that assumption the way it broke the maintenance economics in "The Shift." We declared the Gold contract for client relationship health first — entities, grain, definitions, falsification assertions, refresh cadence, all in the creole — and then an agent populated it: reading the four systems weekly, extracting the signals, writing rows into the declared shape, archiving what it read and what it concluded. No Bronze ingest. No new system of record. The business view existed by Thursday, and it is governed more tightly than most pipelines I have inherited.
 
 That move — and the discipline that keeps it from being a swamp with better marketing — is this chapter.
+
+[#fig-by-any-means-kitchen]
+.The governed shortcut passes inspection: the dish plated straight from the delivery bag, the evidence receipt attached — the crate mountain was never the virtue.
+image::figures/by-any-means-kitchen.png[by any means necessary,width=640,align="center"]
 
 === The Contract Precedes the Machinery
 
@@ -55,7 +59,7 @@ domain ClientHealth {
 }
 ----
 
-//@ Q: worked example is deliberately ops-flavored (Datadog/JIRA-shaped) rather than fund-flavored — it is the real motivating case and touches nothing proprietary. Confirm, or I re-dress it.
+//@DONE — ruled 13 Aug: ops flavor confirmed; it is the real motivating case and touches nothing proprietary.
 
 Read it the way you read every creole block in this book: what exists, at what grain, what the words mean, what must hold. Then read the two new lines. `trust agent-attested` tells every consumer — before the first query — what kind of claim these rows make on the world. `populated by agent` names the machinery, its cadence, its sources, and its evidence obligation. The definitions are Tier 1 and verbatim, the assertions run on every scan, the rule is checked by the mesh like any other rule. Nothing about governance got cheaper. What got cheaper is everything that was never governance: the ingest, the storage of someone else's firehose, the pipeline code, the pretense of being a system of record for data whose record already has a system.
 
@@ -105,7 +109,7 @@ The discipline is a two-line rule. A graft never modifies the host: the determin
 
 === Not a Refinery. A Brain.
 
-//@ Q: deliberate antithesis kept at the chapter's central correction (your own framing, from your own mouth) — confirm the keep, per your rule.
+//@DONE — ruled 13 Aug: the keep is confirmed; this is the chapter's one licensed antithesis.
 
 Retire the refinery. The medallion story — ore in one end, bullion out the other, a single conveyor with three stations — was always a story about the machinery, and it dated the moment the machinery stopped being singular. What this book has been building, chapter by chapter, is an organism: domains as organs, glued along declared shared boundaries into a colimit — pushout gluing, with losses on its face, which is why it is like a mesh and is not one; a semantic layer as the nervous system every signal crosses; a verification mesh as the immune system; the Reflexive Loop as institutionalized doubt; and now agents as the metabolism — perceiving what lands, categorizing it into the domain theories, promoting what earns trust, grafting nutrition onto knowledge that already lives. An estate like that does not process data in one direction. It perceives at the boundary, holds canonical interpretation at its core, and maintains actionable belief at its surfaces — and knowledge enters wherever it is cheapest to capture, carried by whatever machinery its stakes justify.
 

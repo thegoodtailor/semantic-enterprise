@@ -31,6 +31,7 @@ The rest of this book is the argument; this is the page you tape to the wall.
 . *A model may enter the estate at any layer — never without a contract.* Agentic population of Silver or Gold is legitimate; contractless population is the swamp, whoever wrote the rows.
 . *Every agentic write carries its evidence.* The run's sources, retrievals, and conclusions are archived as the witness; an attested row without an evidence bundle is hearsay.
 . *Trust grade is part of the schema.* Deterministic-derived, agent-attested, human-attested — declared on the surface, propagated through every derivation, priced by every consumer.
+. *An answer is published, never edited.* Identity, definition versions, and temporal coordinates on every served answer; equal resolved questions get the same publication.
 
 === The Diagnostic
 
@@ -283,7 +284,7 @@ Two to three people focused on conversational and agentic infrastructure, suppor
 
 === Investment 4: The Builder's Estate
 
-The first three investments make the estate legible; the fourth puts the machine to work building it. This is the workstream behind the last four Laws on the wall, because a law without an investment is a poster.
+The first three investments make the estate legible; the fourth puts the machine to work building it. This is the workstream behind the last five Laws on the wall, because a law without an investment is a poster.
 
 * *Population policy.* Every governed model declares how it is filled — pipeline, CDC, agent, human attestation — and the trust grade that population earns. The creole carries the declaration; review holds pull requests against it.
 * *The evidence substrate.* Stand up the evidence-bundle table (DDL in the Engineer's Appendix) and wire every agentic populator through it: no bundle, no write.

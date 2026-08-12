@@ -130,7 +130,7 @@ Panels cost compute and raise false alarms; scoring verdicts against outcomes re
 
 === The Brain That Knows When It Was Wrong
 
-Loops 0 through 2 generate verdicts. Loop 3 turns the verdicts into self-knowledge — the doubting faculty of the same organism "By Any Means Necessary" calls a brain — and the substrate is one table:
+Loops 0 through 2 generate verdicts. Loop 3 turns the verdicts into self-knowledge — the brain of "By Any Means Necessary" acquiring its faculty of doubt — and the substrate is one table:
 
 [source,sql]
 ----
@@ -152,7 +152,7 @@ Agents and humans must decide, before relying on a definition, how far to trust 
 
 So the loop fits per-definition reliability scores from the outcome history in `governance.semantic_feedback` — uses, contests, refutations, revisions, live-assertion status — exposed at pre-flight to every consumer, on the template of Meta's probabilistic flakiness scores, which grade each test on its outcome record rather than its code. Certification says *built right*; calibration says *not yet proven wrong, in N attempts*. Airbnb's Midas certification is the strongest version of the former; the ledger is the latter, and a platform wants both.
 
-Pre-flight, the agent reads: `net_revenue`: 412 fresh derivations (cached servings counted separately), 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
+Pre-flight, the agent reads: `net_revenue`: 412 derivations, 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
 
 A reliability score is itself a measure and inherits Goodhart exposure (below); the ledger therefore scores adjudicated outcomes only, never raw complaint volume. Sparse histories calibrate weakly — a young definition's score reports its own ignorance, which is the correct behavior.
 
@@ -160,7 +160,7 @@ Refutations land; definitions are revised; overwrite them in place and the syste
 
 The fix is the bitemporal ontology of "Time", recast as the memory of the learning loop. Every revision is an event on two clocks: when the old meaning stopped being right (valid time) and when the system learned it (system time). "What did we mean by Customer in Q3 2024, and when did we discover that meaning was wrong?" becomes as answerable as a P&L query. A brain that cannot remember its previous beliefs has not learned — only changed.
 
-The `net_revenue` revision of 2026-03-02 records: prior definition valid until 2026-02-14, when the reconciliation first broke; revision recorded 2026-03-02, when the postmortem closed; refutation evidence linked. An auditor replays any historical answer under the definition in force at the time — and sees when the firm knew better. (A different incident from the April restatement that closes this chapter: net_revenue failed twice that spring, in two different conjectures — February indicted the definition, April the morphism. The ledger holds both, which is the point.)
+The `net_revenue` revision of 2026-03-02 records: prior definition valid until 2026-02-14, when the reconciliation first broke; revision recorded 2026-03-02, when the postmortem closed; refutation evidence linked. An auditor replays any historical answer under the definition in force at the time — and sees when the firm knew better. (A different incident from the April restatement that closes this chapter: net_revenue failed twice that spring, in two different conjectures — February indicted the definition, April the morphism. The ledger holds both.)
 
 The storage and query cost is the Tier 1 bitemporal discipline of "Time", cheap here because definitions change at human cadence. The expensive discipline is cultural: every revision leaves a record, never a clean slate.
 
@@ -174,7 +174,7 @@ A learning loop is a steering surface, and four failure modes will find it.
 
 **Assertion saturation.** A definition tested only against its own accumulated incident suite ossifies: it becomes excellent at surviving yesterday's attacks. Rotate the adversarial lenses; retire assertions that have not discriminated in a year, because an assertion that never fails anything has stopped carrying information; keep the panel hunting new failure modes instead of re-running old victories.
 
-**Confirmation by cache.** Equal resolved questions are served the same publication ("The Death of the Dashboard"), so four hundred servings of one answer are one derivation and three hundred ninety-nine reads. A ledger that counts servings as evidence flatters every popular definition. Calibration counts derivations — fresh computations against the world — and records reuse separately, as popularity: routing information, nothing more.
+**Confirmation by cache.** Equal resolved questions are served the same publication ("The Death of the Dashboard"), so four hundred servings of one answer are one derivation and three hundred ninety-nine reads. A ledger that counts servings as evidence flatters every popular definition. Calibration counts derivations — fresh computations against the world — and records reuse separately, as popularity.
 
 **Churn without adjudication.** Refutation without a named owner oscillates — revised Tuesday, counter-revised Thursday, each revision refuting the last. The damper is already in the book's constitution: machines verify, humans adjudicate. Every refutation lands in the exception queue with one owner, and meaning changes at human cadence even when evidence arrives at machine cadence.
 
@@ -188,7 +188,7 @@ Tuesday, the refutation panel takes all three. The provenance lens clears the FX
 
 Wednesday's postmortem reconstructs the failure on two clocks — the feed landed March 30, when the number went wrong; the break surfaced April 13, when the brain found out — and closes with the mandatory output: the morphism repaired, and two executable assertions that would have caught the failure, `net_rev_recon_gl` and `net_rev_no_intercompany`, each stamped `born_of incident/2026-04-17-board-deck-restatement`.
 
-Thursday, the same query runs again. Nobody re-briefs the agent and nothing is patched by hand. Pre-flight, it reads the ledger: one refutation this week, two new assertions green as of this morning, a reliability score that dipped and says so. The answer comes back restated, cites the repaired morphism, and attaches the restatement note for the minutes — and the ledger records the confirmation as one more row on two clocks.
+Thursday, the same query runs again. Nobody re-briefs the agent and nothing is patched by hand. Pre-flight, it reads the ledger: one refutation this week, two new assertions green as of this morning, a reliability score that dipped and says so. The answer comes back restated, cites the repaired morphism, and attaches the restatement note for the minutes — and the ledger records the confirmation as one more row.
 
 One week, all four loops. Structure verified and found innocent; usage feedback landing on named conjectures; refutation by a standing panel; calibration adjusting what the system believes about its own vocabulary. The restatement cost a bad Monday. The architecture kept it from costing a bad Monday every quarter.
 

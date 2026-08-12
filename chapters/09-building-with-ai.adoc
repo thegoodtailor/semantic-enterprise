@@ -35,13 +35,13 @@ Colimit architecture removes the unfinishability. Each domain maintains its own 
 
 Finishable at every step, in the sense that every step produces a usable artifact. Work in one domain and you see the local ontology immediately; work across two and you get both ontologies plus the explicit morphism; cross into domains nobody has mapped and you see the gap transparently. Unified models offer none of this incrementality. All or nothing — and "all" never arrives.
 
-At JP Morgan, building a semantic layer for regulatory compliance took a dedicated team more than eighteen months. At London Stock Exchange, similar work, similar timeline. Multi-year programs with dedicated headcount, delivering artifacts that began decaying the day they shipped. Decay is never dramatic — it is quiet. A column gets renamed in production but the data dictionary still has the old name. A new metric gets created but nobody adds it to the glossary. A business concept evolves but the ontology reflects last year’s understanding. Each individual drift is small. Cumulatively, they are fatal.
+At JP Morgan, building a semantic layer for regulatory compliance took a dedicated team more than eighteen months. At London Stock Exchange, similar work, similar timeline. Multi-year programs with dedicated headcount, delivering artifacts that began decaying the day they shipped. Decay is quiet. A column gets renamed in production but the data dictionary still has the old name. A new metric gets created but nobody adds it to the glossary. A business concept evolves but the ontology reflects last year’s understanding. Each individual drift is small. Cumulatively, they are fatal.
 
 Building was never the problem. Maintaining always was.
 
 === The Maintenance Problem
 
-First, a myth to kill, because the traditional maintenance horror story is built on it: that the core business domains churn. They do not. What a trade is, what a client is, what distinguishes an instrument from a financial product, what a settlement is — these change on the timescale of years, not weeks. Finance, sales, logistics, frequent-flyer points, even derivatives trading: the core ontologies are *stable*, and a stable target is cheap to maintain, not expensive. The churn lives almost entirely in one place — analytics. New questions, new cuts, new derived metrics arrive daily, but they arrive *additively*: flat lists of semantically-related pockets of useful data science, layered on top of a core that holds still. Miss this and you over-engineer the whole platform for a rate of change that only one corner of it exhibits.
+First, a myth to kill, because the traditional maintenance horror story is built on it: that the core business domains churn. They do not. What a trade is, what a client is, what distinguishes an instrument from a financial product, what a settlement is — these change on the timescale of years, not weeks. Finance, sales, logistics, frequent-flyer points, even derivatives trading: the core ontologies are *stable*, and a stable target is cheap to maintain. The churn lives almost entirely in one place — analytics. New questions, new cuts, new derived metrics arrive daily, but they arrive *additively*: flat lists of semantically-related pockets of useful data science, layered on top of a core that holds still. Miss this and you over-engineer the whole platform for a rate of change that only one corner of it exhibits.
 
 Still, a data platform at any mid-size organization does change every day — at the edges. New tables get created. Columns get renamed. A product launch coins a concept. A regulator redefines an entity. Upstream sources change their schemas without notice. Finance decides "revenue" now includes a line item it excluded last quarter. Each change should trigger an update somewhere in the semantic infrastructure — and the volume of those edge-changes, additive though it is, is still more than any committee can keep pace with.
 
@@ -65,7 +65,7 @@ If your architecture documents are not machine-readable, your AI will inherit yo
 
 === AI as Always-On Curator
 
-AI changes the economics of curation. This chapter's territory is the semantics — AI drafting, checking, and maintaining the meaning layer. AI populating the data itself, writing attested rows into declared contracts, has its own doctrine and its own chapter, "By Any Means Necessary"; here the machine curates what things mean.
+AI changes the economics of curation. This chapter's territory is the semantics — AI drafting, checking, and maintaining the meaning layer. AI populating the data itself, writing attested rows into declared contracts, is "By Any Means Necessary".
 
 Documentation describes what exists today and stops there. Curation keeps going: monitor changes, evaluate consistency with the existing model, update or flag. Traditional governance failed because it treated a process as a series of snapshots — quarterly reviews, annual audits, periodic refresh cycles — each out of date by the time it happened.
 
@@ -78,23 +78,23 @@ image::figures/curator-vs-committee.png[curator vs committee,width=600,align="ce
 
 Automated definition quality audits against ISO 11179 are already operational. Precise, unambiguous, non-circular, stated in natural language, domain-scoped — every definition checked against those criteria, not by a committee but by an AI that evaluates and reports in seconds. Cycle time from "write a definition" to "get quality feedback": weeks to seconds.
 
-More transformative than quality checking: knowledge extraction.
+The bigger prize than quality checking: knowledge extraction.
 
 How data dictionaries have traditionally been built: You schedule a series of meetings with domain experts. You bring a spreadsheet template. You ask them to fill in descriptions for each column in their domain. They nod, take the template, and put it on their to-do list behind everything else that is more urgent. You follow up. They apologize. You reschedule. Six months later, you have a thin, incomplete dictionary that was obsolete before it shipped. The domain experts are being realistic, not difficult: filling in metadata templates is not their day job.
 
 Conversational extraction is the alternative. Record a conversation with the domain expert — not a formal meeting with an agenda and a template. Ask them to walk through their day: the data they look at, what it means to them, the concepts they care about, the edge cases, the exceptions, the things that trip up new hires. The expert talks about their actual work, in their actual language, and AI extracts and structures the knowledge.
 
-Applied to a finance team, this produced a better data dictionary in one session than six months of the traditional approach would have yielded. Better, not just faster. Better because the conversational format captures tacit knowledge — the things experts know so deeply that they would never think to write them down in a spreadsheet cell. The edge cases that everyone in the team knows but nobody has documented. The unwritten rules about how a metric should be interpreted in specific contexts. The conversation surfaces all of it, and the AI structures it into a formal data dictionary.
+Applied to a finance team, this produced a better data dictionary in one session than six months of the traditional approach would have yielded — better, because the conversational format captures tacit knowledge — the things experts know so deeply that they would never think to write them down in a spreadsheet cell. The edge cases that everyone in the team knows but nobody has documented. The unwritten rules about how a metric should be interpreted in specific contexts. The conversation surfaces all of it, and the AI structures it into a formal data dictionary.
 
 AI changes the format: have-a-conversation instead of fill-in-the-spreadsheet.
 
-Old method: human describes, human structures, human validates. New method: human describes, AI structures, human validates. Two human steps instead of three, and the middle step — the expensive, error-prone one — is handled by a machine that is better at it. Conversational extraction breaks the cycle: one conversation, one AI structuring pass, one validation session. Done.
+Old method: human describes, human structures, human validates. New method: human describes, AI structures, human validates. Two human steps instead of three, and the middle step — the expensive, error-prone one — is handled by a machine that is better at it. Conversational extraction breaks the cycle: one conversation, one AI structuring pass, one validation session.
 
 Lineage mapping tells the same story. A decade ago: hire consultants to read SQL, trace dependencies, draw the lineage. Weeks of work at consulting rates for what is fundamentally a pattern-recognition task. Detailed, tedious, accuracy-critical — exactly where humans get tired, lose context, and make mistakes, and exactly where AI excels.
 
 Now you feed the SQL into Claude, because this is a machine job: pattern recognition over text, exactly what LLMs are built for. The mapping needs accurate eyes, and the machine’s do not glaze over after the fifteenth stored procedure.
 
-Tooling is catching up. AI-powered schema generation tools digest hundreds of unstructured files and synthesize database architectures, and transformation-tool copilots have widened from single SQL files to the full project. But most tools focus on the physical model. Always-on curation of the semantic model — the meaning layer above physical structure — is still ahead of the market. And the contested position in 2026 is no longer whether AI curates; every copilot slide claims that. It is whether your curator has a ledger. A curator whose drafts carry grades, whose verdicts are scored against outcomes, whose track record is queryable before anyone relies on it — that is curation as governance rather than curation as autocomplete, and the machinery is this book's: grades from the vocabulary chapter, calibration from the Reflexive Loop. The vendor copilots draft. None of them keep score.
+Tooling is catching up. AI-powered schema generation tools digest hundreds of unstructured files and synthesize database architectures, and transformation-tool copilots have widened from single SQL files to the full project. But most tools focus on the physical model. Always-on curation of the semantic model — the meaning layer above physical structure — is still ahead of the market. And the contested position in 2026 is no longer whether AI curates; every copilot slide claims that. It is whether your curator has a ledger. A curator whose drafts carry grades, whose verdicts are scored against outcomes, whose track record is queryable before anyone relies on it — that is governance, and the machinery is this book's: grades from the vocabulary chapter, calibration from the Reflexive Loop. The vendor copilots draft. None of them keep score.
 
 A 45-minute conversation with a treasury operations lead produces draft definitions for thirty-plus terms — what "net position" means in practice, not the textbook definition but the one that accounts for the pending settlements, the FX hedges, the intraday credit lines. The AI extracts structured definitions, flags ambiguities, and cross-references them against the existing glossary; human review takes a day and yields thirty production-quality definitions that traditional methods would have spent three months failing to produce. The catch is that AI-extracted definitions require expert review — without it, subtly wrong definitions propagate systemically. Review is the bottleneck, not extraction.
 
@@ -152,7 +152,7 @@ A cautionary finding may be more interesting. Anthropic’s 2026 study (n=52): j
 
 AI can handle the maintenance — structure knowledge, map lineage, audit definitions, monitor schema changes. What AI cannot do is understand why the definitions are what they are. Domain meaning, business context, architectural judgment — that is human work.
 
-Phase transition is the precise term. Water getting warmer is quantitative change. Water becoming steam is phase transition — the physics changes. What was impossible becomes possible. What was expensive becomes cheap. What was aspirational becomes mandatory.
+Phase transition is the precise term. Water getting warmer is quantitative change. Water becoming steam is phase transition — the physics changes. What was expensive becomes cheap; what was aspirational becomes mandatory.
 
 Traditional information architecture was aspirational. You knew you should build a comprehensive ontology, maintain a rigorous data dictionary, govern your definitions with discipline. But the cost was prohibitive, the maintenance was unsustainable, and the result was a metadata graveyard. So you compromised. You built what you could afford, maintained it as long as you had headcount, and let it decay when priorities shifted.
 
@@ -160,7 +160,7 @@ AI makes the correct approach mandatory, because AI is the primary consumer of y
 
 But AI also makes the correct approach achievable, because AI handles the maintenance that made it impossible.
 
-The industry's spending pattern makes the point without a stat pile: investment floods into AI while governance and quality budgets trail far behind — engine without fuel. The abandonment projection from The Shift follows directly: AI projects die not for want of models or compute. The bottleneck is semantics. And the metadata tools market runs to billions a year while the quality crisis persists — organizations keep buying products for what is an architecture problem, because metadata management was designed as a human-scale activity and the environment outgrew human scale.
+The industry's spending pattern makes the point: investment floods into AI while governance and quality budgets trail far behind — engine without fuel. The abandonment projection from The Shift follows directly: AI projects die not for want of models or compute. The bottleneck is semantics. And the metadata tools market runs to billions a year while the quality crisis persists — organizations keep buying products for what is an architecture problem, because metadata management was designed as a human-scale activity and the environment outgrew human scale.
 
 === Governance by Construction
 
@@ -218,7 +218,7 @@ Architecture must prevent this by construction: unified platform, standard inter
 
 This is an argument not against consultants — some of the smartest people in this industry are consultants — but against organizational structures that reward dependency over capability transfer. Black-box delivery, fake knowledge transfer, undocumented decisions — not aberrations but natural outcomes of incentives that reward engagement extension.
 
-AI disrupts this dynamic fundamentally, because AI makes the work that consultants were traditionally hired for — lineage mapping, schema documentation, metadata curation, data flow analysis — cheap enough to do in-house.
+AI disrupts this dynamic, because AI makes the work that consultants were traditionally hired for — lineage mapping, schema documentation, metadata curation, data flow analysis — cheap enough to do in-house.
 
 A data governance consultancy delivers smart, experienced people reading your SQL, interviewing domain experts, mapping data flows, documenting schemas, building lineage — weeks of work at $250 an hour for what AI does faster, cheaper, and more accurately.
 
@@ -246,10 +246,10 @@ Division of labor answers. AI handles the what: generating YAML, auditing defini
 
 Team shape for the semantic enterprise: small, technical, AI-augmented, embedded in engineering, producing executable infrastructure. Led by practitioners who have not lost their teeth. Using AI as co-builder of the architecture it will consume.
 
-Your competitors who build AI-readable semantic infrastructure will have agents that reason. Your competitors who do not will have agents that guess. In a world where machines are the primary consumers of your data architecture, guessing is not a strategy — it is a countdown to irrelevance.
+Your competitors who build AI-readable semantic infrastructure will have agents that reason. Your competitors who do not will have agents that guess. When machines are the primary consumers of your data architecture, guessing is a countdown to irrelevance.
 
 Build the vocabulary. Embed it in the pipeline. Let AI maintain it. Hire thinkers, not typists. Build governance into the architecture so that doing the right thing is a property of the system, not a matter of discipline.
 
 Governance by committee is ending because the environment outgrew the speed committees operate at. Metadata graveyards are ending because the technology that demands semantic precision also supplies the means to maintain it.
 
-What replaces all of this is a small team of people who think clearly about meaning, augmented by AI that handles the maintenance they could never sustain alone — not faster versions of the old work, but a fundamentally different relationship between human thinking and machine execution. Intelligent machines are interning at your organization — if you want to keep them on as productive long-term employees, get your training material together.
+What replaces all of this is a small team of people who think clearly about meaning, augmented by AI that handles the maintenance they could never sustain alone — a different relationship between human thinking and machine execution. Intelligent machines are interning at your organization — if you want to keep them on as productive long-term employees, get your training material together.

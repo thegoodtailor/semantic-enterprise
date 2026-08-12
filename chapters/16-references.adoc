@@ -36,9 +36,9 @@ von Foerster, H. (1981). _Observing Systems_. Intersystems Publications. [Second
 
 Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (Eds.) (2016). _Site Reliability Engineering_. O'Reilly. [Blameless postmortem culture, ch. 15.]
 
-Huang, J., et al. (2024). Large language models cannot self-correct reasoning yet. _ICLR 2024_. [Introspective self-correction degrades performance; falsification must be external.]
+Huang, J., et al. (2024). Large language models cannot self-correct reasoning yet. _ICLR 2024_. [Introspective self-correction degrades performance.]
 
-Panickssery, A., Bowman, S. R., & Feng, S. (2024). LLM evaluators recognize and favor their own generations. _NeurIPS 2024_. [Self-preference bias; judge must not be author.]
+Panickssery, A., Bowman, S. R., & Feng, S. (2024). LLM evaluators recognize and favor their own generations. _NeurIPS 2024_. [Self-preference bias.]
 
 Sharma, M., et al. (2023). Towards understanding sycophancy in language models. _ICLR 2024_. [Preference training rewards agreement over accuracy.]
 

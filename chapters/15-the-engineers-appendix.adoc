@@ -144,11 +144,11 @@ CREATE TABLE governance.evidence_bundle (
 );
 ----
 
-Immutable, retained on the schedule Bronze would have carried, and queryable in the trace: row, to run, to evidence, to source-of-record. Cousin table, not a duplicate: `silver_agents.agent_belief` ("Agentic Intelligence") holds what agents concluded; this bundle holds what populators read and wrote. Beliefs are Tier 1 facts about the world; population runs are events in the estate's own history; a complete audit walks both. A re-run writes a new bundle on a new system time — nothing is overwritten, so the ledger holds what the populator read on every date it read it. The bundle supports the conclusions drawn, and only those; a question the extraction never asked is intake for the next contract revision, never answerable by archaeology over the bundle.
+Immutable, retained on the schedule Bronze would have carried, and queryable in the trace: row, to run, to evidence, to source-of-record. Cousin table, not a duplicate: `silver_agents.agent_belief` ("Agentic Intelligence") holds what agents concluded; this bundle holds what populators read and wrote. Beliefs are Tier 1 facts about the world; population runs are events in the estate's own history; a complete audit walks both. A re-run writes a new bundle on a new system time — nothing is overwritten, so the ledger holds what the populator read on every date it read it. The bundle supports the conclusions drawn, and only those; a question the extraction never asked is intake for the next contract revision, never recoverable from the bundle after the fact.
 
 === The Answer Ledger
 
-The flagship artifact of "The Death of the Dashboard": every answer the layer serves, published, never edited. The address a board minute cites and an auditor replays.
+The artifact "The Death of the Dashboard" stakes its doctrine on: every answer the layer serves, published, never edited. The address a board minute cites and an auditor replays.
 
 [source,sql]
 ----
@@ -199,7 +199,7 @@ What governance by construction compiles to in continuous integration (CI). A mo
 * *Definition quality.* The ISO/IEC 11179 linter on every changed description: a definition states what the thing is, not how it is computed, without circularity, without restating the term as its own meaning — the gate the glossary chapters specify, run as code.
 * *Data diff.* Row-level before/after comparison on every changed model, posted to the pull request. The reviewer sees what the change does to the data, not merely to the SQL.
 * *Versioning.* Breaking changes to contracted models ship as a new version with a deprecation window, the old version maintained in parallel until consumers migrate — the enforcement mechanism behind the Training Data Contract (the Sandpit chapter).
-* *Population.* Entities declared `populated by agent` merge only with live assertions, a wired evidence-bundle reference, and a declared trust grade; derived surfaces re-verify grade propagation on every change — a blended surface cannot merge wearing the deterministic badge.
+* *Population.* Entities declared `populated by agent` merge only with live assertions, a wired evidence-bundle reference, and a declared trust grade; derived surfaces re-verify grade propagation on every change — a mixed-grade surface merges only under the weakest grade it contains.
 
 === The Gold Publication Spec
 

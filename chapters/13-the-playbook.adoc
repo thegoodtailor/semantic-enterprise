@@ -91,7 +91,7 @@ This is Tier 1 of a three-tier vocabulary. A glossary (Tier 1) governs schema de
 
 Conventional glossary projects are six-month waterfall exercises: working groups, circulated spreadsheets, definitions filled in reluctantly between people’s actual jobs. Six months later, a document that was out of date three months ago.
 
-Record a conversation instead — the conversational-extraction discipline from Building with AI, run as the playbook's first move. Ask the expert: "Walk me through what you look at every morning. What does this number mean? What do you check when it looks wrong?" Let them talk. Record it. AI extracts and structures the definitions; the expert validates. One session beats six months of circulated spreadsheets, because tacit knowledge surfaces in conversation and stays locked in heads when you send a template.
+Record a conversation instead — the conversational-extraction discipline from Building with AI, run as the playbook's first move. Ask the expert: "Walk me through what you look at every morning. What does this number mean? What do you check when it looks wrong?" Let them talk. Record it. AI extracts and structures the definitions; the expert validates. One session beats the six-month waterfall, because tacit knowledge surfaces in conversation and stays locked in heads when you send a template.
 
 As one stakeholder told me: "We need his subject matter expertise — definitions against these terms, really long detailed things that are tutorial for us. Then the AI will understand the data." He was right about the mechanism and right about the purpose. Definitions are not documentation. They are AI infrastructure.
 
@@ -151,7 +151,7 @@ A semantic layer is a complete interpretive overlay on your data — field descr
 
 The governance spine is the one Investment 1 built: upstream always wins, and the semantic layer does not invent definitions — it inherits them.
 
-This works with BigQuery and Looker and Claude. It works with Snowflake and dbt Semantic Layer and GPT. It works with Databricks and Unity Catalog and Gemini. Tools change. Architecture does not.
+This works with whatever stack you have committed to. Tools change. Architecture does not.
 
 ==== Your Own House Nomenclature
 
@@ -216,7 +216,7 @@ Both remaining exceptions are operations by the people who build the architectur
 
 ==== The Extension Process
 
-"Add it to the semantic layer" must be an intake that returns in days, not quarters. This is the operational precondition for the only-interface commitment to survive contact with reality.
+"Add it to the semantic layer" must be an intake that returns in days, not quarters. This is the operational precondition for the only-interface commitment to survive its first quarter in production.
 
 If extending the semantic layer takes longer than building a workaround, workarounds accumulate — quietly. An analyst builds a direct query. A stakeholder gets a number from a spreadsheet. A team stands up a side pipeline. Each workaround is individually rational. In aggregate, they dissolve the semantic layer into one interface among several, and the architecture loses the single property that makes it a system.
 
@@ -257,7 +257,7 @@ Stage 1 is conversational analytics: a human asks a question, the agent answers 
 
 Stage 2 is agentic intelligence: agents that monitor data autonomously, detect anomalies, generate insights without being asked. This requires richer semantic infrastructure — relationships, hierarchies, domain heuristics, navigational context — and only works when Stage 1 is stable.
 
-Stage 3 is autonomous research — existence proofs dated in "Agentic Intelligence", substrate already specified: the bitemporal belief table, the calibration ledger, the answer ledger. No organization should aim at Stage 3 before Stage 2 is boring; every organization should build Stage 2 on substrates that do not foreclose it.
+Stage 3 is autonomous research — existence proofs dated in "Agentic Intelligence", substrate already specified: the bitemporal belief table, the calibration ledger, the answer ledger. Do not aim at Stage 3 before Stage 2 is boring — but build Stage 2 on substrates that do not foreclose it.
 
 Do not skip stages. Organizations that build autonomous agents on ungoverned data get the same result every time: the agent hallucinates with confidence, stakeholders lose trust, the project is killed. Fuel before vehicle.
 
@@ -285,14 +285,14 @@ Two to three people focused on conversational and agentic infrastructure, suppor
 
 The first three investments make the estate legible; the fourth puts the machine to work building it. This is the workstream behind the last four Laws on the wall, because a law without an investment is a poster.
 
-* *Population policy.* Every governed model declares how it is filled — pipeline, CDC, agent, human attestation — and the trust grade the filling earns. The creole carries the declaration; review holds pull requests against it.
+* *Population policy.* Every governed model declares how it is filled — pipeline, CDC, agent, human attestation — and the trust grade that population earns. The creole carries the declaration; review holds pull requests against it.
 * *The evidence substrate.* Stand up the evidence-bundle table (DDL in the Engineer's Appendix) and wire every agentic populator through it: no bundle, no write.
 * *The answer ledger.* Answers published, never edited — identity, definition versions, temporal coordinates, diffs — and standing questions as governed objects with cadence and subscribers. This is the artifact your board minutes will cite.
 * *Grade propagation.* The semantic layer refuses to let a blended surface wear the deterministic badge, and CI enforces it like grain.
 
 ==== Timeline and Effort
 
-* *Month 1*: The evidence-bundle table, and the first agent-populated mart — pick the insight that has died in prioritization the longest for want of an ingest budget; the audition path is "By Any Means Necessary".
+* *Month 1*: The evidence-bundle table, and the first agent-populated mart — pick the insight that has waited longest for an ingest budget that never came; the audition path is "By Any Means Necessary".
 * *Month 2-3*: The answer ledger under your highest-traffic standing questions; grade propagation wired into CI.
 * *Ongoing*: Grade coverage on the colimit-health view; each new model's population policy declared at design, not defaulted to pipeline by reflex.
 
@@ -348,7 +348,7 @@ Transformation logic belongs in the governed data platform — in the Gold layer
 
 ==== Full Ingest for Low-Stakes Insight
 
-The reflex that prices every new model as a pipeline project — Bronze ingest, Silver interpretation, engineering backlog — kills most of the insight your organization could afford. Knowledge whose stakes are survivable under sampled assurance does not need custody of its sources; it needs a declared contract, an agentic populator, an evidence bundle, and a trust grade — the doctrine of "By Any Means Necessary." Stop scoping every insight as an ingestion program. Scope the contract, grade the trust, and spend the pipeline budget on the models whose stakes have actually earned a pipeline.
+The reflex that prices every new model as a pipeline project — Bronze ingest, Silver interpretation, engineering backlog — kills most of the insight your organization could afford. Knowledge whose stakes are survivable under sampled assurance does not need custody of its sources; it needs a declared contract, an agentic populator, an evidence bundle, and a trust grade — the doctrine of "By Any Means Necessary." Stop scoping every insight as an ingestion program. Scope the contract, grade the trust, and spend the pipeline budget on the models whose stakes have earned a pipeline.
 
 ==== Retrospectives That Produce Only Documents
 
@@ -388,7 +388,7 @@ CDO-as-translator is being automated away by the very architecture they should b
 
 Does your CDO write code or write PowerPoints? If the answer is PowerPoints, the semantic layer is coming for their job. If the answer is code, they are building the semantic layer, and their value is increasing.
 
-A third of organizations have now appointed a separate Chief AI Officer, fragmenting the CDO’s mandate further. AI and data are the same discipline. Separating them is like having one person responsible for the engine and another for the fuel, each reporting to a different executive. You need one person who understands that the engine and the fuel are not separate concerns.
+A third of organizations have now appointed a separate Chief AI Officer, fragmenting the CDO’s mandate further. AI and data are the same discipline. Separating them is like having one person responsible for the engine and another for the fuel, each reporting to a different executive.
 
 ==== Small, Technical, AI-Augmented
 
@@ -400,7 +400,7 @@ Resist the "fire everyone" narrative. The scarce resource is not labor but judgm
 
 Hiring implications follow directly. The question is not "do you know Spark" or "do you know Airflow." It is: can you break down a problem, solve it by hand, think through the edge cases? As one hiring manager put it: "Do you know the basics of development? Python, basic SQL, do you know what good looks like in terms of breaking down a problem and solving it by hand without AI? It’s important that you’ve got fundamentals in order to use the tools that you’d be given." AI amplifies the quality of the person using it. Good judgment plus AI equals extraordinary productivity. Poor judgment plus AI equals extraordinary danger. Hire for judgment. Train the tools.
 
-The team's agents need the same discipline as the team. Every data scientist now arrives with an AI assistant, and left unchanneled those assistants freelance — rows into spreadsheets, metrics into notebooks, models into nowhere, at machine speed. The channel is not a usage policy; it is the architecture: an assistant that populates declared contracts, under assertions, with evidence and a trust grade, is a workforce multiplier, and the identical assistant without a contract is the swamp with a subscription. The difference between the two is nothing about the model and everything about whether the estate gave it a contract to write into.
+The team's agents need the same discipline as the team. Every data scientist now arrives with an AI assistant, and left unchanneled those assistants freelance rows into spreadsheets and metrics into notebooks, at machine speed. The channel is the architecture, not a usage policy: an assistant that populates declared contracts, under assertions, with evidence and a trust grade, is a workforce multiplier, and the identical assistant without a contract is the swamp with a subscription. The model is identical in both. The contract is the entire difference.
 
 A peer of mine put it sharply: "The solution isn’t hiring a whole team of people to deploy stuff. We can do a lot more automation. It’s more about ideas and using AI to accelerate ideas into production." She also said something about leadership that I have not forgotten: "I look at my peers. They’ve all done the management thing. And I think we all love it in this context because we still write code. We’re running at high speed. The red tape that you normally have when you get into a management role just to get the money, the salary — it’s extremely frustrating and you lose your teeth."
 
@@ -460,9 +460,9 @@ Your board needs three sentences.
 .The board presentation: three sentences, one page.
 image::figures/board-three-sentences.png[board three sentences,width=600,align="center"]
 
-*First: the commercial risk.* Companies whose AI agents can reason over their data will outcompete companies whose agents cannot. Your competitors’ agents will reason. Yours will guess. The gap between reasoning and guessing is the gap between winning and losing.
+*First: the commercial risk.* Companies whose AI agents can reason over their data will outcompete companies whose agents cannot. Your competitors’ agents will reason. Yours will guess.
 
-*Second: the four investments.* Vocabulary: top twenty definitions, machine-readable, governed. Weeks, not months. Semantic layer: the map every consumer reads and the contract agents write into. Months, not years. Agent infrastructure: governed access with pre-flight checks for quality, freshness, and access. Ongoing. And the builder's estate: governed insight without ingestion programs — an agent populates a declared, evidence-carrying contract for a fraction of a pipeline's cost, and every number you are shown carries an address a regulator can replay. Six to ten people building a foundation that serves dashboards, reports, conversational analytics, and autonomous agents. One investment, multiple returns.
+*Second: the four investments.* Vocabulary: top twenty definitions, machine-readable, governed. Weeks, not months. Semantic layer: the map every consumer reads and the contract agents write into. Months, not years. Agent infrastructure: governed access with pre-flight checks for quality, freshness, and access. Ongoing. And the builder's estate: governed insight without ingestion programs — an agent populates a declared, evidence-carrying contract for a fraction of a pipeline's cost, and every number you are shown carries an address. Six to ten people building a foundation that serves dashboards, reports, conversational analytics, and autonomous agents. One investment, multiple returns.
 
 *Third: what to stop spending on.* Standalone governance tools outside the pipeline. Dashboard proliferation that creates forty definitions of the same metric. Multi-year catalog projects obsolete before they ship. Consultant-built parallel infrastructure that creates permanent dependency. Full ingestion programs for insight an attested extraction can carry. Stop telling the board "we need more data engineers." Start telling them: "We need to make our data machine-readable."
 
@@ -470,21 +470,21 @@ One page. Three arguments.
 
 ==== The Regulatory Case
 
-The same infrastructure that enables AI satisfies the regulator — the defensive case made under Investment 2. One date belongs in front of the board: the EU AI Act's data-governance provisions require high-risk AI systems to document how their data was collected and where it originated — obligations whose application for Annex III systems the May 2026 Digital Omnibus postponed to December 2, 2027. The three investments are defensive infrastructure, not just an offensive play.
+The same infrastructure that enables AI satisfies the regulator — the defensive case made under Investment 2. One date belongs in front of the board: the EU AI Act's data-governance provisions require high-risk AI systems to document how their data was collected and where it originated — obligations whose application for Annex III systems the May 2026 Digital Omnibus postponed to December 2, 2027. The four investments are defensive infrastructure as much as an offensive play.
 
 ==== The "Strategy Is Architecture" Position
 
 This playbook is an architecture document with strategic implications, not a data strategy document. The industry separates "data strategy" (vision, goals, policies) from "data architecture" (technical design, infrastructure). Convenient for consultants who sell strategy engagements. Harmful for organizations that need to execute.
 
-Strategy without architecture is a wish list. Architecture without strategy is expensive plumbing. The three investments are architectural decisions that constitute a strategy. No separate strategy document needed.
+Strategy without architecture is a wish list. Architecture without strategy is expensive plumbing. The four investments are architectural decisions that constitute a strategy. No separate strategy document needed.
 
-Poor data quality already costs any large enterprise millions a year in reconciliation, rework, and decisions made on wrong numbers — every data leader carries their own tally. That is the cost of not having the architecture. The three investments are cheaper than the alternative.
+Poor data quality already costs any large enterprise millions a year in reconciliation, rework, and decisions made on wrong numbers — every data leader carries their own tally. That is the cost of not having the architecture. The four investments are cheaper than the alternative.
 
 ==== The Risk of This Playbook
 
 If this playbook becomes a fifty-slide deck for a governance committee, or a multi-year program with a steering committee and quarterly reviews, it has failed. If you are reading this in a committee meeting, you are already doing it wrong.
 
-The six diagnostic questions can be answered in ten minutes. The vocabulary starts this week. The semantic layer starts this month. The agent infrastructure starts this quarter. The things to stop spending on can be stopped today.
+The six diagnostic questions can be answered in ten minutes. The vocabulary starts this week. The semantic layer starts this month. The agent infrastructure starts this quarter. The builder's estate starts with a single mart. The things to stop spending on can be stopped today.
 
 Your data platform has a new primary consumer, and it is not human. It cannot squint at bad data and figure it out. It cannot ask the analyst down the hall what a column name means. It needs clean semantics or it fails. And it is no longer only a consumer: given a contract, it builds — populates the models you could never fund, publishes answers that survive their conversations, grows the estate at marginal cost. The companies that give their AI clean semantics and declared contracts will outcompete the companies that do not.
 

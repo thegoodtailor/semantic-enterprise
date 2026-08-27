@@ -1,4 +1,38 @@
-# Outstanding — as of 27 August 2026
+# Outstanding — as of 27 August 2026 (evening)
+
+## ⚡ CURRENT STATE & NEXT STEPS (the read-after-dinner summary)
+
+**The manuscript** stands at 18 content chapters + references (19 rendered sect1),
+~90k words, 32 figures, chapter order ending ...Playbook → Engineer's Appendix →
+Foundations and Sources → **No Walls (the finale, with the sci-fi bang)**. The
+committed PDF on `main` is the current build (commit 0651465, Action 33078660637) —
+the copy the team should read. Today, in order: ch8 rebuilt as the knowledge loop +
+new Intelligence Stack chapter; 37-agent flow audit (verdict WOBBLY×18) and the full
+five-phase repair campaign; provenance audit and Iman's rulings applied (fabricated
+quotes/dialogue out, real numbers certified in); honest-sweep closed; accretion folded.
+
+**Waiting on Iman (in rough order):**
+1. Cover-to-cover read of the fresh PDF.
+2. E5 sign-off (see revision/e5-glue-representation-design.md — DRAFT, sleeping on
+   it) + OpenRouter top-up (~$6 left). E5 decides the gated creole redesign
+   (revision/brief-creole-redesign.md) with evidence instead of taste.
+3. Hocolim paragraph in The Living Colimit: certify or strike (his mathematics).
+4. Team trial → margin notes back via //@ convention → then O'Reilly submission
+   (proposal/oreilly-proposal.md is current; ch02 "The Shift" as sample).
+
+**Queued mechanical (mine, after text settles):** refresh the chapter-top abstracts
+(stale after today's edits — re-run the summarizer wave); ch16's pre-press TODO
+(confirm every reference against its current published version).
+
+**The open research thread (today's discovery):** no literature exists on which
+representation best conveys a vocabulary COMPOSITION (pushout) to an LLM — adjacent
+axes all studied (schema serialization, ontology verbalization incl. raw OWL scoring
+F1 0.323 vs 0.431 for no file at all, format sensitivity up to 40% swings, code/logic
+helping only when executed). E5 fills the gap; Iman's additions: an OWL arm (the
+in-training formalism — separates familiarity from form) and a commented-DDL arm
+(the industry default). The Python objection (formats co-evolve with training corpora)
+is handled by the grammar-card manipulation + scoped-out fine-tuning ceiling question.
+Paper potential noted.
 
 ## ⚡ ACTIVE CAMPAIGN — Chapter 8 rebuild ("Agentic Intelligence" becomes the loop chapter)
 

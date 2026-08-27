@@ -1,5 +1,125 @@
 == The Sandpit
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Data science is where governance goes to die — or where it finally earns its keep.
+Feature pipelines bypass Gold for bitemporal Silver because their contract is point-in-
+time correctness, not reporting-time auditability, and for them the semantic layer
+mediates discovery rather than the query: a catalog where every feature carries its
+cohort, exclusions, grain, and lineage, since a feature's definition is never just its
+formula. Training pipelines, industrial consumers the layer cannot sit in front of, get
+contractual governance instead — selectively designated Silver tables under versioned,
+code-checked data contracts with stability tiers and breaking-change protocols,
+maintained continuously by the verification mesh. The lawless exploration zone most
+platforms quietly keep is abolished and replaced by Dev Gold: anything that lands
+receives AI-authored provisional semantics — definitions, grain, candidate morphisms
+into the ontology — stamped, catalogued, and queryable from its first minute, so
+exploration runs free over described data rather than breeding the swamp one layer down.
+Promotion from provisional to governed runs in hours through agentic review with humans
+adjudicating only flagged calls, and the semantic definition generates the pipeline that
+materializes it, so drift between meaning and movement becomes structurally impossible.
+There is no tier without semantics; there is only the tier whose semantics have not yet
+earned trust.
+
+Argument:
+1. Feature engineering, not architecture or hyperparameters, decides model quality, and
+   its temporal requirement is point-in-time correctness, so feature pipelines
+   legitimately bypass Gold and consume bitemporal Silver directly.
+2. For features the semantic layer therefore mediates discovery, not the query: a
+   catalog surface publishing each feature's definition, grain, temporal coverage,
+   lineage, cohort restrictions, and owner, because a feature's definition is its cohort
+   and exclusions, not its formula.
+3. Training pipelines are industrial batch consumers the layer cannot sit in front of,
+   so their governance is contractual: explicitly designated Silver tables become
+   versioned data contracts (schema, grain, coverage, stability tier, breaking-change
+   protocol) enforced as code by the verification mesh, not by committee — and over-
+   contracting, which freezes Silver, is its own failure.
+4. The instinctive lawless 'raw access, logged but not governed' exploration zone is
+   where the swamp breeds, because metrics computed there become de-facto governed by
+   convention and silently diverge.
+5. Dev Gold abolishes that zone: any landing exploratory, sandbox, or purchased data
+   receives AI-authored provisional semantics — definitions, grain, candidate morphisms
+   into the ontology — stamped provisional and catalogued from its first minute; where
+   humans have not authored semantics, AI authors them provisionally rather than leaving
+   a hole.
+6. Provisional data is queryable through the semantic layer alongside governed data,
+   visibly stamped so no production consumer mistakes it for governed truth; sometimes-
+   wrong drafts are strictly better than absent semantics and are corrected by the same
+   continuous agentic review.
+7. Notebooks then run on the same ontology: scientists compose governed measures with
+   Dev Gold concepts through the layer's API (an aspirational bar whose expressiveness
+   gaps drive the next declarations), and every result carries the provenance of its
+   ingredients.
+8. Promotion from provisional to governed must be continuous and fast — agentic review
+   panels, auto-drafted documentation, human adjudication only of flagged calls, in-
+   usage validation accruing after promotion — because a two-week path kills the
+   commitment while an hours-long path becomes the natural way to ship.
+9. A final inversion closes the loop: pipelines follow semantics — the semantic
+   definition generates the dbt/ETL transformation, so promotion of a Dev Gold concept
+   is the generation of its pipeline and drift between pipeline and meaning becomes
+   structurally impossible.
+10. The 'you cannot govern exploration' objection is half right: scientists get real
+   freedom to explore, but not the freedom to ship ungoverned definitions into
+   production by osmosis — governance by construction now holds at every layer.
+Conclusions:
+- Feature pipelines read bitemporal Silver, not Gold, and the semantic layer mediates
+  the data scientist's decision, not her query.
+- Training-pipeline governance is contractual and code-enforced: selectively designated,
+  versioned Silver data contracts continuously checked by the verification mesh, with
+  human attestation as a reporting view over the machine's record.
+- There is no tier without semantics — only a tier whose semantics have not yet earned
+  trust; Dev Gold replaces the lawless zone with a provisional, catalogued, ontology-
+  located one.
+- Promotion from provisional to governed must run in hours via agentic review or nobody
+  promotes and the commitment dies in the notebook.
+- Semantics generate pipelines: a definition change regenerates the transformation and
+  re-verifies the output, making pipeline/meaning drift structurally impossible on the
+  default path.
+- Exploration freedom is preserved; only the freedom to ship ungoverned definitions into
+  production by osmosis is removed — the swamp has nowhere left to form.
+Creates:
+- Dev Gold — the provisional tier: exploratory/landed/purchased data given AI-authored
+  provisional semantics, catalogued and glued to the ontology from minute one
+- The doctrine 'There is no ungoverned tier — there is a provisional one'
+- The provisional stamp (lifecycle stage: agent-attested draft, certification pending)
+  as distinct from grade (reliance), both traveling with the data
+- The feature catalog surface: registration with business definition, grain, temporal
+  coverage, upstream lineage, cohort restrictions, and domain owner — 'the semantic
+  layer mediates discovery, not the query'
+- The feature-definition doctrine: a feature's definition is its cohort and exclusions,
+  not its formula
+- Data contracts for training sources: pinned schema/grain/temporal coverage, stability
+  tiers (stable, evolving, experimental), breaking-change protocol with notification
+  window and parallel-run migration — contract-as-code checked by the verification mesh
+- The selective-contracting rule: contract only the tables ML teams depend on; over-
+  contracting freezes Silver
+- The hours-not-weeks promotion path: agentic review panel, auto-drafted documentation,
+  human adjudication of flagged calls only, in-usage calibration accruing post-promotion
+- Provenance-carrying notebook composition: results labeled 'built from governed
+  measures X and Y, joined to Dev Gold feed Z, not validated'
+- The pipelines-follow-semantics inversion: the semantic definition generates the
+  transformation (e.g. the dbt model), so authoring meaning and authoring movement are
+  one AI-co-drafted act and promotion is pipeline generation
+- The AI-curator figure (fig-dev-gold-nursery): the sandpit where feral exploration runs
+  while a curator tags and tracks each result
+Demolishes:
+- The lawless 'raw access, logged but not governed' sandbox tier most platforms quietly
+  keep
+- Governance-by-osmosis: notebook metrics becoming de-facto governed definitions via a
+  VP's slide deck
+- Treating the feature pipeline's Silver read as a governance failure rather than a
+  legitimate architectural bypass
+- Putting the semantic layer in the training-data path (latency and complexity training
+  workloads will not tolerate)
+- Committee-cadence contract review and calendar-driven attestation as the governing
+  loop
+- Over-contracting every Silver table, freezing schemas and blocking refactoring
+- Two-week promotion processes that ensure nobody promotes
+- DAG-first engineering where semantics are bolted on afterward as drifting
+  documentation
+////
+
 Data science is where governance goes to die — or where it finally earns its keep. The feature scientist, the model trainer, the notebook explorer all touch data in ways the chatbot never does: fast, iterative, pre-analytical, most of it destined to be thrown away. The discipline is to govern that work without caging it. The consumers that never ask a question — feature pipelines, training pipelines, notebooks — each get served on their own terms, and one pattern keeps the swamp from re-forming one layer down: Dev Gold, where exploration runs free over data that is described and catalogued from its first minute.
 
 

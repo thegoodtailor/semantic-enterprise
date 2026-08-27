@@ -1,5 +1,124 @@
 == The Living Colimit
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Everything built so far — domains and bridges, the verification mesh, the populators,
+the knowledge loop, colimit-health — wired together and run continuously becomes an
+organism: a semantic model of the whole enterprise that verifies itself on every scan
+and change, repairs trivial drift automatically, and raises every genuine break locally,
+as a witness naming one concept and the two paths that disagree, routed to the one human
+who owns the span. The colimit is the invariant and agency the accelerant: the mesh is
+designed as load-bearing infrastructure with its own observability, colimit-health is
+operated as a live eval rather than a deliverable, and the whole assembly ships within a
+year in three steps that each pay for themselves. Scale past thirty domains is an
+engineering decision — colimits of colimits, or honestly declared unverified pairs — not
+a fudge. The formal spine is settled mathematics transported to ontologies an LLM can
+read: for finite diagrams of clean spans, consistency is exactly commutativity with a
+computable witness, gluing schemas glues instances on the nose, and any sub-assembly
+embeds in the whole provided the enlarged diagram still commutes — which is precisely
+why verification is continuous rather than a one-time gate. One conjecture is recorded
+for the attested estate: gluing up to witnessed equivalence lives naturally in a
+homotopy colimit, though nothing here depends on it. The universal property leaves
+exactly one canonical cross-domain view; the parts are commodity, and what is scarce is
+the assembly and the will.
+
+Argument:
+1. The colimit is a verb: run continuously, the architecture of the preceding chapters
+   stops being a diagram and becomes an organism whose meaning is a measured, self-
+   defending quantity.
+2. The organism is five existing parts wired together: domains-and-bridges as body, the
+   Continuous Morphism Verification mesh as nervous system, populators as metabolism,
+   the knowledge loop as learning, and colimit-health as vital sign.
+3. When meaning breaks, the system says so locally with a witness — one concept, two
+   disagreeing paths, routed to the one human who owns the span — rather than a green
+   dashboard hiding a silent break.
+4. The agentic layers are not required for the colimit to exist: the colimit is the
+   invariant, agency is the accelerant, changing only the rate of evolution and who
+   closes the cycle.
+5. The mesh is load-bearing infrastructure to be designed: per-domain agents run five
+   within-reach checks as CI-for-meaning, a monitored coordinator runs the cross-domain
+   commutativity check, witness-driven repair auto-fixes trivial drift and routes
+   judgment to humans, and attested surfaces divide blame between world-drift and
+   extractor-decay via the calibration ledger.
+6. Colimit-health is a live eval operated forever — including grade coverage of
+   deterministic versus attested surface — not a deliverable that reaches 100% and
+   ships.
+7. It ships within a year in three steps: nightly-verified colimit over five-to-seven
+   domains; then on-commit verification plus the live explore; then the autonomous
+   curation loop where the mesh proposes and humans adjudicate.
+8. Beyond the 5–30 domain sweet spot, scale is an engineering choice: hierarchical
+   composition (colimits of colimits) or declared non-verification of distant pairs —
+   both honest, neither a fudge.
+9. The formal spine licenses all of it: domains are finite-limit sketches, bridges are
+   clean spans, and three results hold — consistency is exactly commutativity (with a
+   computable witness), gluing schemas glues instances, and finishability is conditional
+   on the enlarged diagram still commuting, which is why the mesh is continuous rather
+   than a one-time gate.
+10. The universal property yields exactly one canonical cross-domain view, so any hand-
+   built cross-domain mart either agrees with the colimit or is wrong relative to the
+   bridges it claims to respect — and the assembly, not the commodity parts, is what is
+   scarce.
+Conclusions:
+- A continuously run colimit gives the enterprise a self-verifying, locally self-
+  repairing semantic model whose health is watched like uptime — agents that reason over
+  verified institutional memory instead of guessing.
+- Failures surface as the smallest possible repair surface — one concept, two paths, one
+  owner — with the mesh doing verification and humans doing adjudication.
+- The system is shippable in a year in three composable steps, delivering value at every
+  intermediate stage; ship at 80% health and raise it continuously.
+- The mathematics (commutativity-as-consistency, instance gluing, conditional
+  finishability) was settled decades ago; its honest boundaries are finite diagrams of
+  clean spans, declared losses verified empirically by the mesh, and worst-case
+  exponential path enumeration bounded by the 5–30 domain regime.
+- There is exactly one canonical cross-domain view per diagram; everything else is
+  either derivative of it or wrong.
+- The parts are commodity; the scarce assets are assembly and will — build it or watch
+  someone else build it first.
+Creates:
+- The Living Colimit — the five-part organism (domains and bridges, verification mesh,
+  populators, knowledge loop, colimit-health)
+- "The colimit is the invariant; agency is the accelerant" doctrine
+- CI-for-meaning — verification triggered on every scan and schema/ontology change, like
+  CI-for-code
+- The five within-reach per-domain checks plus the sixth cross-domain commutativity
+  check run by the coordinator
+- Witness-driven repair — failures emit the concept and the two disagreeing paths, the
+  smallest repair surface
+- Attested-surface divided labor — mesh witness names the surface, calibration ledger
+  names the populator, adjudicator reads both
+- Colimit-health as a live eval — morphism completeness, bridge honesty, concept
+  coverage, staleness, commutativity, and grade coverage (deterministic vs attested
+  fraction)
+- The three-step one-year shipping plan (nightly mesh over 5–7 domains; on-commit
+  verification plus the live explore; autonomous curation loop)
+- The scale build plan: hierarchical composition (colimits of colimits) versus accept-
+  and-declare unverified distant pairs
+- The formal spine: domains as finite-limit sketches, bridges as clean spans, and three
+  theorems — Consistency is Commutativity, Gluing Schemas Glues Instances, Conditional
+  Finishability
+- The prime-brokerage witness example (legal-entity identity vs booking-account-holder
+  identity) — fig-witness-two-paths
+- The homotopy-colimit conjecture: the attested estate as a homotopy colimit whose
+  strict quotient is the deterministic core (recorded as a direction, not a result)
+Demolishes:
+- Green dashboards that hide silent semantic breaks, and breaks discovered at an audit a
+  season later
+- Hand-maintained semantic models that cannot report their own breakage
+- Hand-built cross-domain marts — by the universal property they either agree with the
+  colimit or are wrong relative to their declared bridges
+- The deliverable mindset: a semantic model that reaches 100% and ships, versus a metric
+  operated against forever
+- Treating the mesh as something waved at rather than designed — verification
+  infrastructure without its own observability and on-call
+- Implying verification coverage you do not have (versus declaring unverified pairs on
+  the health view)
+- Global "the model is broken" alerts, versus local witnesses with named causes and
+  single owners
+- Dismissal of the construction as someday-vision — it composes from parts already in
+  production and ships within a year
+////
+
 Everything to this point is architecture you can build with today's tools and today's discipline. Assemble those parts into one system, let it run, and what they become is the most ambitious claim in this book. The colimit is a verb. Run it continuously and it stops being a diagram you draw and becomes an organism you operate: a semantic model of the whole enterprise that verifies itself, repairs itself locally, reports its own health, stays correct as the business moves under it — and, in the next chapter, doubts itself, productively. A *living* colimit. The organization that has one has agents that reason over its entire institutional memory and can be trusted to. The organization that does not has agents that guess.
 
 === What the Living Colimit Is

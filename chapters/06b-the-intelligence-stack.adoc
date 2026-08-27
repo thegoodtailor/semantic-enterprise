@@ -1,5 +1,126 @@
 == The Intelligence Stack
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Everything before this point is substrate; everything after puts intelligence on top of
+it, and this is the map drawn before the floors are built. Enterprise AI is a strict
+five-layer stack — governed data, the semantic layer, conversational interface, agentic
+intelligence, autonomous research — in which each layer consumes everything below it and
+passes its errors upward, amplified. What the semantic layer buys is measurable and
+scope-conditioned: grounded queries within declared scope cluster at the ceiling of the
+industry's benchmarks and of the book's own pre-registered trials, ungrounded queries
+against enterprise-grade schemas sit near the floor, and the trials show that meaning,
+not structure, carries the accuracy — the decisive quantity is coverage, and the model
+was never the constraint. Hallucination has statistical lower bounds under current
+training, so grounding is the daily medicine that cuts what cannot be cured. Three
+positions obscure the stack whole — the chatbot equation, the vendor shortcut, and the
+mesh assumption, the last answered by the post-mesh position of ownership federated and
+meaning glued. The stack measures how deeply the estate is read; how it grows is the
+builder's axis, and the remaining chapters build both until they compose in the living
+colimit.
+
+Argument:
+1. Everything built so far — language as material, medallion architecture, glued
+   ontology, bitemporality — is substrate; the remaining chapters put intelligence on
+   top, and this chapter maps the whole stack in one view before it is built floor by
+   floor.
+2. Layer one is governed data: the medallion architecture (Bronze as faithful witness,
+   Silver as canonical domain model, Gold as curated knowledge menu) plus ownership,
+   quality signals, freshness, and lineage — essential, never interesting.
+3. Layer two is the semantic layer, where concepts map to data — definitions,
+   hierarchies, relationships, defaults, heuristics, navigational context, the
+   vocabulary architecture with upstream always winning — and it is the layer every
+   layer above consumes.
+4. What the semantic layer buys is measurable but scope-conditioned: grounded queries
+   within declared scope cluster at the ceiling (dbt 100/98 percent, AtScale 92.5,
+   Snowflake ~90) while ungrounded queries against enterprise-grade schemas sit near the
+   floor (Spider 2.0 at 21.3 percent), so the decisive quantity is coverage, and the
+   model was never the constraint.
+5. The book's own pre-registered trials (44 questions, six seeded ambiguities, three
+   models) confirm the mechanism: 100 percent through governed semantic context versus
+   67–71 percent raw, with structure alone (joins without definitions) at 75–83 — the
+   meaning, not the structure, carries the accuracy, and the modal raw-arm failure is
+   exactly what the declared-joins doctrine predicts.
+6. Layers three through five stack conversation (human asks, agent answers through the
+   layer), agentic intelligence (proactive monitoring, hypothesis-testing, persistent
+   memory and goals), and autonomous research (the same machine run long, with senior
+   human judgment still terminating the work) — layers four and five being one loop seen
+   at two speeds.
+7. The stack is strict because meaning flows upward: wrong definitions at layer two are
+   inherited and amplified above, layer-one quality failures sit beyond the semantic
+   layer's power to repair, and by layer five the system reasons over the product of
+   every choice below.
+8. The stack (how deeply the estate is read) is only one of two axes; the other is the
+   builder's axis (how the estate grows — AI curating vocabulary, populating contracts,
+   provisioning the provisional tier, drafting new structures), and the two compose in
+   the living colimit.
+9. Three positions block organizations from seeing the stack whole — the chatbot
+   equation, the vendor shortcut, and the mesh assumption — and each mistakes one layer
+   or one axis for the whole.
+10. The remaining chapters are assigned to the floors of the stack and the builder's
+   axis: the stack is the map, the loop is the engine, the chapters from here are the
+   build.
+Conclusions:
+- Grounding accuracy is infrastructure, not intelligence: grounded agents reason at the
+  ceiling, ungrounded agents guess near the floor, and the gap is governed by coverage
+  of declared scope — extending scope is therefore a governed activity with a queue and
+  a clock.
+- Meaning, not structure, carries the accuracy: declared joins without definitions
+  recover only part of the gap, and the modal ungrounded failure (selecting the
+  deprecated strategy-tag column) is the failure class the declared-joins doctrine
+  predicts.
+- The stack is strict — every layer passes its errors upward, amplified — so a thin
+  semantic layer leaves conversation handling only friendly questions and leaves the
+  agentic layer unable to function at all.
+- Hallucination cannot be eliminated under current training paradigms (statistical lower
+  bounds), so the semantic layer is the daily medicine: grounding cuts what cannot be
+  cured.
+- Data mesh without a semantic core is distributed ambiguity with better org charts; the
+  book's estate is the post-mesh position — ownership federated, meaning glued.
+- Reading (the five layers) and growth (the builder's axis) are orthogonal, and the
+  whole book from here is the composition of the two.
+Creates:
+- The intelligence stack: five strict layers — (1) governed data, (2) semantic layer,
+  (3) conversational interface, (4) agentic intelligence, (5) autonomous research — each
+  depending on everything below (figure: intelligence-stack)
+- The strictness principle: meaning flows upward and every layer passes its errors
+  upward, amplified
+- Coverage as the decisive quantity: accuracy is ceiling-or-floor depending on whether a
+  query falls within the semantic layer's declared scope, making scope extension a
+  governed activity with a queue and a clock
+- The grounded-versus-ungrounded evidence base: industry benchmarks (dbt 100/98, AtScale
+  92.5, Snowflake ~90, Spider 2.0 21.3, HAL scaffold effect) plus the book's own pre-
+  registered 44-question trials (github.com/thegoodtailor/semantic-enterprise-
+  experiments)
+- The 'meaning carries the accuracy' finding: structure-only grounding (declared joins,
+  definitions stripped) at 75–83 percent versus 100 with full semantic context
+- Figure-borne concept: guess-vs-reason — 'the difference is infrastructure, not
+  intelligence' (figure: guess-vs-reason)
+- The two-axes frame: depth of reading (the stack) versus growth of the estate (the
+  builder's axis), composing in the living colimit
+- Layers four and five as one loop seen at two speeds
+- Grounding as daily medicine for the incurable: hallucination has statistical lower
+  bounds, so grounding cuts what cannot be cured
+- The post-mesh position: ownership federated, meaning glued
+Demolishes:
+- The chatbot equation: 'we deployed AI' meaning a chatbot on the intranet — layer three
+  with nothing underneath, the desk lamp claimed as electricity; most industry-surveyed
+  'agent adoption' is exactly this
+- The vendor shortcut: 'connect our pre-built AI to your data — the model figures it
+  out' — ungrounded models pick an interpretation, commit, and present it as fact, and
+  in multi-agent systems the confident mistake propagates through the coordination layer
+- The mesh assumption: that federated domain ownership naturally produces semantic
+  infrastructure — it produces accountability boundaries only; data mesh without a
+  semantic core is distributed ambiguity with better org charts
+- Reading vendor benchmarks as independent audit rather than as the scale of the
+  mechanism on the covered class
+- Treating the model as the constraint on enterprise AI accuracy — the constraint is
+  coverage and grounding infrastructure
+- Optimizing for the conversational layer because demos that impress the executive team
+  are always conversational
+////
+
 Everything to this point has been substrate: language as the material, the architecture that holds it, the glued ontology that composes it, time that makes it answerable. The chapters from here forward put intelligence on top — conversation, autonomous agents, AI as the estate's builder and populator, the loop that lets the whole thing correct itself. This short chapter is the map: the stack whole, in one view, before the chapters that build it floor by floor.
 
 Five layers, and organizations consistently misidentify which one they are standing on. Each depends on everything below it. Skip a layer and the stack collapses.

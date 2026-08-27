@@ -1,5 +1,143 @@
 == Time
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Every temporal question put to a data platform is one of two structurally different
+questions — what was true in the world, or what the system reported at the time — and an
+architecture that cannot keep them distinguishable hands its agents an unmarked
+assumption that becomes confident, systematic error. The answer is not bitemporal
+machinery everywhere: time is tiered per entity, with full two-axis bitemporality
+reserved for the entities a regulator will interrogate, valid-time SCD2 for what matters
+at transaction time, and plain current state for reference data — raw arrivals kept
+regardless, so any tier can be promoted by re-materialization. Valid time comes from
+business-effective dates delivered by the source and system time from whoever wrote,
+pipeline or agent, and no writer's clock may impersonate the world's; Silver
+reconstructs under supersession while Gold publishes versioned, immutable artifacts
+carrying table-level temporal coordinates. The semantic layer names three query modes —
+as-of-now, as-of-valid-time, as-of-report-time — and declares the alignment rules for
+joins across entities that keep time differently, the watermark contracts of streaming
+surfaces, and the seams where a feed's cadence changes. Crypto-shredding by per-subject
+key destruction reconciles the never-delete substrate with both mandatory retention and
+the right to erasure. Bitemporality is fractal: ontologies and their morphisms are
+themselves bitemporal objects, the colimit a trajectory through time, and the result is
+the difference between a system that produces answers and one that can defend them.
+
+Argument:
+1. Every temporal question is one of two structurally different questions — what was
+   true in the world versus what the system reported at the time — and most
+   architectures conflate them by never building the distinction (the March 15 KYC-
+   reclassification trade shows both answers are correct for different consumers).
+2. Agents make the conflation dangerous: a human navigates temporal ambiguity by
+   institutional memory, an agent knows only what the architecture tells it, so an
+   undistinguished axis becomes a confident, unmarked wrong answer.
+3. The remedy is not two axes on every row: time in Silver is tiered per entity — full
+   bitemporality (Tier 1) for regulator-facing entities, valid-time SCD2 (Tier 2) for
+   transaction-time attributes, current-state-plus-audit-log (Tier 3) for stable
+   reference — governed by 'land it, catalog it, add temporal depth only when a real
+   question demands it', since kept raw arrivals make promotion a cheap re-
+   materialization.
+4. Valid time must come from business-effective dates delivered by the source and system
+   time from the writer (pipeline or agent run); snapshot tooling like dbt supplies only
+   detection time, so a load timestamp impersonating an effective date silently turns
+   every 'what was true' query into 'what did we know'.
+5. Gold is the opposite contract: versioned, immutable tables with table-level temporal
+   coordinates (as_of_valid_time, as_of_system_time, generated_at) — never row-level
+   bitemporal columns (two substrates means no source of truth) and never mutable in
+   place (which destroys the reported record).
+6. Corrections are events, not tasks: a backdated correction flows as an automated
+   supersession in Silver (close system_to, open a new row), a new Gold version at the
+   next rebuild, and updated semantic-layer coordinates, with nothing overwritten and
+   query routing across accumulated versions handled by time-travel windows plus
+   archived snapshots.
+7. The semantic layer must surface three named query modes — as-of-now, as-of-valid-
+   time, as-of-report-time — because implicit temporal semantics are how the two
+   questions get conflated.
+8. Time between entities is where silent bugs live: joins across entities with different
+   grains or calendars must declare which clock governs (usually the as-of join at event
+   time), declared once in the semantic layer even where engines lack native ASOF
+   support.
+9. Streaming and cadence changes extend the same discipline — event/ingestion/processing
+   clocks with declared watermark contracts ('no watermark, no claim'), and cadence
+   shifts handled as declared seams over kept raw history rather than re-architecture or
+   fabricated backfill.
+10. The never-delete claim survives privacy law via crypto-shredding under two statutory
+   clocks (keep-for-exactly-N-years and delete-on-request), and bitemporality is fractal
+   — ontologies and their morphisms are themselves bitemporal, making the colimit a
+   trajectory through time and 'what did this term mean then?' an answerable question
+   that a unified ontology cannot address.
+Conclusions:
+- Spend temporal machinery where the question will be asked: Tier 1 for regulator/risk-
+  facing entities, Tier 2 for transaction-time attributes, Tier 3 for stable reference —
+  with raw arrivals kept so any tier can be promoted by re-materialization, not
+  archaeology.
+- Silver reconstructs and Gold publishes: Silver is authoritative for what was true,
+  Gold (versioned, immutable, coordinate-stamped) for what was reported, and collapsing
+  the two contracts is an architectural error.
+- Valid time comes from the business, system time from whoever wrote — pipeline or agent
+  — and no writer's clock may impersonate the world's.
+- Temporal semantics must be named, declared, and automated — three explicit query
+  modes, declared join-alignment rules, watermark contracts, event-driven correction
+  propagation — because implicit convention becomes systematic agent error.
+- Crypto-shredding by per-subject key destruction reconciles an immutable bitemporal
+  substrate with both mandatory retention (AMLD4/AMLR) and erasure rights, if designed
+  in from day one.
+- Bitemporality runs through the ontology itself: versioned ontologies with versioned
+  morphisms make meaning-over-time first-class, and a system that lacks this can produce
+  answers but cannot defend them.
+Creates:
+- The Two Questions distinction: 'what was true' (valid time) versus 'what was reported'
+  (system time), with the March 15 KYC-reclassification worked example
+- The three-tier temporal model for Silver: Tier 1 full bitemporality, Tier 2 valid-
+  time-only SCD2, Tier 3 current-state with audit log — a per-entity modeling decision
+  driven by the question 'will anyone ever ask a temporal question of this entity, and
+  which one?'
+- The land-it-and-catalog-it governing principle: keep raw arrivals, add temporal depth
+  only when a real question demands it; promotion is re-materialization, not archaeology
+- The law: valid time comes from the business (source-delivered effective dates), system
+  time from the writer — pipeline or agent run — and no writer's clock may impersonate
+  the world's (no load timestamp impersonating an effective date)
+- The Gold temporal contract: versioned immutable tables with three table-level metadata
+  coordinates — as_of_valid_time, as_of_system_time, generated_at — audit by re-
+  derivation from Silver
+- The Silver supersession discipline: corrections close system_to and open a new row;
+  nothing overwritten, nothing lost
+- Corrections-are-events-not-tasks: automated end-to-end correction propagation as
+  governance by construction in the temporal domain
+- The three named query modes: as-of-now over current truth, as-of-valid-time over
+  current truth, as-of-report-time (both axes frozen) — first-class semantic-layer
+  vocabulary
+- The declare-once temporal-alignment rule for cross-entity joins (as-of join at event
+  time; calendar/timezone bridge rules as governed semantics), independent of native
+  ASOF engine support
+- The streaming watermark contract: 'no watermark, no claim' — a streaming surface
+  without a declared watermark/completeness contract is Tier 3 data wearing Tier 1
+  clothes
+- The cadence-seam pattern: cadence change as a declared versioning event on the source,
+  with best-effort-and-declared backfill and typed holes rather than fabricated numbers
+- Crypto-shredding under two statutory clocks (keep-for-exactly-N-years, delete-on-
+  request): per-subject, per-retention-category keys over PII split from an immutable
+  factual skeleton; plus the fractal-bitemporality doctrine — versioned ontologies and
+  version-keyed morphisms making the colimit a trajectory through time (query surface
+  stated honestly as a design obligation, not shipped machinery)
+Demolishes:
+- Fear-driven blanket bitemporality — two time axes on every row of every table,
+  producing unqueryable models and unjustifiable cost
+- Denial — overwrite-in-place with one timestamp, unable to answer 'what did you know
+  and when did you know it?'
+- Tiering by promise: deferring history while throwing the raw data away
+- Load/detection timestamps impersonating valid time (dbt/Dataform snapshot meta-columns
+  mistaken for business-effective dates)
+- Row-level bitemporal Gold — two bitemporal substrates, hence no source of truth — and
+  mutable Gold that overwrites published reports, destroying the audit trail
+- Implicit temporal semantics in query conventions, and naive equality joins across
+  entities that keep time differently
+- The folklore that 'we never delete' and the right to erasure are irreconcilable (wrong
+  on GDPR Art. 17(3)(b) and AML retention law)
+- The unified-ontology framework, under which definitional change reduces to 'the model
+  has been wrong at various points' and compliance reconstruction is unaddressable
+////
+
 Time is one modeling discipline among many, and the fastest way to wreck a data platform is to treat it as the whole game. Done in fear — full historical machinery on every table, two time axes on every row — it produces models nobody can query and costs nobody can justify. Done in denial — overwrite-in-place, one timestamp, hope — it produces a warehouse that cannot answer the one question an auditor always asks. The discipline is to treat time *carefully where it matters and simply where it does not*, and to know the difference before you model, not after the inquiry.
 
 One temporal distinction turns audits into arguments when it is missed. The question "what was our P&L last quarter?" has two structurally different answers. One reconstructs *what was true* — applying every correction, reclassification, and late-arriving fact available today. The other reconstructs *what was reported* — what the system said at the time, with whatever it knew on the day the report was pulled. Both are real, and most architectures conflate them by omission: the infrastructure to keep them distinguishable was never built, because nobody asked until the worst possible moment — a regulatory inquiry, a restatement, or an agent that inherits a baked-in temporal assumption and confidently answers the wrong one of the two.

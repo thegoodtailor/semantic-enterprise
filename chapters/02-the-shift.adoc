@@ -1,5 +1,146 @@
 == The Shift
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Data platforms have survived decades of patchy semantics because humans papered over the
+gaps; the agent ends that amnesty. A production deployment running at 98-99 percent
+traces every residual failure to the same root — a definition nobody wrote down where a
+machine could read it — and that place has a name: the semantic layer, the catalog's
+successor moved off the shelf and into the query path. The binding constraint on agentic
+analytics is not context volume but context per token, the density of decision-relevant
+meaning in a bounded window: a trading-desk experiment, run and published, shows
+frontier models moving from 71 to 100 percent on trap questions at token parity when a
+schema dump is replaced by declared semantics, a domain essay, and temporal contracts —
+and losing accuracy when raw context is piled higher. Six fashionable strategy
+positions, from "AI is just another BI consumer" to "the models are good enough now,"
+fail for one shared reason: they leave ambiguity standing or treat the model as the
+variable and the estate as fixed. Since schema linking and join construction account for
+roughly three quarters of text-to-SQL failures, one law kills the failure class — joins
+are declared, never inferred — yielding flat documented marts for known questions and
+governed explores over a declared join graph for the rest. AI meanwhile breaks the old
+economics in both directions, making semantic infrastructure simultaneously mandatory
+and cheap to maintain continuously; the architecture was always correct, and the
+economics now demand it.
+
+Argument:
+1. A real production text-to-SQL deployment ran at 98-99 percent accuracy, and every
+   failure in the residual 1-2 percent traced to a missing or mismatched machine-
+   readable definition, not to model capability — establishing 'check the semantic layer
+   first' and defining the semantic layer as the catalog's successor moved off the shelf
+   into the pipeline.
+2. Benchmark evidence from both directions (raw text-to-SQL failing on ambiguous
+   schemas, well-modeled schemas succeeding even without a layer) shows the win is
+   against ambiguity in the data model, not against the model's intelligence.
+3. The architectural question is misframed as context-window volume; what matters is
+   meaning per token, and density is simultaneously the correctness argument and the ROI
+   argument, since a noisy context is paid for twice — in inference cost and in wrong
+   answers.
+4. The trading-desk P&L thought experiment makes this concrete: a 2,500-token schema
+   dump (Scenario A) yields plausible numbers wrong in four independent ways, while
+   1,800 tokens of domain essay plus semantic-layer declaration plus temporal contracts
+   (Scenario B) yields a correct, hedged answer — less context, more fidelity.
+5. This is the binding constraint for the whole architecture because attention is finite
+   even when tokens are cheap, because generalization across unseen domains separates
+   demos from products, and because agents — unlike analysts — import no tribal
+   knowledge and cannot fake understanding.
+6. Context per token is then defined precisely (decision-relevant semantic content over
+   total tokens), given three candidate formalizations (mutual information, accuracy per
+   token, compression ratio), and tested in the July 2026 trials, where frontier models
+   went from 71 to 100 percent on trap questions at token parity under declared
+   semantics, and more raw context made things worse.
+7. Six fashionable strategy positions — AI as just another BI consumer, chatbot-on-
+   dashboards, data mesh as governance cure, hardcoded orchestration or free-crawl
+   agents, garbage-in-garbage-out quietism, and 'the models are good enough now' — each
+   fail for the same root reason: they leave ambiguity in place or treat the model as
+   the variable and the estate as fixed.
+8. AI breaks the CDO's old economics in both directions at once: it makes semantic
+   infrastructure mandatory (agentic projects fail without it) and cheap (AI extracts,
+   validates, and continuously maintains vocabularies), which is why competitors shipped
+   the Open Semantic Interchange standard — the layer's necessity has moved from
+   contested to conceded.
+9. The AI agent is therefore the new primary consumer, and since schema linking plus
+   join construction cause roughly three quarters of text-to-SQL failures, one law kills
+   the failure class — joins are declared, never inferred — yielding two governed
+   surfaces over one vocabulary: flat documented Gold marts for the head of the question
+   distribution and governed explores over the declared join graph for the rabbit holes.
+10. Six actions follow this week: design for the agent as quality gate, audit and
+   version the vocabulary, make the semantic layer mandatory (AI queries the layer, not
+   the database), fix token economics via flat marts and declared joins, handle the
+   identity threat to data craftspeople with candor (implicit-to-explicit, not human-to-
+   machine), and act now because the architecture serves humans equally well.
+Conclusions:
+- The binding constraint on agentic data systems is context per token — the rate of
+  structurally meaningful, compositionally usable signal delivered into a bounded window
+  — and every architectural decision either raises or lowers it.
+- Denser context beats more context: this held empirically at and beyond token parity,
+  and over-contextualization measurably degrades mid-tier models.
+- Joins are declared, never inferred: the agent picks metrics, dimensions, and filters;
+  the engine generates SQL deterministically, making the dominant text-to-SQL failure
+  class impossible by construction.
+- The semantic layer has moved from optional catalog to mandatory in-path governance
+  surface: AI queries the semantic layer, not the database, and epistemic honesty is a
+  property of infrastructure, not of the model.
+- AI simultaneously makes semantic infrastructure mandatory (demand side) and cheap to
+  build and maintain continuously (supply side) — a phase transition, not a productivity
+  gain — so the decades-old information-architecture case finally wins.
+- The shift is from implicit to explicit knowledge, not from human to machine; the AI-
+  serving architecture is also the correct architecture for human consumers, so
+  precision, not trend-following, is what is being optimized.
+Creates:
+- The 1% Problem — the residual failure rate of production text-to-SQL whose cause is
+  uniformly missing machine-readable context, not model capability
+- The rule of thumb: when the AI gets it wrong, check the semantic layer first
+- The semantic layer redefined — the catalog's successor moved off the shelf into the
+  query path: a machine-readable map of term, meaning, and physical location, read by
+  the agent before it answers, and later the contract agents write into
+- Context per token (information density per token) — defined as the ratio of decision-
+  relevant semantic content to total token count, where a token is decision-relevant if
+  removing it changes the query plan or degrades correctness
+- Three candidate formalizations of the metric: mutual information, accuracy per token,
+  and compression ratio
+- The Scenario A / Scenario B trading-desk construction — schema-dump versus essay-plus-
+  declaration-plus-temporal-contracts, with figure fig-context-per-token
+- The three-component agent context pattern: domain essay, semantic-layer declaration
+  (measures, grains, declared joins with usage notes), and per-table temporal contract
+  metadata
+- The 'In our trials, July 2026' experiment — 44 pre-registered questions, seeded-trap
+  synthetic warehouse, three models, execution-accuracy scoring, published harness
+  (github.com/thegoodtailor/semantic-enterprise-experiments)
+- The Law: joins are declared, never inferred
+- The two governed surfaces over one vocabulary: flat documented Gold marts for the head
+  of the question distribution, governed explores over the declared join graph for the
+  tail ('the agent picks; the engine joins')
+- The agent as the most honest consumer the platform has ever had — it cannot fake
+  understanding and cannot import tribal knowledge
+- The Six Changes to Make This Week — design for the agent, audit the vocabulary, make
+  the layer non-optional, fix token economics, address professional identity with
+  candor, do not wait for the hype to settle
+Demolishes:
+- 'AI is just another BI consumer' — point it at the schema like a new analyst; humans
+  compensate for ambiguity, agents operationalize it with confident precision
+- 'Just add a chatbot to our dashboards' — automated confusion delivered faster to more
+  people; the Air Canada bereavement-fare ruling makes an agent's confident inventions
+  legally your promises
+- 'Data mesh will solve the governance problem' — federation without semantic
+  unification is distributed confusion; mesh underspecified the shared vocabulary cross-
+  domain queries require
+- 'Hardcode orchestration against our APIs / let the agent crawl and self-discover' —
+  the capped-upside leash and the effluent-enlightenment fantasy share the same root
+  error: treating the model as the variable and the data estate as fixed
+- 'AI changes nothing fundamental — garbage in, garbage out; focus on data quality' —
+  trivially true and useless, offering zero account of what good data means for a non-
+  human consumer; data is the memory intelligence presupposes
+- 'The models are good enough now — skip the layer' — variance, not benchmark score, is
+  the number that matters; determinism is a property of architecture, and the 'well-
+  modeled data' the position cites is the semantic work performed under another name
+- The context-window-volume framing — dump the whole schema and let the model sort it
+  out — which bets against the physics of attention
+- The graveyard pattern: uncataloged denormalization into an analytical swamp, and
+  formal ontology projects that produced beautiful dead documents governance committees
+  could not keep alive
+////
+
 Data platforms have been failing quietly for decades, and getting away with it. A crap platform with patchy semantics stays usable as long as humans are willing to patch the gaps in understanding, remember where things are, keep a private record of the weird tweaks and nuances of where data lives and what it means. AI ends the amnesty. A crap data platform with patchy semantics means enterprise agentic intelligence is a non-starter. 
 
 === The 1% Problem

@@ -1,5 +1,147 @@
 == Agentic Intelligence
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Conversational analytics is Stage 1, and it is reactive: the human drives. Stage 2 sets
+agents watching the estate through standing questions; Stage 3 has them maintaining
+knowledge bases and testing hypotheses over weeks; both run on one machinery, the
+knowledge loop — observe, conjecture, test, publish, grow. Its foundation is the
+warehouse-as-memory slogan made literal in DDL: agent beliefs are Tier 1 bitemporal
+facts in governed Silver, glossary-linked and evidence-staked, superseded rather than
+edited, so the agent's whole epistemic history is a query — and the estate's first
+agentic population under the trust grammar. Because no single agent can refute its own
+blind spots, testing is an institution of mutual criticism whose safety is a topology
+decision — error amplification tracks the coordination graph, not the headcount, and
+independent outputs are never merged without an adjudicator holding the governed
+declarations. What survives publishes to the answer ledger and, when demand persists,
+returns as an agent-drafted proposal in the creole — a new measure, a new standing
+question — entering through population contracts and build gates: new knowledge becomes
+new schema, and the estate grows itself. The celebrated autonomous researchers ran where
+verification is free; an enterprise gets no free verdicts, and the stack — layer,
+bitemporal record, refutation topology, ledger — is the oracle it must build for itself.
+
+Argument:
+1. Conversational analytics is only Stage 1 — reactive, human-driven; Stage 2 (agents
+   that raise what matters unasked) and Stage 3 (agents that maintain knowledge bases
+   and test hypotheses over weeks) both run on one machinery, the knowledge loop, and
+   the industry's three agent-cancellation causes (cost, unclear value, inadequate risk
+   controls) each name a missing piece of that loop's infrastructure.
+2. A real agent has memory, goals, and agency — chatbots, scheduled scripts, and RAG
+   pipelines do not qualify — and of the three, memory is the demand the industry keeps
+   getting wrong.
+3. Agent memory belongs in the warehouse, not in a side store: a belief is a fact with
+   the same epistemic structure as any other fact, so it is a Tier 1 bitemporal entity —
+   silver_agents.agent_belief, glossary-linked, evidence-staked, superseded rather than
+   updated — making 'what did the agent believe, when, on what evidence, and when did it
+   learn better' an ordinary query and the coming know-your-agent examinations askable.
+4. Observe: the agent subscribes to standing questions and receives context assembled by
+   the semantic layer (essay, declarations, metadata — 1,500–2,500 dense tokens), with
+   pre-flight checks (freshness, quality, access, caveats) enforced in the serving path
+   so they cannot be bypassed.
+5. Conjecture: a hypothesis is a row — agent-attested, confidence-scored, evidence-
+   referenced, doubly dated — which is everything weeks-long Stage 3 hypothesis tracking
+   structurally requires.
+6. Test: a single agent cannot refute its own blind spots (self-critique degrades, self-
+   judging is biased), so refutation requires independent agents under centralized
+   adjudication — error amplification tracks topology not headcount (17.2x unsupervised
+   vs 4.4x orchestrated), the author's poisoned-specialist trial shows an adjudicator
+   holding the governed declarations achieves zero contamination where naive merging is
+   58% poisoned, and the semantic layer is what makes disagreement commensurable at all.
+7. Publish: what survives refutation enters the answer ledger — identity, versions,
+   temporal coordinates, trust grade, diff — served rather than re-derived, so
+   downstream actors act on graded, attested answers.
+8. Grow — the arc the book exists to draw: a conclusion that survives is observed
+   demand, so the agent drafts its remediation in the creole as a population contract
+   entering through the CI gates and curator review; gaps drive the same arc (drafted
+   proposal, never a SQL bypass); new knowledge becomes new schema and the estate
+   extends itself.
+9. Because the loop runs on prose, provenance of text is a security boundary: estate-
+   authored prose steers, outside text is material — fenced and quoted, never obeyed —
+   since a counterparty who learns your agent reads its free-text fields has been handed
+   a pen into your risk assessments.
+10. The public Stage 3 existence proofs (AI Scientist, SWE-bench trajectory, Karpathy's
+   700-experiment weekend) all ran where verification is free — code executes or it does
+   not — so the enterprise must build the oracle those domains were given, which is the
+   stack; doing so makes four demands in rising difficulty: semantic richness, event-
+   driven data, agent infrastructure, and the organizational reframing of the warehouse
+   as corporate memory.
+Conclusions:
+- The gap between agentic ambition and execution is an infrastructure gap, not an
+  intelligence gap — each industry cancellation cause maps to a missing organ of the
+  knowledge loop.
+- The warehouse-is-the-memory slogan is now DDL: agent beliefs live in governed,
+  bitemporal Silver behind the same semantic layer as everything else; a separate agent-
+  memory store is how the two-sources disease starts, and a vector index may point into
+  the substrate but never replace it — the difference between a cache and a mind.
+- Multi-agent safety is a topology decision: match the coordination graph to the task's
+  dependency graph, and never merge independent outputs without an adjudicator holding
+  the shared definitions.
+- The stack is Stage 3's missing organ — strict in the enterprise, skippable in code
+  research — because nothing executes a claim about counterparty exposure; the semantic
+  layer, bitemporal record, refutation topology, and ledger are the hand-built oracle.
+- Run long enough, the loop turns the estate from a record of what the organization knew
+  into the organ by which it learns — a glued, graded, self-extending organism whose
+  every organ can show the conjecture it grew from.
+- The investment converges: the layer built for the agent (the consumer that cannot
+  silently import tribal knowledge) is the same layer that onboards human analysts in a
+  week and gives regulators a reconstructible record — same models, same protocols,
+  different architecture.
+Creates:
+- The knowledge loop: observe — conjecture — test — publish — grow (fig. knowledge-
+  loop), the chapter's central machinery for Stages 2 and 3
+- The three-stage progression: Stage 1 conversational analytics, Stage 2 agentic
+  intelligence, Stage 3 autonomous research
+- The architectural definition of an agent: memory, goals, agency (plus domain
+  heuristics carried by tutorial-quality documentation)
+- silver_agents.agent_belief — Tier 1 fully bitemporal DDL for agent memory: belief_sk,
+  subject (glossary-linked), conclusion, confidence, evidence_ref, method, valid/system
+  time, supersede_reason; declared grain, insert-only supersession
+- The founding precedent of agentic population: the belief table as the estate's first
+  agent-attested write (trust agent-attested, populated by agent, evidence_ref as
+  evidence bundle)
+- The topology rule: match the coordination graph to the task's dependency graph; never
+  merge independent agents' outputs without an adjudicator (fig. multiagent-amplify,
+  17.2x vs 4.4x)
+- The poisoned-specialist trial (July 2026): one poisoned briefing captures 58% of
+  naively merged answers; a frontier adjudicator holding the governed declarations
+  yields zero contamination; a mid-tier adjudicator contains only partially
+- Pre-flight briefing and checks in the serving path: freshness, quality, access,
+  caveats — refusal over confident guessing, unbypassable by construction
+- The steering/material doctrine: estate-authored prose steers, outside text is material
+  — fenced and quoted, never obeyed; pre-flight gains the no-unfenced-outside-text check
+- The Grow arc's creole construct: an agent-drafted proposal (standing
+  corridor_fail_watch + measure corridor_fail_rate with trust agent-attested, populated
+  by agent, evidence retained) as a population contract entering via CI gates and
+  curator review
+- The oracle argument: enterprises must build the verification machinery (layer +
+  bitemporal record + refutation topology + ledger) that code-domain autonomous research
+  got for free
+- The four demands, in rising difficulty: semantic richness, event-driven data, agent
+  infrastructure (memory as epistemic state, safety rails from trust grades), and the
+  organizational reframing — data platform team owns the corporate memory, semantic
+  layer team owns the vocabulary, agent team owns the loop
+Demolishes:
+- Stage 1 as destination: shipping a warehouse-connected chatbot, demoing on friendly
+  questions, and declaring victory while production questions quietly fail
+- The abuse of 'agent' for form-filling chatbots, scheduled alert scripts, and RAG
+  pipelines
+- Agent memory as a separate store beside the stack (key-value, vector DB, side
+  knowledge graph) — a second source of epistemic truth with its own governance, drift,
+  and audit story; stores that remember answers instead of epistemic state
+- The context window as memory
+- Uncoordinated multi-agent architectures: unsupervised merging of independent outputs
+  (17x error amplification) and headcount-over-topology design; prompt-diverse agents on
+  one base model as false independence
+- Self-critique and self-judging as quality control — the blind spot that produced the
+  error reviewing it
+- Direct SQL access as the answer to semantic-layer gaps — more data, less meaning,
+  wrong answers with more confidence
+- Feeding estate-authored and outside text to an agent undifferentiated — an open
+  prompt-injection channel into the organization's risk assessments; and the 'faster
+  dashboards, not philosophy' response to investment in definitions
+////
+
 === Beyond the Answer
 
 Conversational analytics, done properly, is Stage 1: a human asks a question in plain language, an agent answers it through the governed semantic layer, and the answer can be trusted. If you have built this, you are ahead of most of the market. You are also at the beginning, because the loop is reactive. A human asks. The system answers. The human drives.

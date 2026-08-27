@@ -1,5 +1,100 @@
 == Foundations and Sources
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+The ideas in this book have long lineages, and this closing essay names them: what is
+inherited, from whom, and where the book departs. The formal spine is the specification-
+composition calculus of the late 1990s — renaming, hiding, union-as-pushout —
+transported from program synthesis to data-model integration, with Spivak's functorial
+data migration as the categorical cousin; the departure from both is that the colimit
+here is a dynamic, gap-bearing trajectory maintained by agents, not a completed object.
+Bitemporality descends from Snodgrass and SQL:2011, the three query modes relabeling his
+temporal taxonomy for practitioners, with the additions of substrate-wide default status
+and bitemporal ontology. Goguen's institutions supply the truth-preserving maps;
+morphism honesty discipline is those maps made to carry their own losses, partialities,
+and verification state. Kimball, Inmon, and Dehghani each contribute specific principles
+to a synthesis that claims allegiance to none, and the break with the Semantic Web is
+grounded in a change of consumer: OWL was correct for symbolic reasoners, prose essays
+are correct for LLMs, with ISO 11179-style structured anchors and essays governed
+together, each serving the function it handles well.
+
+Argument:
+1. Composing many domain theories by gluing along shared structure — pushouts and
+   colimits — was solved mathematically in the 1990s specification-composition
+   tradition, and is exactly what fusing a hundred local vocabularies for agentic
+   reasoning requires.
+2. The author's own late-1990s calculus with Crossley and Wirsing (WADT'99; 2005
+   monograph), whose structural rules are renaming, hiding, and union-as-pushout, is
+   here transported from program specifications to data-model integration, where the
+   hard part shifts from static composition to evolution.
+3. Spivak's functorial data migration and ologs are the categorical cousin — moving
+   instances along fixed schema maps — whereas this book composes and evolves the
+   schemas themselves; the departure from both parent and cousin is the colimit as a
+   dynamic, gap-bearing eval target maintained by agents, not a completed mathematical
+   object.
+4. Bitemporality inherits from Snodgrass and SQL:2011 — the book's three query modes are
+   Snodgrass's current/sequenced/nonsequenced taxonomy relabeled for practitioners — and
+   adds bitemporality as the Silver-wide default plus bitemporal ontology.
+5. Goguen's institutions are the logical home of the gluing maps; the book's morphism
+   honesty discipline is institutions made operational, with losses, partialities, and
+   verification state as first-class documented objects.
+6. Kimball's grain/conformed-dimension/SCD principles and Inmon's subject-oriented
+   integration are both inherited selectively; the book's Silver/flat-Gold/semantic-
+   layer synthesis claims allegiance to neither, being shaped by columnar-engine and
+   agentic constraints neither tradition faced.
+7. Dehghani's data mesh supplies the domain-ownership principle; the book's critique
+   targets mesh's underspecified semantic layer — federation without composition — not
+   ownership itself.
+8. The break with the Semantic Web (OWL, RDF, SPARQL) follows from a change of machine
+   consumer: symbolic reasoners read OWL, LLMs read prose, so domain essays of 600–1500
+   words are correct for the current consumer as OWL was for its own.
+9. Structured metadata anchors surviving from ISO 11179 handle cross-reference and
+   integration, while semantic weight lives in the essay — two formats, different
+   functions, governed together.
+Conclusions:
+- The mathematics of vocabulary gluing was settled decades ago; the book's novelty is
+  operationalizing it for platforms that evolve faster than any formal specification can
+  track.
+- The colimit of domain vocabularies is a dynamic trajectory and eval target with
+  explicit gaps, maintained by agents — never a finished object.
+- Bitemporality belongs as the default substrate discipline, not an opt-in for regulated
+  workloads, and extends to ontologies themselves as versioned temporal objects.
+- The book is neither Kimballite nor Inmonite nor Semantic-Web nor pure mesh: it
+  inherits specific principles from each while its synthesis is its own position.
+- Prose beats OWL not on principle but because the dominant machine consumer of
+  documentation shifted from symbolic reasoners to LLMs.
+- Federated governance as practiced in the book owes data mesh more than its critique of
+  mesh suggests.
+Creates:
+- The intellectual genealogy of the book: specification composition
+  (Poernomo–Crossley–Wirsing) as parent, Spivak's functorial data migration as cousin
+- The 'dynamic colimit' departure claim — colimit as agent-maintained trajectory and
+  eval target across organizational evolution, not completed object
+- The mapping of the book's three query modes (as-of-now, as-of-valid-time, as-of-
+  report-time) onto Snodgrass's current/sequenced/nonsequenced taxonomy
+- Bitemporal ontology — ontologies as versioned, temporal objects (extension beyond
+  Snodgrass/SQL:2011)
+- Morphism honesty discipline identified as 'institutions made operational' — Goguen
+  morphisms carrying their own honesty data (losses, partialities, verification state)
+- The consumer-shift argument for prose-over-OWL: documentation format is correct
+  relative to its dominant machine consumer
+- The two-format governance principle: ISO 11179-style structured anchors for cross-
+  reference, domain essays (600–1500 words) for semantic weight, governed together
+Demolishes:
+- The Semantic Web program (OWL, RDF, SPARQL, description logics) as the right
+  documentation substrate for today's machine consumers — correct for symbolic
+  reasoners, wrong for LLMs
+- Data mesh's underspecification of the semantic layer — federation without composition
+- Bitemporality treated as an opt-in feature for regulated workloads rather than the
+  substrate default
+- Exclusive allegiance to either the Kimball or the Inmon tradition
+- Treating the colimit of domain vocabularies as a completed, static mathematical object
+  that formal specification can track
+- Papering over the losses and gaps in cross-domain semantic maps rather than making
+  them explicit
+////
+
 The ideas in this book have long lineages. This essay names them: what is inherited, from whom, and where this book departs.
 
 The formal spine is decades-old mathematics that has just found its moment. Composing many domain theories into one — gluing them along what they share, the pushouts and colimits of category theory — was worked out for program synthesis in the 1990s, long before anyone needed it for data. It is what the agentic estate requires: a principled way to fuse a hundred local vocabularies into one coherent whole an agent can reason across, with every loss and gap made explicit rather than papered over.

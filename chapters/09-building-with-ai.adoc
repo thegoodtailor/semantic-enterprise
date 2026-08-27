@@ -1,5 +1,148 @@
 == Building with AI
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Traditional information architecture died of maintenance, not design: FIBO — 2,400
+classes, 30,000 terms, central-bank endorsement, almost no users — is the beautiful
+corpse that proves a unified enterprise ontology is intrinsically unfinishable, while
+the core domains it models are in fact stable and the churn is additive, living at the
+analytics edge. AI changes the economics of curation: an always-on curator audits
+definitions against ISO 11179 in seconds, extracts tacit knowledge conversationally
+instead of by spreadsheet, maps lineage as the pattern-recognition task it always was —
+and Continuous Morphism Verification gives meaning what CI gave code, a standing mesh of
+per-domain agents running six checks per scan, with the colimit's commutativity as the
+mechanical test that two routes carrying one concept still agree, drift localized to a
+witnessed span and health tracked as a vector, like uptime. The evidence is one
+architect with AI producing in five months — 586 terms, 289 mapped concepts, eleven
+machine-readable standards — what took banks teams and years; but velocity is not the
+argument, sustainability is: the ontology does not rot because the curator never sleeps.
+This is a phase transition: AI as the literal-minded primary consumer makes semantic
+rigor mandatory, and AI as maintainer makes it achievable. Governance therefore moves
+from process to construction — the schema definition file is the logical data model,
+definitions flow one way from glossary through schema to semantic layer, every Gold
+model ships with an explore, and failing definitions block deployment as failing tests
+block code — something the architecture is, not something a committee does. What
+replaces the steward caste, the static catalog, and the consultant parallel empire is a
+small team of hybrid practitioners — part linguist, part engineer, part domain analyst —
+who supply the why while AI supplies the what.
+
+Argument:
+1. FIBO — 2,400 classes, 30,000 terms, central-bank endorsement, near-zero adoption, OWL
+   reasoners that ran for days before being killed — proves that grand unified
+   ontologies die of maintenance, not design: rigor defeats adoption and simplification
+   destroys the rigor that justified building it.
+2. Unified enterprise ontologies are intrinsically unfinishable because the enterprise
+   never stops changing; colimit architecture removes unfinishability by letting each
+   domain keep its own ontology connected through explicit morphisms, usable and
+   finishable at every step.
+3. The maintenance myth must be inverted: core business domains are stable on a
+   timescale of years while churn is additive and lives almost entirely in analytics —
+   yet even the edge-change volume outruns any quarterly committee, whose every approval
+   certifies a snapshot the platform has already left behind.
+4. AI changes the economics of curation because it never sleeps, never gets bored, and
+   never leaves: ISO 11179 definition audits in seconds, conversational extraction of
+   tacit expert knowledge (one 45-minute conversation yielding thirty-plus production
+   definitions), and lineage mapping as pattern recognition over SQL — with human expert
+   review as the remaining bottleneck.
+5. Meaning is the last layer without a continuous discipline: as CI made code
+   correctness continuous and observability made data quality continuous, Continuous
+   Morphism Verification makes semantics continuous — a multi-agent mesh running six
+   checks (structural, referential, distributional, completeness, loss re-validation,
+   commutativity) on every scan, emitting witnesses on failure and rolling results into
+   a colimit-health vector.
+6. The commutativity check — using the colimit's universal property as a mechanical test
+   that two routes carrying one concept must agree — is the book's own addition and the
+   difference between monitoring meaning and proving it coherent.
+7. Documentation stays human at its core: domain essays and morphism-as-essay carry
+   operational knowledge no schema contains, AI drafts and flags staleness but cannot
+   author the knowledge, and subtly wrong AI-extracted definitions that pass quality
+   gates are caught by feedback-in-usage and agentic review (the Reflexive Loop), not by
+   review boards.
+8. The velocity evidence — 586 glossary terms, 289 mapped concepts, eleven machine-
+   readable standards documents by one architect in five months versus multi-year teams
+   at JP Morgan and LSE — matters less than sustainability: the ontology does not rot
+   because the curator never sleeps, a phase transition in which the correct approach
+   becomes both mandatory (AI takes definitions literally) and achievable (AI carries
+   the maintenance).
+9. Governance by construction replaces governance theater: the schema definition file is
+   the logical data model, definitions flow one way through the three-tier vocabulary
+   (glossary governs schema governs semantic layer, upstream always wins), every Gold
+   model ships with an explore, ISO 11179 checks block deployment like failing tests,
+   and ungoverned data becomes impossible to ship at every layer.
+10. The team follows the architecture: the consultant parallel empire and the five-to-
+   ten-person siloed IA team are obsolete; the semantic enterprise runs on one or two
+   AI-augmented hybrid practitioners — part linguist, part engineer, part domain analyst
+   — who supply the why while AI supplies the what, led by people who have not lost
+   their teeth.
+Conclusions:
+- Building was never the problem; maintaining always was — and AI is the first
+  technology that makes continuous semantic maintenance economically sustainable.
+- AI makes rigorous semantic infrastructure simultaneously mandatory (AI consumes
+  definitions literally and fails confidently, silently, at scale on bad ones) and
+  achievable (AI handles the maintenance that made rigor impossible).
+- Governance must be something you are, not something you do: an architecture in which
+  ungoverned data cannot ship, monitored continuously by AI, at every layer including
+  sandboxes and feature stores.
+- The scarce resource has shifted from execution capacity to architectural judgment —
+  from hands to heads; hire thinkers, not typists, and keep humans on the why while AI
+  does the what.
+- A curator without a ledger is just a copilot: the 2026 contested position is not
+  whether AI curates but whether its drafts carry grades and its verdicts are scored —
+  vendor copilots draft, none keep score.
+- Without semantic infrastructure AI guesses; with it AI grounds — and when machines are
+  the primary consumers of data architecture, guessing is a countdown to irrelevance.
+Creates:
+- AI as Always-On Curator — continuous curation replacing snapshot governance (figure:
+  curator-vs-committee)
+- Continuous Morphism Verification (CMV) — CI for meaning, observability for the
+  semantic layer; "the colimit is a verb; this is the verb running"
+- The six morphism checks: structural, referential, distributional, completeness, loss
+  re-validation, commutativity
+- The verification mesh — per-domain verification agents plus a coordinator, multi-agent
+  by necessity (commutativity is inherently cross-domain); hierarchical sub-meshes
+  beyond ~30 domains
+- The witness — a failed check emits the specific shared concept and the two disagreeing
+  paths, localizing drift to one span
+- The colimit-health vector with per-morphism last-verified timestamps and calibrated
+  confidence, tracked like uptime
+- The commutativity criterion as mechanical test — the colimit's universal property used
+  to prove meaning coherent, claimed explicitly as this book's addition
+- Conversational extraction — record the expert's walk-through of their day, AI
+  structures, human validates (human describes / AI structures / human validates)
+- Morphism-as-essay — cross-domain morphisms written as domain essays carrying the
+  operational knowledge controlled-vocabulary entries discard (worked example:
+  Compliance-to-Trading KYC/counterparty map)
+- Governance by Construction — schema definition file IS the LDM; three-tier vocabulary
+  (glossary → schema definition → semantic layer) with upstream-always-wins; every Gold
+  model ships with an explore; ISO 11179 checks block deployment; "catalogued or it does
+  not ship" at every layer
+- The curator's ledger — graded drafts and scored verdicts as the line between
+  governance and vendor copilots
+- The AI-augmented team shape — one or two hybrid architects (part linguist, part
+  engineer, part domain analyst), embedded in engineering, producing executable
+  definitions; "losing your teeth" as the leadership failure AI reverses; figure:
+  metadata-graveyard (FIBO as "the most beautiful corpse")
+Demolishes:
+- FIBO and the grand unified ontology — formally complete, operationally dead; RDF/OWL
+  heavyweight formalism generally (reasoners killed after days, standards bodies
+  shipping OWL violations)
+- Snapshot governance — quarterly committees, data steward castes, annual attestation
+  certifying states the platform has already left
+- Static metadata catalogs as shelfware — Collibra/Alation-style second sources of
+  truth; Gartner's retired Magic Quadrant and Forrester's dropped Wave as the category's
+  own obituary
+- Fill-in-the-spreadsheet metadata elicitation from domain experts
+- The consultant parallel empire — shadow Snowflake environments, non-standard MCPs,
+  dependency-by-design engagement extension
+- Auto-generated documentation as coverage — schema-generated essays and doc-coverage
+  metrics as compliance theater
+- Governance by integration — vendor catalogs (Unity Catalog, Snowflake Horizon)
+  retrofitting governance into the platform instead of the architecture
+- The traditional five-to-ten-person siloed IA team, and ledgerless vendor copilots that
+  draft but never keep score
+////
+
 === Why Traditional Information Architecture Failed
 
 Traditional information architecture failed because modeling is a maintenance problem disguised as a design problem — and nobody reads the disguise until the budget is spent.

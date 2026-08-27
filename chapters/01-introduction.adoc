@@ -1,5 +1,100 @@
 == Introduction
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Your data platform was built for a consumer who should no longer exist: the human
+analyst who compensated for bad infrastructure by being smart. The primary consumer is
+becoming a machine — an AI agent bound by context windows and attention, brilliant but
+cost-effective only with sufficient background, whose brain is the sum of your semantics
+— and the same machine now builds the estate as well as consuming it. Ten axioms, forged
+in two decades of enterprise data and AI practice, run through the book, held at three
+altitudes: believed as axioms, designed as the Seven Core Positions, enforced as the
+Laws. The formal spine is old mathematics whose moment has arrived — colimits gluing
+domain vocabularies, bitemporality, bridges carrying their own honesty data — while
+documentation shifts from OWL to prose because the machine reader is now an LLM. The
+craft this rests on is language-first engineering: deciding what "revenue" means is the
+work; pipelines are plumbing. AI does not make those decisions easier — it makes their
+failures impossible to ignore and their infrastructure dramatically cheaper to build.
+
+Argument:
+1. Thirty years of data architecture were optimized for a human analyst who compensated
+   for bad infrastructure with SQL skill, domain knowledge, and tacit judgment.
+2. That consumer has not disappeared, but the economics have flipped one-way: the
+   primary consumer is becoming an AI agent bound by context windows and attention,
+   which lacks tacit intuition and improvises expensively and confidently under
+   ambiguity.
+3. Consumption is only half the job: the same machine now builds — drafting provisional
+   semantics, generating pipelines from declared meaning, populating governed models,
+   publishing answers that outlive their conversations.
+4. This shift reorders everything: some decades-standard patterns become actively
+   harmful, while practices long dismissed as mere hygiene (information architecture
+   since the 1990s) become mandatory.
+5. Ten axioms, forged in two decades of practice rather than deduced from first
+   principles, run through the book and govern how to build for this consumer.
+6. The axioms are the creed; the Seven Core Positions (The Architecture) are their
+   architectural form; the Laws (The Playbook) are their enforcement — one doctrine at
+   three altitudes: believed, designed, enforced.
+7. The formal spine is old mathematics whose moment has arrived — pushouts and colimits
+   gluing domain vocabularies, bitemporal machinery, bridges carrying their own honesty
+   data — and documentation should be prose essays, not OWL, because the dominant
+   machine reader of documentation is now an LLM, not a symbolic reasoner.
+8. Since column names, definitions, and glossary terms are the interface between
+   organizational knowledge and every reasoning system, the real craft is language-first
+   engineering: linguistic decisions with engineering consequences, systematically
+   underinvested in by an industry that thinks it builds pipelines.
+9. AI does not make these decisions easier; it makes the consequences of getting them
+   wrong impossible to ignore and the infrastructure for getting them right dramatically
+   cheaper to build.
+Conclusions:
+- A data platform is infrastructure for making facts available to any consumer — human,
+  dashboard, AI agent, regulatory submission — through a shared vocabulary that makes
+  facts mean the same thing to everyone.
+- Build for the consumer that cannot squint: the new machine consumer amplifies
+  ambiguity where the old human one compensated for it.
+- Semantic infrastructure is a prerequisite, not a feature; governance exists only if
+  embedded in the execution pipeline.
+- Language is what data architecture is made of; get the vocabulary wrong and no
+  dashboard redesign or governance committee will save you.
+- The architecture is stack-agnostic (examples in dbt, Looker, BigQuery, Claude are from
+  practice, not prescription), and its key empirical claims were measured with a public,
+  reproducible harness.
+Creates:
+- The Ten Axioms (storage/meaning decoupling; one-directional meaning flow with
+  upstream-wins; Silver as governed dimensional analytical surface with Gold's flat
+  denormalized fast default; AI through the same semantic layer as every consumer;
+  governance embedded in execution or nonexistent; semantic infrastructure as
+  prerequisite; the system knows what it knows and what it does not; composable domain
+  vocabularies; information density per token as the binding constraint; population is a
+  policy — contract precedes machinery)
+- The three-altitude doctrine structure: Axioms (believed) → Seven Core Positions
+  (designed) → Laws (enforced)
+- Language-first engineering — linguistic decisions with engineering consequences as the
+  core discipline
+- The consumer-shift framing: the machine consumer whose brain is the sum of your
+  semantics (fig: old consumer compensated for ambiguity, new one amplifies it)
+- The consume/build split structuring the book: first half makes the estate legible to
+  the machine, second half puts the machine to work building it
+- The prose-over-OWL position: domain essays for LLM readers, since the dominant machine
+  consumer of documentation shifted from symbolic reasoners to LLMs
+- The creole — announced as the book's vendor-neutral declaration notation, introduced
+  in The Architecture
+- The measured-not-asserted commitment: empirical claims backed by a public reproducible
+  harness
+Demolishes:
+- Building only for the human analyst consumer — a shrinking share of the organization's
+  own questions
+- Compensatory-human governance: relying on the smart analyst to squint, phone a
+  colleague, and adjudicate three conflicting revenue figures
+- Ceremonial data governance: the CDO who documents element names in a repository, hands
+  out steward titles, and multiplies steercos
+- The industry's self-image as pipeline builders — pipelines are plumbing, not the craft
+- Dismissing information-architecture practice as mere hygiene
+- OWL ontologies as the documentation target now that the machine reader is an LLM
+- Governance as committee meetings and dashboard redesign as remedies for broken
+  vocabulary
+////
+
 Your data platform was built for a consumer who should no longer exist.
 
 For thirty years, data architecture was optimized for a human analyst with SQL skills, domain knowledge, and the ability to compensate for bad infrastructure by just being smart. The databases were designed for her. The dashboards were built for her — or self-served by her. The business got the data it more or less needed thanks to the tacit understanding that she would be the one squinting at the numbers, calling a colleague when something looked off, and making a judgment about which of the three conflicting revenue figures was probably the right one. At best, the company may have hired a Chief Data Officer to document the names of the data elements she managed in a repository, award her the title of data steward or owner, and give her a bunch of new steercos to attend and chair.

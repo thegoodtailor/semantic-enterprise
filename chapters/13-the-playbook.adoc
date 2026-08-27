@@ -1,5 +1,143 @@
 == The Playbook
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+The argument of the book compresses here into an executable program: thirty-four Laws
+taped to the wall, a six-question diagnostic that replaces the eight-week maturity
+assessment with ten minutes of candor, and four sequenced investments — vocabulary,
+semantic layer, agent infrastructure, and the builder's estate — each with a timeline
+measured in weeks and months rather than years. Vocabulary comes first, extracted in
+recorded workshops rather than six-month waterfalls, governed as Tier 1 of a chain in
+which upstream always wins; the semantic layer inherits it and becomes the only
+interface to data, with exactly two named exceptions and exploratory data science
+rehoused in Dev Gold rather than waved below the layer. Agent infrastructure follows a
+maturity ladder that must not be skipped — pre-flight checks, provenance on every
+answer, the engine joining while the model never plans a join — and the builder's estate
+operationalizes the last five Laws: population policy, evidence bundles, the answer
+ledger, trust-grade propagation. Half the playbook is stopping: standalone governance
+tools, dashboard proliferation, separate AI data layers, multi-year catalogs, full
+ingest for low-stakes insight, and the unified enterprise data model, replaced by a
+colimit of domain ontologies whose morphisms carry their losses on their face. The team
+is six to ten people plus federated domain leads, hired for judgment, led by architects
+who still write code; the board presentation is three sentences on one page. The costs —
+analyst speed, political comfort, catalog careers — are named rather than hidden, and
+the instruction is to start Monday.
+
+Argument:
+1. Strategy documents written for approval fail; the book's argument condenses into 34
+   executable Laws — the page taped to the wall — plus an operating program.
+2. Six candid diagnostic questions (new-hire discoverability, AI first-try accuracy,
+   definition count for one term, key-person semantic risk, whether wrong board numbers
+   change the architecture, and declined-insight cost plus where assistant-produced rows
+   land) replace any multi-week consultant maturity assessment.
+3. Investment 1 is vocabulary first: twenty board-level terms, tutorial-grade
+   definitions extracted by AI from recorded expert workshops, held to ISO 11179 quality
+   criteria now economically enforceable on every commit, published as governed machine-
+   readable Tier 1 of a three-tier chain in which upstream always wins, and paired with
+   decay-flagged domain essays.
+4. Investment 2 is the semantic layer as the only interface — inheriting the vocabulary,
+   encoding relationships, defaults, freshness, and navigational heuristics, mapping
+   vendor language to house nomenclature, exposing all three temporal query modes as
+   first-class, designed for cross-domain composition from day one, with exactly two
+   named exceptions (substrate debugging, performance operations) and exploratory data
+   science redirected into Dev Gold rather than granted bypass, sustained by a days-not-
+   quarters extension intake.
+5. Investment 3 is agent infrastructure atop the first two: governed consumption
+   interfaces rather than SQL proxies, agent pre-flight (quality, freshness, access,
+   caveats, definition calibration), a feedback loop from contested answers, a three-
+   stage maturity ladder that must not be skipped, token economics as a head/tail
+   routing rule (flat materialized Gold vs Silver-as-Gold views over the declared join
+   graph, engine joins, never the model), and the warehouse-as-memory endpoint beyond
+   RAG.
+6. Investment 4, the builder's estate, operationalizes the last five Laws: per-model
+   population policy, the evidence-bundle table gating every agentic write, the answer
+   ledger for published-never-edited answers and standing questions, and trust-grade
+   propagation enforced by CI.
+7. Half the playbook is stopping: standalone governance tools, dashboard proliferation
+   and client-side transformation, separate AI data layers, multi-year catalogs, full
+   ingest for low-stakes insight, document-only retrospectives, ISO 11179 catalog
+   programs as scoped, and the unified enterprise data model — replaced by a colimit of
+   domain ontologies with continuously verified, loss-honest morphisms.
+8. The team follows: CDO-as-translator is automated away and only CDO-as-architect
+   survives; small technical AI-augmented teams hired for judgment, federated domain
+   leads, one code-writing architect who says no, and the team's own AI assistants
+   channeled through contracts rather than usage policy.
+9. The costs and open questions are named plainly — short-term speed for novel
+   questions, the unified-model illusion, optional governance's political comfort,
+   catalog careers, the plausible-but-wrong AI-maintained definition risk; essay
+   granularity, tooling flux, and density metrics remain unsettled.
+10. The board case is three sentences on one page — commercial risk, four investments,
+   what to stop — reinforced by the regulatory (EU AI Act) defensive case and the
+   injunction to start Monday.
+Conclusions:
+- Architecture is the strategy: the four investments are architectural decisions that
+  constitute a data strategy, and no separate strategy document is needed.
+- Sequence is binding: vocabulary before semantic layer, semantic layer before agent
+  infrastructure, Stage 1 stability before agentic autonomy — fuel before vehicle.
+- The only-interface commitment and the fast-intake commitment are the same commitment;
+  every bypass is an unrecallable fork, and exploratory data science belongs in Dev
+  Gold, not below the layer.
+- Stopping is half the program: the money currently spent on standalone tools,
+  dashboards, catalogs, parallel AI infrastructure, and reflexive full ingest actively
+  prevents the architecture.
+- The team is small, technical, federated, and hired for judgment; leaders who stop
+  building lose their judgment, and the CDO survives only as architect.
+- Executable now: diagnostic in ten minutes, vocabulary this week, semantic layer this
+  month, agent infrastructure this quarter, builder's estate with one mart — start
+  Monday.
+Creates:
+- The 34 Laws — the book's full doctrine as a numbered wall list (context window is the
+  budget; no consumer below the semantic layer; upstream always wins; Bronze is
+  testimony; declared grain; valid/system time separation; tiered temporal depth; Gold
+  published never edited; contract precedes population method; evidence-carrying agentic
+  writes; trust grade in the schema; answers published never edited; etc.)
+- The Six-Question Diagnostic (replacing consultant maturity assessments) and the five-
+  table Triage Protocol for brownfield estates
+- The Four Investments program: Vocabulary, Semantic Layer, Agent Infrastructure,
+  Builder's Estate — each with timeline, effort, and staffing
+- The Workshop Method: recorded expert conversation, AI extraction, expert validation —
+  one session replacing the six-month glossary waterfall
+- The three-tier vocabulary governance chain: glossary (Tier 1) governs schema
+  descriptions (Tier 2) governs semantic-layer definitions (Tier 3)
+- The ISO 11179-derived per-definition quality checklist enforced on every commit
+- House Nomenclature doctrine: a governed interpretive mapping from vendor/source
+  language to the organization's own language
+- The Only-Interface commitment with exactly two named exceptions (substrate debugging,
+  performance operations) and the explicit removal of exploratory data science via Dev
+  Gold
+- The Extension-Process rule: semantic-layer intake in days, not quarters, as the only-
+  interface commitment's operational precondition
+- Three temporal query modes as first-class semantic-layer vocabulary: as-of-now, as-of-
+  valid-time, as-of-report-time
+- Agent pre-flight (quality, freshness, access, caveats, calibration) and the head/tail
+  token-economics routing rule (flat Gold marts vs Silver-as-Gold views over the
+  declared join graph)
+- The Target Team Shape (central governance 1-2, federated domain leads, core
+  AI/conversational team 2-3, one code-writing architect) and the three-sentence one-
+  page Board Presentation
+Demolishes:
+- Consultant maturity assessments and fifty-slide data-strategy decks
+  (Gartner/McKinsey/Deloitte/Microsoft frameworks) — and the strategy/architecture split
+  that sells them
+- Standalone governance tools and metadata catalogs outside the CI/CD pipeline
+  (Collibra/Alation/Informatica pattern) — 'an expensive, underused shell'
+- Dashboard proliferation, self-serve BI, and client-side transformation logic (Tableau
+  calculated fields, Excel formulas, Power BI measures) as forty unversioned forks of
+  the truth
+- Separate AI data layers and consultant-built parallel empires with their own
+  governance and interfaces
+- Multi-year data catalog and formal ontology projects, and the ISO 11179 standalone
+  catalog program as previously scoped (criteria kept, deliverable killed)
+- The unified enterprise data model — perpetually six months from complete — replaced by
+  the finishable colimit with honest morphisms
+- Power-user direct SQL access and the 'raw access for data science' exemption — the
+  lawless exploration zone as ungoverned habit, not necessary freedom
+- CDO-as-translator, the separate Chief AI Officer split, full-ingest reflex for low-
+  stakes insight, and retrospectives that end in documents rather than executable
+  assertions
+////
+
 Most data strategy documents are written to be approved. This one is written to be executed.
 
 === The Laws

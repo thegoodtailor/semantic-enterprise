@@ -1,5 +1,138 @@
 == Language is the Material
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Fourteen million dollars lived in the gap between two correct definitions of "revenue,"
+every pipeline green, no AI involved: semantic failure is invisible to tooling that
+operates on syntax, and it predates the machines now forcing us to confront it. A name
+is a semantic contract — naming constructs the governed concept and selects its
+governance regime — yet engineers name for themselves and governance officers define for
+auditors, while glossaries, catalogs, and heavyweight ontologies die outside the
+execution pipeline as metadata graveyards. The AI agent, an onboarding hire with no
+channel for osmosis, knows only what its context contains, so the load-bearing artefact
+becomes the domain essay — practitioner prose on provenance, conventions, edge cases,
+and slang, versioned like code and decaying visibly — indexed by structured metadata
+rather than replaced by it; ablation trials show it is the conventions, not the tokens,
+that carry the accuracy. The architecture that keeps meaning coherent is a three-tier
+vocabulary — business-owned glossary, schema definition that IS the logical data model,
+semantic layer — three owners on three clocks under one rule: upstream always wins.
+Cross-domain polysemy is handled structurally, each domain a register with domain-scoped
+terms, composed by gluing along exactly the shared sub-theory — the pushout, not the
+naive union that conflates and collides. The instruction that compresses the book: build
+the vocabulary before you build anything else, and retire the Chief Data Officer in
+favor of a Head of AI–Human Communications, measured on whether an agent, an analyst,
+and an auditor get the same answer to the same question.
+
+Argument:
+1. A $14M P&L reconciliation break caused by two correct-but-incompatible definitions of
+   "revenue" — with every pipeline green — shows semantic failure is invisible to
+   syntax-level tooling and predates AI, which is the forcing function, not the cause.
+2. A name is not a style choice or a compliance artifact but a semantic contract that
+   constructs the concept it labels; misleading names (and dimensional encodings like GL
+   account codes, or expired conventions like fact_/dim_ prefixes) produce errors that
+   are trusted rather than noticed, and names select governance regimes via namespaces.
+3. Standalone glossaries, catalogs, and heavyweight ontologies (FIBO, Collibra,
+   ISO-11179-style registries) die as metadata graveyards because any vocabulary outside
+   the execution pipeline drifts from the systems it claims to govern, and because the
+   short structured definition is the wrong artefact — it omits exactly the operational
+   knowledge practitioners carry.
+4. The tacit-knowledge channel (proximity, apprenticeship, osmosis) that let human
+   consumers survive thin documentation does not exist for an LLM agent, which knows
+   only what is placed in its context — so documentation must become explicit onboarding
+   material.
+5. The artefact that closes the gap is the domain essay — 600–1500 words of
+   practitioner-written prose on provenance, conventions, edge cases, and slang —
+   anchored on structured metadata as its index, versioned like code, with a decay
+   model; the July 2026 ablation trials show conventions in governed descriptions
+   restore trap accuracy and the essay adds the multi-hop tail gain (and an irrelevant-
+   token control shows it is the conventions, not the tokens).
+6. Meaning is architected in a three-tier vocabulary — business-owned glossary, schema
+   definition file that IS the logical data model, and semantic layer — three owners on
+   three clocks, held coherent by the single rule that upstream always wins: downstream
+   may extend but never redefine.
+7. The discipline is language-first engineering: classical linguistics (synonymy,
+   polysemy, compounding, register, referential gaps) names the failures, and the
+   engineering of machine language understanding (embeddings, context windows, retrieval
+   and grounding) designs for the new reader — the union of the two is the job.
+8. Cross-domain meaning is handled structurally: each domain is a register (a small
+   theory/ontology), polysemy is resolved by domain-scoped terms (trading.position vs
+   finance.position), and domains are combined by gluing along exactly their shared sub-
+   theory — the pushout, generalizing to the colimit for N domains — rather than the
+   naive union that conflates and collides.
+9. Because ontological commitments are constructed choices that constrain everything
+   downstream, and AI has collapsed the clerical cost of curation while leaving the
+   judgment cost irreducible, the two-thousand-tables objection no longer holds.
+10. Therefore: build the vocabulary before pipelines — five directives plus an
+   organizational payoff, retiring the CDO in favor of a Head of AI–Human Communications
+   embedded in engineering and measured on whether agent, analyst, and auditor get the
+   same answer.
+Conclusions:
+- Vocabulary before pipelines: define the top twenty business concepts in the schema
+  definition that IS the model — machine-readable, in-pipeline — before any dashboard,
+  agent, or refactor.
+- Kill the metadata graveyard: a glossary not embedded in the execution pipeline (or six
+  months stale) is a liability — embed it or delete it.
+- Upstream always wins: downstream systems inherit definitions verbatim; a different
+  concept requires a different name.
+- Naming conventions are governance decisions and must be reviewed with IAM-policy
+  rigor; namespaces, not styles, are the unit of governance.
+- The scarce resource on a data platform is vocabulary quality, not engineers, compute,
+  or storage — and its irreducible cost is senior judgment, not clerical labor.
+- Retire the CDO as built: replace with a Head of AI–Human Communications who owns
+  glossary, domain essays, and semantic contracts inside engineering, measured on
+  agent/analyst/auditor answer convergence.
+Creates:
+- The name as semantic contract (naming is construction: a name commits a column to a
+  meaning within the organization's knowledge ecosystem)
+- The distinction between missing data and missing vocabulary (re-ingestion in weeks vs
+  definition update in minutes)
+- The Metadata Graveyard (named failure pattern: glossaries and catalogs scoped as
+  deliverables dying outside the pipeline)
+- Documentation as Onboarding (the machinic joiner: an agent has no osmosis channel and
+  must be told everything explicitly)
+- The Domain Essay (600–1500 words of practitioner prose — provenance, conventions, edge
+  cases, slang — versioned, dated, author-attributed, with a decay model; primary
+  carrier of meaning, structured metadata as its index)
+- The July 2026 ablation trials (structure-only drops trap accuracy to 75–83%; governed
+  column descriptions restore the ceiling; essay adds the multi-hop tail gain;
+  irrelevant-token control — "it is the conventions, not the tokens")
+- The Three-Tier Vocabulary (Tier 1 business-owned glossary as semantic graph; Tier 2
+  schema definition file that IS the logical data model; Tier 3 semantic layer as
+  navigation) — "one concept, three clocks"
+- The Upstream Always Wins rule (downstream may extend, never redefine)
+- Language-First Engineering (the union of applied linguistics and the engineering of
+  machine language understanding; "data engineering is applied linguistics" as the hook)
+- Domain registers and machine code-switching (domains as registers/small theories;
+  domain-scoped glossary entries like trading.position vs finance.position; semantic
+  layer resolves the active register from conversational context; register composition
+  as the silent-failure frontier)
+- The pushout as the disciplined cross-domain glue (merge along exactly the shared sub-
+  theory, vs the naive union that conflates and collides; org-chart merger figure;
+  colimit for N domains pointed forward)
+- Head of AI–Human Communications (replacement role for the CDO, with its job
+  description)
+Demolishes:
+- Naming as a private style decision (developer-convenient identifiers, breadcrumb
+  suffixes, style-guide-only governance — "delegating contract law to the intern")
+- Governance-for-the-auditor definitions filed in tools no engineer opens (the CDO's
+  monument; the CDO role as regulatory shock absorber)
+- Standalone glossaries/catalogs and the boil-the-ocean ontology (FIBO in OWL; Collibra-
+  style governance-first tools; "expensive shelfware"; any governance outside the
+  execution pipeline — "governance by committee is governance by nostalgia")
+- The controlled-vocabulary artefact itself (ISO-11179-style short structured
+  definitions as the sole carrier — formally correct, operationally useless for agents;
+  though the 11179 quality criteria are retained as craft discipline)
+- fact_/dim_ table-role prefixes (an expired governance decision, wrongly credited to
+  Kimball, redundant under columnar warehouses plus semantic layers)
+- Dimensional encoding of concepts into identifiers (the 333-account chart of accounts;
+  compounding)
+- The separate logical-data-model artifact (ER diagrams and design documents that
+  inevitably diverge from the schema)
+- The naive union of domain vocabularies (the single flat vocabulary / one-definition-
+  per-term glossary; definitional broadening that covers everything and means nothing)
+////
+
 === The Column Name Problem
 
 //@DONE -- checked vs ch2: distinct incident. Ch2's examples are AI query failures; this is a pre-AI human reconciliation break. Kept, and sharpened the "no AI touched this" beat below to differentiate and reinforce the "predates AI" thesis. (The register THEORY comes later in this chapter; this stays a war story.)

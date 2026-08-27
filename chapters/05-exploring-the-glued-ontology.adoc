@@ -1,5 +1,123 @@
 == Exploring the Glued Ontology
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Flat Gold answers the anticipated question and a single domain's Silver-as-Gold view
+answers the drill within one vocabulary; the question that crosses Trading, Compliance,
+and Custody in one line of thought is served by neither, and it is the permanent
+condition of analysis. The glued ontology — the colimit of domain theories and their
+bridges — is already an enterprise-spanning dimensional model, and it is consumed by
+navigating it live, Silver-direct, through the semantic layer: each pivot composes the
+target domain's surface across a bridge, at the right time grain via the as-of rule,
+minting a published answer whose trust grade is the weakest of the surfaces crossed.
+Every crossing is a change of register, and polysemy is its central hazard — a word like
+"volume" carries a different measure in Finance and Trading, and the meaning shift is
+detectable before the target register loads only through a thin, always-resident
+polysemy index. The hard problem is the joined cell: composed access is the intersection
+of the contributing domains' policies, declared at the bridge and never inferred at
+query time, with withheld cells typed "restricted" and named to the grant that completes
+them, existence-sensitive columns declared out of scope, and mixed-authorization
+aggregates failing closed over the intersection. Live composition is the most expensive
+query shape in the estate, so latency budgets, rollup routing, and answer-ledger-driven
+materialization of the high-traffic crossings keep the live explore for the long tail
+nobody anticipated. Business users and data scientists are walking the same surface, and
+the difference between an organization that can and one that cannot is whether the
+bridges exist.
+
+Argument:
+1. Flat Gold answers only the anticipated question, and Silver-as-Gold views answer only
+   single-domain drill-and-slice; the permanent condition of analysis is that the next
+   question crosses domains nobody pre-joined.
+2. The colimit constructed in Chapter 4 can be turned into a consumption surface: each
+   domain contributes its Silver dimensional model as a governed view, and bridges
+   compose those surfaces at pivot time via spans through shared sub-theories, with as-
+   of joins at the right time grain.
+3. Every cross-domain pivot is a change of register — a cognitive configuration, not a
+   filter — so crossing composes two sets of definitions, heuristics, and caveats at
+   once.
+4. Polysemy is the central hazard of the crossing (Finance 'volume' vs Trading 'volume'
+   completes without error and returns a precisely wrong number), and a bootstrap circle
+   — you detect a meaning shift only if you already hold both meanings — is resolved by
+   a thin, always-resident polysemy index that makes the shift detectable before the
+   target register loads.
+5. The bridge is the governed mapping that decides what the composed view means: which
+   concepts translate, which conflict rules hold where domains disagree, which temporal
+   alignment makes the join legal; the crossing runs a pre-flight and the resolution
+   persists as session state.
+6. The hard problem is security of the joined cell: composed access must be the
+   intersection of the contributing domains' policies, declared at the bridge, never
+   inferred at query time — silent widening is privilege escalation, silent dropping is
+   a partial answer that looks complete.
+7. Withholding must be visible (a typed 'restricted' naming the completing grant),
+   except where existence itself is sensitive, in which case the column is declared out
+   of scope; aggregates over mixed-authorization cells fail closed and compute over the
+   intersection only, carrying that scope on the answer.
+8. Live cross-domain composition is the most expensive query shape in the estate, so the
+   layer owns per-hop latency budgets, routes to rollups, and the answer ledger
+   identifies the high-traffic cross-domain questions that earn materialization as
+   governed flat Gold, leaving live exploration for the unanticipated long tail.
+9. Because each pivot mints a published answer with identity, temporal coordinates, and
+   composed (weakest-wins) trust grade, and the session queries only the sub-colimit of
+   domains reached, the surface stays citable and answerable as the estate grows.
+10. The same surface serves the business user's self-serve pivoting and the data
+   scientist's cross-domain feature discovery; what separates capable organizations is
+   whether the bridges exist.
+Conclusions:
+- The enterprise-spanning dimensional model is navigated live through the semantic layer
+  as the sub-colimit of the session's domains, never materialized as a single physical
+  star.
+- Composed access across a bridge is the intersection of contributing domains' policies,
+  declared at the bridge, with withholding visible ('restricted' plus the completing
+  grant) or the column declared out of scope where existence is sensitive.
+- Composed aggregates fail closed: they compute over the consumer's intersection only
+  and carry that scope on the answer.
+- Polysemy must be detectable before the target register loads, via a thin always-
+  resident polysemy index, so the pivot asks 'which volume?' instead of guessing.
+- Materialize only the highest-traffic cross-domain questions as governed flat Gold —
+  the answer ledger says which earn it, the colimit governs their joins — and keep live
+  exploration for the long tail.
+- A missing or stale bridge must surface as a named gap mid-pivot, not a wrong number;
+  the gap becomes the next morphism to write.
+Creates:
+- Live colimit navigation — the glued ontology consumed as a session-scoped, Silver-
+  direct, cross-domain dimensional surface (the sub-colimit of domains reached)
+- The intersection rule for composed access: "composed access is the intersection,
+  declared at the bridge, never inferred at query time"
+- The typed 'restricted' cell — visible withholding that names the grant that would
+  complete the view
+- The out-of-scope declaration for existence-sensitive columns (the bridge hides the gap
+  rather than advertising it)
+- Fail-closed composed aggregates that compute over the consumer's intersection and
+  carry that scope on the answer
+- The always-resident polysemy index — one line per domain sense of every multi-sense
+  glossary term, resolving the register-loading bootstrap circle
+- Register-switching as session mechanics: registers as cognitive configurations,
+  composed on crossing, with sense resolutions persisted as session state
+- The bridge pre-flight for domain crossings: explicit target-domain access,
+  thin/missing-layer surfacing, polysemy mapping before formulas, declared join path
+- Bridges as the locus where composed row/column policy, conflict rules, temporal
+  alignment, and clean-room requirements are declared and recorded
+- Per-hop latency budgets plus answer-ledger-driven materialization of high-traffic
+  cross-domain questions as governed flat Gold
+- Figure: Cross-Ontology Dimensional Exploration (fig-cross-ontology-dimensional) —
+  domain dimensional models composed Silver-direct through bridges into one navigable
+  surface
+Demolishes:
+- Materializing the enterprise model as a giant physical star or pre-built cross-domain
+  marts for every question
+- The rogue join — analysts hand-joining across domains outside machinery that knows
+  meaning and access
+- Silent widening of access through composition (the privilege-escalation engine)
+- Silent dropping of restricted columns (the partial answer that looks complete)
+- Aggregates that silently include or exclude cells the consumer cannot see
+- Treating polysemous terms as shared concepts — letting a calculation complete without
+  error and return a precisely wrong number
+- Naive temporal joins across domains (a fiscal-calendar table joined to a UTC one)
+- Governed exploration that ignores the latency bar — a five-minute governed explore
+  losing to a ten-second bypass
+////
+
 The flat Gold table answers the question it was built for, brilliantly and cheaply, and not one question more. The analyst who asks "daily P&L by desk by strategy" gets a perfect answer; the analyst who then asks "...and how does that break down by the counterparty's custody region, for counterparties onboarded in the last year?" has left the table behind. The second question crosses three domains — Trading, Compliance, Custody — and no single flat table was built for it, because nobody anticipated it. That is the permanent condition of analysis: the next question is not on the menu.
 
 The book has so far given two consumption surfaces. Flat Gold, for the anticipated question. And Silver-as-Gold views, which expose a *single domain's* dimensional model through the semantic layer — grain-defended, SCD2, conformed — so an analyst can drill and slice within Trading without a physical star schema to trip over. Neither is the thing a business user or a data scientist wants when they are exploring, which is to pivot freely across the *whole* business — to start in revenue, swing into trading volume, land on counterparty risk, and finish in custody positions, in one unbroken line of thought, without anyone having pre-built the join.

@@ -1,5 +1,132 @@
 == The Engineer's Appendix
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+The rest of the book argues; this appendix builds. Each canonical artifact is shown once
+and whole: the bitemporal Silver table with hash-derived surrogates, sentinel-dated
+intervals, and interval-splitting corrections; the semantic model whose declared
+entities are the joins and whose global namespace turns vocabulary collisions into build
+failures; the complete creole reference card with its mechanical compile-down to models,
+tests, CI checks, and registry entries. Two governance tables carry the agentic
+doctrines into DDL — the evidence bundle, which holds Bronze's testimony obligation
+where no Bronze copy exists, and the answer ledger, from which equal resolved questions
+are served rather than re-derived. Context per token is treated as the budget two
+vendors already enforce as product limits and four research lines explain, yielding
+schema rules for agent consumption and a hard fence between steering text and quoted
+material. The shared-key registry, seven CI gates, and the Gold publication spec finish
+the compile: every cross-domain key a governed artifact, every merge gated on contract,
+grain, definition quality, and population evidence, every Gold surface shipped with its
+question, its dual as-of coordinates, and a retention answer that never rests on time
+travel. A field glossary of join machinery closes the case that "the query executed" was
+never evidence.
+
+Argument:
+1. The book's arguments must terminate in buildable artifacts, so the appendix shows
+   each canonical object once and in full, dated to mid-2026 tooling but not to its
+   disciplines.
+2. The bitemporal Silver table makes the temporal doctrine concrete: hash-derived
+   surrogate keys for replay-stable identity, sentinel-dated open intervals, as-of joins
+   instead of business-key joins, verbatim glossary descriptions, and interval-splitting
+   backdated corrections.
+3. The semantic model shown once demonstrates governance by construction: foreign
+   entities declare joins that the engine plans, and a global measure/dimension/entity
+   namespace makes vocabulary collisions build failures — with descriptions sourced from
+   the MDR, never hand-typed.
+4. The creole reference card completes the notation and shows its mechanical compile-
+   down: entities to models and tests, ops to declared relationships, rules to CI
+   checks, defs to verbatim metadata, asserts to Reflexive Loop scans, bridges to join
+   declarations plus morphism-registry entries, standing questions to scheduled answer-
+   ledger publishers.
+5. Agentically populated models get their audit substrate: the evidence bundle carries
+   Bronze's testimony obligation where no Bronze copy exists, immutable and re-run-safe,
+   cousin to the agent_belief table rather than a duplicate of it.
+6. The answer ledger materializes the Death-of-the-Dashboard doctrine: every served
+   answer published at an address, equal resolved questions served from the ledger not
+   re-derived, standing questions as declared row-generators, and calibration counting
+   derivations not cache servings.
+7. Vendor context limits (Snowflake 50-100 columns/2MB, Databricks Genie five tables)
+   converge with the long-context research (Lost in the Middle, RULER, NoLiMa, context
+   rot) to make context-per-token a real budget, yielding schema rules: unambiguous
+   names, business keys and names alongside surrogates, and steering text strictly
+   fenced from quoted material.
+8. Shared identity underwrites the colimit, so every cross-domain key is a registered,
+   governed artifact — owner, format, uniqueness scope, stability guarantee, minting
+   process — and an unregistered shared key is an unverified morphism wearing a column
+   name.
+9. Governance by construction cashes out as seven CI gates — contracts, grain tests,
+   docs coverage, definition-quality linting, data diff, versioning, population checks —
+   because warehouse PRIMARY KEY/UNIQUE constraints are metadata-only and grain must
+   live in tests.
+10. Publication discipline closes the loop: every Gold surface ships a populated
+   publication block (question, grain, dual as-of timestamps, trust grade, retention
+   split between days-scale time travel and years-scale archived versions), and the
+   join-machinery glossary explains why 'the query executed' is never evidence.
+Conclusions:
+- The disciplines are durable even though the vendor figures are dated mid-2026; the
+  artifacts, not the arguments, are what an estate actually runs on.
+- Replayable identity, sentinel intervals, as-of joins, and interval-splitting
+  corrections make bitemporality operational rather than aspirational.
+- Definitions live once in the MDR; schemas and semantic models carry build-verified
+  copies — paraphrase is drift with a head start.
+- Audit for agent-populated data requires both the evidence bundle (what populators read
+  and wrote) and agent beliefs (what agents concluded); a complete audit walks both.
+- Context is a budget already enforced as product limits, so agent-facing schema design
+  must carry words, not just keys, and fence quoted text from steering text.
+- Fan and chasm traps mean a successful query proves nothing; correctness must be a
+  property of the declared model (symmetric aggregates, aggregate locality, entity-graph
+  resolution) with fail-closed behavior beyond the declared graph.
+Creates:
+- The canonical bitemporal Silver table DDL (silver_compliance.counterparty): hash-
+  derived surrogate keys, 9999-12-31 sentinel intervals, declared-and-tested grain,
+  glossary-verbatim column descriptions, interval-splitting backdated corrections
+- The semantic model shown once (MetricFlow YAML for executions/desk_pnl): entities-
+  imply-joins and the global-namespace collision-as-build-failure property
+- The Creole Reference Card: the complete notation (domain,
+  entity/grain/temporal/trust/populated-by, op, rule, measure, dimension,
+  definition/assert, deprecated, standing, bridge with shared/map/lost/partial/verified)
+  and its mechanical compile-down mapping
+- governance.evidence_bundle: the immutable witness record for agentically populated
+  models, carrying Bronze's testimony obligation
+- governance.answer_ledger: the published-answer artifact with resolved_question
+  equality, supersedes diffs, trust-grade propagation, and standing-question row
+  generation
+- The Context Budget: vendor limits plus long-context research operationalized as schema
+  and context-assembly rules
+- The steering/quoted context separation rule: fenced quoted material reasoned about,
+  never obeyed; pre-flight fails on unfenced outside text
+- The Shared-Key Registry: owner, format, uniqueness scope, stability guarantee, minting
+  process for every multi-domain identifier; bridges may join only on registered keys
+- The registered spec of legal_entity_id (owner compliance, ISO 17442 LEI or CPTY-
+  prefix, never reissued, M&A successor mapping, minted by onboarding entity resolution)
+- The seven CI Gates: contracts, grain, docs coverage, ISO/IEC 11179 definition linting,
+  data diff, versioning with deprecation windows, population checks with weakest-grade
+  propagation
+- The Gold Publication Spec block: business_question, owner-team, grain, dual as-of
+  timestamps, freshness SLA, trust grade, glossary links, explore, and the time-travel-
+  vs-archive retention split
+- The Field Glossary of Join Machinery: fan trap, chasm trap, symmetric aggregates,
+  aggregate locality, entity-graph join resolution, aggregate awareness, verified
+  queries/trusted assets
+Demolishes:
+- Sequence-assigned surrogate keys, which mint identity by arrival order and break every
+  downstream reference on replay
+- Business-key equality joins into SCD2 history — the textbook fan trap
+- NULL-terminated open intervals, which force COALESCE into every consumer and fail
+  sorting, ranging, and BETWEEN
+- Hand-typed or paraphrased definitions in schema files and semantic models — paraphrase
+  as drift with a head start
+- Gold tables exposing only surrogate keys to agents — agents reason over words,
+  surrogates are for the pipeline
+- Unregistered shared keys — 'an unverified morphism wearing a column name' — and the
+  silent key-recycling failure it enables
+- Trust in warehouse PRIMARY KEY/UNIQUE constraints, which are metadata-only on the
+  major cloud platforms
+- 'The query executed' as evidence of correctness — refuted by fan/chasm traps and the
+  eightfold-inflated raw-SQL benchmark figure; and native time travel (days-scale) as an
+  audit-retention answer
+////
+
 The rest of this book argues; this appendix builds. One dating note before the numbers: every vendor limit, engine capability, and product figure below is the state of the tooling as of mid-2026. The disciplines they illustrate are not dated.
 
 === Anatomy of a Silver Table

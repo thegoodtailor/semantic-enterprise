@@ -1,6 +1,169 @@
 [#chap-architecture]
 == The Architecture
 
+////
+CHAPTER ABSTRACT (tracking; not rendered in the book)
+
+Most data platforms are warehouses with loading docks: ingredients pile up, and nobody
+has decided what the restaurant serves. Rebuilt as epistemological layers — Bronze the
+faithful witness to what the producer said, Silver the domain-canonical interpretation
+in the enterprise's own vocabulary, Gold the curated menu of answers to documented
+business questions — medallion architecture becomes a knowledge architecture rather than
+three copies of the same data, and the warehouse traditions' durable principles (grain,
+conformed dimensions, SCD2) survive as declarations in Silver while their physical
+prescriptions expire under columnar engines and AI consumers. One law organizes the
+whole: joins are declared, never inferred — flat marts serve the head of the question
+distribution, governed explores over Silver's declared join graph serve the tail, and on
+neither surface does any consumer, human or model, plan a join, because the text-to-SQL
+error literature locates roughly three-quarters of all failure in exactly that act.
+Across domains, composition acquires mathematical structure: each domain is a category,
+each bridge a functor whose losses and partialities are documented and continuously re-
+verified, and the cross-domain view is a colimit — not a unified enterprise model frozen
+at one organizational moment, but a dated, gap-declaring trajectory whose health is
+tracked like uptime. The metadata repository completes the system as a context engine
+that briefs agents before they reason, replacing the browse catalog with pre-flight
+semantics. AI is both the forcing function and the enabling condition: agents demand
+clean semantics or hallucinate at scale, and agents absorb the maintenance burden that
+killed every unified model, formal ontology, and governance initiative that relied on
+human vigilance.
+
+Argument:
+1. Most data platforms are warehouses with loading docks and no menu; the standard
+   criticisms of medallion (rebranded staging, vendor revenue play) hit the quality-
+   gradient version most organizations build, not the epistemological version —
+   provenance in Bronze, meaning in Silver, knowledge in Gold — and three copies cost
+   pennies while five ungoverned interpretations cost millions.
+2. Bronze is not staging but sworn testimony: permanent, immutable, producer-owned,
+   referenced rather than copied (copying destroys the accountability boundary), held in
+   a governed evidence locker, and never queried for intelligence; agent-extracted
+   knowledge from unowned systems lands as an archived evidence bundle instead of a
+   copied firehose.
+3. The warehouse traditions' principles — grain discipline, conformed dimensions, SCD2 —
+   are durable properties of analytical reasoning, but their physical prescriptions
+   (Kimball consumption stars, Inmon's monolithic model) were built for row stores,
+   expensive storage, central teams, and human-only consumers, constraints that no
+   longer hold.
+4. Silver is therefore the domain-canonical modeling layer: wide entity-canonical
+   tables, one per logical entity, each owned by one domain; grain stated in schema
+   metadata and enforced by tests; tiered bitemporality (valid time plus system time);
+   conformance decided by the sharing rule — a conformed dimension is the special case
+   of a bridge where two domains' rules agree, co-owned through the bridge, never handed
+   to one domain; and the schema definition file IS the logical data model, eliminating
+   documentation drift by construction.
+5. Gold is the knowledge menu: flat, question-driven marts where design starts from a
+   documented business question carried in schema metadata, tables are traceable rather
+   than minimal, every model ships with an explore, and feature stores sit outside Gold
+   as a sui generis category governed by training-time point-in-time correctness.
+6. The flat-Gold position generalizes into the chapter's law — joins are declared, never
+   inferred: the text-to-SQL error literature puts roughly 73 percent of failures in
+   schema linking and join planning, while declared-join engines (AtScale 20→92.5
+   percent, dbt 100 vs 64.5, Cortex Analyst 92 vs 55) go near-ceiling because 'the
+   governed engine cannot produce a wrong join because it never writes a join.'
+7. So the architecture serves two governed surfaces over one vocabulary — flat marts for
+   the head of the question distribution, explores over Silver's declared join graph for
+   the tail — with fan-out-proof aggregation machinery (symmetric aggregates, aggregate
+   locality) attached to every declaration: the agent picks; the engine joins; the
+   honest tax is coverage, which fails closed and becomes intake for the next bridge.
+8. Declarations get a vendor-neutral notation, the creole — domain blocks, entities with
+   grain and temporal tier, ops as declared joins with asof rules, rules the
+   verification mesh re-checks, verbatim Tier 1 definitions, deprecations — and seven
+   core positions codify the stance, from the Decoupling of physical storage and logical
+   meaning to Epistemic Honesty.
+9. Multi-domain composition gets mathematical structure: each domain is a category, each
+   bridge a functor with a shared sub-theory and honestly documented losses and
+   partialities, and a cross-domain mart is the colimit — not a unified enterprise model
+   (a snapshot that structurally never ships) but a dated, versioned, gap-declaring
+   trajectory whose health (morphism completeness, bridge honesty, concept coverage,
+   staleness) is an eval target continuously re-verified by AI agents, which is what
+   finally makes the work finishable.
+10. Everything is delivered through the semantic layer or through nothing — bypassing it
+   dissolves the bitemporal contracts and the colimit into silos — and the metadata
+   repository of the future is a context engine that pre-flight-briefs agents (ISO 11179
+   definitions, tutorial narrative, freshness and quality signals) rather than a browse
+   catalog, because AI both demands this architecture and, by absorbing the maintenance
+   burden that killed every prior ontology project, makes it viable.
+Conclusions:
+- Framed epistemologically and paired with a semantic layer, medallion produces governed
+  knowledge; framed as a quality gradient it merely moves data through three copies, and
+  the critics are right about that version.
+- The flat-versus-star war dissolves under one law: flat marts are the degenerate case
+  (zero joins to declare), explores the general case (joins declared with integrity
+  machinery); both forbid the model writing a join from guesswork, and the durable claim
+  is determinism and auditability, not a snapshot of model weakness.
+- The unified enterprise model failed structurally — a colimit over a moving target
+  cannot be computed manually — and AI-maintained morphisms convert it into a
+  continuously evaluated governance metric that is locally finishable and never globally
+  'done.'
+- Governance not embedded in the execution pipeline does not exist: schema files as LDM,
+  mandatory explores, and mesh-verified bridges persist where separate documents,
+  catalogs, and quarterly attestations decay.
+- The architecture names its own breaking points: a semantic-layer intake that cannot
+  keep pace fragments the sole interface, bitemporality carries real storage cost
+  managed by tiering, and the colimit is most useful at five to thirty domains before
+  hierarchical composition is needed.
+- The forcing function is the new consumer: an AI agent cannot compensate for missing
+  definitions or ambiguous schemas — it needs the menu or it produces garbage with
+  confidence, and it will repeat your mistakes at scale.
+Creates:
+- Epistemological medallion reframing: Bronze = what the producer said (provenance),
+  Silver = what it means in our language (meaning), Gold = what we know (knowledge)
+- Bronze as Faithful Witness doctrine: immutable sworn testimony, producer-owned,
+  reference-never-copy, governed evidence locker, never an operational surface
+- The Sharing Rule: conform a concept into a co-owned shared sub-theory only where
+  domains' rules agree; where they disagree, keep it domain-local and bridge with
+  documented losses — the conformed dimension as the special case of a bridge
+- Grain-as-declaration: grain stated in schema metadata and enforced by uniqueness and
+  join tests that block deployment
+- Schema-file-IS-the-LDM principle: the schema definition file (schema.yml) is the
+  logical data model, drift eliminated by construction
+- Question-Driven Gold: every Gold table carries its documented business question as
+  first-class metadata; 'do not be minimal' traceability rule; the phantom-schema test
+- Mandatory explores: every Gold model ships with an explore (field definitions,
+  declared relationships, access controls, freshness, navigation) — a standard, not a
+  suggestion
+- The Law: Joins Are Declared, Never Inferred — two governed surfaces (flat marts for
+  the head of the question distribution, explores over Silver's declared join graph for
+  the tail); slogan 'the agent picks; the engine joins'
+- The Creole: vendor-neutral algebraic-specification pseudocode — domain blocks
+  (sketches), entities with grain and temporal tier, ops as declared joins with asof
+  rules, rules, verbatim measures, deprecations; and the bridge construct with
+  shared/map/lost/partial/verified blocks
+- The Seven Core Positions: The Decoupling, Upstream Always Wins, Silver Is the Domain-
+  Canonical Model, AI as Consumer Not Exception, Governance by Construction, Semantic
+  Infrastructure as Prerequisite, Epistemic Honesty
+- Colimit-as-eval-target with Morphism Honesty: domains as categories, bridges as
+  functors, cross-domain marts as colimits; colimit health metrics (morphism
+  completeness, bridge honesty, concept coverage, staleness); bitemporal ontology;
+  privilege-based domain expansion; island-to-archipelago onboarding ('morphisms are the
+  compound interest of data architecture')
+- MDR-as-context-engine: pre-flight briefings for agents (ISO 11179 definitions,
+  tutorial-quality narrative, quality/freshness/access checks) replacing the browse
+  catalog; feature stores named sui generis with a training-time-correctness contract
+  distinct from Gold
+Demolishes:
+- Medallion as a data-quality gradient — three folders, three tiers, no semantic
+  infrastructure — and the critics' claim that medallion is merely rebranded warehousing
+  or a storage-revenue play
+- Bronze as staging area, and copying vendor-landed Bronze data (destroys the
+  accountability boundary, creates a second source of truth)
+- Physical star schemas in Gold — the Databricks-Microsoft orthodoxy — as re-
+  materializing declared structure as undocumented physics and handing join planning
+  back to every consumer; also minimal 'elegant' Gold tables that cannot be audited
+- The anti-modeling / 'Death of Schema Linking' camp: long context does not fix variance
+  or auditability, and its best results concede the case by requiring well-modeled data
+- Governance as a separate overlay (Collibra-as-pattern): metadata graveyards of ten
+  thousand unread terms; browse-oriented catalogs destined to become compliance
+  artifacts
+- Data mesh without a semantic core: distributing ownership without distributing
+  vocabulary yields Balkanized confusion; 'just add a catalog' is filing without an
+  alphabet
+- Heavyweight formal ontology projects and the unified enterprise data model: monuments
+  that fail structurally because humans cannot manually recompute a colimit over a
+  moving target
+- Business knowledge trapped in visualization tools (Tableau-resident calculations) and
+  ad-hoc cross-domain integration by bespoke joins
+////
+
 If you are running a data platform, you are running a restaurant — one where the kitchen has no menu, the chef has never met a customer, and the health inspector is an AI that reads faster than you can lie. You have suppliers who deliver raw ingredients — some excellent, some questionable, all of it arriving on their schedule in their packaging. You have a kitchen where those ingredients are cleaned, prepped, and transformed into dishes that people want to eat. And you have a menu — a curated, opinionated selection of what you are willing to serve, described in language your customers understand.
 
 Now think about most data platforms you have worked with. They have a loading dock. Trucks back up, dump ingredients, and drive away. They might have something resembling a kitchen — some transformation logic, maybe a few models in the transformation tool. But do they have a menu — a curated, described, governed set of answers to the questions their consumers ask?

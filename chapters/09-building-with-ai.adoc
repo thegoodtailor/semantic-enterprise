@@ -375,9 +375,9 @@ One or two architects with deep domain understanding and AI fluency, embedded in
 
 Scarce resource: quality of thinking, not labor. You need people who understand both the domain and the technology, and AI handles the translation between them. Bottleneck has shifted from execution capacity to architectural judgment. From hands to heads.
 
-Implications for leadership too — a pattern a peer of mine named "losing your teeth" (her words, quoted in The Playbook). An engineer gets promoted to management. They stop writing code. They stop reading schemas. They stop understanding what the data looks like. Over a few years, they lose the technical fluency that made them valuable in the first place. They become managers who manage other managers who manage engineers. Distance between architectural decision and implementation grows until decisions are uninformed and implementations unsupervised.
+Implications for leadership too. An engineer gets promoted to management. They stop writing code. They stop reading schemas. They stop understanding what the data looks like. Over a few years, they lose the technical fluency that made them valuable in the first place. They become managers who manage other managers who manage engineers. Distance between architectural decision and implementation grows until decisions are uninformed and implementations unsupervised.
 
-AI collapses that distance: a leader who moves directly from thinking to building keeps the technical fluency that pure management erodes. They have not lost their teeth.
+AI collapses that distance: a leader who moves directly from thinking to building keeps the technical fluency that pure management erodes.
 
 The right team is defined by capability, not headcount. One person with AI augmentation and architectural judgment outproduces five without — not by working harder but by working differently: designing a system in which the dictionary maintains itself rather than maintaining it by hand. Hire for capability. Hire people who understand that the job is language-first engineering — that a definition is a contract and a namespace is a governance boundary. Give them AI, and get out of their way.
 
@@ -389,7 +389,7 @@ Sophisticated objection: if AI handles maintenance and structuring, does the hum
 
 Division of labor answers. AI handles the what: generating YAML, auditing definitions, mapping lineage, monitoring schema changes. Humans handle the why: what the definitions should be, how concepts relate, what the business context demands. You do not need to type the YAML. You need to understand what it means and why it is structured that way. The bar is different, not lower — architectural judgment rather than execution speed.
 
-Team shape for the semantic enterprise: small, technical, AI-augmented, embedded in engineering, producing executable infrastructure. Led by practitioners who have not lost their teeth. Using AI as co-builder of the architecture it will consume.
+Team shape for the semantic enterprise: small, technical, AI-augmented, embedded in engineering, producing executable infrastructure. Led by practitioners who still build. Using AI as co-builder of the architecture it will consume.
 
 Build the vocabulary. Embed it in the pipeline. Let AI maintain it. Hire thinkers, not typists. Build governance into the architecture so that doing the right thing is a property of the system, not a matter of discipline.
 

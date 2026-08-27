@@ -207,7 +207,7 @@ Bronze is your dirty laundry. The producer’s naming conventions might be terri
 
 Producers own Bronze. When a third-party system lands data in your Bronze zone, the accountability boundary is clean — they own the data, you own the interpretation. If the numbers do not reconcile, you can point to Bronze and say: this is what you gave us. The argument stops there. If you had cleaned the data on the way in, you have destroyed the evidence.
 
-A corollary most teams resist: do not copy Bronze when you can reference it. A senior engineer proposed jobs that copied a vendor’s data into our storage. My response was direct: the whole benefit of buying this product is that they land data in a zone we can see. I do not want jobs copying this. They landed it, it is theirs. We do our own Silver.
+A corollary most teams resist: do not copy Bronze when you can reference it. When a vendor lands data in a zone you can already see, the whole benefit of buying the product is that the landing is theirs — jobs that copy it into your storage buy nothing but a second custody bill and a reconciliation problem. They landed it, it is theirs. You do your own Silver.
 
 Copying Bronze destroys the accountability boundary. It creates a second source of truth. It introduces a synchronization problem that did not need to exist. The vendor’s data, in the vendor’s format, in the vendor’s zone — that is Bronze. Touch it and you own the discrepancies.
 
@@ -457,7 +457,7 @@ Seven positions, each hardened by failure, refined in arguments with smart peopl
 
 {empty}7. *Epistemic Honesty.* Data has freshness. Models have confidence intervals. Definitions have scope. When an agent answers a question using data that is twelve hours stale, it should say so. When a Gold table does not cover a particular time period, the query should acknowledge the gap. A system that presents uncertain answers with false confidence is worse than a system that says "I do not know."
 
-None of these arrived in a quiet room. The Decoupling crystallized during the star-schema conversation recounted earlier — an engineer re-materializing the declared join graph as physical layout, with no document that explained why this was wrong. Upstream Always Wins emerged from the tenth time I watched a downstream team introduce their own definition of a term that the glossary had already defined, creating a contradiction that took weeks to resolve. Governance by Construction was born from the exhaustion of watching quarterly governance meetings approve changes to a data dictionary that nobody read.
+None of these arrived in a quiet room. The Decoupling crystallized during the star-schema conversation recounted earlier — an engineer re-materializing the declared join graph as physical layout, with no document that explained why this was wrong. Upstream Always Wins emerged from years of watching downstream teams introduce their own definitions of terms the glossary had already defined, each contradiction taking weeks to resolve. Governance by Construction was born from the exhaustion of watching quarterly governance meetings approve changes to a data dictionary that nobody read.
 
 The seven are load-bearing in combination. Pull one out and the others wobble.
 
@@ -587,7 +587,7 @@ bridge ComplianceTrading = Compliance <- Shared -> Trading {
 
 What the domains genuinely agree on sits in `shared` and nowhere else — the sharing rule as syntax. What is lost and what is partial is declared, not discovered at the audit. And the `verified` stamp belongs to the mesh, renewed every scan. A bridge missing its `lost` block is not a bridge; it is a hope with syntax.
 
-The attestation is performed by each domain’s agent — which can read the map and the data it claims to align — with a human owner escalated only for the exceptions the agent cannot resolve. That is what lets the honesty stay current: when MiFID II recategorized clients and changed the Compliance partition, the Compliance.Customer to Trading.Counterparty morphism was flagged by the scan that ran the morning after the rule took effect, not surfaced at a quarterly review a season later. On that morphism, `regulatory_classification` survives the map alongside the identity keys; `kyc_sub_segment` is lost; proprietary desks remain partial.
+The attestation is performed by each domain’s agent — which can read the map and the data it claims to align — with a human owner escalated only for the exceptions the agent cannot resolve. That is what lets the honesty stay current: when a rule change like MiFID II's client recategorization moves the Compliance partition, the Compliance.Customer to Trading.Counterparty morphism is flagged by the scan that runs the morning after the rule takes effect, not surfaced at a quarterly review a season later — the design cadence the mesh exists to deliver. On that morphism, `regulatory_classification` survives the map alongside the identity keys; `kyc_sub_segment` is lost; proprietary desks remain partial.
 
 The honesty has a recurring social cost. Documenting losses requires both domains to participate, and one-sided morphisms are common because the target domain often sees no benefit in recording what it drops. The continuous scan is what makes the missing side visible instead of letting it pass as a completed map.
 

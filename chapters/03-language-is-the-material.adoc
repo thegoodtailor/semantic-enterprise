@@ -186,7 +186,7 @@ This is the Chief Data Officer's monument. The office was invented to own the on
 
 It dies because the glossary was scoped as a deliverable, and a vocabulary is a living system. The funding ended the day the maintenance began. Data platforms change daily. New tables appear. Columns are renamed. Business concepts evolve. Models are deprecated and replaced. A vocabulary that is not updated with every change is a vocabulary that drifts from reality. And a vocabulary that drifts from reality is worse than no vocabulary at all, because it creates the illusion of governance where none exists.
 
-A senior data leader described traditional data catalogs as "expensive shelfware." Another: "Let’s visit a website just to browse the metadata, said no one ever." Nobody browses metadata recreationally. If the definitions are not in the path of the work — if you have to leave your IDE, open a browser, navigate to a catalog, and search for a term — you will not do it. And if you will not do it, the definitions might as well not exist.
+Traditional data catalogs earn the industry's unkindest nickname — expensive shelfware — for one reason: nobody visits a website just to browse the metadata. Nobody browses metadata recreationally. If the definitions are not in the path of the work — if you have to leave your IDE, open a browser, navigate to a catalog, and search for a term — you will not do it. And if you will not do it, the definitions might as well not exist.
 
 FIBO — the Financial Industry Business Ontology, thousands of normative entities built in OWL by contributors from Goldman Sachs, Bloomberg, and Deutsche Bank, adopted almost nowhere — is the graveyard’s grandest monument. The full autopsy, from the OWL reasoners that had to be killed after days of processing to the practitioner verdict of "federation, not uniformity," is conducted in the Building with AI chapter.
 
@@ -318,7 +318,7 @@ Vocabulary architecture prevents this. When "revenue" has a definition that is c
 
 When vocabulary is not formalized, every question routes through a person. "What does this column mean?" Ask Sam. "How is this calculated?" Ask Keith. "Why does this number not match the other number?" Ask whoever built the original dashboard, if they still work here. Knowledge lives in people’s heads, and every query becomes a dependency on a specific individual.
 
-One team lead: "My team literally don’t know the domain. Sam and Keith are the only guys that know. And that’s a problem." It is a problem — and a predictable consequence of an architecture that does not capture vocabulary.
+The commonest confession in any data organization is some version of: the team doesn't really know the domain — two people do, and everyone routes around them. It is a problem, and a predictable consequence of an architecture that does not capture vocabulary.
 
 When teams go global, tacit knowledge breaks. The meaning has to be written down, and if it is written down in a PDF on SharePoint, it will be lost within six months. It has to be written down in the pipeline.
 

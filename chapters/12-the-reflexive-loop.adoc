@@ -255,7 +255,7 @@ definition performance_fee {
 
 None of these definitions is exotic. Every one is a term a fund uses a hundred times a day — and every one carries a convention that is invisible in the name and lethal in the gap. "Carried interest" is a single concept until you ask whether the waterfall is European or American, and then it is two different numbers that a model will average without noticing. "NAV" is a price for a liquid book and a discounted-cash-flow estimate for an illiquid one, marked as of a valuation date that is not the report date — and an agent that joins NAV to a report-date calendar answers a question nobody asked, confidently. "Performance fee" is one rate that resolves to different dollars per investor once a high-water mark and series accounting are in play. These are not edge cases bolted onto simple concepts; the convention *is* the concept. A human analyst carries it in their head and a new hire absorbs it in a month of corrections. An agent has neither the head nor the month. It reads the name, applies the textbook default, and produces a plausible, articulate, wrong answer — which is precisely why the convention has to live in the definition, in language, where the agent reads before it reasons. Strip the nuance to a tidy one-liner and you have re-created the failure the whole architecture is built to prevent.
 
-The two `born_of` assertions on `net_revenue` above are the residue of a real week — the April board-deck restatement, replayed end to end in "One Incident, End to End" at this chapter's close. The drift that caused it can recur; the silence that let it reach the board cannot.
+The two `born_of` assertions on `net_revenue` above are the residue of a week every data leader has lived some version of — the April board-deck restatement, a composite assembled from real restatements and replayed end to end in "One Incident, End to End" at this chapter's close. The drift that causes such a week can recur; the silence that lets it reach the board cannot.
 
 Assertions are code to maintain, and a definition carrying none becomes a visible smell — pressure that is intended. Suites grow monotonically with incidents and need pruning discipline (saturation, below).
 
@@ -327,7 +327,7 @@ A learning loop is a steering surface, and five failure modes will find it.
 
 === One Incident, End to End
 
-Monday morning, the April board deck reports net revenue up four percent on the quarter. By noon the CFO's own reconciliation disagrees with the general ledger by three percent, and the number is already in the minutes.
+One week, composite but true to the pattern of every restatement its parts came from, run through all four loops. Monday morning, the April board deck reports net revenue up four percent on the quarter. By noon the CFO's own reconciliation disagrees with the general ledger by three percent, and the number is already in the minutes.
 
 The answer carries provenance, so nobody convenes an archaeology project. The wrong number names its stakes: the `net_revenue` definition, the Trading→Finance morphism that feeds it, and the FX rate set it consumed — three conjectures, one of which has just failed. The mesh raised no witness, and that is the point of everything above Loop 0: every key joined, every path commuted, the shape was fine while the meaning was wrong.
 

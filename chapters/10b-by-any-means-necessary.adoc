@@ -224,7 +224,9 @@ The agentic populator carries the witness obligation in a different container: t
 
 Bitemporally the discipline is unchanged and non-negotiable. Valid time comes from the business — the week the client felt the friction. System time comes from the run — when the agent read the sources and wrote the row. A re-run that reads revised sources writes new rows on a new system time; nothing is overwritten; the ledger holds what we believed about April on every date we believed it. The Time chapter's machinery was built for exactly this and does not care whether the writer was a DAG or an agent.
 
-The honest limit: an evidence bundle supports the conclusion drawn; it does not support every conclusion that might later be wanted. The sources drift on, unowned; questions the extraction never asked cannot be answered retroactively from the bundle the way they sometimes can from a full Bronze copy. That is the trade, priced consciously per model: replay-what-we-used versus replay-anything, at two orders of magnitude difference in custody cost. When the model's stakes rise past what replay-what-we-used can defend, that is the audition passed, and the ladder is climbed.
+The limit, priced in: an evidence bundle supports the conclusion drawn; it does not support every conclusion that might later be wanted. The sources drift on, unowned; questions the extraction never asked cannot be answered retroactively from the bundle the way they sometimes can from a full Bronze copy. That is the trade, priced consciously per model: replay-what-we-used versus replay-anything, at two orders of magnitude difference in custody cost. When the model's stakes rise past what replay-what-we-used can defend, that is the audition passed, and the ladder is climbed.
+
+And the rule that decides between the containers is *reuse* — the custody question the Sandpit deferred here, answered. A feed you will query all year lands and is catalogued: full Bronze, full custody. A source you need six facts from gets attested extraction and an evidence bundle, never a copy. Landed or attested, there is no ungoverned path.
 
 === Trust Grade Is Part of the Schema
 

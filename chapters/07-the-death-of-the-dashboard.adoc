@@ -317,7 +317,7 @@ The costs are modest and the discipline is not. Ledger storage is a rounding err
 
 Certain positions need to be fought directly, because you — the reader — hold at least one of them.
 
-*"We will add a chatbot to our existing dashboards."* A chatbot that queries bad data through a bad semantic layer is automated confusion: it inherits every problem of the underlying dashboards and serves those problems faster. A chatbot on an ungoverned dashboard ecosystem is a motor bolted to the carriage — worse than either.
+*"We will add a chatbot to our existing dashboards."* Where-the-intelligence-lives already answered this: the chatbot inherits every problem of the dashboards underneath and serves those problems faster. A motor bolted to the carriage — worse than either.
 
 *"Self-service BI will get better."* It will not. Twenty years of dramatically better tools have not moved the adoption number this chapter keeps citing. The tooling was never the problem; the assumption was.
 

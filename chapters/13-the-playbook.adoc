@@ -459,7 +459,7 @@ Stop buying standalone governance tools. Start embedding governance in the pipel
 
 Every new dashboard is a new interpretation that will diverge from the canonical definition. Organizations routinely accumulate forty workbooks, each with its own version of the same metric, built by a different analyst for a different stakeholder. Nobody knows which one is correct. Everybody has a favorite.
 
-"Self-serve BI" collapsed because it pushed transformation logic out of the database and into client-side calculations: ungoverned duplication — forty unversioned forks of the truth — marketed as self-service.
+"Self-serve BI" collapsed because it pushed transformation logic out of the database and into client-side calculations: ungoverned duplication — forty unversioned forks of the truth — marketed as self-service. The most pervasive variant deserves its own line in the budget review: calculated fields in Tableau, formulas in Excel, Power BI measures applying business rules — the pipeline rebuilt in a client-side tool, unversioned and undocumented, so that when a column is renamed or a source deprecated, every fork breaks silently. Transformation logic belongs in the governed platform — the Gold layer or the semantic layer's logical definitions — never in the visualization tool.
 
 If data is valuable enough to transform and use daily, it should be in the database. That is what the Gold layer is for. Stop building dashboards that contain transformation logic. Stop building dashboards that define metrics independently. Build fewer dashboards. Build better Gold surfaces — flat tables for expedience, Silver-as-Gold views for depth. Build a semantic layer that makes the Gold tables queryable by anyone, through any interface.
 
@@ -478,14 +478,6 @@ If it takes two years to build your data catalog, it will be obsolete before it 
 AI changed that arithmetic. Record conversations with domain experts. Use AI to extract definitions. Validate with stakeholders. Publish. Workshops capture tacit knowledge that formal documentation processes miss.
 
 Stop funding multi-year catalog projects. Fund workshops and AI-augmented definition sprints.
-
-==== Client-Side Transformation
-
-Dashboard proliferation’s most pervasive variant: using visualization tools to replicate transformation logic that belongs in the database.
-
-Calculated fields in Tableau, formulas in Excel, Power BI measures that apply business rules — each is the data pipeline rebuilt in a client-side tool, unversioned, ungoverned, undocumented. When the pipeline changes — a column renamed, a calculation updated, a source deprecated — every client-side fork breaks silently.
-
-Transformation logic belongs in the governed data platform — in the Gold layer or in the semantic layer’s logical definitions — not in client-side visualization tools.
 
 ==== Full Ingest for Low-Stakes Insight
 

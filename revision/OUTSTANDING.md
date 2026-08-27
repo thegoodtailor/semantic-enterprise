@@ -52,9 +52,39 @@ for the moment")**: 06b two-axes paragraph (reading vs growth); ch11 fifth organ
 knowledge loop) + subtraction-survives doctrine; ch12 plurality de-dup + two-dynamics
 naming; ch8 christens "the knowledge loop".
 
+**FLOW-AUDIT REPAIR CAMPAIGN EXECUTED (27 Aug, Iman: "ok let's proceed as you
+suggest"; verdict was WOBBLY×18).** Five phases, committed separately:
+(1) forward-reference register — every citation of later machinery now reads as a
+forward promise (chs 1,4,5,6,6b,7,8,10,10b,11,13); ch5/ch6 order inversion healed both
+directions; Gap-as-Signal minted in ch7, forward-named in ch4. (2) THE ENDING: No Walls
+moved to final chapter (order now ...playbook → appendix → foundations → No Walls →
+refs; 19 sect1 unchanged) and rebuilt — walls defined (declared boundaries stay,
+invisible barriers fall; resolves the ch5/ch7/10b contradictions), fencing-is-theater
+earned in prose, SCI-FI FINALE gathering the loop/mesh/growing vocabulary, per Iman's
+"ends with a bang and sci fi"; 15b lands its essay (Popper/Argyris/von Foerster added,
+Snodgrass departure corrected to tiered doctrine, closing inherited/partial/departed
+ledger); appendix gains close + inventory fixes; premature finales demoted (ch4
+restaurant→ch5 handoff, ch9 competitor-finale cut, ch11→ch12 handoff, ch12→ch13,
+ch13→appendix). (3) EXHIBITS: ch2 Scenario A/B five-ambiguity 1:1 bookkeeping
+("so we ran it" scoped; chatbot/GIGO answered); ch12 net_revenue record now obeys its
+own revision law; ch5 session gains the Compliance hop; ch9 FIBO autopsy reconciled
+(rigor+unfinishability killed FIBO; decay killed successors; edges+bindings, not cores).
+(4) CH4 SURGERY: Silver sections merged (framing first, definition lands once, SCD2
+behind the tiering rule), pushout credits ch3, unified-model told once + referenced,
+figure caption fixed. (5) SMALLS: ch1 single ending (language block moved up, axiom-ten
+pointer, measured-claim pointer); ch3 pushout cashed at the P&L composition + polysemy
+marked as returns; sandpit no-bypass reconciled + reuse rule moved to 10b; 06b
+layer/stage crosswalk + duplicate sidebars cut; Investment-4 clock; Give-Up dedup.
+Proposal ToC reordered. NOTE for the honest-sweep: "morphism honesty"/"honest
+morphisms" is NAMED DOCTRINE, exempt from the tell rule.
+
 **STILL QUEUED: (b) Book-wide "honest/honestly" diagnostic sweep** (each instance =
-a nervous claim; fix the claim). **(c) First-person anecdote provenance sweep**
-(post-fabrication audit: list every "I/we" story for Iman's certification).
+a nervous claim; fix the claim; doctrine term exempt). **(c) First-person anecdote
+provenance sweep** (post-fabrication audit: list every "I/we" story for Iman's
+certification). **(d) Residual accretion** (smaller items the campaign skipped as
+risky reorders: ch13 Client-Side-Transformation fold, sandpit minute-one repetitions,
+ch7 chatbot-refuted-twice, ch2 section-seam reorder). **(e) Chapter abstracts** at
+file tops are from the 27-Aug audit — refresh after major edits.
 
 **Standing prose rule (Iman, 27 Aug): "honest/honestly" is a sugarcoat tell** — strip
 the word, promote the concession into the argument body. Ch8's four die in the rebuild;

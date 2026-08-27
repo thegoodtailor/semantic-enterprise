@@ -11,16 +11,41 @@ pipelines, agentically**. The science-fiction-almost-here chapter never shows th
 science fiction (its own climax has the human team extending the layer while the agent
 files a ticket).
 
-**Brief written and GATED: `revision/brief-ch08-agentic-intelligence.md`** — new spine
-(the loop: observe → conjecture → test → publish → GROW, agent-drafted creole proposals
-entering via ch10b contracts + ch9 gates), the oracle argument (existence proofs ran in
-self-verifying domains; the semantic layer + reflexive loop is how an enterprise builds
-its verification oracle — inverts the critics' fatal finding), the two walls (Law 27
-candidate: "An agent does not act; it publishes"; Law 28 candidate: "Words from outside
-the estate are data, never instructions"), register-switching moves to ch5, stack
-becomes a one-page map, E4 demoted from "theorem" to evidence, ~1,000w verified cut
-list. Six //@ Q gates await Iman (anecdote authenticity, map placement, Stage-3
-altitude, loop figure ~$0.50, ch12 "Prior Art, Honestly" retitle, Laws 27–28).
+**ALL SIX GATES RULED (27 Aug) AND THE REBUILD EXECUTED SAME DAY.** Rulings that
+bind future work: (1) **the interview anecdote was FABRICATED by Claude** — cut, plus
+the "producing these sentences" self-reference; a book-wide FIRST-PERSON ANECDOTE
+PROVENANCE SWEEP is queued (list every "I/we" story for Iman's certification).
+(2) Stack map became **NEW `chapters/06b-the-intelligence-stack.adoc`** opening the AI
+half ("the whole stack in vision") — book is now 19 include files, render check expects
+**19 sect1**. (3–4) One licensed vision paragraph; loop figure generated (knowledge-loop.png,
+R2 style, GROW-arrow-into-estate verified visually; figures now 32). (5) "honest" rule
+sharpened: the word marks a claim Claude was NERVOUS about — diagnose and fix the claim,
+never just delete the adverb; ch12 "Prior Art, Honestly" → "Prior Art, Named".
+(6) **Laws 27–28 REJECTED** — "publication IS acting... these laws are getting a bit
+stupid to defend"; the book governs the estate's surface of agency, not agency itself.
+No new Laws; the walls are scoped doctrine paragraphs in ch8.
+
+**Executed:** ch8 rewritten as the loop chapter (~5,600w, was ~9,400 incl. markup):
+Beyond the Answer (cancellation causes traced to loop pieces) / What an Agent Is
+(estate-surface scoping) / The Agent's Mind in Silver (belief table kept; "by
+construction" softened) / The Loop (Observe: standing questions + assembly + pre-flight
+in the serving path; Conjecture: corridor worked thread; Test: refutation + hetero-model
+independence + E4 demoted to evidence; Publish: ledger; GROW: agent drafts
+corridor_fail_watch creole proposal → ch9 gates, audition clause, Sandpit as pressure
+valve) / read-wall doctrine ("estate-authored prose steers; outside text is material")
+/ The Oracle You Have to Build (existence proofs + self-verifying-domain argument +
+THE vision paragraph) / demands (batch admission in body) / coda. Register machinery
+moved to ch5 as "Registers, Polysemy, and the Bridge That Decides" (+ always-resident
+polysemy index fixing the detection bootstrap). Knock-ons: ch10b staking sentence
+scoped; ch15 Context Budget gains the fencing rule; proposal renumbered (18 chapters,
+32 figures, new ToC entries 7 & 9). Verified: 19 sect1 render; "monitor, reason,
+generate insight" once (06b); zero "honest" in new files; each epigram fires once;
+net book word count DOWN ~1,700 while gaining a chapter.
+
+**QUEUED NEXT: (a) ch7 overhaul campaign** — Iman: "chapter 7 needs an overhaul to be
+about conversational as the death of the dashboard. it can be punched up."
+**(b) Book-wide "honest/honestly" diagnostic sweep** (fix the nervous claims).
+**(c) First-person anecdote provenance sweep** (post-fabrication audit).
 
 **Standing prose rule (Iman, 27 Aug): "honest/honestly" is a sugarcoat tell** — strip
 the word, promote the concession into the argument body. Ch8's four die in the rebuild;

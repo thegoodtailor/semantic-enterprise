@@ -2,7 +2,7 @@
 
 **Author:** Iman Poernomo
 **Submission to:** proposals@oreilly.com
-**Status:** Complete first draft (~89,000 words, 17 chapters incl. appendix), written in AsciiDoc/Atlas-ready format, with 31 original figures. Manuscript and CI build available on request.
+**Status:** Complete first draft (~90,000 words, 18 chapters incl. appendix), written in AsciiDoc/Atlas-ready format, with 32 original figures. Manuscript and CI build available on request.
 
 ---
 
@@ -63,9 +63,9 @@ That combination is the book's authority claim. Most data-architecture books are
 
 ## 8. Specs
 
-- **Length:** ~89,000 words (complete draft).
-- **Chapters:** 17 (15 chapters + No Walls coda + Engineer's Appendix + a Foundations and Sources essay), plus References.
-- **Figures:** 31 original (editorial cartoons + architecture diagrams), already produced.
+- **Length:** ~90,000 words (complete draft).
+- **Chapters:** 18 (16 chapters + No Walls coda + Engineer's Appendix + a Foundations and Sources essay), plus References.
+- **Figures:** 32 original (editorial cartoons + architecture diagrams), already produced.
 - **Format:** AsciiDoc, include-based master — directly compatible with O'Reilly Atlas. Automated PDF/HTML build (CI) already in place.
 - **Schedule:** **Complete first draft exists now.** Realistic path: developmental edit + technical review over ~3 months from contract; revisions ~2 months; production-ready ~6 months from contract. (The usual write-the-book risk is already retired.)
 
@@ -77,17 +77,18 @@ That combination is the book's authority claim. Most data-architecture books are
 4. **The Architecture** — Bronze/Silver/Gold re-derived for columnar engines and AI; *joins are declared, never inferred*; where serious people disagree; multi-domain composition as colimit; the MDR of the future.
 5. **Exploring the Glued Ontology** — One cross-domain session; security on joined cells; who this is for.
 6. **Time** — The two questions ("what was true" vs "what was reported"); bitemporality without overkill; correction events; the query vocabulary; the right to be forgotten.
-7. **The Death of the Dashboard** — The 40-workbook problem; what conversational analytics actually looks like; the positions worth fighting; one layer, every consumer.
-8. **Agentic Intelligence** — What agents actually need; multi-agent topology (why coordination, not headcount, governs error); the intelligence stack; building for the consumer that cannot assume.
-9. **Building with AI** — Why traditional information architecture failed; AI as always-on curator; continuous morphism verification; governance by construction; the team shape.
-10. **The Sandpit** — ML feature engineering and training pipelines under the same ontology; there is no ungoverned tier, only a provisional one.
-11. **By Any Means Necessary** — Population is a policy: AI as builder and populator of the estate, not only its reader. Declared contracts populated agentically; witness by evidence, not by copy; trust grades in the schema; grafting curated knowledge onto governed Gold; the estate as an organism rather than a refinery.
-12. **The Living Colimit** — The whole assembled into one self-verifying system; shipping it this year; the formal spine.
-13. **The Reflexive Loop** — Four loops of self-correction; falsification by design; the brain that knows when it was wrong.
-14. **The Playbook** — **The Laws** (the tape-to-the-wall page); the diagnostic; four investments (vocabulary, semantic layer, agent infrastructure, the builder's estate); what to stop spending on; the board presentation.
-15. **No Walls** — Coda: the platform as a place you think.
-16. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the creole reference card; the evidence bundle; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
-17. **Foundations and Sources** — the intellectual lineage as an essay, followed by **References**.
+7. **The Intelligence Stack** — The five layers in one view: governed data, semantic layer, conversation, agents, autonomous research; why the stack is strict; the three positions that stop organizations seeing it whole; the map of the book's second half.
+8. **The Death of the Dashboard** — The 40-workbook problem; what conversational analytics actually looks like; the positions worth fighting; one layer, every consumer.
+9. **Agentic Intelligence** — The knowledge loop: agents observe through standing questions, conjecture into a bitemporal belief table, survive adversarial refutation, publish graded answers — and grow the estate, drafting the new measures, standing questions, and population contracts that humans adjudicate. The verification oracle an enterprise must build; multi-agent topology as refutation machinery; what the loop reads is fenced.
+10. **Building with AI** — Why traditional information architecture failed; AI as always-on curator; continuous morphism verification; governance by construction; the team shape.
+11. **The Sandpit** — ML feature engineering and training pipelines under the same ontology; there is no ungoverned tier, only a provisional one.
+12. **By Any Means Necessary** — Population is a policy: AI as builder and populator of the estate, not only its reader. Declared contracts populated agentically; witness by evidence, not by copy; trust grades in the schema; grafting curated knowledge onto governed Gold; the estate as an organism rather than a refinery.
+13. **The Living Colimit** — The whole assembled into one self-verifying system; shipping it this year; the formal spine.
+14. **The Reflexive Loop** — Four loops of self-correction; falsification by design; the brain that knows when it was wrong.
+15. **The Playbook** — **The Laws** (the tape-to-the-wall page); the diagnostic; four investments (vocabulary, semantic layer, agent infrastructure, the builder's estate); what to stop spending on; the board presentation.
+16. **No Walls** — Coda: the platform as a place you think.
+17. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the creole reference card; the evidence bundle; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
+18. **Foundations and Sources** — the intellectual lineage as an essay, followed by **References**.
 
 ## 10. Sample chapter
 

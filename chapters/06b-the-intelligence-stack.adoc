@@ -1,0 +1,73 @@
+== The Intelligence Stack
+
+Everything to this point has been substrate: language as the material, the architecture that holds it, the glued ontology that composes it, time that makes it answerable. The chapters from here forward put intelligence on top — conversation, autonomous agents, AI as the estate's builder and populator, the loop that lets the whole thing correct itself. This short chapter is the map: the stack whole, in one view, before the chapters that build it floor by floor.
+
+Five layers, and organizations consistently misidentify which one they are standing on. Each depends on everything below it. Skip a layer and the stack collapses.
+
+[#fig-intelligence-stack]
+.The intelligence stack: each layer depends on the one below. Skip a layer and it collapses.
+image::figures/intelligence-stack.png[intelligence stack,width=460,align="center"]
+
+Layer one is governed data: the medallion architecture — Bronze as faithful witness, Silver as the canonical domain model, Gold as the curated knowledge menu — with the governance that makes it trustworthy: ownership, quality signals, freshness tracking, lineage. Without governed data, everything above is built on sand. It is the essential layer, and it is never the interesting one.
+
+Layer two is the semantic layer: where concepts map to data. Far more than column descriptions — definitions, hierarchies, relationships, default assumptions, domain heuristics, navigational context, the vocabulary architecture running from glossary downward with upstream always winning. This is the layer the preceding chapters have been building, and the one every layer above consumes.
+
+What it buys is measurable, and the measurements need reading with their scope attached. Where a query falls within the layer's declared scope, evaluations cluster at the ceiling; ungrounded against enterprise-grade schemas, they sit near the floor. The decisive quantity between those two numbers is coverage — how much of what your organization actually asks falls within the declared scope — which is why extending scope is a governed activity with a queue and a clock, and why the model was never the constraint. The vendors' benchmarks below measure the covered class, on the vendors' own testbeds; read them for the scale of the mechanism rather than as independent audit.
+
+.Grounding, measured — the industry's numbers, 2025–26
+****
+Grounded, the evaluations cluster at the ceiling: dbt Labs' 2026 benchmark
+scored semantic-layer queries at 100 percent for one frontier model and 98 for
+another; AtScale measured 92.5 percent against a 20 percent raw-schema
+baseline; Snowflake reports roughly 90 percent for Cortex Analyst against a 16
+percent raw-SQL baseline on the same questions. Ungrounded against
+*enterprise-grade* schemas, the floor is brutal — Spider 2.0's release paper
+measured the strongest model of the day at 21.3 percent. The complication that
+tempers the gap: on small, well-named schemas, raw text-to-SQL now reaches the
+mid-eighties. Scaffold choice is real too: on Princeton's Holistic Agent
+Leaderboard, the same model moves roughly seven points between orchestration
+harnesses on the GAIA benchmark (64.9 versus 57.6, mid-2025 entries —
+configurations differ, so read it as the scale of the effect, not a controlled
+ranking). The frameworks themselves — LangGraph, CrewAI, Microsoft’s Agent
+Framework, Anthropic’s Agent SDK, OpenAI’s Agents SDK, Google’s ADK — matured
+through 2025-2026, all supporting MCP natively or through adapters; both
+protocols now sit under neutral stewardship — A2A at the Linux Foundation
+(June 2025), MCP at the Agentic AI Foundation (December 2025).
+****
+
+.Grounding, measured — our trials, July 2026
+****
+In our own pre-registered trials (44 questions, six seeded ambiguities, three
+models — full method and harness at
+https://github.com/thegoodtailor/semantic-enterprise-experiments), the frontier
+models (GPT-5.6-terra and Claude Sonnet 5) scored 67–71 percent on trap
+questions from the raw schema and 100 percent through the governed semantic
+context; with structure alone — declared joins, definitions stripped — they
+fell to 75 and 83 percent respectively. The meaning, not the structure,
+carries the accuracy. Where the raw arms failed,
+the modal foil-matched error was strategy-tag selection — the deprecated
+column — exactly the failure class the declared-joins doctrine predicts.
+Numbers are dated; the mechanism is the claim.
+****
+
+[#fig-guess-vs-reason]
+.Grounded, an agent reasons at the ceiling; ungrounded against enterprise schemas, it guesses near the floor. The difference is infrastructure, not intelligence.
+image::figures/guess-vs-reason.png[guess vs reason,width=600,align="center"]
+
+Layer three is the conversational interface: a human asks, an agent answers through the layer. Stage 1 — the question-and-answer loop, the most visible layer and the one most organizations optimize for, because demos that impress the executive team are always conversational. Production is where its failure modes arrive, and "The Death of the Dashboard" is its chapter.
+
+Layer four is agentic intelligence: agents that monitor, reason, and generate insight without being asked — the architecture turned proactive, checking for anomalies, testing hypotheses, maintaining knowledge about the state of the business. It requires everything below, plus persistent memory, goal structures, tool access, and semantic context that reaches past definitions into domain expertise.
+
+Layer five is autonomous research: agents that maintain and grow knowledge bases, test hypotheses over weeks, falsify their own stale conclusions, and meet senior stakeholders as something approaching epistemic peers — approaching, never arriving; the work terminates in a human's judgment. Layers four and five are one machine seen at two speeds, and the next chapters build it as a single loop.
+
+Meaning flows upward, which is why the stack is strict. Wrong definitions at layer two are inherited and amplified by everything above; quality failures at layer one sit beyond the semantic layer's power to repair; a thin layer two leaves the conversational layer handling friendly questions while the agentic layer cannot function at all. Every layer passes its errors upward, amplified. By layer five the system is reasoning over the product of every choice below it.
+
+Three positions block organizations from seeing the stack whole, and each names a real pattern.
+
+*The chatbot equation.* "We deployed AI" meaning "we put a chatbot on the intranet." Chatbots reduce ticket volume; the claim is still like saying "we deployed electricity" because you installed a desk lamp. A chatbot on ungoverned data is layer three with nothing underneath — and industry's own surveys say most claimed "agent adoption" is exactly that: a chatbot and a press release.
+
+*The vendor shortcut.* "Connect our pre-built AI to your data — the model figures it out." Seductive, because it promises the result without the work; wrong, because the work is the point. Without grounding, the model does not say "I am uncertain about this column's meaning" — it picks an interpretation, commits, and presents the result as fact, and in a multi-agent system the confident mistake propagates through the coordination layer. Hallucination resists elimination — OpenAI's 2025 paper "Why Language Models Hallucinate" derives statistical lower bounds under current training paradigms — and the semantic layer is the daily medicine: grounding cuts what cannot be cured.
+
+*The mesh assumption.* Federated domain ownership, the reasoning goes, naturally produces the semantic infrastructure agents need. It produces accountability boundaries. Shared meaning across them is a separate achievement: without a canonical glossary governing what flows downstream, federated ownership is federated confusion — multiple teams, multiple definitions of the same concept, nobody sure which is authoritative. Data mesh without a semantic core is distributed ambiguity with better org charts. The estate this book builds is the post-mesh position: ownership federated, meaning glued.
+
+From here the book climbs the stack. "The Death of the Dashboard" builds layer three and discovers that the conversation is transport and the answer is the asset. "Agentic Intelligence" builds layers four and five as one loop — agents that mine new knowledge, and an estate that grows new structure to hold it. "Building with AI", "The Sandpit", and "By Any Means Necessary" are the builder's floors: AI curating, provisioning, and populating the estate it reasons over. "The Living Colimit" assembles the organism; "The Reflexive Loop" installs its doubt. The stack is the map. The loop is the engine. The chapters from here are the build.

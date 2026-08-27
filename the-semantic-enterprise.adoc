@@ -22,6 +22,8 @@ include::chapters/05-exploring-the-glued-ontology.adoc[]
 
 include::chapters/06-time.adoc[]
 
+include::chapters/06b-the-intelligence-stack.adoc[]
+
 include::chapters/07-the-death-of-the-dashboard.adoc[]
 
 include::chapters/08-agentic-intelligence.adoc[]

@@ -179,6 +179,8 @@ The research says why. Attention over long contexts is positionally non-uniform 
 
 The corollary for schema design comes from the agent-tool literature (Anthropic's guidance on writing tools for agents, 2025): names must be unambiguous — `legal_entity_id`, never `id` — and human-meaningful fields belong alongside machine keys. A Gold table that exposes only surrogate keys is an anti-pattern for agent consumption; carry the business key and the name, every time. Surrogates are for the pipeline. Agents reason over words.
 
+One rule governs which words may steer. Context assembly separates the steering text — the estate's own definitions, essays, and declarations: human-attested, versioned, CI-gated — from quoted material: field contents, external free text, other agents' prose conclusions. The second kind arrives fenced and marked, reasoned *about* and never obeyed, and pre-flight fails the assembly if unfenced outside text reaches the steering context ("Agentic Intelligence" carries the doctrine and the trial that motivates it).
+
 === The Shared-Key Registry
 
 Cross-domain joins are only as honest as the keys they ride on. The colimit runs on shared identity — `legal_entity_id` does the gluing in half this book's examples — so the keys themselves are governed artifacts.

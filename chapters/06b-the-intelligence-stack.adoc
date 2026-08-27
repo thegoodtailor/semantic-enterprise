@@ -28,11 +28,7 @@ mid-eighties. Scaffold choice is real too: on Princeton's Holistic Agent
 Leaderboard, the same model moves roughly seven points between orchestration
 harnesses on the GAIA benchmark (64.9 versus 57.6, mid-2025 entries —
 configurations differ, so read it as the scale of the effect, not a controlled
-ranking). The frameworks themselves — LangGraph, CrewAI, Microsoft’s Agent
-Framework, Anthropic’s Agent SDK, OpenAI’s Agents SDK, Google’s ADK — matured
-through 2025-2026, all supporting MCP natively or through adapters; both
-protocols now sit under neutral stewardship — A2A at the Linux Foundation
-(June 2025), MCP at the Agentic AI Foundation (December 2025).
+ranking).
 ****
 
 .Grounding, measured — our trials, July 2026
@@ -58,7 +54,7 @@ Layer three is the conversational interface: a human asks, an agent answers thro
 
 Layer four is agentic intelligence: agents that monitor, reason, and generate insight without being asked — the architecture turned proactive, checking for anomalies, testing hypotheses, maintaining knowledge about the state of the business. It requires everything below, plus persistent memory, goal structures, tool access, and semantic context that reaches past definitions into domain expertise.
 
-Layer five is autonomous research: agents that maintain and grow knowledge bases, test hypotheses over weeks, falsify their own stale conclusions, and meet senior stakeholders as something approaching epistemic peers — approaching, never arriving; the work terminates in a human's judgment. Layers four and five are one machine seen at two speeds, and the next chapters build it as a single loop.
+Layer five is autonomous research: the same machine run long — hypotheses held for weeks, stale conclusions falsified, findings brought to senior stakeholders whose judgment still terminates the work. Layers four and five are one loop seen at two speeds, and "Agentic Intelligence" builds them together.
 
 Meaning flows upward, which is why the stack is strict. Wrong definitions at layer two are inherited and amplified by everything above; quality failures at layer one sit beyond the semantic layer's power to repair; a thin layer two leaves the conversational layer handling friendly questions while the agentic layer cannot function at all. Every layer passes its errors upward, amplified. By layer five the system is reasoning over the product of every choice below it.
 

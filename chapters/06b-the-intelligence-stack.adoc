@@ -58,6 +58,8 @@ Layer five is autonomous research: the same machine run long — hypotheses held
 
 Meaning flows upward, which is why the stack is strict. Wrong definitions at layer two are inherited and amplified by everything above; quality failures at layer one sit beyond the semantic layer's power to repair; a thin layer two leaves the conversational layer handling friendly questions while the agentic layer cannot function at all. Every layer passes its errors upward, amplified. By layer five the system is reasoning over the product of every choice below it.
 
+The stack is also only one of two axes. The layers measure how deeply the estate is *read*. How the estate *grows* is the other axis — the builder's: AI curating the vocabulary ("Building with AI"), populating declared contracts ("By Any Means Necessary"), provisioning the provisional tier ("The Sandpit"), and, in the closing arc of "Agentic Intelligence", drafting the estate's next structures itself. Reading and growth compose in "The Living Colimit": an estate read at every altitude, grown by what the reading learns.
+
 Three positions block organizations from seeing the stack whole, and each names a real pattern.
 
 *The chatbot equation.* "We deployed AI" meaning "we put a chatbot on the intranet." Chatbots reduce ticket volume; the claim is still like saying "we deployed electricity" because you installed a desk lamp. A chatbot on ungoverned data is layer three with nothing underneath — and industry's own surveys say most claimed "agent adoption" is exactly that: a chatbot and a press release.

@@ -4,16 +4,18 @@ Everything to this point is architecture you can build with today's tools and to
 
 === What the Living Colimit Is
 
-Four things you already have, wired into one loop.
+Five things you already have, wired into one organism.
 
 
 [#fig-living-colimit-mesh]
 .The living colimit: verification agents and a coordinator continuously re-check the bridges; a broken span raises a witness, and colimit-health is watched like uptime.
 image::figures/living-colimit-mesh.png[living colimit mesh,width=640,align="center"]
 
-The **domains and bridges** are the body: each domain its own catalogued ontology, each bridge an explicit, dated span recording what maps, what is lost, what is partial. The **verification mesh** — Continuous Morphism Verification, the pattern in "Building with AI" — is the nervous system: a standing set of per-domain agents that, on every scan and on every change, re-check that each bridge still holds against live data, and a coordinator that runs the cross-domain commutativity checks no single agent can. The **populators** — the pipelines and agents of "By Any Means Necessary" — are the metabolism: the machinery that fills the contracts the body declares, graded and evidenced; the answer ledger of "The Death of the Dashboard" keeps the record of everything the organism has said aloud. And **colimit-health** is the vital sign: a live, rolled-up measure of how connected, honest, fresh, and consistent the whole glued structure is, watched the way you watch uptime, alerting when it degrades.
+The **domains and bridges** are the body: each domain its own catalogued ontology, each bridge an explicit, dated span recording what maps, what is lost, what is partial. The **verification mesh** — Continuous Morphism Verification, the pattern in "Building with AI" — is the nervous system: a standing set of per-domain agents that, on every scan and on every change, re-check that each bridge still holds against live data, and a coordinator that runs the cross-domain commutativity checks no single agent can. The **populators** — the pipelines and agents of "By Any Means Necessary" — are the metabolism: the machinery that fills the contracts the body declares, graded and evidenced; the answer ledger of "The Death of the Dashboard" keeps the record of everything the organism has said aloud. The **knowledge loop** of "Agentic Intelligence" is how the organism learns: standing questions its senses, beliefs its conjectures, refutation its criticism, published answers its speech, drafted proposals its growth. And **colimit-health** is the vital sign: a live, rolled-up measure of how connected, honest, fresh, and consistent the whole glued structure is, watched the way you watch uptime, alerting when it degrades.
 
 Run those together and the system has a property no hand-maintained model ever had: when meaning breaks, it says so, *locally, with a witness.* A regulator reclassifies an entity overnight; the domain agent catches the schema change on its scan; the coordinator re-runs the commutativity check for the affected concept; one routing now disagrees with another; a witness is raised on that single span and routed to the one human who owns it. By morning the health view shows one amber span with a named cause — not a green dashboard hiding a silent break, and not a surprise found at an audit a season later. Meaning has become a measured, self-defending quantity. That is the living colimit.
+
+None of it depends on every part being present. Strip the quants out of the Sandpit, run the populators as plain pipelines, slow the knowledge loop to human cadence — the estate remains an evolving colimit, changed by the same moves the formal spine licenses: add a domain, glue a bridge along what is genuinely shared, split a concept when commutativity fails, re-check. What the agentic layers change is the rate, and who closes the cycle. The colimit is the invariant; agency is the accelerant.
 
 === The Architecture, As a Thing You Build
 

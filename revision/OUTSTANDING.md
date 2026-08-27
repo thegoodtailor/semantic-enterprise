@@ -42,10 +42,19 @@ scoped; ch15 Context Budget gains the fencing rule; proposal renumbered (18 chap
 generate insight" once (06b); zero "honest" in new files; each epigram fires once;
 net book word count DOWN ~1,700 while gaining a chapter.
 
-**QUEUED NEXT: (a) ch7 overhaul campaign** — Iman: "chapter 7 needs an overhaul to be
-about conversational as the death of the dashboard. it can be punched up."
-**(b) Book-wide "honest/honestly" diagnostic sweep** (fix the nervous claims).
-**(c) First-person anecdote provenance sweep** (post-fabrication audit).
+**(a) ch7 punch-up DONE (27 Aug, commit 9680b1b)** per Iman's brief ("dashboards suck,
+they aren't reusable... conversational architected right is infinitely superior, even
+just basic medallion + current state MCP"): sealed-appliance indictment up front; new
+"The Bar Is Lower Than the Pitch Implies" subsection (curated Gold over stock MCP beats
+the dashboard estate; measured gaps = the layer's intake); layer-three slot line.
+**Rationalization wiring also DONE same day (no reorder — Iman: "i will agree with you
+for the moment")**: 06b two-axes paragraph (reading vs growth); ch11 fifth organ (the
+knowledge loop) + subtraction-survives doctrine; ch12 plurality de-dup + two-dynamics
+naming; ch8 christens "the knowledge loop".
+
+**STILL QUEUED: (b) Book-wide "honest/honestly" diagnostic sweep** (each instance =
+a nervous claim; fix the claim). **(c) First-person anecdote provenance sweep**
+(post-fabrication audit: list every "I/we" story for Iman's certification).
 
 **Standing prose rule (Iman, 27 Aug): "honest/honestly" is a sugarcoat tell** — strip
 the word, promote the concession into the argument body. Ch8's four die in the rebuild;

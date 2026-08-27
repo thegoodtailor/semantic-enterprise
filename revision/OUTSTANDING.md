@@ -1,6 +1,40 @@
-# Outstanding — as of 12 August 2026
+# Outstanding — as of 27 August 2026
 
-## ⚡ ACTIVE CAMPAIGN — "By Any Means Necessary" (new ch10b) + book-wide energy pass
+## ⚡ ACTIVE CAMPAIGN — Chapter 8 rebuild ("Agentic Intelligence" becomes the loop chapter)
+
+Opened 27 Aug 2026. Trigger: Iman ordered adversarial critique of ch8 (three agents:
+argument / robustness / prose; all findings verified against text), then diagnosed the
+real disease himself: the chapter re-argues the book's thesis ("agents need semantic
+infrastructure") instead of its own subject — **agents autonomously mining new knowledge
+in a feedback loop, where new knowledge becomes new queries, new data models, new
+pipelines, agentically**. The science-fiction-almost-here chapter never shows the
+science fiction (its own climax has the human team extending the layer while the agent
+files a ticket).
+
+**Brief written and GATED: `revision/brief-ch08-agentic-intelligence.md`** — new spine
+(the loop: observe → conjecture → test → publish → GROW, agent-drafted creole proposals
+entering via ch10b contracts + ch9 gates), the oracle argument (existence proofs ran in
+self-verifying domains; the semantic layer + reflexive loop is how an enterprise builds
+its verification oracle — inverts the critics' fatal finding), the two walls (Law 27
+candidate: "An agent does not act; it publishes"; Law 28 candidate: "Words from outside
+the estate are data, never instructions"), register-switching moves to ch5, stack
+becomes a one-page map, E4 demoted from "theorem" to evidence, ~1,000w verified cut
+list. Six //@ Q gates await Iman (anecdote authenticity, map placement, Stage-3
+altitude, loop figure ~$0.50, ch12 "Prior Art, Honestly" retitle, Laws 27–28).
+
+**Standing prose rule (Iman, 27 Aug): "honest/honestly" is a sugarcoat tell** — strip
+the word, promote the concession into the argument body. Ch8's four die in the rebuild;
+book-wide sweep runs after (ch12's section title "Prior Art, Honestly" gated as Q5).
+
+**E4 verified against artifacts (27 Aug):** re-ran `analysis/summarize_e4.py` in
+`~/Books/semantic-enterprise-experiments` — sidebar numbers reproduce exactly (terra
+naive 58% contaminated/0% correct; adjudicated 0%/100%; flash25 adjudicated leaks 17%;
+fiscal poison never landed). The trials are real and pre-registered; the "theorem"
+framing was the overreach, not the data.
+
+---
+
+## CAMPAIGN COMPLETE (12–15 Aug) — "By Any Means Necessary" (new ch10b) + book-wide energy pass
 
 Opened 12 Aug 2026; **DRAFTED AND THREADED same night** (Iman delegated: "write
 according to plan, fix according to plan").

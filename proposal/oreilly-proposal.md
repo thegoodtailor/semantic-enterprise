@@ -64,7 +64,7 @@ That combination is the book's authority claim. Most data-architecture books are
 ## 8. Specs
 
 - **Length:** ~90,000 words (complete draft).
-- **Chapters:** 18 (16 chapters + No Walls coda + Engineer's Appendix + a Foundations and Sources essay), plus References.
+- **Chapters:** 18 (16 chapters + Engineer's Appendix + a Foundations and Sources essay + the No Walls finale), plus References.
 - **Figures:** 32 original (editorial cartoons + architecture diagrams), already produced.
 - **Format:** AsciiDoc, include-based master — directly compatible with O'Reilly Atlas. Automated PDF/HTML build (CI) already in place.
 - **Schedule:** **Complete first draft exists now.** Realistic path: developmental edit + technical review over ~3 months from contract; revisions ~2 months; production-ready ~6 months from contract. (The usual write-the-book risk is already retired.)
@@ -86,9 +86,9 @@ That combination is the book's authority claim. Most data-architecture books are
 13. **The Living Colimit** — The whole assembled into one self-verifying system; shipping it this year; the formal spine.
 14. **The Reflexive Loop** — Four loops of self-correction; falsification by design; the brain that knows when it was wrong.
 15. **The Playbook** — **The Laws** (the tape-to-the-wall page); the diagnostic; four investments (vocabulary, semantic layer, agent infrastructure, the builder's estate); what to stop spending on; the board presentation.
-16. **No Walls** — Coda: the platform as a place you think.
-17. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the creole reference card; the evidence bundle; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
-18. **Foundations and Sources** — the intellectual lineage as an essay, followed by **References**.
+16. **The Engineer's Appendix** — Anatomy of a Silver table (shown whole); the semantic model shown once; the creole reference card; the evidence bundle; the context budget; the shared-key registry; the CI gates; the Gold-publication spec.
+17. **Foundations and Sources** — the intellectual lineage as an essay: what is inherited, from whom, and where the book departs.
+18. **No Walls** — the finale: walls defined and felled, the estate run forward, the platform as a place that thinks with you. Followed by **References**.
 
 ## 10. Sample chapter
 

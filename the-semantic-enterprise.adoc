@@ -40,10 +40,10 @@ include::chapters/12-the-reflexive-loop.adoc[]
 
 include::chapters/13-the-playbook.adoc[]
 
-include::chapters/14-no-walls.adoc[]
-
 include::chapters/15-the-engineers-appendix.adoc[]
 
 include::chapters/15b-foundations-and-sources.adoc[]
+
+include::chapters/14-no-walls.adoc[]
 
 include::chapters/16-references.adoc[]

@@ -165,7 +165,7 @@ CREATE TABLE silver_compliance.counterparty (
 The rules the table carries:
 
 * Surrogate keys are derived — a hash of the business key and the temporal coordinates — never sequences. A sequence assigns identity by arrival order; reprocessing the same source must mint the same keys, or every downstream reference breaks on replay.
-* The business key is never the join target for SCD2 (Slowly Changing Dimension Type 2) history. Joining `legal_entity_id = legal_entity_id` attaches every version of the counterparty to every fact — the textbook fan trap. The as-of predicate is the join target: key equality plus "valid at the fact's event time" (As-Of Join, the Time chapter).
+* The business key is never the join target for SCD2 (Slowly Changing Dimension Type 2) history. Joining `legal_entity_id = legal_entity_id` attaches every version of the counterparty to every fact — the textbook fan trap (defined, with its kin, in the field glossary that closes this appendix). The as-of predicate is the join target: key equality plus "valid at the fact's event time" (As-Of Join, the Time chapter).
 * Open intervals end at a sentinel date, never NULL. `9999-12-31` sorts, ranges, and answers `BETWEEN`; NULL fails all three and forces a `COALESCE` into every consumer.
 * Column descriptions are glossary definitions, inherited verbatim. The schema repeats the glossary or the schema is wrong; paraphrase is drift with a head start.
 * A backdated correction splits the prior validity interval: close the superseded row's `system_to`, insert one row per affected valid-time segment with the new `system_from`. Nothing is updated in place; the pre-correction state stays queryable forever. The foundations are Snodgrass (2000); the worked backdated-adjustment mechanics follow Roelant Vos's bi-temporal treatment.
@@ -218,7 +218,7 @@ None of these descriptions is hand-typed into the YAML. Each is authored once in
 
 === The Creole Reference Card
 
-The notation the book declares meaning in, complete. Everything below is an object the verification mesh can check and an agent can read as context; it compiles down to the two files above plus the trust metadata, evidence bundles, and answer artifacts this appendix specifies.
+The notation the book declares meaning in, complete. Everything below is an object the verification mesh can check and an agent can read as context; it compiles down to the two files above plus the trust metadata, evidence bundles, answer artifacts, and shared-key/morphism registry entries this appendix specifies.
 
 [source,creole]
 ----
@@ -228,7 +228,8 @@ domain NAME { ... }                       // a theory: what exists, connects, ho
     [populated by pipeline|agent NAME|human ROLE
        cadence ...  reads (...)  evidence retained ...]   // population is a declared policy
   op f : A -> B  [asof (ts)] [via TABLE] [partial]    // a declared join; never inferred
-  rule NAME : <statement>                 // held true; re-checked by the mesh every scan
+  rule NAME : <statement>                 // held true; compiled to a CI check at build,
+                                          // re-checked by the mesh every scan
   measure m on E  agg sum|avg|count [over col]   def "..."   // Tier 1, verbatim
   dimension d on E [via ...]                     def "..."
   definition NAME { def "..."  assert NAME : "claim" [born_of INCIDENT] }
@@ -247,7 +248,7 @@ bridge B = D1 <- Shared -> D2 {           // a span, honesty on its face
 }
 ----
 
-The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus the morphism registry entries the mesh re-verifies; `trust` and `populated by` land as surface metadata the semantic layer serves pre-flight and propagates through derivation ("By Any Means Necessary"); `standing` blocks become scheduled queries whose results publish to the answer ledger below. The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
+The compile-down is mechanical. `entity`/`grain` become the model and its uniqueness tests; `op` arrows become declared relationships in the semantic layer (equality-key where the tool supports only that; `asof` per the rule above); `rule` lines become CI checks at build and the mesh's re-verification at scan — the same predicate, run at both cadences; `def` strings land verbatim in schema descriptions and semantic-model metadata; `assert` lines become the scan-time assertions of the Reflexive Loop; `bridge` blocks become the cross-domain join declarations plus their entries in the shared-key/morphism registry (below) that the mesh re-verifies; `trust` and `populated by` land as surface metadata the semantic layer serves pre-flight and propagates through derivation ("By Any Means Necessary"); `standing` blocks become scheduled queries whose results publish to the answer ledger below. The thinking happened in the creole, once, where all three readers — engineer, mesh, agent — could see it.
 
 === The Evidence Bundle
 
@@ -347,8 +348,10 @@ gold_publication:
   as_of_system_time: 2026-05-20T04:10:00Z
   generated_at:      2026-05-20T04:31:55Z
   freshness_sla: published by 06:00 UTC, T+1
-  quality_score: 0.97
-  trust: deterministic                      # or agent-attested / mixed: the weakest grade any column carries
+  quality_score: 0.97                       # last-scan health: share of this surface's
+                                            # assertions and freshness contracts passing
+  trust: deterministic                      # or agent-attested / human-attested; a composed
+                                            # surface declares the weakest grade any column carries
   last_reviewed: 2026-04-30
   glossary_links: all columns               # e.g. pnl_mtm -> finance.pnl_mark_to_market; counterparty -> compliance.legal_entity
   explore: pnl_daily_desk_strategy          # no explore, no ship (the Architecture chapter)
@@ -374,3 +377,5 @@ Native time travel is an operational recovery feature measured in days — per B
 *Aggregate awareness.* Rollup routing, per Looker's aggregate-awareness documentation: the engine answers each query from the smallest pre-materialized rollup that can serve its grain and falls back to the declared join graph only when granularity demands — the flat head and the explorable tail of the Architecture chapter's two surfaces, implemented as a routing decision.
 
 *Verified queries / trusted assets.* Question-to-SQL pairs reviewed by a human and attached to the semantic model — Snowflake's verified-query repository, Databricks' Genie trusted assets. At runtime they anchor accuracy on the questions the business asks most; in CI they are the regression suite, replayed against every model change with the answers diffed. One artifact, both jobs.
+
+The inventory is complete. Every argument the book makes bottoms out somewhere on these pages — a table you can create, a model you can lint, a gate you can wire, a card you can hand an agent. What the artifacts cannot show is where the ideas came from and what, exactly, this book claims as its own; that ledger is next, and the book's last word follows it.

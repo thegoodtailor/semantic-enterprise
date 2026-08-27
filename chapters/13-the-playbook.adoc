@@ -388,7 +388,7 @@ Agent pre-flight is the critical capability. Before answering any question, the 
 
 Epistemic honesty, built into architecture. A chatbot gives you an answer with the serene confidence of a system that has no concept of doubt. An agent gives you an answer and tells you what it does not know. The difference between confidence and trustworthiness is the difference between a demo and a system.
 
-The loop runs in both directions. Every answer carries provenance — the definitions, measures, and morphisms it staked. When a stakeholder corrects or contests an answer, the correction is captured as a feedback event against those specific definitions. And pre-flight surfaces each definition’s calibration before the agent stakes it again: 412 uses, 2 contests, 0 refutations, last revised in March. The feedback loop is part of the infrastructure investment, not an afterthought bolted on after the first wrong number reaches the board.
+The loop runs in both directions. Every answer carries provenance — the definitions, measures, and morphisms it staked. When a stakeholder corrects or contests an answer, the correction is captured as a feedback event against those specific definitions. And pre-flight surfaces each definition’s calibration before the agent stakes it again: 412 uses, 2 contests, 1 closed refutation, last revised in March. The feedback loop is part of the infrastructure investment, not an afterthought bolted on after the first wrong number reaches the board.
 
 ==== The Maturity Ladder
 
@@ -430,6 +430,8 @@ The first three investments make the estate legible; the fourth puts the machine
 * *Grade propagation.* The semantic layer refuses to let a blended surface wear the deterministic badge, and CI enforces it like grain.
 
 ==== Timeline and Effort
+
+Whose clock this runs on matters, because Investment 3's stage gate stands: nothing agentic before vocabulary and layer exist. Investment 4's months are counted from that gate — its Month 1 begins where Investments 1 and 2 have delivered — and the builder-agent clears the gate earlier than the reading-agent precisely because it writes into declared contracts under CI, where the reading agent roams the whole estate.
 
 * *Month 1*: The evidence-bundle table, and the first agent-populated mart — pick the insight that has waited longest for an ingest budget that never came; the audition path is "By Any Means Necessary".
 * *Month 2-3*: The answer ledger under your highest-traffic standing questions; grade propagation wired into CI.
@@ -523,7 +525,7 @@ A semantic layer automates the translation. When the glossary maps "revenue" to 
 
 Eighty-four percent of organizations now have a CDO — though the survey behind the figure (NewVantage/Wavestone) covers Fortune-1000-scale firms. Near-universal adoption at the largest enterprises. And yet, in the 2025 edition of the same survey, just over 29% of CDOs believe the role is transitional and will eventually disappear. Over half serve less than three years. Nearly a quarter last less than two. One MIT study compared the trajectory to the Chief Digital Officer — a role once ubiquitous, now faded into other functions.
 
-CDO-as-translator is being automated away by the very architecture they should be building. What survives is the CDO-as-architect: someone who understands that data is technical, AI is engineering, and both require language and knowledge as their material. The job is to design the bridge that translates automatically, not to be the bridge — a job for someone who understands both the material (language, definitions, knowledge) and the medium (databases, semantic layers, agent protocols).
+CDO-as-translator is being automated away by the very architecture they should be building. What survives is the split "Language is the Material" already drew: the vocabulary half goes to the Head of AI–Human Communications named there, and the estate half to the CDO-as-architect — someone who understands that data is technical, AI is engineering, and both require language and knowledge as their material. The job is to design the bridge that translates automatically, not to be the bridge — a job for someone who understands both the material (language, definitions, knowledge) and the medium (databases, semantic layers, agent protocols).
 
 Does your CDO write code or write PowerPoints? If the answer is PowerPoints, the semantic layer is coming for their job. If the answer is code, they are building the semantic layer, and their value is increasing.
 
@@ -566,13 +568,13 @@ Every commitment costs something. A team that adopts commitments without naming 
 
 *Speed-to-first-answer for novel questions, in the short term.* The analyst who could write a query against Silver and have an answer before the meeting ends loses that option. Fast intake demands real investment — extensibility, engineering capacity, budget. In return, every number in circulation comes from a governed, versioned, documented source. The friction is real. Pay it.
 
-*The illusion of a unified enterprise data model.* "When will the unified model be done?" has a comfortable answer — "next year" — that has been wrong for twenty years. "We are not building a unified model" is uncomfortable but true. Domain ontologies connected by explicit, honest morphisms are more defensible and more architecturally sound. Also a harder sell. Prepare for it.
+*The illusion of a unified enterprise data model.* Already defunded in the stop list; what you give up with it is the unification *frame* — the twenty-years-wrong comfort of answering "when will it be done?" with "next year" — in front of stakeholders trained to expect exactly that answer.
 
 *The political comfort of optional governance.* Power users will resent the only-interface commitment. Senior analysts who have had direct SQL access for years will push back. Some will escalate. Some will leave. Hold the line anyway. Every bypass is a fork. Every fork is an ungoverned, undocumented, unversioned definition that enters circulation and cannot be recalled.
 
-*The ISO 11179 catalog program in its current form.* The quality criteria survive; the standalone project does not — and the human cost of that transition must be named and supported, not pretended painless.
+*The ISO 11179 catalog program in its current form.* Also on the stop list; the give-up here is the program's people. The quality criteria survive into the pipeline, and the stewards who ran the standalone catalog need a named path into the new shape — vocabulary curation, register ownership — rather than a pretense that nothing was lost.
 
-*The risk of AI-maintained semantic infrastructure.* Stale or subtly wrong AI-maintained definitions are harder to detect than absent definitions, because they produce confident wrong answers rather than visible gaps. A missing definition generates an error. A wrong definition generates a number. Continuous surveillance catches drift — a definition that was correct last quarter and is no longer correct this quarter. The harder case is the plausible-but-wrong definition that passed the quality gate on day one. The mitigation is built in "When AI-Maintained Definitions Go Wrong": continuous in-usage feedback plus adversarial agentic review, with humans adjudicating only the surfaced exceptions. The alternative — trusting a single AI draft with no in-usage feedback and no adversarial review — is cheaper right up until it produces a wrong answer in a board presentation or a regulatory filing.
+*The risk of AI-maintained semantic infrastructure.* Stale or subtly wrong AI-maintained definitions are harder to detect than absent definitions, because they produce confident wrong answers rather than visible gaps. A missing definition generates an error. A wrong definition generates a number. Continuous surveillance catches drift — a definition that was correct last quarter and is no longer correct this quarter. The harder case is the plausible-but-wrong definition that passed the quality gate on day one. The mitigation is built in "Building with AI" — the section "When AI-Maintained Definitions Go Wrong" — and hardened into standing machinery by "The Reflexive Loop": continuous in-usage feedback plus adversarial agentic review, with humans adjudicating only the surfaced exceptions. The alternative — trusting a single AI draft with no in-usage feedback and no adversarial review — is cheaper right up until it produces a wrong answer in a board presentation or a regulatory filing.
 
 === What We Are Not Certain Of
 
@@ -629,4 +631,4 @@ Your data platform has a new primary consumer, and it is not human. It cannot sq
 
 Build the vocabulary. Build the semantic layer. Build the agent infrastructure. Build the builder's estate. Stop spending on everything else.
 
-Start Monday.
+Start Monday. Every artifact this program needs — the DDL, the semantic model, the creole card, the gates — is shown whole in the appendix that follows; and when the program has run, the last chapter says what you get.

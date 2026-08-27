@@ -133,45 +133,13 @@ Layer one is governed data: the medallion architecture — Bronze as faithful wi
 
 Layer two is the semantic layer: where concepts map to data. Far more than column descriptions — definitions, hierarchies, relationships, default assumptions, domain heuristics, navigational context, the vocabulary architecture running from glossary downward with upstream always winning. This is the layer the preceding chapters have been building, and the one every layer above consumes.
 
-What it buys is measurable, and the measurements need reading with their scope attached. Where a query falls within the layer's declared scope, evaluations cluster at the ceiling; ungrounded against enterprise-grade schemas, they sit near the floor. The decisive quantity between those two numbers is coverage — how much of what your organization actually asks falls within the declared scope — which is why extending scope is a governed activity with a queue and a clock, and why the model was never the constraint. The vendors' benchmarks below measure the covered class, on the vendors' own testbeds; read them for the scale of the mechanism rather than as independent audit.
-
-.Grounding, measured — the industry's numbers, 2025–26
-****
-Grounded, the evaluations cluster at the ceiling: dbt Labs' 2026 benchmark
-scored semantic-layer queries at 100 percent for one frontier model and 98 for
-another; AtScale measured 92.5 percent against a 20 percent raw-schema
-baseline; Snowflake reports roughly 90 percent for Cortex Analyst against a 16
-percent raw-SQL baseline on the same questions. Ungrounded against
-*enterprise-grade* schemas, the floor is brutal — Spider 2.0's release paper
-measured the strongest model of the day at 21.3 percent. The complication that
-tempers the gap: on small, well-named schemas, raw text-to-SQL now reaches the
-mid-eighties. Scaffold choice is real too: on Princeton's Holistic Agent
-Leaderboard, the same model moves roughly seven points between orchestration
-harnesses on the GAIA benchmark (64.9 versus 57.6, mid-2025 entries —
-configurations differ, so read it as the scale of the effect, not a controlled
-ranking).
-****
-
-.Grounding, measured — our trials, July 2026
-****
-In our own pre-registered trials (44 questions, six seeded ambiguities, three
-models — full method and harness at
-https://github.com/thegoodtailor/semantic-enterprise-experiments), the frontier
-models (GPT-5.6-terra and Claude Sonnet 5) scored 67–71 percent on trap
-questions from the raw schema and 100 percent through the governed semantic
-context; with structure alone — declared joins, definitions stripped — they
-fell to 75 and 83 percent respectively. The meaning, not the structure,
-carries the accuracy. Where the raw arms failed,
-the modal foil-matched error was strategy-tag selection — the deprecated
-column — exactly the failure class the declared-joins doctrine predicts.
-Numbers are dated; the mechanism is the claim.
-****
+What it buys was measured in the opening chapters and needs only its scope restated here: where a query falls within the layer's *declared* scope, evaluations cluster at the ceiling — the vendors' own benchmarks and this book's pre-registered trials agree, from "The Shift"'s 100-percent governed arm down to Spider 2.0's brutal ungrounded floor. The decisive quantity between ceiling and floor is coverage: how much of what your organization actually asks falls within the declared scope. Coverage is why extending scope must be a governed activity with a queue and a clock — the intake bar "The Death of the Dashboard" will set — and why the model was never the constraint.
 
 [#fig-guess-vs-reason]
 .Grounded, an agent reasons at the ceiling; ungrounded against enterprise schemas, it guesses near the floor. The difference is infrastructure, not intelligence.
 image::figures/guess-vs-reason.png[guess vs reason,width=600,align="center"]
 
-Layer three is the conversational interface: a human asks, an agent answers through the layer. Stage 1 — the question-and-answer loop, the most visible layer and the one most organizations optimize for, because demos that impress the executive team are always conversational. Production is where its failure modes arrive, and "The Death of the Dashboard" is its chapter.
+Layer three is the conversational interface: a human asks, an agent answers through the layer. The coming chapters also grade this territory by *capability* — Stages 1 through 3, where Stage 1 is this layer done right, and Stages 2 and 3 are layers four and five running as one machine. Two numberings, one map: layers name what a capability stands on; stages name the capability as the business meets it. Layer three is the most visible floor and the one most organizations optimize for, because demos that impress the executive team are always conversational. Production is where its failure modes arrive, and "The Death of the Dashboard" is its chapter.
 
 Layer four is agentic intelligence: agents that monitor, reason, and generate insight without being asked — the architecture turned proactive, checking for anomalies, testing hypotheses, maintaining knowledge about the state of the business. It requires everything below, plus persistent memory, goal structures, tool access, and semantic context that reaches past definitions into domain expertise.
 

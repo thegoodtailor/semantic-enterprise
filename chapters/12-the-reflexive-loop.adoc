@@ -170,7 +170,7 @@ Loop 3 crosses a second line, the one von Foerster drew between first-order cybe
 One design principle governs everything that follows: falsification must be external and plural. The evidence and the argument were laid out in "Agentic Intelligence" — self-review degrades, self-judging favors its own, so the author-agent is structurally incapable of refuting its own output. Refutation therefore arrives from outside: usage telemetry, reconciliation evidence, and other agents running different models through different lenses. The newsroom is credible because it runs a corrections column, and this chapter is the column.
 
 [#fig-reflexive-loop]
-.The reflexive loop: four grades of self-correction around the semantic layer. Loops 0–1 verify structure and usage; Loops 2–3 refute and calibrate belief — the line between them is where an observed system becomes an observing one.
+.The reflexive loop: four grades of self-correction around the semantic layer. Loops 0–1 verify structure and usage; Loops 2–3 refute and calibrate belief. Argyris's double-loop line runs between the pairs; von Foerster's observed-to-observing line runs between Loop 2 and Loop 3.
 image::figures/reflexive-loop.png[the reflexive loop,width=640,align="center"]
 
 === Falsification by Design
@@ -198,6 +198,7 @@ definition net_revenue {
   assert net_rev_recon_gl : "monthly SUM(net_revenue) reconciles to GL revenue class within 0.5%"
     born_of incident/2026-04-17-board-deck-restatement
   assert net_rev_no_intercompany : "no intercompany counterparty contributes to net_revenue"
+    born_of incident/2026-04-17-board-deck-restatement
 }
 
 definition carried_interest {
@@ -292,13 +293,13 @@ CREATE TABLE governance.semantic_feedback (
 );
 ----
 
-Every row is the outcome of a prediction, on two clocks: when the world disagreed, and when the brain found out. From that history, two patterns.
+Every row is the outcome of a prediction, on two clocks: when the world disagreed, and when the brain found out. From that history, two patterns — the first fitted from it, the second inherited from the Time chapter's storage discipline and applied to it.
 
 Agents and humans must decide, before relying on a definition, how far to trust it. A certified definition contested weekly and a certified definition unchallenged through four hundred uses carry the same badge.
 
 So the loop fits per-definition reliability scores from the outcome history in `governance.semantic_feedback` — uses, contests, refutations, revisions, live-assertion status — exposed at pre-flight to every consumer, on the template of Meta's probabilistic flakiness scores, which grade each test on its outcome record rather than its code. Certification says *built right*; calibration says *not yet proven wrong, in N attempts*. Airbnb's Midas certification is the strongest version of the former; the ledger is the latter, and a platform wants both.
 
-Pre-flight, the agent reads: `net_revenue`: 412 derivations, 2 contests (both resolved against the contest), 0 refutations, last revised 2026-03-02, 3 live assertions all green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
+Pre-flight, the agent reads: `net_revenue`: 412 derivations, 2 contests (both resolved against the contest), 1 refutation — the February reconciliation break, closed by the 2026-03-02 revision with the evidence linked — 2 live assertions, both green. It stakes the answer and cites the record. For a measure showing 12 uses and an open contest, it answers with the contest attached — epistemic honesty with numbers behind it.
 
 A reliability score is itself a measure and inherits Goodhart exposure (below); the ledger therefore scores adjudicated outcomes only, never raw complaint volume. Sparse histories calibrate weakly — a young definition's score reports its own ignorance, which is the correct behavior.
 
@@ -312,7 +313,7 @@ The storage and query cost is the Tier 1 bitemporal discipline of "Time", cheap 
 
 === How the Loop Corrupts
 
-A learning loop is a steering surface, and four failure modes will find it.
+A learning loop is a steering surface, and five failure modes will find it.
 
 **Goodhart capture.** When a measure becomes a target, it ceases to be a good measure (Strathern, 1997) — and a loop that revises definitions under feedback invites making the feedback the target (the adversarial variant: Manheim and Garrabrant, 2018). Definitions drift toward what stakeholders want the numbers to say: the region lobbying for the exclusion that flatters its quarter, the desk contesting the measure that books its losses. The countermeasure is constitutional: a definition revision requires a failed assertion or a documented refutation — never complaint volume. Contests are adjudicated against evidence; popularity is routing information, nothing more.
 
@@ -346,4 +347,4 @@ The novelty claim gets the same treatment the book demands of a morphism: state 
 
 The Architecture's seventh core position — epistemic honesty — said the system should know what it knows and what it does not. The reflexive loop finishes the sentence: the system knows what it knows, what it does not, how often it has been wrong, and which of its beliefs are due for doubt. Each clause is a query against tables this chapter specified, answered with numbers, on two clocks.
 
-Every organization claims to learn from its mistakes, and the claim is usually a retrospective, a slide of lessons, and amnesia by the next quarter — ritual, because nothing in the architecture changes when the ritual completes. The reflexive loop promotes learning-from-mistakes from ritual to architecture: the mistake becomes an event, the event becomes an assertion, the assertion becomes a standing guard, and the guard's record becomes the system's calibrated confidence in its own vocabulary. A platform built this way does not ask to be believed. It shows its record — including the record of being wrong — and an enterprise that can exhibit its corrections is the only kind whose answers deserve the name knowledge.
+Every organization claims to learn from its mistakes, and the claim is usually a retrospective, a slide of lessons, and amnesia by the next quarter — ritual, because nothing in the architecture changes when the ritual completes. The reflexive loop promotes learning-from-mistakes from ritual to architecture: the mistake becomes an event, the event becomes an assertion, the assertion becomes a standing guard, and the guard's record becomes the system's calibrated confidence in its own vocabulary. A platform built this way does not ask to be believed. It shows its record — including the record of being wrong — and an enterprise that can exhibit its corrections is the only kind whose answers deserve the name knowledge. What remains is to price it, sequence it, and staff it: the doubt machinery becomes line items and stage gates in the Playbook, where every doctrine in this book finally meets a budget.
